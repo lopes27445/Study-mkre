@@ -1,0 +1,602 @@
+<title>Mapa do Vestibular Mackenzie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --vermelho-soft:#FBEAE7;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --neutro-chip:#EDF0F5;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --vermelho:#EE8478;
+    --vermelho-soft:#33201E;
+    --ocre:#DDB667;
+    --ocre-soft:#2C2618;
+    --neutro-chip:#212C42;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --vermelho:#EE8478;
+  --vermelho-soft:#33201E;
+  --ocre:#DDB667;
+  --ocre-soft:#2C2618;
+  --neutro-chip:#212C42;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 96px}
+
+/* ---------- Cabeçalho ---------- */
+.topo{padding:52px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--azul);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+}
+.eyebrow span{color:var(--grafite-soft)}
+h1{
+  font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,52px);
+  line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance;
+}
+.dek{
+  font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:64ch;
+  text-wrap:pretty;
+}
+.fontes{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;
+  font-family:var(--mono);font-size:12px;color:var(--grafite);
+}
+.fontes b{
+  background:var(--surface);border:1px solid var(--linha);border-radius:3px;
+  padding:5px 9px;font-weight:500;display:inline-block;
+}
+
+/* ---------- Seções ---------- */
+section{padding-top:56px}
+h2{
+  font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.015em;
+  margin:0 0 6px;display:flex;align-items:baseline;gap:12px;text-wrap:balance;
+}
+h2 .num{
+  font-family:var(--mono);font-size:13px;font-weight:600;color:var(--azul);
+  letter-spacing:.06em;flex:none;
+}
+h3{
+  font-family:var(--display);font-weight:600;font-size:18.5px;
+  margin:34px 0 10px;letter-spacing:-.01em;
+}
+.sub{color:var(--grafite);margin:0 0 22px;max-width:68ch;text-wrap:pretty}
+p{max-width:68ch;text-wrap:pretty}
+
+/* ---------- Achado principal (objeto elevado) ---------- */
+.achado{
+  background:var(--surface);border:1px solid var(--linha);border-radius:6px;
+  box-shadow:var(--shadow);padding:26px 26px 22px;margin-top:26px;
+}
+.achado-tit{
+  font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 4px;
+}
+.achado-txt{margin:0 0 24px;color:var(--grafite);font-size:15.5px;max-width:none}
+
+.blueprint{display:flex;width:100%;height:46px;border-radius:4px;overflow:hidden;border:1px solid var(--linha-forte)}
+.bp{
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  background:var(--surface-2);color:var(--grafite);
+  border-right:1px solid var(--linha);overflow:hidden;white-space:nowrap;
+}
+.bp:last-child{border-right:0}
+.bp.foco{background:var(--azul);color:#fff}
+:root[data-theme="dark"] .bp.foco{color:#0E1523}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bp.foco{color:#0E1523}}
+
+.escala{
+  display:flex;width:100%;margin-top:7px;
+  font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft);
+}
+.escala div{border-right:1px solid transparent;padding-left:2px;overflow:hidden;white-space:nowrap}
+
+.legenda{
+  display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:20px;
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite);
+}
+.legenda i{font-style:normal;color:var(--ink);font-weight:600}
+
+/* ---------- Lista de temas (não são cards) ---------- */
+.temas{display:flex;flex-direction:column;margin-top:8px}
+.tema{
+  display:grid;
+  grid-template-columns:64px 1fr auto;
+  gap:6px 18px;align-items:baseline;
+  padding:15px 0 15px 16px;
+  border-top:1px solid var(--linha);
+  border-left:3px solid transparent;
+}
+.tema:last-child{border-bottom:1px solid var(--linha)}
+.tema.alta{border-left-color:var(--vermelho)}
+.tema.media{border-left-color:var(--ocre)}
+.tema .freq{
+  font-family:var(--mono);font-size:12.5px;font-weight:600;
+  font-variant-numeric:tabular-nums;color:var(--grafite);letter-spacing:.02em;
+}
+.tema.alta .freq{color:var(--vermelho)}
+.tema.media .freq{color:var(--ocre)}
+.tema .nome{font-weight:600;font-size:16.5px;line-height:1.4}
+.tema .tag{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--grafite);
+  background:var(--neutro-chip);border-radius:3px;padding:3px 7px;white-space:nowrap;
+}
+.tema .det{
+  grid-column:2 / -1;margin:5px 0 0;font-size:14.5px;color:var(--grafite);
+  line-height:1.55;max-width:66ch;
+}
+.tema .det code{
+  font-family:var(--mono);font-size:12.5px;color:var(--azul);
+  background:var(--azul-soft);padding:1px 5px;border-radius:3px;white-space:nowrap;
+}
+@media (max-width:620px){
+  .tema{grid-template-columns:1fr auto;padding-left:13px}
+  .tema .freq{grid-column:1 / -1;order:-1}
+  .tema .det{grid-column:1 / -1}
+}
+
+/* ---------- Faixa de destaque ---------- */
+.destaque{
+  border-left:3px solid var(--azul);background:var(--azul-soft);
+  padding:16px 20px;margin:26px 0 0;border-radius:0 4px 4px 0;
+}
+.destaque p{margin:0;font-size:15.5px;max-width:none}
+.destaque strong{font-weight:700}
+
+/* ---------- Tabela de blocos ---------- */
+.tabela-wrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:460px}
+th{
+  text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);
+  padding:0 14px 9px 0;border-bottom:1px solid var(--linha-forte);
+}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+td:first-child{font-family:var(--mono);font-size:13px;color:var(--azul);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+
+/* ---------- Checklist ---------- */
+.check{display:flex;flex-direction:column;gap:0;margin-top:10px}
+.check-item{
+  display:flex;gap:13px;align-items:flex-start;
+  padding:11px 4px;border-bottom:1px solid var(--linha);cursor:pointer;
+}
+.check-item:hover{background:var(--surface-2)}
+.check-item input{
+  appearance:none;-webkit-appearance:none;
+  width:17px;height:17px;flex:none;margin-top:4px;
+  border:1.5px solid var(--linha-forte);border-radius:3px;
+  background:var(--surface);cursor:pointer;position:relative;
+}
+.check-item input:checked{background:var(--azul);border-color:var(--azul)}
+.check-item input:checked::after{
+  content:"";position:absolute;left:5px;top:1.5px;
+  width:4px;height:9px;border:solid var(--surface);
+  border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.check-item input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.check-item span{font-size:15.5px;line-height:1.5}
+.check-item input:checked + span{color:var(--grafite-soft);text-decoration:line-through}
+.check-meta{
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);
+  margin-top:12px;
+}
+
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.7;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="topo">
+  <div class="eyebrow">Análise comparativa <span>·</span> 2 provas <span>·</span> 120 questões</div>
+  <h1>Mapa do Vestibular Mackenzie</h1>
+  <p class="dek">O que as duas últimas provas do Mackenzie realmente cobraram — e onde vale a pena gastar as próximas semanas de estudo. Foco em Matemática, Português e Geografia.</p>
+  <div class="fontes">
+    <b>Processo Seletivo 2026 · 1º sem · 26/11/2025 · Grupo 1</b>
+    <b>Vestibular 2025/2 · Higienópolis · 11/06/2025 · Prova B</b>
+  </div>
+</header>
+
+<section>
+  <h2><span class="num">01</span> A estrutura da prova é fixa</h2>
+  <p class="sub">As duas provas têm exatamente o mesmo desenho: 60 questões objetivas mais uma redação, distribuídas nas mesmas faixas de numeração. Isso significa que você entra na prova já sabendo em que página está cada matéria.</p>
+
+  <div class="achado">
+    <p class="achado-tit">Distribuição das 60 questões — idêntica nas duas provas</p>
+    <p class="achado-txt">Suas três matérias-foco somam 27 das 60 questões, ou 45% da prova objetiva.</p>
+
+    <div class="blueprint">
+      <div class="bp foco" style="flex:10" title="Português: questões 1 a 10">PORT · 10</div>
+      <div class="bp" style="flex:5" title="Inglês: questões 11 a 15">ING · 5</div>
+      <div class="bp" style="flex:7" title="Física: questões 16 a 22">FÍS · 7</div>
+      <div class="bp" style="flex:7" title="Química: questões 23 a 29">QUÍM · 7</div>
+      <div class="bp foco" style="flex:10" title="Matemática: questões 30 a 39">MAT · 10</div>
+      <div class="bp" style="flex:7" title="Biologia: questões 40 a 46">BIO · 7</div>
+      <div class="bp" style="flex:7" title="História: questões 47 a 53">HIST · 7</div>
+      <div class="bp foco" style="flex:7" title="Geografia: questões 54 a 60">GEO · 7</div>
+    </div>
+    <div class="escala">
+      <div style="flex:10">Q1</div>
+      <div style="flex:5">Q11</div>
+      <div style="flex:7">Q16</div>
+      <div style="flex:7">Q23</div>
+      <div style="flex:10">Q30</div>
+      <div style="flex:7">Q40</div>
+      <div style="flex:7">Q47</div>
+      <div style="flex:7">Q54</div>
+    </div>
+
+    <div class="legenda">
+      <span><i>Português</i> Q1–Q10</span>
+      <span><i>Matemática</i> Q30–Q39</span>
+      <span><i>Geografia</i> Q54–Q60</span>
+      <span style="color:var(--grafite-soft)">Redação: sempre antes da Q1</span>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Use isso na estratégia de prova.</strong> São 4 horas para 60 questões e a redação. Como a ordem é previsível, você pode ir direto para os blocos em que rende mais, sem folhear a prova inteira procurando.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span> Matemática · Q30–Q39</h2>
+  <p class="sub">Oito dos dez temas se repetiram nas duas provas — ou seja, 80% da prova de Matemática sai de um conjunto pequeno e estável de assuntos. E há um vencedor claro.</p>
+
+  <div class="destaque">
+    <p><strong>Geometria é quase metade da prova de Matemática.</strong> Em 2026 foram 5 das 10 questões (Q33 a Q37, seguidas); em 2025/2, outras 4. Se você tiver pouco tempo, geometria é onde ele deve ir.</p>
+  </div>
+
+  <div class="temas">
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Geometria plana</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Áreas, semelhança de triângulos, Teorema de Tales, relações métricas no círculo, polígonos regulares. Em 2026 caiu duas vezes: <code>Q35</code> Tales num mapa de avenidas paralelas e <code>Q36</code> relações métricas para achar o raio. Em 2025/2, <code>Q32</code> hexágono regular com redução de área a 25%.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Geometria analítica — circunferência</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Equação reduzida e geral, identificar centro e raio completando quadrados, distância entre pontos, reta tangente. <code>Q34</code> em 2026 (duas circunferências e uma tangente comum) e <code>Q37</code> em 2025/2 (coroa circular a partir de x²+y²−8x−8y+7=0).</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Geometria espacial — cilindro</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">O cilindro apareceu nas duas, sempre com volume e/ou área lateral. <code>Q37</code> em 2026 com um cone inscrito no cilindro (a relação V<sub>cone</sub> = ⅓ V<sub>cilindro</sub> era a chave); <code>Q38</code> em 2025/2, área lateral de uma garrafa térmica.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Trigonometria</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Lei dos cossenos com ângulo obtuso em <code>Q33</code>/2026 (rota de drone, 135°) e razões no triângulo retângulo em <code>Q36</code>/2025/2 (cabo de ponte estaiada, 60°). Saiba de cor os valores de 30°, 45°, 60° e o cosseno dos ângulos obtusos notáveis.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Análise combinatória</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Sempre permutação, nunca fórmula solta. <code>Q39</code>/2026: anagramas de GEEE@2026 (permutação com letras repetidas). <code>Q35</code>/2025/2: exercícios de academia em blocos que devem ficar juntos (permuta-se dentro e entre os blocos).</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Progressões — PA e PG</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Uma de cada. <code>Q38</code>/2026: soma de PG infinita (bolinha que volta a 80% da altura — cuidado, a distância total conta subida e descida). <code>Q33</code>/2025/2: termo geral da PA e soma dos 2025 primeiros termos.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Logaritmos</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Propriedades operatórias em <code>Q32</code>/2026 (dentro de uma matriz com lei de formação a<sub>ij</sub> = log(i²+j)) e função logarítmica com leitura de gráfico em <code>Q34</code>/2025/2. Domine log do produto, do quociente e da potência.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Funções afim e quadrática</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det"><code>Q31</code> nas duas provas, na mesma posição. Em 2026, vértice e valor máximo da parábola; em 2025/2, taxa de variação, raízes e interseção com os eixos da função afim.</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">1 / 2</div>
+      <div class="nome">Estatística e porcentagem</div>
+      <div class="tag">Revisar</div>
+      <p class="det">Ocupam a <code>Q30</code>, a primeira do bloco, e são as questões mais rápidas da prova. Média, moda e mediana a partir de gráfico (2026); porcentagem em massa de solução (2025/2).</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">1 / 2</div>
+      <div class="nome">Matrizes e noção de limite</div>
+      <div class="tag">Revisar</div>
+      <p class="det">Aparecem como tempero, quase sempre coladas em outro conteúdo. Matriz por lei de formação em 2026; em 2025/2, <code>Q39</code> pediu um limite — mas o enunciado ensinava o método, e a conta real era fatorar x²−1 e simplificar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span> Português · Q1–Q10</h2>
+  <p class="sub">O bloco também tem uma divisão interna fixa: seis questões de interpretação sobre um conjunto de textos, depois quatro de literatura. Repare que a literatura vale só 4 pontos — e a interpretação, 6.</p>
+
+  <div class="tabela-wrap">
+    <table>
+      <thead><tr><th>Questões</th><th>O que é cobrado</th><th>Nas duas provas</th></tr></thead>
+      <tbody>
+        <tr><td>Q1–Q6</td><td>Interpretação de um bloco de 2 a 3 textos, com um deles verbo-visual (infográfico, charge, esquema)</td><td>Sim, sem exceção</td></tr>
+        <tr><td>Q7–Q10</td><td>Literatura brasileira: escolas literárias, autores e gêneros</td><td>Sim, sem exceção</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Interpretação e gramática em contexto</h3>
+  <div class="temas">
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Funções da linguagem</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">O conteúdo mais recorrente do bloco. Em 2026, <code>Q4</code> pedia identificar referencial, conativa, metalinguística e fática em quatro trechos diferentes; em 2025/2, <code>Q3</code> girava em torno da função referencial. Decore as seis e saiba reconhecê-las por uma frase curta.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Tipologia textual</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Narrativo, descritivo, dissertativo-expositivo, injuntivo — e a diferença entre tipo e gênero, que é o que as alternativas erradas exploram. Caiu em <code>Q1</code> e <code>Q3</code>/2026 e em <code>Q3</code>/2025/2.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Semântica e sentido figurado</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Substituir uma palavra sem alterar o sentido, reconhecer metáfora, entender o valor das aspas e dos parênteses. <code>Q6</code>/2026 (acarretam, sobremaneira) e <code>Q4</code>/2025/2 (aspas em "mais simples", "pesa na balança").</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Coesão: pronomes e conjunções</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Uma questão por prova, sempre sobre o texto. Referência anafórica dos pronomes <em>os</em> e <em>lhes</em> em <code>Q6</code>/2026; valor concessivo de <em>embora</em> e <em>conquanto</em>, mais a distinção por que / porque, em <code>Q6</code>/2025/2.</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">1 / 2</div>
+      <div class="nome">Pressuposto e subentendido</div>
+      <div class="tag">Estudar</div>
+      <p class="det">O que o texto afirma sem dizer. Foi o eixo inteiro da <code>Q5</code>/2025/2 e reaparece disfarçado nas alternativas de várias outras questões de interpretação.</p>
+    </div>
+  </div>
+
+  <h3>Literatura</h3>
+  <div class="temas">
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Modernismo brasileiro e suas três fases</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">O assunto literário mais cobrado, com folga. <code>Q10</code>/2026 pedia distinguir as três fases uma a uma; em 2025/2 ele domina três questões seguidas — <code>Q7</code> e <code>Q8</code> sobre "No meio do caminho", de Drummond, e <code>Q9</code> sobre a Geração de 30.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">2 / 2</div>
+      <div class="nome">Cecília Meireles e Clarice Lispector</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">As duas autoras apareceram nas duas provas. Cecília: Geração de 30, musicalidade, introspecção e o <em>Romanceiro da Inconfidência</em>. Clarice: prosa introspectiva, crônica e conto — em 2026 um trecho dela era o próprio texto-base.</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">1 / 2</div>
+      <div class="nome">Romantismo e Simbolismo</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Em 2026 vieram juntos: <code>Q8</code> sobre Cruz e Sousa (sugestão, musicalidade, aliteração) e <code>Q9</code> sobre Álvares de Azevedo e a segunda geração romântica, o "Mal do Século". São escolas de definição rápida — bom custo-benefício.</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">1 / 2</div>
+      <div class="nome">Gêneros literários</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Definição do conto e sua diferença para o romance e a crônica (<code>Q10</code>/2025/2). Em 2026 o equivalente foi a leitura de um poema contemporâneo, de Mar Becker: eu lírico, tema e comparação.</p>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Padrão de formato que vale ouro.</strong> Cerca de um terço das questões de Português vem no modelo "afirmações I, II e III — assinale a correta". Nesse formato, achar <em>uma</em> afirmação claramente falsa já elimina duas ou três alternativas. E cada prova traz exatamente uma questão pedindo a alternativa INCORRETA — circule essa palavra.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span> Geografia · Q54–Q60</h2>
+  <p class="sub">São só 7 questões, mas as mais previsíveis da prova inteira: duas frentes concentram mais da metade delas.</p>
+
+  <div class="temas">
+    <div class="tema alta">
+      <div class="freq">4 questões</div>
+      <div class="nome">Cartografia</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">A campeã absoluta. Escala grande × escala pequena e nível de detalhe (<code>Q56</code>/2026); cálculo de distância real a partir da escala (<code>Q59</code>/2025/2, 1:9.500.000); anamorfose como mapa temático (<code>Q55</code>/2026); e localizar países num mapa mudo da Ásia (<code>Q55</code>/2025/2). Treine a conta dos dois lados: mapa → real e real → mapa.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">4 questões</div>
+      <div class="nome">Geopolítica e atualidades</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Sempre a partir de uma notícia dos 12 meses anteriores à prova. Em 2026: o acordo Armênia–Azerbaijão em Nagorno-Karabakh, mediado pelos EUA em agosto de 2025, e o conceito de enclave. Em 2025/2: a queda de Bashar al-Assad na Síria e o acordo Mercosul–União Europeia, ambos de dezembro de 2024.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">3 questões</div>
+      <div class="nome">Brasil: território e meio ambiente</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">SNUC e a diferença entre unidades de proteção integral e de uso sustentável (<code>Q60</code>/2026 — saiba onde entram estação ecológica, parque nacional, APA e reserva extrativista). Do outro lado: a seca e os incêndios no Pantanal (<code>Q58</code>) e a regionalização do IBGE com população por região (<code>Q60</code>) em 2025/2.</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">3 questões</div>
+      <div class="nome">Economia mundial e comércio</div>
+      <div class="tag">Estudar</div>
+      <p class="det">PIB total × PIB per capita e concentração de renda pelo Índice de Gini (<code>Q55</code>/2026); pauta de exportação do Brasil para o Japão, com peso das commodities (<code>Q56</code>/2025/2); blocos econômicos no acordo Mercosul–UE (<code>Q57</code>).</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">2 questões</div>
+      <div class="nome">Climatologia e fusos horários</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Ciclones lidos em imagem de satélite — centros de alta e baixa pressão e o sentido de rotação em cada hemisfério (<code>Q54</code>/2026). E a Linha Internacional de Data com fusos extremos, Fiji em UTC+12 contra o Havaí em UTC−10 (<code>Q57</code>/2026).</p>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Geografia se prepara com jornal.</strong> Nenhuma das questões de atualidades exigia dado decorado — exigia saber quem estava de que lado. Acompanhe conflitos, acordos comerciais e dados ambientais do Brasil durante o ano da prova; o enunciado sempre entrega o contexto e cobra a interpretação.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span> Redação</h2>
+  <p class="sub">Mesma proposta nas duas provas, palavra por palavra: dissertação a partir de três textos, com coesão, coerência e norma culta.</p>
+
+  <div class="tabela-wrap">
+    <table>
+      <thead><tr><th>Prova</th><th>Tema</th><th>Composição dos textos</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td>Consumo de ultraprocessados, saúde pública e tributação de alimentos</td><td>2 textos verbais + 1 peça visual</td></tr>
+        <tr><td>2025/2</td><td>Desinformação, risco à democracia e educação midiática</td><td>2 textos verbais + 1 charge</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Título é obrigatório e sempre foi.</strong> As duas propostas pedem título explicitamente, além de exigir que o tema seja depreendido da leitura de <em>todos</em> os textos — incluindo o visual. São 40 linhas no rascunho. Tema social contemporâneo brasileiro nas duas vezes, com um dado ou proposta de política pública embutido em um dos textos: use esse dado no seu argumento.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span> As outras matérias, em uma linha cada</h2>
+  <p class="sub">Fora do seu foco principal, mas são 33 das 60 questões — vale saber o que esperar.</p>
+
+  <div class="tabela-wrap">
+    <table>
+      <thead><tr><th>Bloco</th><th>Matéria</th><th>O que apareceu nas duas provas</th></tr></thead>
+      <tbody>
+        <tr><td>Q11–Q15</td><td>Inglês</td><td>Um texto jornalístico longo mais um texto curto (tirinha ou anúncio); sempre uma questão de sinônimos ou antônimos de palavras em negrito e uma de inferência</td></tr>
+        <tr><td>Q16–Q22</td><td>Física</td><td>Conservação de energia mecânica, termodinâmica, circuitos e resistores, empuxo</td></tr>
+        <tr><td>Q23–Q29</td><td>Química</td><td>Química orgânica (funções, isomeria, reações), eletroquímica e potencial de redução, forças intermoleculares</td></tr>
+        <tr><td>Q40–Q46</td><td>Biologia</td><td>Citologia, evolução, ecologia e impacto ambiental, fisiologia humana, genética</td></tr>
+        <tr><td>Q47–Q53</td><td>História</td><td>Antiguidade e Idade Média, Brasil Colônia e Império, Era Vargas e ditadura militar — sempre a partir de um documento ou imagem</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">07</span> Por onde começar</h2>
+  <p class="sub">A ordem abaixo segue o retorno por hora estudada: temas que caíram nas duas provas vêm primeiro. Marque o que já fechou — a página lembra suas marcações neste navegador.</p>
+
+  <div class="check" id="lista"></div>
+  <p class="check-meta" id="progresso">0 de 14 concluídos</p>
+</section>
+
+<footer>
+  Análise baseada na leitura integral das duas provas: Processo Seletivo Mackenzie 1º semestre 2026 (Grupo 1, 26/11/2025) e Vestibular Higienópolis 2º semestre 2025 (Prova B, 11/06/2025).<br>
+  Frequências indicam em quantas das duas provas o tema apareceu. Duas provas são uma amostra pequena: trate isto como ordem de prioridade, não como garantia de incidência.
+</footer>
+
+</div>
+
+<script>
+var itens = [
+  "Geometria plana: áreas, semelhança, Tales e relações métricas no círculo",
+  "Geometria analítica: equação da circunferência, centro, raio e tangência",
+  "Geometria espacial: volume e área lateral do cilindro, cone inscrito",
+  "Trigonometria: lei dos cossenos e razões no triângulo retângulo",
+  "Progressões: termo geral e soma da PA, soma da PG infinita",
+  "Análise combinatória: permutação com repetição e com blocos",
+  "Logaritmos: propriedades operatórias e função logarítmica",
+  "Funções afim e quadrática: gráfico, raízes e vértice",
+  "Funções da linguagem: as seis, reconhecidas por frase curta",
+  "Modernismo brasileiro: as três fases e seus autores",
+  "Cecília Meireles e Clarice Lispector: obra e características",
+  "Cartografia: escala grande e pequena, e cálculo nos dois sentidos",
+  "Geopolítica atual: conflitos, blocos econômicos e acordos do ano",
+  "SNUC, biomas brasileiros e regionalização do IBGE"
+];
+
+var lista = document.getElementById("lista");
+var progresso = document.getElementById("progresso");
+var KEY = "mack-mapa-v1";
+var estado = {};
+
+try {
+  var salvo = localStorage.getItem(KEY);
+  if (salvo) { estado = JSON.parse(salvo) || {}; }
+} catch (e) { estado = {}; }
+
+function atualizar() {
+  var feitos = 0;
+  for (var i = 0; i < itens.length; i++) { if (estado[i]) { feitos++; } }
+  progresso.textContent = feitos + " de " + itens.length + " concluídos";
+  try { localStorage.setItem(KEY, JSON.stringify(estado)); } catch (e) {}
+}
+
+for (var i = 0; i < itens.length; i++) {
+  (function (idx) {
+    var label = document.createElement("label");
+    label.className = "check-item";
+    var box = document.createElement("input");
+    box.type = "checkbox";
+    box.checked = !!estado[idx];
+    var texto = document.createElement("span");
+    texto.textContent = itens[idx];
+    box.addEventListener("change", function () {
+      estado[idx] = box.checked;
+      atualizar();
+    });
+    label.appendChild(box);
+    label.appendChild(texto);
+    lista.appendChild(label);
+  })(i);
+}
+atualizar();
+</script>

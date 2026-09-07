@@ -2,14 +2,17 @@
 
 Repositório de estudos para o Processo Seletivo da Universidade Presbiteriana Mackenzie.
 
-## Conteúdo
+## 👉 Comece por aqui
 
-- [`analise-provas-mackenzie-2025-2026.md`](analise-provas-mackenzie-2025-2026.md) — análise
-  comparativa das **4 provas mais recentes** (240 questões objetivas + 4 redações), com mapa de
-  pesos, frequência de conteúdos por matéria e prioridades de estudo.
-- [`plano-4-semanas-portugues-matematica.md`](plano-4-semanas-portugues-matematica.md) — plano de
-  estudo de 4 semanas para Português e Matemática, em duas faixas de carga (10h ou 15h por semana),
-  com diagnóstico inicial e questões reais da banca indicadas por tópico.
+**[`acompanhamento.md`](acompanhamento.md)** — o painel. É o **único arquivo que você edita**:
+diagnóstico, progresso das 4 semanas, caderno de erros e simulados.
+
+## Material de referência (não muda)
+
+| Arquivo | O que é |
+|---|---|
+| [`analise-provas-mackenzie-2025-2026.md`](analise-provas-mackenzie-2025-2026.md) | Análise comparativa das 4 provas mais recentes (240 questões + 4 redações): o que cai, com que frequência e quais as prioridades por matéria |
+| [`plano-4-semanas-portugues-matematica.md`](plano-4-semanas-portugues-matematica.md) | Plano de 4 semanas para Português e Matemática, em duas faixas de carga (10h ou 15h/semana), com as questões reais da banca indicadas por tópico |
 
 ### Provas analisadas
 
@@ -20,15 +23,13 @@ Repositório de estudos para o Processo Seletivo da Universidade Presbiteriana M
 | 2026/2 — Prova A | 15/07/2026 |
 | 2025/2 — Higienópolis, Prova B | 11/06/2025 |
 
-## Como usar
+## Como os três arquivos se conversam
 
-A análise está organizada em camadas:
+```
+analise-provas...md   →  por que estudar isso   (referência, estático)
+plano-4-semanas...md  →  o que estudar hoje     (referência, estático)
+acompanhamento.md     →  onde eu estou          (você edita)
+```
 
-1. **Estrutura fixa** — a distribuição de questões por matéria é idêntica nas 4 provas.
-2. **Prioridade alta** — Português, Matemática e Geografia, com tabelas de frequência por conteúdo
-   (em quantas das 4 provas cada tópico caiu).
-3. **Demais matérias** — Física, Química, Biologia, História e Inglês em formato de checklist.
-4. **Redação** — enunciado, formato e temas das 4 propostas.
-5. **Plano de estudo** e **estilo da banca**.
-
-Os conteúdos marcados com ⭐ são os de maior recorrência e melhor retorno de estudo.
+Se algum dia o plano mudar, edite o plano. O acompanhamento só guarda **estado**, nunca conteúdo —
+é por isso que ele não desatualiza.

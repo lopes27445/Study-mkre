@@ -4,6 +4,9 @@ Repositório de estudos para o Processo Seletivo da Universidade Presbiteriana M
 
 ## 👉 Comece por aqui
 
+**[`cronograma-diario.pdf`](cronograma-diario.pdf)** — o que estudar em **cada dia** das 4 semanas,
+em 5 páginas para imprimir ou levar no celular.
+
 **[`acompanhamento.md`](acompanhamento.md)** — o painel. É o **único arquivo que você edita**:
 diagnóstico, progresso das 4 semanas, caderno de erros e simulados.
 
@@ -13,6 +16,7 @@ diagnóstico, progresso das 4 semanas, caderno de erros e simulados.
 |---|---|
 | [`analise-provas-mackenzie-2025-2026.md`](analise-provas-mackenzie-2025-2026.md) | Análise comparativa das 4 provas mais recentes (240 questões + 4 redações): o que cai, com que frequência e quais as prioridades por matéria |
 | [`plano-4-semanas-portugues-matematica.md`](plano-4-semanas-portugues-matematica.md) | Plano de 4 semanas para Português e Matemática, em duas faixas de carga (10h ou 15h/semana), com as questões reais da banca indicadas por tópico |
+| [`scripts/gerar_cronograma_pdf.py`](scripts/gerar_cronograma_pdf.py) | Gera o `cronograma-diario.pdf`. Para mudar o cronograma, edite a lista `SEMANAS` no topo do script e rode `python3 scripts/gerar_cronograma_pdf.py` |
 
 ### Provas analisadas
 
@@ -28,6 +32,7 @@ diagnóstico, progresso das 4 semanas, caderno de erros e simulados.
 ```
 analise-provas...md   →  por que estudar isso   (referência, estático)
 plano-4-semanas...md  →  o que estudar hoje     (referência, estático)
+cronograma-diario.pdf →  o dia a dia impresso   (gerado por script)
 acompanhamento.md     →  onde eu estou          (você edita)
 ```
 

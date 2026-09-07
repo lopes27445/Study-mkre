@@ -7,6 +7,9 @@ Repositório de estudos para o Processo Seletivo da Universidade Presbiteriana M
 - [`analise-provas-mackenzie-2025-2026.md`](analise-provas-mackenzie-2025-2026.md) — análise
   comparativa das **4 provas mais recentes** (240 questões objetivas + 4 redações), com mapa de
   pesos, frequência de conteúdos por matéria e prioridades de estudo.
+- [`plano-4-semanas-portugues-matematica.md`](plano-4-semanas-portugues-matematica.md) — plano de
+  estudo de 4 semanas para Português e Matemática, em duas faixas de carga (10h ou 15h por semana),
+  com diagnóstico inicial e questões reais da banca indicadas por tópico.
 
 ### Provas analisadas
 

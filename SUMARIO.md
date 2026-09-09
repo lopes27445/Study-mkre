@@ -7,7 +7,7 @@ Trabalho apresentado à disciplina de Matemática como requisito parcial para av
 **Provas analisadas:** 2º dia | Caderno 7 — Azul | Questões 136 a 180
 **Total:** 5 provas × 45 questões = **225 questões**
 
-> Este arquivo é o roteiro de trabalho da equipe. O documento formatado em ABNT (capa, folha de rosto, sumário, folhas de abertura de cada ano e referências) está em `Trabalho_ENEM_2021-2025.docx`.
+> Este arquivo é o roteiro de trabalho da equipe. O documento final em ABNT — capa, folha de rosto, sumário, e, para cada ano, a folha de abertura seguida de todas as folhas da prova — está em `Trabalho_ENEM_2021-2025.docx` (87 folhas).
 
 ---
 
@@ -30,11 +30,11 @@ A ordem das seções segue a ordem cronológica das aplicações do ENEM (2021 �
 | | Seção | Folha |
 |:---|:---|:---:|
 | **1** | **ENEM 2021 — Lucas Suikuni** | 3 |
-| **2** | **ENEM 2022 — Luiz Lopes** | 4 |
-| **3** | **ENEM 2023 — Pedro Mendietta** | 5 |
-| **4** | **ENEM 2024 — Lucas Argolo** | 6 |
-| **5** | **ENEM 2025 — Laura Oliveira** | 7 |
-| | **REFERÊNCIAS** | 8 |
+| **2** | **ENEM 2022 — Luiz Lopes** | 19 |
+| **3** | **ENEM 2023 — Pedro Mendietta** | 35 |
+| **4** | **ENEM 2024 — Lucas Argolo** | 52 |
+| **5** | **ENEM 2025 — Laura Oliveira** | 69 |
+| | **REFERÊNCIAS** | 86 |
 
 ---
 

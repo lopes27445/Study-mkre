@@ -20,7 +20,7 @@ const LINHA_SIMPLES = 240;
 
 const DISCIPLINA = "Matemática";
 const PROFESSOR = "Prof. Gabriel Garcia";
-const CIDADE = "[CIDADE]";
+const CIDADE = "Atibaia";
 const ANO_TRABALHO = "2026";
 const TITULO = "PROVAS DO ENEM DE 2021 A 2025";
 const SUBTITULO = "análise das questões de Matemática e suas Tecnologias";
@@ -132,8 +132,8 @@ const propriedadesPagina = (extra = {}) => ({
   },
 });
 
-const secao = (children, { numerada = false, iniciaPaginacao = false } = {}) => ({
-  properties: propriedadesPagina(iniciaPaginacao ? { pageNumbers: { start: 1 } } : {}),
+const secao = (children, { numerada = false, iniciaEm = null } = {}) => ({
+  properties: propriedadesPagina(iniciaEm ? { pageNumbers: { start: iniciaEm } } : {}),
   ...(numerada ? { headers: { default: cabecalho() } } : {}),
   children,
 });
@@ -206,7 +206,7 @@ const folhaDeRosto = secao(
     par(CIDADE, { depois: 60 }),
     par(ANO_TRABALHO),
   ],
-  { iniciaPaginacao: true }
+  { iniciaEm: 1 }
 );
 
 // ---------- SUMÁRIO (folha 2) ----------
@@ -219,7 +219,7 @@ const sumario = secao([
 ]);
 
 // ---------- SEÇÃO DE CADA ANO: abertura + folhas da prova ----------
-const secaoDoAno = ({ n, ano, integrante, folhas }) =>
+const secaoDoAno = (incluirProva) => ({ n, ano, integrante, folhas, pagina }) =>
   secao(
     [
       par(`${n} ENEM ${ano}`, {
@@ -233,9 +233,11 @@ const secaoDoAno = ({ n, ano, integrante, folhas }) =>
       par("Matemática e suas Tecnologias", { depois: 0 }),
       par(`2º dia | Caderno 7 — Azul | Questões 136 a 180 | ${folhas.length} folhas`, { depois: 720 }),
       par(`Responsável: ${integrante}`, { bold: true }),
-      ...folhas.map(folhaDeProva),
+      ...(incluirProva ? folhas.map(folhaDeProva) : []),
     ],
-    { numerada: true }
+    // cada ano começa na folha que lhe cabe no trabalho montado, de modo que a
+    // versão sem as provas mantenha a mesma numeração da versão completa
+    { numerada: true, iniciaEm: pagina }
   );
 
 // ---------- REFERÊNCIAS ----------
@@ -261,21 +263,26 @@ const referencia = (ano) =>
 
 const referencias = secao(
   [par("REFERÊNCIAS", { bold: true, depois: 720 }), ...ANOS.map(({ ano }) => referencia(ano))],
-  { numerada: true }
+  { numerada: true, iniciaEm: PAGINA_REFERENCIAS }
 );
 
 // ---------- MONTAGEM ----------
-const doc = new Document({
-  styles: { default: { document: { run: { font: FONT, size: CORPO } } } },
-  sections: [capa, folhaDeRosto, sumario, ...ANOS.map(secaoDoAno), referencias],
-});
+const montar = (incluirProva, arquivo) => {
+  const doc = new Document({
+    styles: { default: { document: { run: { font: FONT, size: CORPO } } } },
+    sections: [capa, folhaDeRosto, sumario, ...ANOS.map(secaoDoAno(incluirProva)), referencias],
+  });
+  return Packer.toBuffer(doc).then((buf) => {
+    fs.writeFileSync(arquivo, buf);
+    console.log(`${arquivo}: ok`);
+  });
+};
 
-Packer.toBuffer(doc).then((buf) => {
-  fs.writeFileSync("Trabalho_ENEM_2021-2025.docx", buf);
-  const total = 3 + ANOS.reduce((s, a) => s + 1 + a.folhas.length, 0) + 1;
-  console.log(
-    `ok — ${total} folhas | ` +
-      ANOS.map((a) => `${a.ano}: abertura na folha ${a.pagina} (+${a.folhas.length})`).join(" | ") +
-      ` | referências na folha ${PAGINA_REFERENCIAS}`
-  );
-});
+montar(true, "Trabalho_ENEM_2021-2025.docx")
+  .then(() => montar(false, "Capa_Sumario_Divisorias.docx"))
+  .then(() => {
+    console.log(
+      ANOS.map((a) => `${a.ano}: folha ${a.pagina} (+${a.folhas.length} da prova)`).join(" | ") +
+        ` | referências na folha ${PAGINA_REFERENCIAS}`
+    );
+  });

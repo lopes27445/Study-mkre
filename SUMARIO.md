@@ -2,12 +2,17 @@
 
 **Análise das questões de Matemática e suas Tecnologias**
 
-Trabalho apresentado à disciplina de Matemática como requisito parcial para avaliação, sob orientação do Prof. Gabriel Garcia.
+Trabalho apresentado à disciplina de Matemática como requisito parcial para avaliação, sob orientação do Prof. Gabriel Garcia. Atibaia, 2026.
 
 **Provas analisadas:** 2º dia | Caderno 7 — Azul | Questões 136 a 180
 **Total:** 5 provas × 45 questões = **225 questões**
 
-> Este arquivo é o roteiro de trabalho da equipe. O documento final em ABNT — capa, folha de rosto, sumário, e, para cada ano, a folha de abertura seguida de todas as folhas da prova — está em `Trabalho_ENEM_2021-2025.docx` (87 folhas).
+> Este arquivo é o roteiro de trabalho da equipe. Os documentos finais em ABNT são:
+>
+> - `Capa_Sumario_Divisorias.docx` — as 9 folhas a imprimir: capa, folha de rosto, sumário, as 5 divisórias e as referências, para intercalar com as folhas das provas já impressas;
+> - `Trabalho_ENEM_2021-2025.docx` — o trabalho inteiro em um só arquivo (87 folhas), já com todas as folhas das provas.
+>
+> A numeração é a mesma nos dois: as divisórias e o sumário apontam as folhas do trabalho montado.
 
 ---
 

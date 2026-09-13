@@ -29,3 +29,17 @@ novas provas forem incluídas.
 - **Português**: divisão interna fixa — seis questões de interpretação de texto e
   quatro de literatura. Modernismo é o assunto literário mais cobrado.
 - **Geografia**: cartografia e geopolítica atual concentram mais da metade do bloco.
+
+## Resumos de estudo
+
+`resumos/hegel.html` — introdução a Hegel: a dialética (e por que "tese-antítese-síntese"
+não é dele), a dialética do senhor e do escravo, o espírito objetivo e a filosofia da
+história, com as críticas e a herança até Marx. Inclui glossário dos termos alemães,
+as armadilhas mais comuns de gabarito e a ligação com o que a prova do Mackenzie
+realmente cobra — História Q47–Q53 (marxismo e Revolução Russa), Romantismo em
+Português e a estrutura dialética na redação.
+Publicado também como página: https://claude.ai/code/artifact/1f217a3c-8ab7-4e06-a756-3493d2600466
+
+> A prova objetiva do Mackenzie não tem bloco de Filosofia — o material existe porque
+> o vocabulário hegeliano sustenta as questões de História do século XIX e serve de
+> estrutura argumentativa para a redação.

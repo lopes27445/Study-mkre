@@ -1,0 +1,594 @@
+<title>Entender Hegel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --vermelho-soft:#FBEAE7;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --vermelho:#EE8478;
+    --vermelho-soft:#33201E;
+    --ocre:#DDB667;
+    --ocre-soft:#2C2618;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --vermelho:#EE8478;
+  --vermelho-soft:#33201E;
+  --ocre:#DDB667;
+  --ocre-soft:#2C2618;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:17px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:780px;
+  margin:0 auto;
+  padding-inline:20px;
+  padding-block:56px 72px;
+}
+
+/* ---------- cabeçalho ---------- */
+.topo{border-bottom:2px solid var(--ink);padding-bottom:28px}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);
+  display:flex;flex-wrap:wrap;gap:.5em;align-items:baseline;
+}
+.eyebrow span{color:var(--linha-forte)}
+h1{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(38px,8vw,60px);line-height:1.02;
+  letter-spacing:-.02em;text-wrap:balance;
+  margin:14px 0 0;
+}
+.dek{font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:60ch}
+
+.ficha{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+  gap:2px;background:var(--linha);border:1px solid var(--linha);
+  margin-top:30px;
+}
+.ficha > div{background:var(--surface);padding:14px 16px}
+.ficha dt{
+  font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grafite-soft);margin-bottom:4px;
+}
+.ficha dd{margin:0;font-size:15px;line-height:1.45}
+.ficha b{font-family:var(--display);font-weight:600}
+
+/* ---------- seções ---------- */
+section{margin-top:56px}
+.par{
+  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;
+  color:var(--ocre);text-transform:uppercase;display:block;margin-bottom:6px;
+}
+h2{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(25px,4.6vw,33px);line-height:1.18;letter-spacing:-.015em;
+  margin:0 0 10px;text-wrap:balance;
+}
+h3{
+  font-family:var(--display);font-weight:600;font-size:19px;
+  margin:32px 0 8px;letter-spacing:-.01em;
+}
+p{margin:0 0 16px;max-width:66ch}
+.sub{color:var(--grafite);font-size:18px}
+strong{font-weight:700}
+em{font-style:italic}
+
+/* ---------- termos ---------- */
+.de{
+  font-family:var(--mono);font-size:.88em;font-weight:500;
+  background:var(--surface-2);border:1px solid var(--linha);
+  padding:.05em .4em;border-radius:2px;white-space:nowrap;
+}
+
+/* ---------- citação ---------- */
+.cit{
+  margin:26px 0;padding:2px 0 2px 22px;border-left:3px solid var(--ocre);
+}
+.cit p{
+  font-family:var(--display);font-style:italic;font-weight:500;
+  font-size:21px;line-height:1.42;margin:0;color:var(--ink);
+}
+.cit .fonte{
+  display:block;font-family:var(--mono);font-style:normal;font-weight:400;
+  font-size:12px;letter-spacing:.03em;color:var(--grafite-soft);margin-top:10px;
+}
+
+/* ---------- tira do movimento ---------- */
+.movimento{
+  display:flex;align-items:stretch;gap:10px;margin:26px 0 8px;flex-wrap:nowrap;
+}
+.mov{
+  flex:1 1 0;background:var(--surface);border:1px solid var(--linha);
+  border-top:3px solid var(--linha-forte);padding:14px 15px;min-width:0;
+}
+.mov.pos{border-top-color:var(--azul)}
+.mov.neg{border-top-color:var(--vermelho)}
+.mov.sup{border-top-color:var(--ink)}
+.mov .rot{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grafite-soft);display:block;margin-bottom:5px;
+}
+.mov .nome{font-family:var(--display);font-weight:600;font-size:17px;display:block;margin-bottom:5px}
+.mov.pos .nome{color:var(--azul)}
+.mov.neg .nome{color:var(--vermelho)}
+.mov p{font-size:14.5px;line-height:1.45;margin:0;color:var(--grafite)}
+.seta{
+  align-self:center;font-family:var(--mono);color:var(--linha-forte);
+  font-size:18px;flex:0 0 auto;
+}
+@media (max-width:620px){
+  .movimento{flex-direction:column}
+  .seta{transform:rotate(90deg);align-self:flex-start;margin-left:18px}
+}
+
+/* ---------- caixas aninhadas ---------- */
+.aninhado{margin:26px 0;font-size:15px}
+.nivel{
+  border:1px solid var(--linha);background:var(--surface);
+  padding:13px 15px;
+}
+.nivel + .nivel{margin-top:8px}
+.nivel .rot{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--grafite-soft);
+}
+.nivel .nome{font-family:var(--display);font-weight:600;font-size:17px;display:block;margin:3px 0 4px}
+.nivel p{margin:0;font-size:14.5px;line-height:1.5;color:var(--grafite)}
+.nivel.dentro{background:var(--surface-2);margin-top:10px;border-color:var(--linha-forte)}
+.trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:10px}
+
+/* ---------- faixa da história ---------- */
+.faixa{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:2px;
+  background:var(--linha);border:1px solid var(--linha);margin:26px 0 10px}
+.faixa > div{background:var(--surface);padding:14px 15px}
+.faixa .quem{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--azul);letter-spacing:.03em}
+.faixa .era{font-family:var(--display);font-weight:600;font-size:16px;display:block;margin:4px 0 4px}
+.faixa p{margin:0;font-size:14px;line-height:1.45;color:var(--grafite)}
+
+/* ---------- bandas de aviso ---------- */
+.nota{
+  border-left:3px solid var(--ocre);background:var(--ocre-soft);
+  padding:14px 18px;margin:24px 0;
+}
+.nota .rot{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ocre);display:block;margin-bottom:5px;
+}
+.nota p{margin:0;font-size:15.5px;line-height:1.55}
+.nota p + p{margin-top:10px}
+.alerta{border-left-color:var(--vermelho);background:var(--vermelho-soft)}
+.alerta .rot{color:var(--vermelho)}
+
+/* ---------- críticas ---------- */
+.crits{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1px;
+  background:var(--linha);border:1px solid var(--linha);margin:24px 0}
+.crit{background:var(--surface);padding:15px 16px}
+.crit .quem{font-family:var(--display);font-weight:600;font-size:16px;display:block}
+.crit .obra{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);display:block;margin:2px 0 7px}
+.crit p{margin:0;font-size:14.5px;line-height:1.5;color:var(--grafite)}
+
+/* ---------- armadilhas ---------- */
+.armadilhas{list-style:none;padding:0;margin:24px 0}
+.armadilhas li{
+  display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;
+  padding:13px 0;border-top:1px solid var(--linha);
+}
+.armadilhas li:last-child{border-bottom:1px solid var(--linha)}
+.armadilhas .x{font-family:var(--mono);font-weight:600;color:var(--vermelho);font-size:15px;line-height:1.5}
+.armadilhas p{margin:0;font-size:15.5px;line-height:1.5}
+.armadilhas .certo{display:block;color:var(--grafite);font-size:14.5px;margin-top:3px}
+
+/* ---------- glossário ---------- */
+.glossario{margin:24px 0;border-top:1px solid var(--linha)}
+.glossario div{
+  display:grid;grid-template-columns:minmax(140px,26%) 1fr;gap:6px 20px;
+  padding:12px 0;border-bottom:1px solid var(--linha);
+}
+.glossario dt{font-family:var(--mono);font-size:14px;font-weight:600;line-height:1.4}
+.glossario dt small{display:block;font-weight:400;font-size:12px;color:var(--grafite-soft);margin-top:2px}
+.glossario dd{margin:0;font-size:15px;line-height:1.5;color:var(--grafite)}
+@media (max-width:520px){
+  .glossario div{grid-template-columns:1fr}
+}
+
+/* ---------- leitura ---------- */
+.leitura{list-style:none;padding:0;margin:22px 0;counter-reset:passo}
+.leitura li{
+  position:relative;padding:0 0 0 38px;margin-bottom:16px;counter-increment:passo;
+  font-size:15.5px;line-height:1.55;
+}
+.leitura li::before{
+  content:counter(passo);position:absolute;left:0;top:1px;
+  font-family:var(--mono);font-size:12px;font-weight:600;color:var(--azul);
+  border:1px solid var(--linha-forte);width:24px;height:24px;
+  display:grid;place-items:center;
+}
+.leitura b{font-family:var(--display);font-weight:600}
+
+footer{
+  margin-top:64px;padding-top:20px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:12px;line-height:1.7;color:var(--grafite-soft);
+}
+a{color:var(--azul)}
+a:focus-visible,:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="topo">
+  <div class="eyebrow">Filosofia <span>·</span> Idealismo alemão <span>·</span> Resumo de estudo</div>
+  <h1>Entender Hegel</h1>
+  <p class="dek">O filósofo que transformou a contradição em método. O que ele de fato diz, por que é difícil, onde a escola simplifica demais — e o que disso serve na sua prova.</p>
+
+  <dl class="ficha">
+    <div>
+      <dt>Quem</dt>
+      <dd><b>Georg Wilhelm Friedrich Hegel</b><br>1770, Stuttgart — 1831, Berlim</dd>
+    </div>
+    <div>
+      <dt>Momento</dt>
+      <dd>A geração da <b>Revolução Francesa</b>. Tinha 19 anos em 1789.</dd>
+    </div>
+    <div>
+      <dt>Obra decisiva</dt>
+      <dd><b>Fenomenologia do Espírito</b> (1807), terminada enquanto Napoleão vencia a batalha de Jena, a poucos quilômetros da sua casa.</dd>
+    </div>
+    <div>
+      <dt>A ideia em uma frase</dt>
+      <dd>A realidade não é um conjunto de coisas prontas: é um <b>processo</b>, e a contradição é o motor dele.</dd>
+    </div>
+  </dl>
+</header>
+
+<section>
+  <span class="par">§ 1 — o ponto de partida</span>
+  <h2>Por que Hegel é difícil (e não é culpa sua)</h2>
+  <p class="sub">A dificuldade não está no vocabulário. Está no fato de que ele não escreve sobre objetos parados, e sim sobre o <em>movimento</em> do pensamento sobre eles.</p>
+
+  <p>Quase toda filosofia anterior pergunta: <em>o que é</em> a justiça, a liberdade, o ser? Hegel muda a pergunta. Para ele, um conceito nunca fica quieto no lugar: quando você tenta defini-lo com precisão, ele revela que depende do seu oposto, se contradiz, e empurra o pensamento para uma definição mais ampla. A verdade não é o ponto de chegada isolado — é o caminho inteiro, incluindo os erros.</p>
+
+  <div class="cit">
+    <p>“O verdadeiro é o todo. Mas o todo é somente a essência que se completa através de seu desenvolvimento.”<span class="fonte">Fenomenologia do Espírito, prefácio (1807)</span></p>
+  </div>
+
+  <h3>O problema herdado de Kant</h3>
+  <p>Kant tinha concluído que só conhecemos as coisas como elas <em>aparecem</em> para nós; a “coisa em si” ficaria para sempre do outro lado de um muro. Hegel responde com um golpe simples e audacioso: <strong>para traçar um limite, você já precisa ter um pé dos dois lados dele</strong>. Se o pensamento consegue reconhecer a própria fronteira, é porque já a ultrapassou. Daí a aposta que organiza tudo o que ele escreve: o real e o racional têm a mesma estrutura, e por isso o mundo é inteligível de dentro para fora — não há um “além” inacessível.</p>
+  <p>Some a isso a experiência da geração dele. A Revolução Francesa mostrou que instituições milenares podiam ser derrubadas por uma ideia — e que essa mesma ideia podia virar o Terror. A pergunta “como a liberdade se realiza no mundo sem se destruir?” é, literalmente, o assunto da obra madura de Hegel.</p>
+</section>
+
+<section>
+  <span class="par">§ 2 — o método</span>
+  <h2>A dialética, sem a fórmula de cartilha</h2>
+  <p class="sub">Dialética não é técnica de debate, nem “tudo é relativo”. É a descrição de como um conceito, levado a sério até o fim, produz sozinho a própria crise.</p>
+
+  <div class="movimento">
+    <div class="mov pos">
+      <span class="rot">Primeiro momento</span>
+      <span class="nome">Posição</span>
+      <p>Uma determinação tomada como fixa e suficiente. “A liberdade é fazer o que se quer.”</p>
+    </div>
+    <div class="seta" aria-hidden="true">→</div>
+    <div class="mov neg">
+      <span class="rot">Segundo momento</span>
+      <span class="nome">Negação</span>
+      <p>A contradição aparece de dentro: se cada um faz o que quer, ninguém faz — a liberdade de todos anula a de cada um.</p>
+    </div>
+    <div class="seta" aria-hidden="true">→</div>
+    <div class="mov sup">
+      <span class="rot">Terceiro momento</span>
+      <span class="nome">Suprassunção</span>
+      <p>Um conceito mais amplo que conserva o que havia de verdadeiro nos dois: liberdade como autonomia dentro de regras que eu reconheço como minhas.</p>
+    </div>
+  </div>
+
+  <h3>A palavra-chave: <span class="de">Aufhebung</span></h3>
+  <p>O terceiro momento não é “meio-termo” nem média aritmética. O verbo alemão <span class="de">aufheben</span> tem três sentidos ao mesmo tempo, e Hegel usa os três de propósito: <strong>anular</strong>, <strong>conservar</strong> e <strong>elevar</strong>. Em português traduz-se por <em>suprassumir</em> ou <em>superar</em> — mas “superar” no sentido em que a idade adulta supera a infância: ela não apaga a infância, carrega-a dentro de si em outro nível.</p>
+  <p>Outro termo que evita o mal-entendido mais comum: a <strong>negação determinada</strong>. Negar, em Hegel, nunca dá em “nada”. Negar <em>aquela</em> tese específica produz <em>este</em> resultado específico. É por isso que o processo avança em vez de girar em falso.</p>
+
+  <div class="nota">
+    <span class="rot">Atenção na prova</span>
+    <p><strong>“Tese – antítese – síntese” praticamente não aparece em Hegel.</strong> A tríade vem do vocabulário de Fichte e foi popularizada como “o método hegeliano” por Chalybäus, em 1837 — seis anos depois da morte de Hegel. Ele mesmo nomeia os três momentos de outro jeito (abstrato-intelectual, dialético-negativo, especulativo-positivo).</p>
+    <p>Mas: <strong>em prova de múltipla escolha, a alternativa com “tese, antítese e síntese” é a resposta esperada.</strong> Marque-a. Saber a origem da fórmula serve para a redação e para não se confundir — não para brigar com o gabarito.</p>
+  </div>
+</section>
+
+<section>
+  <span class="par">§ 3 — a cena mais famosa</span>
+  <h2>Senhor e escravo: quem depende de quem</h2>
+  <p class="sub">Poucas páginas da história da filosofia renderam tanto. É aqui que Hegel deixa de ser abstrato e vira uma cena que você consegue visualizar.</p>
+
+  <p>O ponto de partida é uma tese forte: <strong>ninguém é sujeito sozinho</strong>. Eu só tenho consciência de mim se for reconhecido por outro que também se reconhece em mim — é o <span class="de">Anerkennung</span>, o reconhecimento. Duas autoconsciências se encontram e cada uma quer ser reconhecida sem reconhecer. Daí a luta de vida ou morte. Ela termina quando uma das duas prefere a vida à honra e se submete: nasce o <strong>senhor</strong> e nasce o <strong>servo</strong>.</p>
+
+  <p>E então vem a reviravolta, que é o verdadeiro achado de Hegel. O senhor parecia ter ganhado tudo — e descobre que <strong>é ele o dependente</strong>: só se relaciona com o mundo através do trabalho do servo, e só é reconhecido por alguém cujo reconhecimento ele próprio desprezou. Já o servo passa por duas experiências que o transformam: o <strong>medo da morte</strong>, que dissolve tudo o que ele achava fixo em si, e o <strong>trabalho</strong>, que o obriga a conter o desejo e dar forma à matéria. Ao ver a própria marca no objeto que produziu, o servo se descobre alguém. <em>A independência troca de lado.</em></p>
+
+  <div class="nota alerta">
+    <span class="rot">Duas ressalvas de tradução e de leitura</span>
+    <p>No original é <span class="de">Herrschaft und Knechtschaft</span> — algo como <em>senhorio e servidão</em>, com um vocabulário feudal. “Senhor e escravo” é a forma que pegou no Brasil, e é a que aparece nas provas.</p>
+    <p>E não é um relato histórico da escravidão: é um momento lógico da formação da autoconsciência. Dito isso, a historiadora Susan Buck-Morss mostrou que Hegel acompanhava pela imprensa a Revolução Haitiana — a única revolta de escravizados que fundou um Estado —, o que dá à cena um lastro histórico bem concreto.</p>
+  </div>
+
+  <p>Foi essa passagem que Alexandre Kojève leu em Paris nos anos 1930, num curso frequentado por quase toda a geração seguinte. Dali ela chega a Sartre, Beauvoir, Lacan e, decisivamente, a <strong>Frantz Fanon</strong>, que a usa para pensar a relação colonial. E é o esqueleto de uma ideia que você vai reencontrar em História: <em>a classe que trabalha produz o mundo e, ao produzi-lo, se descobre sujeito</em>.</p>
+</section>
+
+<section>
+  <span class="par">§ 4 — as instituições</span>
+  <h2>Liberdade não é ausência de limite</h2>
+  <p class="sub">A parte da obra que mais influenciou a teoria política moderna — e a que rendeu a Hegel as piores acusações.</p>
+
+  <p>Para Hegel, ser livre não é estar solto. É estar <em>em casa</em> em instituições que você reconhece como suas. Nas <em>Linhas Fundamentais da Filosofia do Direito</em> (1820), esse percurso tem três degraus, cada um superando a insuficiência do anterior:</p>
+
+  <div class="aninhado">
+    <div class="nivel">
+      <span class="rot">Primeiro degrau</span>
+      <span class="nome">Direito abstrato</span>
+      <p>Sou uma pessoa, tenho propriedade, faço contratos. Liberdade puramente externa — o direito não alcança a minha intenção, só o meu ato.</p>
+    </div>
+    <div class="nivel">
+      <span class="rot">Segundo degrau</span>
+      <span class="nome">Moralidade <span class="de">Moralität</span></span>
+      <p>A liberdade se interioriza: importa a intenção, a consciência moral, o dever. Mas a consciência sozinha não consegue decidir o que é o bem — fica no puro dever-ser, sem conteúdo.</p>
+    </div>
+    <div class="nivel">
+      <span class="rot">Terceiro degrau</span>
+      <span class="nome">Eticidade <span class="de">Sittlichkeit</span></span>
+      <p>O bem já realizado em costumes e instituições concretas. Aqui a liberdade deixa de ser exigência interior e vira mundo vivido:</p>
+      <div class="trio">
+        <div class="nivel dentro">
+          <span class="nome">Família</span>
+          <p>A unidade imediata, feita de afeto. Dissolve-se quando os filhos se tornam adultos.</p>
+        </div>
+        <div class="nivel dentro">
+          <span class="nome">Sociedade civil</span>
+          <p>O “sistema de necessidades”: indivíduos que se usam mutuamente pelo trabalho e pela troca.</p>
+        </div>
+        <div class="nivel dentro">
+          <span class="nome">Estado</span>
+          <p>A forma em que interesse particular e universal se reconciliam — não o governo do momento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>Repare no ponto mais atual de tudo isso: Hegel enxerga, já em 1820, que a sociedade civil <strong>produz riqueza e miséria pelo mesmo movimento</strong>. O acúmulo de um lado e a formação de uma massa empobrecida do outro (ele a chama de <span class="de">Pöbel</span>, a plebe ou populacho) não são acidente, são resultado da própria dinâmica — e ele admite que não sabe resolvê-lo. Marx vai partir exatamente daí.</p>
+
+  <div class="cit">
+    <p>“O que é racional é efetivo; e o que é efetivo é racional.”<span class="fonte">Filosofia do Direito, prefácio (1820)</span></p>
+  </div>
+  <p>A frase virou a prova de acusação contra Hegel: seria a bênção filosófica a tudo que existe, inclusive ao Estado prussiano que o empregava. A defesa depende de uma palavra: <span class="de">wirklich</span> (“efetivo”) não significa tudo o que por acaso existe, e sim o que tem consistência, o que se sustenta. Coisas existem sem serem efetivas — e essas, para Hegel, estão condenadas a ruir. As duas leituras convivem até hoje, e foi essa ambiguidade que rachou a escola hegeliana em duas depois da morte dele.</p>
+
+  <div class="cit">
+    <p>“A coruja de Minerva só levanta voo ao cair do crepúsculo.”<span class="fonte">Filosofia do Direito, prefácio</span></p>
+  </div>
+  <p>Ou seja: a filosofia chega sempre tarde. Ela compreende uma forma de vida quando essa forma já está madura e terminando. Hegel está avisando, de propósito, que <strong>não vai dar receitas para o futuro</strong> — o que torna ainda mais estranho o uso dele como profeta de qualquer coisa.</p>
+</section>
+
+<section>
+  <span class="par">§ 5 — a história</span>
+  <h2>“O progresso na consciência da liberdade”</h2>
+  <p class="sub">A tese que mais aparece em prova — e a parte mais problemática da obra. As duas coisas ao mesmo tempo.</p>
+
+  <p>Nas lições sobre filosofia da história (publicadas depois da sua morte, em 1837), Hegel define a história universal como o <strong>progresso na consciência da liberdade</strong>. Não é progresso técnico nem moral: é o processo pelo qual a humanidade descobre, e depois institui, que ser humano é ser livre. Ele o organiza em três etapas:</p>
+
+  <div class="faixa">
+    <div>
+      <span class="quem">um é livre</span>
+      <span class="era">Mundo oriental</span>
+      <p>Apenas o déspota é livre; os demais são súditos. A liberdade existe, mas ainda como privilégio de um só.</p>
+    </div>
+    <div>
+      <span class="quem">alguns são livres</span>
+      <span class="era">Mundo greco-romano</span>
+      <p>Nasce a cidadania — e ela convive com a escravidão, que a torna possível. A liberdade é de uma parte, à custa da outra.</p>
+    </div>
+    <div>
+      <span class="quem">todos são livres</span>
+      <span class="era">Mundo germânico-cristão</span>
+      <p>Com o cristianismo e depois com a Reforma e a Revolução Francesa, o princípio se torna universal — falta realizá-lo nas instituições.</p>
+    </div>
+  </div>
+
+  <p>E como esse processo avança, se ninguém acorda de manhã querendo realizar o Espírito? Pela <strong>astúcia da razão</strong> (<span class="de">List der Vernunft</span>): os indivíduos agem por ambição, medo e interesse próprio, e é justamente através dessas paixões que fins muito maiores que eles se cumprem. César queria poder; produziu o Império. Quando Hegel viu Napoleão entrar em Jena a cavalo, em 1806, escreveu a um amigo que tinha visto “a alma do mundo” montada num cavalo — o sujeito histórico que não faz ideia do papel que está cumprindo.</p>
+
+  <div class="nota alerta">
+    <span class="rot">O que não dá para passar batido</span>
+    <p>Esse esquema é <strong>abertamente eurocêntrico</strong>, e não por descuido. Hegel exclui a África do que ele chama de História propriamente dita e trata a América como “terra do futuro”, ainda sem história. É o avesso do sistema, e foi alvo de crítica dura de autores como Achille Mbembe e de toda a tradição pós-colonial.</p>
+    <p>Isso não invalida a dialética — mas exige que você a use sem comprar junto a hierarquia entre os povos. Numa redação, essa ressalva é exatamente o tipo de repertório que diferencia um texto bom de um texto decorado.</p>
+  </div>
+
+  <div class="nota">
+    <span class="rot">Pegadinha frequente</span>
+    <p><strong>Hegel não diz que a história “acabou”.</strong> Ele diz que ela tem direção e que o princípio da liberdade universal já foi alcançado. A tese do “fim da história” como slogan é de <strong>Francis Fukuyama</strong> (1992), lendo Hegel através de Kojève, para anunciar a vitória final da democracia liberal após a Guerra Fria. São coisas distintas, separadas por 160 anos.</p>
+  </div>
+</section>
+
+<section>
+  <span class="par">§ 6 — a herança</span>
+  <h2>O que saiu de Hegel</h2>
+  <p class="sub">Ele morre em Berlim em 1831, numa epidemia de cólera, no auge do prestígio. Em menos de dez anos, seus discípulos estão em campos opostos.</p>
+
+  <p>A escola racha sobre duas questões: a religião é verdade ou representação a ser superada? O Estado existente já é racional ou precisa ser transformado? A <strong>direita hegeliana</strong> responde conservando; a <strong>esquerda hegeliana</strong> — os “jovens hegelianos” — responde radicalizando. Entre eles está um estudante chamado Karl Marx.</p>
+
+  <div class="crits">
+    <div class="crit">
+      <span class="quem">Ludwig Feuerbach</span>
+      <span class="obra">A Essência do Cristianismo · 1841</span>
+      <p>Inverte Hegel: não é o Espírito que se aliena no homem, é o homem que projeta a própria essência num Deus e depois se ajoelha diante dela. Teologia é antropologia de cabeça para baixo.</p>
+    </div>
+    <div class="crit">
+      <span class="quem">Karl Marx</span>
+      <span class="obra">O Capital, posfácio · 1873</span>
+      <p>Fica com o método e descarta o idealismo: “a dialética está de cabeça para baixo; é preciso virá-la para descobrir o cerne racional dentro do invólucro místico”. A contradição deixa de ser entre conceitos e passa a ser entre classes e forças produtivas.</p>
+    </div>
+    <div class="crit">
+      <span class="quem">Søren Kierkegaard</span>
+      <span class="obra">Dinamarca, anos 1840</span>
+      <p>O Sistema tem lugar para tudo, menos para o indivíduo que existe, decide e sofre — e que não cabe em nenhuma síntese. É a porta de entrada do existencialismo.</p>
+    </div>
+    <div class="crit">
+      <span class="quem">Theodor Adorno</span>
+      <span class="obra">Minima Moralia · 1951</span>
+      <p>Depois de Auschwitz, vira a frase de Hegel do avesso: “o todo é o não verdadeiro”. Propõe uma dialética negativa, sem reconciliação final.</p>
+    </div>
+    <div class="crit">
+      <span class="quem">Karl Popper</span>
+      <span class="obra">A Sociedade Aberta e Seus Inimigos · 1945</span>
+      <p>Acusa Hegel de fornecer a filosofia do Estado totalitário. É a leitura mais dura que existe — e contestada por boa parte dos especialistas como uma caricatura.</p>
+    </div>
+    <div class="crit">
+      <span class="quem">Axel Honneth</span>
+      <span class="obra">Luta por Reconhecimento · 1992</span>
+      <p>Recupera o <span class="de">Anerkennung</span> para explicar conflitos sociais contemporâneos: lutas por direitos são, antes de tudo, lutas por reconhecimento negado.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <span class="par">§ 7 — na sua prova</span>
+  <h2>Onde isso encosta no Mackenzie</h2>
+  <p class="sub">Com honestidade: a prova objetiva do Mackenzie não tem bloco de Filosofia. São 60 questões fixas — Português Q1–Q10, Inglês Q11–Q15, Física Q16–Q22, Química Q23–Q29, Matemática Q30–Q39, Biologia Q40–Q46, História Q47–Q53, Geografia Q54–Q60. Hegel não cai com nome e sobrenome. Ele cai por baixo.</p>
+
+  <h3>História · Q47–Q53</h3>
+  <p>É onde o investimento retorna. Toda questão sobre marxismo, luta de classes, Revolução Russa ou pensamento do século XIX se apoia no vocabulário que Hegel criou. Na prova de 2025/2, a <strong>Q53</strong> trazia Trotsky discutindo se o campesinato russo teria condições de se tornar sujeito revolucionário por conta própria — a resposta correta era a que percebia a <em>descrença</em> de Trotsky nessa capacidade autônoma. Traduzido para o § 3 desta página: é uma disputa sobre quem ocupa o lugar do servo que se torna sujeito. Quem entendeu a cena do senhor e do servo lê a alternativa com outra segurança.</p>
+
+  <h3>Português · Q7–Q10</h3>
+  <p>Hegel morreu em 1831 — o ano em que nasceu Álvares de Azevedo, cobrado na <strong>Q9 de 2026</strong>. Não é coincidência de calendário: o Romantismo e o idealismo alemão são o mesmo momento cultural, e vocabulário como “espírito”, infinito e subjetividade circula nos dois. Útil para reconhecer a atmosfera do “Mal do Século”. Cuidado, porém, com a inversão fácil: Hegel foi <em>crítico</em> da ironia romântica, que considerava vaidade do eu que não se compromete com nada.</p>
+
+  <h3>Redação</h3>
+  <p>Aqui está o uso mais imediato e mais subestimado. A estrutura dialética é um esqueleto de dissertação: apresente a posição, leve a sério a <strong>objeção mais forte</strong> a ela (e não uma versão fraquinha, feita para perder), e chegue a uma terceira posição que conserve o que havia de verdadeiro nas duas. É exatamente o que a banca chama de contra-argumentação bem conduzida — e é o que separa o texto que discute do texto que só empilha repertório.</p>
+
+  <div class="nota">
+    <span class="rot">Se você também faz ENEM ou outras provas</span>
+    <p>Aí Hegel é conteúdo direto de Filosofia: dialética, espírito, senhor e escravo e filosofia da história são recorrentes, quase sempre em comparação com Marx. Os §§ 2, 3 e 6 desta página cobrem o que costuma ser cobrado.</p>
+  </div>
+</section>
+
+<section>
+  <span class="par">§ 8 — armadilhas</span>
+  <h2>Os seis erros que mais aparecem</h2>
+
+  <ul class="armadilhas">
+    <li>
+      <span class="x" aria-hidden="true">×</span>
+      <p>“Hegel é materialista.”
+      <span class="certo">É o contrário: Hegel é <strong>idealista</strong> — quem se move na história é o Espírito, a Ideia. Marx é que inverte a relação e põe as condições materiais no comando. Trocar os dois é o erro clássico de gabarito.</span></p>
+    </li>
+    <li>
+      <span class="x" aria-hidden="true">×</span>
+      <p>“Dialética é debate, ou é achar o meio-termo.”
+      <span class="certo">Não é técnica de discussão nem conciliação diplomática. É o movimento pelo qual um conceito revela a própria contradição e se transforma por causa dela.</span></p>
+    </li>
+    <li>
+      <span class="x" aria-hidden="true">×</span>
+      <p>“Como tudo se transforma, nada é verdadeiro.”
+      <span class="certo">Hegel é o oposto de um relativista. A negação é <em>determinada</em>: produz um resultado específico, e o percurso inteiro é a verdade.</span></p>
+    </li>
+    <li>
+      <span class="x" aria-hidden="true">×</span>
+      <p>“O Estado hegeliano é a ditadura.”
+      <span class="certo">Estado, nele, é a forma institucional em que liberdade individual e vida comum se sustentam — não o governo do dia nem o aparato de repressão. A crítica de Popper existe e deve ser citada, mas como crítica, não como definição.</span></p>
+    </li>
+    <li>
+      <span class="x" aria-hidden="true">×</span>
+      <p>“Hegel decretou o fim da história.”
+      <span class="certo">O slogan é de Fukuyama, em 1992. Hegel afirma que a história tem direção e princípio realizado — e adverte que a filosofia só compreende o que já se completou.</span></p>
+    </li>
+    <li>
+      <span class="x" aria-hidden="true">×</span>
+      <p>“Espírito é alma, ou algo religioso.”
+      <span class="certo"><span class="de">Geist</span> é a vida coletiva — língua, leis, arte, costumes — de um povo que chega a se conhecer. É mais próximo de “cultura que se tornou consciente de si” do que de qualquer fantasma.</span></p>
+    </li>
+  </ul>
+</section>
+
+<section>
+  <span class="par">§ 9 — vocabulário</span>
+  <h2>Glossário mínimo</h2>
+  <p class="sub">Dez termos. Com eles, um texto sobre Hegel deixa de ser código fechado.</p>
+
+  <dl class="glossario">
+    <div><dt>Geist<small>espírito</small></dt><dd>A vida coletiva humana — leis, arte, língua, religião — enquanto se torna consciente de si mesma. Divide-se em subjetivo (o indivíduo), objetivo (as instituições) e absoluto (arte, religião e filosofia).</dd></div>
+    <div><dt>Aufhebung<small>suprassunção</small></dt><dd>Superar anulando, conservando e elevando ao mesmo tempo. O motor de toda passagem dialética.</dd></div>
+    <div><dt>Anerkennung<small>reconhecimento</small></dt><dd>Ser sujeito depende de ser reconhecido por outro sujeito. Base da cena do senhor e do servo e de toda a teoria social que veio depois.</dd></div>
+    <div><dt>Sittlichkeit<small>eticidade</small></dt><dd>A moral já encarnada em costumes e instituições, por oposição à <span class="de">Moralität</span>, que é o dever interior da consciência.</dd></div>
+    <div><dt>An sich / Für sich<small>em si / para si</small></dt><dd>Em si: o que algo é potencialmente, ainda sem sabê-lo. Para si: quando já se sabe o que é. O percurso entre os dois é o desenvolvimento.</dd></div>
+    <div><dt>Negação determinada</dt><dd>Negar algo específico gera um resultado específico — nunca o vazio. É o que faz a dialética avançar em vez de rodar em círculo.</dd></div>
+    <div><dt>Wirklichkeit<small>efetividade</small></dt><dd>Não é “tudo o que existe”, e sim o que tem consistência e se sustenta. A distinção salva a frase “o racional é efetivo” da leitura conformista.</dd></div>
+    <div><dt>List der Vernunft<small>astúcia da razão</small></dt><dd>As paixões particulares dos indivíduos realizam, sem querer, fins universais da história.</dd></div>
+    <div><dt>Entfremdung<small>alienação</small></dt><dd>Em Hegel: o espírito se põe fora de si para poder se reconhecer no retorno. Marx transforma o termo na perda do produto e de si mesmo pelo trabalhador.</dd></div>
+    <div><dt>Absoluto</dt><dd>Não um ser supremo separado do mundo, mas o todo do processo compreendendo a si próprio ao final do percurso.</dd></div>
+  </dl>
+</section>
+
+<section>
+  <span class="par">§ 10 — leitura</span>
+  <h2>Por onde começar, se você quiser ir além</h2>
+  <p class="sub">Uma advertência primeiro: não comece pela <em>Fenomenologia</em> do começo. É o modo mais eficiente de desistir de Hegel.</p>
+
+  <ol class="leitura">
+    <li><b>Introdução às Lições sobre a Filosofia da História.</b> São lições — Hegel falando para alunos, em prosa muito mais acessível que a dos livros. É o melhor primeiro contato que existe.</li>
+    <li><b>A seção do senhor e do servo</b>, na <em>Fenomenologia do Espírito</em>. Umas poucas páginas, lidas isoladamente e sem culpa por pular o resto.</li>
+    <li><b>O prefácio da <em>Filosofia do Direito</em></b> e os parágrafos sobre sociedade civil. É de onde vêm as duas frases mais citadas e a análise que Marx herda.</li>
+    <li><b>Comentadores.</b> Herbert Marcuse, <em>Razão e Revolução</em>, para a leitura política; Charles Taylor, <em>Hegel</em>, para a reconstrução geral; Paulo Arantes, <em>Hegel: a ordem do tempo</em>, em português e escrito daqui.</li>
+  </ol>
+</section>
+
+<footer>
+  Resumo de estudo · Study-mkre · material de preparação para o vestibular Mackenzie<br>
+  As citações seguem as traduções brasileiras correntes; os trechos entre aspas estão em versão levemente adaptada para leitura.
+</footer>
+
+</div>

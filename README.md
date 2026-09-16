@@ -2,6 +2,27 @@
 
 Material de preparação para o vestibular do Mackenzie, a partir da análise de provas anteriores.
 
+## Treino
+
+`treino/projecao-ortogonal.html` — treinador de **projeção ortogonal**, com questões geradas
+com números novos a cada rodada e resolução passo a passo. Publicado também como página:
+https://claude.ai/artifact/9XUJruJJYCgf96XGvktocN
+
+Cinco frentes, escolhidas por assunto ou misturadas:
+
+| Módulo | O que treina |
+|---|---|
+| Projeção sobre reta | `A′B′ = AB · cos θ`, ângulo entre segmento e reta, distância ponto–reta |
+| Triângulo retângulo | relações métricas `b² = a·m`, `h² = m·n`, `a·h = b·c` |
+| Projeção sobre plano | segmento oblíquo, área projetada `A′ = A·cos θ`, cubo e pirâmide |
+| Vetores e analítica | `proj_v u = ((u·v)/\|v\|²)·v`, projeção de ponto sobre reta, distância |
+| Vistas ortográficas | vista frontal, superior e lateral esquerda de sólidos, 1º diedro (ABNT) |
+
+Dois modos: **treino** (gabarito e resolução na hora) e **simulado** (10 questões em 20 minutos,
+com relatório por assunto no fim). O desempenho por assunto fica guardado no navegador e marca
+com *reforçar* o que está abaixo de 60%. A página traz ainda um formulário com as relações
+usadas e uma lista de armadilhas de prova.
+
 ## Análise de conteúdo
 
 `analise/mapa-mackenzie.html` — análise comparativa das duas últimas provas, com os

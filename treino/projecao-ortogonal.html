@@ -1,0 +1,1651 @@
+<title>Treino de Projeção Ortogonal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --vermelho-soft:#FBEAE7;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --verde:#1A6A4C;
+  --verde-soft:#E1F0E8;
+  --iso-topo:#DCE4F1;
+  --iso-esq:#B9C6DE;
+  --iso-dir:#93A5C6;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --vermelho:#EE8478;
+    --vermelho-soft:#33201E;
+    --ocre:#DDB667;
+    --ocre-soft:#2C2618;
+    --verde:#62C79A;
+    --verde-soft:#13291F;
+    --iso-topo:#35456A;
+    --iso-esq:#293755;
+    --iso-dir:#1E2A44;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --vermelho:#EE8478;
+  --vermelho-soft:#33201E;
+  --ocre:#DDB667;
+  --ocre-soft:#2C2618;
+  --verde:#62C79A;
+  --verde-soft:#13291F;
+  --iso-topo:#35456A;
+  --iso-esq:#293755;
+  --iso-dir:#1E2A44;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:880px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+
+/* ---------- Cabeçalho ---------- */
+.topo{padding-block:40px 22px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--azul);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0;
+}
+.eyebrow span{color:var(--grafite-soft)}
+h1{
+  font-family:var(--display);font-weight:700;font-size:clamp(30px,5.2vw,44px);
+  line-height:1.08;letter-spacing:-.02em;margin:14px 0 0;text-wrap:balance;
+}
+.dek{font-size:17.5px;color:var(--grafite);margin:10px 0 0;max-width:62ch;text-wrap:pretty}
+
+/* ---------- Barra de status ---------- */
+.barra{
+  position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  background:var(--paper);border-bottom:1px solid var(--linha);
+  padding-block:10px;margin-bottom:18px;
+}
+.placar{
+  display:flex;align-items:baseline;gap:7px;background:var(--surface);
+  border:1px solid var(--linha);border-radius:3px;padding:6px 11px;
+  font-family:var(--mono);font-size:12.5px;color:var(--grafite);
+  font-variant-numeric:tabular-nums;
+}
+.placar b{font-size:15px;color:var(--ink);font-weight:600}
+.placar.seq b{color:var(--ocre)}
+.placar.cron b{color:var(--azul)}
+.barra .espaco{flex:1 1 auto}
+.btn-reset{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:1px solid var(--linha);color:var(--grafite);
+  border-radius:3px;padding:7px 10px;cursor:pointer;
+}
+.btn-reset:hover{border-color:var(--linha-forte);color:var(--ink)}
+
+/* ---------- Controles ---------- */
+.controles{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+.grupo{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.rot{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--grafite-soft);flex:0 0 auto;width:74px;
+}
+.segmented{display:inline-flex;border:1px solid var(--linha-forte);border-radius:3px;overflow:hidden}
+.segmented button{
+  font-family:var(--body);font-size:14px;font-weight:600;
+  background:var(--surface);border:0;color:var(--grafite);
+  padding:8px 16px;cursor:pointer;
+}
+.segmented button + button{border-left:1px solid var(--linha-forte)}
+.segmented button.on{background:var(--ink);color:var(--paper)}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{
+  font-family:var(--body);font-size:13.5px;font-weight:600;
+  background:var(--surface);border:1px solid var(--linha);color:var(--grafite);
+  border-radius:999px;padding:6px 13px;cursor:pointer;
+}
+.chip:hover{border-color:var(--linha-forte);color:var(--ink)}
+.chip.on{background:var(--azul-soft);border-color:var(--azul);color:var(--azul)}
+
+/* ---------- Cartão da questão ---------- */
+.card{
+  background:var(--surface);border:1px solid var(--linha);border-radius:4px;
+  box-shadow:var(--shadow);padding:22px;
+}
+.q-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.tag{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--surface-2);color:var(--grafite);border-radius:3px;padding:4px 8px;
+}
+.tag.q{background:var(--ink);color:var(--paper)}
+.enunciado{font-size:17.5px;margin:0;text-wrap:pretty}
+.enunciado b{font-weight:600}
+.dado{font-family:var(--mono);font-weight:500;font-size:.95em;color:var(--azul);white-space:nowrap}
+.figura{
+  margin:18px 0 4px;padding:14px;background:var(--surface-2);
+  border:1px solid var(--linha);border-radius:3px;text-align:center;
+}
+.fig{max-width:100%;height:auto;display:block;margin:0 auto}
+.fig-legenda{
+  font-family:var(--mono);font-size:11px;color:var(--grafite-soft);
+  margin:8px 0 0;letter-spacing:.04em;
+}
+
+/* ---------- Alternativas ---------- */
+.alts{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.alts.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:10px}
+.alt{
+  display:flex;gap:11px;align-items:center;width:100%;text-align:left;
+  font-family:var(--body);font-size:16.5px;color:var(--ink);
+  background:var(--surface);border:1px solid var(--linha);border-radius:3px;
+  padding:11px 13px;cursor:pointer;
+}
+.alts.grade .alt{flex-direction:column;align-items:center;gap:8px;padding:12px 8px}
+.alt:hover:not(:disabled){border-color:var(--azul);background:var(--azul-soft)}
+.alt:disabled{cursor:default}
+.letra{
+  flex:0 0 auto;width:25px;height:25px;border-radius:50%;
+  display:grid;place-items:center;
+  font-family:var(--mono);font-size:12px;font-weight:600;
+  background:var(--surface-2);color:var(--grafite);border:1px solid var(--linha);
+}
+.alt .txt{font-variant-numeric:tabular-nums}
+.alt.certa{border-color:var(--verde);background:var(--verde-soft)}
+.alt.certa .letra{background:var(--verde);color:var(--surface);border-color:var(--verde)}
+.alt.errada{border-color:var(--vermelho);background:var(--vermelho-soft)}
+.alt.errada .letra{background:var(--vermelho);color:var(--surface);border-color:var(--vermelho)}
+.alt.marcada{border-color:var(--azul);background:var(--azul-soft)}
+.alt.marcada .letra{background:var(--azul);color:var(--surface);border-color:var(--azul)}
+.alt.apagada{opacity:.5}
+
+/* ---------- Devolutiva ---------- */
+.feedback{margin-top:16px;border-radius:4px;border:1px solid var(--linha);overflow:hidden}
+.fb-topo{display:flex;gap:9px;align-items:center;padding:11px 16px;font-weight:700;font-family:var(--display)}
+.feedback.ok .fb-topo{background:var(--verde-soft);color:var(--verde)}
+.feedback.nao .fb-topo{background:var(--vermelho-soft);color:var(--vermelho)}
+.fb-corpo{padding:4px 16px 16px;background:var(--surface)}
+.chave{
+  font-family:var(--mono);font-size:14px;color:var(--ink);background:var(--ocre-soft);
+  border-left:3px solid var(--ocre);padding:9px 12px;margin:12px 0;border-radius:0 3px 3px 0;
+  overflow-x:auto;
+}
+.passos{margin:0;padding-left:20px;color:var(--grafite);font-size:16px}
+.passos li{margin:7px 0}
+.passos b{color:var(--ink);font-weight:600}
+.passos .mono{font-family:var(--mono);font-size:.94em;color:var(--ink)}
+.sub{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite-soft);margin:14px 0 0}
+.acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{
+  font-family:var(--body);font-size:15.5px;font-weight:600;
+  background:var(--ink);color:var(--paper);border:1px solid var(--ink);
+  border-radius:3px;padding:10px 20px;cursor:pointer;
+}
+.btn:hover{opacity:.88}
+.btn.sec{background:var(--surface);color:var(--ink);border-color:var(--linha-forte)}
+.dica-teclado{font-family:var(--mono);font-size:11px;color:var(--grafite-soft);margin:12px 0 0}
+
+/* ---------- Simulado ---------- */
+.progresso{height:4px;background:var(--surface-2);border-radius:2px;overflow:hidden;margin-bottom:16px}
+.progresso i{display:block;height:100%;background:var(--azul);border-radius:2px;transition:width .3s}
+@media (prefers-reduced-motion: reduce){.progresso i{transition:none}}
+.relatorio h2{font-family:var(--display);font-size:24px;margin:0 0 4px}
+.nota{
+  display:flex;align-items:baseline;gap:10px;font-family:var(--mono);
+  font-size:15px;color:var(--grafite);margin:0 0 18px;font-variant-numeric:tabular-nums;
+}
+.nota b{font-family:var(--display);font-size:40px;color:var(--ink);line-height:1}
+.revisao{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:8px}
+.revisao details{border:1px solid var(--linha);border-radius:3px;background:var(--surface)}
+.revisao summary{
+  cursor:pointer;padding:11px 14px;display:flex;gap:10px;align-items:center;
+  font-size:15px;list-style:none;
+}
+.revisao summary::-webkit-details-marker{display:none}
+.marca{
+  flex:0 0 auto;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--mono);font-size:12px;font-weight:600;color:var(--surface);
+}
+.marca.ok{background:var(--verde)}
+.marca.nao{background:var(--vermelho)}
+.revisao .corpo{padding:0 14px 14px;border-top:1px solid var(--linha)}
+
+/* ---------- Desempenho ---------- */
+.painel{margin-top:34px;border-top:1px solid var(--linha);padding-top:24px}
+.painel h2,.acordeon h2{font-family:var(--display);font-size:21px;margin:0 0 4px;letter-spacing:-.01em}
+.painel p.intro{color:var(--grafite);font-size:15px;margin:0 0 18px}
+.barras{display:flex;flex-direction:column;gap:12px}
+.barra-item{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline}
+.barra-nome{font-size:15px;font-weight:600}
+.barra-val{font-family:var(--mono);font-size:13px;color:var(--grafite);font-variant-numeric:tabular-nums}
+.trilho{
+  grid-column:1 / -1;height:9px;background:var(--surface-2);
+  border-radius:4px;overflow:hidden;border:1px solid var(--linha);
+}
+.trilho i{display:block;height:100%;background:var(--azul);border-radius:0 4px 4px 0}
+.selo{
+  font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  padding:2px 7px;border-radius:3px;margin-left:8px;white-space:nowrap;
+}
+.selo.rever{background:var(--vermelho-soft);color:var(--vermelho)}
+.selo.firme{background:var(--verde-soft);color:var(--verde)}
+.vazio{color:var(--grafite-soft);font-size:15px;font-style:italic}
+
+/* ---------- Acordeões de apoio ---------- */
+.acordeon{
+  margin-top:18px;background:var(--surface);border:1px solid var(--linha);
+  border-radius:4px;padding:16px 18px;
+}
+.acordeon summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+.acordeon summary::-webkit-details-marker{display:none}
+.acordeon summary::after{content:"+";font-family:var(--mono);color:var(--azul);margin-left:auto;font-size:19px}
+.acordeon[open] summary::after{content:"–"}
+.formulario{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:14px;margin-top:16px}
+.fcard{border:1px solid var(--linha);border-radius:3px;padding:13px 14px;background:var(--surface-2)}
+.fcard h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);margin:0 0 9px}
+.fcard ul{margin:0;padding-left:17px;font-size:14.5px;color:var(--grafite)}
+.fcard li{margin:5px 0}
+.fcard .f{font-family:var(--mono);color:var(--ink);font-size:14px}
+.armadilhas{margin:16px 0 0;padding-left:18px;color:var(--grafite);font-size:15.5px}
+.armadilhas li{margin:9px 0}
+.armadilhas b{color:var(--ink)}
+
+footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.8}
+
+:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+
+/* ---------- Classes das figuras SVG ---------- */
+.fg-plano{fill:var(--surface);stroke:var(--linha-forte);stroke-width:1.5}
+.fg-linha{fill:none;stroke:var(--grafite);stroke-width:1.6;stroke-linecap:round}
+.fg-eixo{fill:none;stroke:var(--linha-forte);stroke-width:1.2}
+.fg-obj{fill:none;stroke:var(--ink);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fg-proj{fill:none;stroke:var(--azul);stroke-width:3.4;stroke-linecap:round}
+.fg-trac{fill:none;stroke:var(--grafite-soft);stroke-width:1.3;stroke-dasharray:5 4}
+.fg-trac-azul{fill:none;stroke:var(--azul);stroke-width:1.6;stroke-dasharray:5 4}
+.fg-pt{fill:var(--ink)}
+.fg-pt-azul{fill:var(--azul)}
+.fg-rot{fill:var(--ink);font-family:var(--body);font-size:14px;font-weight:600}
+.fg-rot.peq{font-size:12.5px;font-weight:400;fill:var(--grafite)}
+.fg-rot.azul{fill:var(--azul)}
+.fg-rot.mono{font-family:var(--mono);font-size:12.5px;font-weight:500}
+.fg-arco{fill:none;stroke:var(--ocre);stroke-width:1.6}
+.fg-ang{fill:var(--ocre);font-family:var(--body);font-size:13px;font-weight:600}
+.iso-topo{fill:var(--iso-topo);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.iso-esq{fill:var(--iso-esq);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.iso-dir{fill:var(--iso-dir);stroke:var(--ink);stroke-width:1.1;stroke-linejoin:round}
+.gr-cheia{fill:var(--iso-esq);stroke:var(--ink);stroke-width:1.4}
+.gr-vazia{fill:none;stroke:var(--linha-forte);stroke-width:.8;stroke-dasharray:3 3}
+
+.passos{list-style:none;counter-reset:passo;padding-left:26px}
+.passos li{position:relative;margin:9px 0}
+.passos li:not(.fig){counter-increment:passo}
+.passos li:not(.fig)::before{
+  content:counter(passo)".";position:absolute;left:-26px;top:2px;
+  font-family:var(--mono);font-size:12.5px;color:var(--azul);
+}
+.passos li.fig{margin-left:-26px;padding:8px 0;text-align:center}
+
+.alts.grade .alt .txt{display:block;width:100%}
+.alts.grade .fig{margin:0 auto}
+</style>
+
+<div class="wrap">
+  <header class="topo">
+    <p class="eyebrow">Study-mkre <span>·</span> Caderno de treino</p>
+    <h1>Treino de Projeção Ortogonal</h1>
+    <p class="dek">Questões geradas com números novos a cada rodada, em cinco frentes: projeção sobre
+    reta, relações métricas no triângulo retângulo, projeção sobre plano, projeção de vetores e
+    vistas ortográficas. Toda questão vem com resolução passo a passo.</p>
+  </header>
+
+  <div class="barra">
+    <span class="placar" title="Acertos na sessão"><b id="pl-acertos">0</b> / <span id="pl-total">0</span> acertos</span>
+    <span class="placar seq" title="Acertos seguidos"><b id="pl-seq">0</b> em sequência</span>
+    <span class="placar cron" id="pl-cron" hidden><b id="cron">10:00</b> restantes</span>
+    <span class="espaco"></span>
+    <button class="btn-reset" id="btn-zerar" type="button">Zerar histórico</button>
+  </div>
+
+  <section class="controles">
+    <div class="grupo">
+      <span class="rot">Modo</span>
+      <div class="segmented" id="modos" role="tablist">
+        <button type="button" data-modo="treino" class="on">Treino</button>
+        <button type="button" data-modo="simulado">Simulado (10)</button>
+      </div>
+    </div>
+    <div class="grupo">
+      <span class="rot">Assunto</span>
+      <div class="chips" id="chips"></div>
+    </div>
+  </section>
+
+  <main id="palco" aria-live="polite"></main>
+
+  <section class="painel">
+    <h2>Seu desempenho por assunto</h2>
+    <p class="intro">Acumulado neste navegador, treino e simulado somados. Use para decidir o que
+    revisar antes da prova.</p>
+    <div class="barras" id="barras"></div>
+  </section>
+
+  <details class="acordeon" id="ac-formulario">
+    <summary><h2>Formulário</h2></summary>
+    <div class="formulario">
+      <div class="fcard">
+        <h3>Projeção sobre uma reta</h3>
+        <ul>
+          <li>Projeção de <span class="f">AB</span> sobre <span class="f">r</span>: <span class="f">A′B′ = AB · cos θ</span></li>
+          <li><span class="f">θ = 0°</span> → a projeção é o próprio segmento</li>
+          <li><span class="f">θ = 90°</span> → a projeção é um ponto</li>
+          <li>Vale sempre <span class="f">A′B′ ≤ AB</span></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <h3>Triângulo retângulo</h3>
+        <ul>
+          <li><span class="f">b² = a · m</span> e <span class="f">c² = a · n</span></li>
+          <li><span class="f">h² = m · n</span></li>
+          <li><span class="f">a · h = b · c</span></li>
+          <li><span class="f">a = m + n</span> e <span class="f">a² = b² + c²</span></li>
+          <li><span class="f">m</span> e <span class="f">n</span> são as projeções dos catetos sobre a hipotenusa</li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <h3>Projeção sobre um plano</h3>
+        <ul>
+          <li>Segmento oblíquo: <span class="f">A′B′ = √(AB² − (h₂ − h₁)²)</span></li>
+          <li>Ângulo reta/plano = ângulo entre a reta e sua projeção</li>
+          <li>Área projetada: <span class="f">A′ = A · cos θ</span></li>
+          <li>Reta ⊥ plano → projeção é um ponto</li>
+          <li>Circunferência em plano oblíquo → elipse</li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <h3>No cubo de aresta a</h3>
+        <ul>
+          <li>Diagonal da face: <span class="f">a√2</span> · diagonal do cubo: <span class="f">a√3</span></li>
+          <li>Projeção da diagonal do cubo sobre a base: <span class="f">a√2</span></li>
+          <li>Ângulo diagonal/base: <span class="f">cos θ = √6/3</span>, <span class="f">tg θ = √2/2</span></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <h3>Vetores e analítica</h3>
+        <ul>
+          <li><span class="f">proj_v u = ((u·v)/|v|²) · v</span></li>
+          <li>Medida: <span class="f">|proj_v u| = |u·v| / |v|</span></li>
+          <li><span class="f">u − proj_v u</span> é ortogonal a <span class="f">v</span></li>
+          <li>Distância ponto–reta: <span class="f">d = |ax₀+by₀+c| / √(a²+b²)</span></li>
+        </ul>
+      </div>
+      <div class="fcard">
+        <h3>Vistas ortográficas (1º diedro)</h3>
+        <ul>
+          <li>Frontal em cima; <b>superior embaixo</b>; <b>lateral esquerda à direita</b></li>
+          <li>Na vista superior, a frente do objeto fica embaixo</li>
+          <li>Na lateral esquerda, a frente fica à direita</li>
+          <li>Linha contínua larga = aresta visível; tracejada = aresta oculta; traço-ponto = eixo</li>
+          <li>3º diedro (americano) inverte as posições: superior em cima, lateral esquerda à esquerda</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+
+  <details class="acordeon">
+    <summary><h2>Armadilhas de prova</h2></summary>
+    <ul class="armadilhas">
+      <li><b>Trocar seno por cosseno.</b> A projeção usa o cateto <i>adjacente</i> ao ângulo:
+      <span class="dado">A′B′ = AB · cos θ</span>. O seno dá a distância à reta, não a projeção.</li>
+      <li><b>Confundir altura com projeção</b> no triângulo retângulo.
+      <span class="dado">h² = m·n</span> relaciona as duas projeções entre si;
+      <span class="dado">b² = a·m</span> relaciona o cateto com a projeção <i>dele</i>.</li>
+      <li><b>Usar a projeção errada.</b> <span class="dado">m</span> é a projeção do cateto
+      <span class="dado">b</span> — o que fica do mesmo lado. Trocar <span class="dado">m</span> por
+      <span class="dado">n</span> é o erro mais comum do assunto.</li>
+      <li><b>Somar alturas em vez de subtrair.</b> Com A e B do mesmo lado do plano, entra a
+      <i>diferença</i> das distâncias: <span class="dado">h₂ − h₁</span>. Em lados opostos, aí sim soma.</li>
+      <li><b>Achar que a projeção pode crescer.</b> Projeção ortogonal nunca é maior que o
+      original, nem de segmento nem de área.</li>
+      <li><b>Projetar sobre o vetor errado.</b> Em <span class="dado">proj_v u</span>, o resultado é
+      paralelo a <span class="dado">v</span>, e o denominador é <span class="dado">|v|²</span> — não <span class="dado">|u|²</span>.</li>
+      <li><b>Misturar os diedros.</b> No Brasil (ABNT) vale o 1º diedro: a vista superior vai
+      <i>abaixo</i> da frontal. Se o desenho trouxer a superior em cima, é 3º diedro.</li>
+    </ul>
+  </details>
+
+  <footer>
+    Study-mkre · treino/projecao-ortogonal.html<br>
+    Atalhos: 1–5 escolhem a alternativa · Enter avança para a próxima questão.
+  </footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ==================== utilidades numéricas ==================== */
+const R=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function shuffle(a){const b=a.slice();for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){const t=b;b=a%b;a=t;}return a;}
+function num(n){
+  const r=Math.round(n);
+  if(Math.abs(n-r)<1e-9) return String(r);
+  return (Math.round(n*100)/100).toString().replace('.',',');
+}
+function simpl(k){let o=1,i=k;for(let d=2;d*d<=i;d++){while(i%(d*d)===0){i/=d*d;o*=d;}}return [o,i];}
+/* c · √rad / d, já simplificado */
+function fracRaiz(c,d,rad){
+  const s=simpl(rad); c=c*s[0]; rad=s[1];
+  const g=gcd(c,d)||1; c/=g; d/=g;
+  const base = rad===1 ? num(c) : (c===1?'√'+rad:(c===-1?'−√'+rad:num(c)+'√'+rad));
+  return d===1 ? base : base+'/'+num(d);
+}
+const ANG={
+  30:{cos:[1,3,2],sen:[1,1,2],tg:[1,3,3],cosT:'√3/2',senT:'1/2',tgT:'√3/3'},
+  45:{cos:[1,2,2],sen:[1,2,2],tg:[1,1,1],cosT:'√2/2',senT:'√2/2',tgT:'1'},
+  60:{cos:[1,1,2],sen:[1,3,2],tg:[1,3,1],cosT:'1/2',senT:'√3/2',tgT:'√3'}
+};
+/* L · razão, onde razão = [coef, radicando, denominador] */
+function porRazao(L,r){return fracRaiz(L*r[0],r[2],r[1]);}
+function valor(L,r){return L*r[0]*Math.sqrt(r[1])/r[2];}
+
+/* monta 5 alternativas sem repetição, devolvendo o índice da correta */
+function montar(correta,distratores){
+  const vistos=new Set([correta]); const op=[correta];
+  for(const d of distratores){ if(op.length>=5) break; if(d!=null && !vistos.has(d)){vistos.add(d);op.push(d);} }
+  const emb=shuffle(op);
+  return {alternativas:emb, correta:emb.indexOf(correta)};
+}
+function montarFig(corretaKey,opcoes){
+  const vistos=new Set(); const op=[];
+  for(const o of opcoes){ if(op.length>=5) break; if(!vistos.has(o.key)){vistos.add(o.key);op.push(o);} }
+  const emb=shuffle(op);
+  return {alternativas:emb.map(o=>o.svg), correta:emb.findIndex(o=>o.key===corretaKey)};
+}
+const D=n=>'<span class="dado">'+n+'</span>';
+
+/* ==================== desenho ==================== */
+let uid=0;
+function svgFig(vb,inner,rotulo,maxw){
+  return '<svg viewBox="'+vb+'" class="fig" style="width:'+(maxw||460)+'px;max-width:100%" role="img" aria-label="'+rotulo+'">'+inner+'</svg>';
+}
+function L(x1,y1,x2,y2,cls){return '<line x1="'+x1.toFixed(1)+'" y1="'+y1.toFixed(1)+'" x2="'+x2.toFixed(1)+'" y2="'+y2.toFixed(1)+'" class="'+cls+'"/>';}
+function T(x,y,txt,cls,anchor){return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" class="'+(cls||'fg-rot')+'" text-anchor="'+(anchor||'middle')+'">'+txt+'</text>';}
+function P(x,y,cls){return '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.6" class="'+(cls||'fg-pt')+'"/>';}
+/* quadradinho de ângulo reto no vértice V, entre as direções d1 e d2 */
+function reto(vx,vy,d1,d2,t){
+  t=t||11;
+  const a=[vx+d1[0]*t, vy+d1[1]*t], b=[vx+d1[0]*t+d2[0]*t, vy+d1[1]*t+d2[1]*t], c=[vx+d2[0]*t, vy+d2[1]*t];
+  return '<polyline points="'+a[0].toFixed(1)+','+a[1].toFixed(1)+' '+b[0].toFixed(1)+','+b[1].toFixed(1)+' '+c[0].toFixed(1)+','+c[1].toFixed(1)+'" class="fg-eixo"/>';
+}
+function unit(x1,y1,x2,y2){const dx=x2-x1,dy=y2-y1,m=Math.hypot(dx,dy)||1;return [dx/m,dy/m];}
+
+/* --- figura 1: segmento oblíquo a uma reta --- */
+function figReta(ang,rotAB,rotProj){
+  const W=440,H=200,yb=155,ax=70;
+  const rad=ang*Math.PI/180;
+  const S=Math.min(250/Math.cos(rad),118/Math.sin(rad));
+  const bx=ax+S*Math.cos(rad), by=yb-S*Math.sin(rad);
+  const rr=34;
+  let s='';
+  s+=L(24,yb,W-22,yb,'fg-linha');
+  s+=T(W-14,yb+5,'r','fg-rot','start');
+  s+=L(bx,by,bx,yb,'fg-trac');
+  s+=L(ax,yb,bx,by,'fg-obj');
+  s+=L(ax,yb,bx,yb,'fg-proj');
+  s+='<path d="M '+(ax+rr)+' '+yb+' A '+rr+' '+rr+' 0 0 0 '+(ax+rr*Math.cos(rad)).toFixed(1)+' '+(yb-rr*Math.sin(rad)).toFixed(1)+'" class="fg-arco"/>';
+  s+=T(ax+rr+16,yb-rr*Math.sin(rad)/2+4,ang+'°','fg-ang','start');
+  s+=reto(bx,yb,[-1,0],[0,-1],10);
+  s+=P(ax,yb)+P(bx,by)+P(bx,yb,'fg-pt-azul');
+  s+=T(ax-6,yb+20,'A','fg-rot','middle');
+  s+=T(bx+8,by-8,'B','fg-rot','start');
+  s+=T(bx+6,yb+20,'B′','fg-rot azul','middle');
+  s+=T((ax+bx)/2-14,(yb+by)/2-10,rotAB,'fg-rot mono','middle');
+  s+=T((ax+bx)/2,yb+22,rotProj,'fg-rot mono azul','middle');
+  return svgFig('0 0 '+W+' '+H,s,'Segmento AB formando ângulo de '+ang+' graus com a reta r, e sua projeção sobre r',450);
+}
+
+/* --- figura 2: triângulo retângulo com a altura relativa à hipotenusa --- */
+function figTriangulo(a,m,n,h,b,c,rot){
+  const W=440,H=250, x0=60, larg=320, esc=larg/a, yb=205;
+  const px=x0+m*esc, ap=yb-h*esc;
+  let s='';
+  s+='<polygon points="'+x0+','+yb+' '+(x0+larg)+','+yb+' '+px.toFixed(1)+','+ap.toFixed(1)+'" class="fg-plano"/>';
+  s+=L(x0,yb,x0+larg,yb,'fg-obj');
+  s+=L(x0,yb,px,ap,'fg-obj');
+  s+=L(px,ap,x0+larg,yb,'fg-obj');
+  s+=L(px,ap,px,yb,'fg-trac');
+  s+=L(x0,yb,px,yb,'fg-proj');
+  s+=L(px,yb,x0+larg,yb,'fg-proj');
+  s+=reto(px,ap,unit(px,ap,x0,yb),unit(px,ap,x0+larg,yb),13);
+  s+=reto(px,yb,[-1,0],[0,-1],9);
+  s+=P(x0,yb)+P(x0+larg,yb)+P(px,ap)+P(px,yb,'fg-pt-azul');
+  s+=T(x0-12,yb+8,'B','fg-rot','middle');
+  s+=T(x0+larg+12,yb+8,'C','fg-rot','middle');
+  s+=T(px,ap-12,'A','fg-rot','middle');
+  s+=T(px+14,yb-10,'H','fg-rot azul','start');
+  s+=T((x0+px)/2,yb+24,rot.m,'fg-rot mono azul','middle');
+  s+=T((px+x0+larg)/2,yb+24,rot.n,'fg-rot mono azul','middle');
+  s+=T(px-10,(ap+yb)/2,rot.h,'fg-rot mono','end');
+  s+=T((x0+px)/2-16,(yb+ap)/2,rot.b,'fg-rot mono','end');
+  s+=T((px+x0+larg)/2+14,(ap+yb)/2,rot.c,'fg-rot mono','start');
+  s+=T(x0+larg/2,yb+46,rot.a,'fg-rot mono','middle');
+  return svgFig('0 0 '+W+' '+H,s,'Triângulo retângulo com a altura relativa à hipotenusa e as projeções dos catetos',440);
+}
+
+/* --- figura 3: segmento oblíquo a um plano --- */
+function figPlano(h1,h2,rotAB,rotProj){
+  const W=440,H=250;
+  const esc=Math.min(96/Math.max(h1,h2),26);
+  const a1=[132,212-34], b1=[300,212-44];
+  let s='';
+  s+='<polygon points="30,232 275,232 400,158 155,158" class="fg-plano"/>';
+  s+=T(44,224,'α','fg-rot peq','middle');
+  const A=[a1[0],a1[1]-h1*esc], B=[b1[0],b1[1]-h2*esc];
+  s+=L(A[0],A[1],a1[0],a1[1],'fg-trac');
+  s+=L(B[0],B[1],b1[0],b1[1],'fg-trac');
+  s+=L(A[0],A[1],B[0],B[1],'fg-obj');
+  s+=L(a1[0],a1[1],b1[0],b1[1],'fg-proj');
+  s+=reto(a1[0],a1[1],[0,-1],[1,0],9);
+  s+=reto(b1[0],b1[1],[0,-1],[-1,0],9);
+  s+=P(A[0],A[1])+P(B[0],B[1])+P(a1[0],a1[1],'fg-pt-azul')+P(b1[0],b1[1],'fg-pt-azul');
+  s+=T(A[0]-12,A[1]-6,'A','fg-rot','middle');
+  s+=T(B[0]+12,B[1]-6,'B','fg-rot','middle');
+  s+=T(a1[0]-14,a1[1]+16,'A′','fg-rot azul','middle');
+  s+=T(b1[0]+16,b1[1]+16,'B′','fg-rot azul','middle');
+  s+=T(A[0]-8,(A[1]+a1[1])/2,'h₁ = '+num(h1),'fg-rot mono','end');
+  s+=T(B[0]+8,(B[1]+b1[1])/2,'h₂ = '+num(h2),'fg-rot mono','start');
+  s+=T((A[0]+B[0])/2,(A[1]+B[1])/2-12,rotAB,'fg-rot mono','middle');
+  s+=T((a1[0]+b1[0])/2,(a1[1]+b1[1])/2+22,rotProj,'fg-rot mono azul','middle');
+  return svgFig('0 0 '+W+' '+H,s,'Segmento AB oblíquo ao plano alfa e sua projeção ortogonal',440);
+}
+
+/* --- figura 4: vetores no plano cartesiano --- */
+function figVetores(u,v,pr){
+  const id='m'+(++uid);
+  const xs=[0,u[0],v[0],pr[0]], ys=[0,u[1],v[1],pr[1]];
+  const x0=Math.min.apply(null,xs)-1.6, x1=Math.max.apply(null,xs)+1.6;
+  const y0=Math.min.apply(null,ys)-1.6, y1=Math.max.apply(null,ys)+1.6;
+  const esc=Math.min(Math.max(34-2*Math.max(x1-x0,y1-y0),16),30);
+  const W=(x1-x0)*esc, H=(y1-y0)*esc;
+  const X=k=>((k-x0)*esc), Y=k=>((y1-k)*esc);
+  let s='<defs><marker id="'+id+'" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">'+
+    '<path d="M0,0 L9,4.5 L0,9 z" fill="currentColor"/></marker></defs>';
+  const passo=Math.max(x1-x0,y1-y0)>22?5:1;
+  for(let i=Math.ceil(x0);i<=Math.floor(x1);i++) if(i%passo===0) s+=L(X(i),0,X(i),H,'fg-eixo');
+  for(let j=Math.ceil(y0);j<=Math.floor(y1);j++) if(j%passo===0) s+=L(0,Y(j),W,Y(j),'fg-eixo');
+  s+=L(0,Y(0),W,Y(0),'fg-linha')+L(X(0),0,X(0),H,'fg-linha');
+  const seta=(p,cls,cor)=>'<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(p[0])+'" y2="'+Y(p[1])+'" class="'+cls+'" style="color:'+cor+'" marker-end="url(#'+id+')"/>';
+  s+='<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(v[0]*1.35)+'" y2="'+Y(v[1]*1.35)+'" class="fg-trac"/>';
+  s+=seta(v,'fg-linha','var(--grafite)');
+  s+=seta(pr,'fg-proj','var(--azul)');
+  s+=seta(u,'fg-obj','var(--ink)');
+  s+=L(X(u[0]),Y(u[1]),X(pr[0]),Y(pr[1]),'fg-trac-azul');
+  s+=T(X(u[0])+10,Y(u[1])-6,'u','fg-rot','start');
+  s+=T(X(v[0])+10,Y(v[1])+14,'v','fg-rot peq','start');
+  s+=T(X(pr[0])-6,Y(pr[1])+20,'proj','fg-rot azul','middle');
+  return svgFig('-22 -18 '+(W+44)+' '+(H+40),s,'Vetores u e v no plano cartesiano com a projeção de u sobre v',400);
+}
+
+/* ==================== isometria e vistas ==================== */
+const IC=Math.cos(Math.PI/6), IS=0.5;
+function iso(x,u,z,s){return [(x-u)*IC*s,(x+u)*IS*s-z*s];}
+function poly(pts,cls){return '<polygon points="'+pts.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ')+'" class="'+cls+'"/>';}
+
+/* desenha um sólido a partir do mapa de alturas hm[x][y] */
+function figIso(hm,W,Dd,s,extra){
+  s=s||30;
+  const cubos=[];
+  for(let x=0;x<W;x++)for(let y=0;y<Dd;y++)for(let z=0;z<hm[x][y];z++){
+    const u=Dd-1-y; cubos.push({x,u,z,d:x+u+z});
+  }
+  cubos.sort((a,b)=>a.d-b.d);
+  let inner='', minx=1e9,miny=1e9,maxx=-1e9,maxy=-1e9;
+  const reg=p=>{minx=Math.min(minx,p[0]);maxx=Math.max(maxx,p[0]);miny=Math.min(miny,p[1]);maxy=Math.max(maxy,p[1]);return p;};
+  for(const c of cubos){
+    const {x,u,z}=c;
+    const topo=[[x,u,z+1],[x+1,u,z+1],[x+1,u+1,z+1],[x,u+1,z+1]].map(p=>reg(iso(p[0],p[1],p[2],s)));
+    const dir=[[x+1,u,z],[x+1,u+1,z],[x+1,u+1,z+1],[x+1,u,z+1]].map(p=>reg(iso(p[0],p[1],p[2],s)));
+    const esq=[[x,u+1,z],[x+1,u+1,z],[x+1,u+1,z+1],[x,u+1,z+1]].map(p=>reg(iso(p[0],p[1],p[2],s)));
+    inner+=poly(esq,'iso-esq')+poly(dir,'iso-dir')+poly(topo,'iso-topo');
+  }
+  if(extra) inner+=extra(p=>reg(iso(p[0],p[1],p[2],s)), p=>reg(p));
+  const pad=22, w=maxx-minx+2*pad, h=maxy-miny+2*pad;
+  return svgFig((minx-pad).toFixed(1)+' '+(miny-pad).toFixed(1)+' '+w.toFixed(1)+' '+h.toFixed(1),
+    inner,'Perspectiva isométrica do sólido',Math.min(w*1.5,300));
+}
+
+/* cubo isolado com a diagonal e sua projeção sobre a base */
+function figCuboDiagonal(rotA,rotD){
+  const s=92, hm=[[1]];
+  const extra=(P3)=>{
+    const p0=P3([0,1,0]), p1=P3([1,0,1]), pb=P3([1,0,0]);
+    let g='';
+    g+=L(p0[0],p0[1],pb[0],pb[1],'fg-trac-azul');
+    g+=L(p0[0],p0[1],p1[0],p1[1],'fg-obj');
+    g+=L(pb[0],pb[1],p1[0],p1[1],'fg-trac');
+    g+=T((p0[0]+pb[0])/2,p0[1]+18,'projeção','fg-rot mono azul','middle');
+    g+=T((p0[0]+p1[0])/2-10,(p0[1]+p1[1])/2-8,rotD,'fg-rot mono','end');
+    g+=T(pb[0]+10,(pb[1]+p1[1])/2,rotA,'fg-rot mono','start');
+    return g;
+  };
+  return figIso(hm,1,1,s,extra);
+}
+
+/* grade de uma vista */
+function figGrade(g,s,rotulo){
+  s=s||24;
+  let inner='';
+  for(let r=0;r<g.rows;r++)for(let c=0;c<g.cols;c++){
+    inner+='<rect x="'+(c*s)+'" y="'+(r*s)+'" width="'+s+'" height="'+s+'" class="'+(g.cells[r][c]?'gr-cheia':'gr-vazia')+'"/>';
+  }
+  return svgFig('-3 -3 '+(g.cols*s+6)+' '+(g.rows*s+6),inner,rotulo||'vista',g.cols*s+6);
+}
+function chaveGrade(g){return g.cells.map(r=>r.map(b=>b?1:0).join('')).join('|');}
+function espelhaH(g){return {cells:g.cells.map(r=>r.slice().reverse()),cols:g.cols,rows:g.rows};}
+function espelhaV(g){return {cells:g.cells.slice().reverse(),cols:g.cols,rows:g.rows};}
+function gira180(g){return espelhaV(espelhaH(g));}
+function mexeCelula(g){
+  for(let t=0;t<30;t++){
+    const cp=g.cells.map(x=>x.slice());
+    cp[R(0,g.rows-1)][R(0,g.cols-1)]^=true;
+    const alt={cells:cp.map(r=>r.map(Boolean)),cols:g.cols,rows:g.rows};
+    if(alt.cells.some(r=>r.some(Boolean)) && chaveGrade(alt)!==chaveGrade(g)) return alt;
+  }
+  return null;
+}
+
+/* ----- geração do sólido ----- */
+function alt(hm,x,y,W,Dd){return (x<0||y<0||x>=W||y>=Dd)?0:hm[x][y];}
+function temEscondido(hm,W,Dd){
+  for(let x=0;x<W;x++)for(let y=0;y<Dd;y++){
+    const h=hm[x][y]; if(!h) continue;
+    if(alt(hm,x+1,y-1,W,Dd)>=h+1) return true;
+    if(alt(hm,x+1,y,W,Dd)>=h+1 && alt(hm,x,y-1,W,Dd)>=h+1) return true;
+  }
+  return false;
+}
+function conexo(hm,W,Dd){
+  let ini=null;
+  for(let x=0;x<W&&!ini;x++)for(let y=0;y<Dd&&!ini;y++) if(hm[x][y]>0) ini=[x,y];
+  if(!ini) return false;
+  const vis=new Set([ini.join(',')]), fila=[ini];
+  while(fila.length){
+    const [x,y]=fila.pop();
+    for(const d of [[1,0],[-1,0],[0,1],[0,-1]]){
+      const nx=x+d[0], ny=y+d[1], k=nx+','+ny;
+      if(nx>=0&&ny>=0&&nx<W&&ny<Dd&&hm[nx][ny]>0&&!vis.has(k)){vis.add(k);fila.push([nx,ny]);}
+    }
+  }
+  let cheias=0;
+  for(let x=0;x<W;x++)for(let y=0;y<Dd;y++) if(hm[x][y]>0) cheias++;
+  return vis.size===cheias;
+}
+function geraSolido(){
+  const W=3, Dd=pick([2,2,3]);
+  for(let t=0;t<400;t++){
+    const hm=[]; let tot=0;
+    for(let x=0;x<W;x++){hm[x]=[];for(let y=0;y<Dd;y++){const v=pick([0,0,1,1,2,2,3]);hm[x][y]=v;tot+=v;}}
+    if(tot<4||tot>10) continue;
+    let colsOk=true, linsOk=true, maxh=0;
+    for(let x=0;x<W;x++){let s=0;for(let y=0;y<Dd;y++){s+=hm[x][y];maxh=Math.max(maxh,hm[x][y]);} if(!s) colsOk=false;}
+    for(let y=0;y<Dd;y++){let s=0;for(let x=0;x<W;x++) s+=hm[x][y]; if(!s) linsOk=false;}
+    if(!colsOk||!linsOk||maxh<2) continue;
+    if(!conexo(hm,W,Dd)||temEscondido(hm,W,Dd)) continue;
+    return {hm,W,D:Dd,H:maxh,total:tot};
+  }
+  const hm=[[2,1],[1,0],[3,1]];
+  return {hm,W:3,D:2,H:3,total:8};
+}
+function vistaSuperior(S){
+  const c=[]; for(let r=0;r<S.D;r++){const y=S.D-1-r,row=[];for(let x=0;x<S.W;x++) row.push(S.hm[x][y]>0); c.push(row);}
+  return {cells:c,cols:S.W,rows:S.D};
+}
+function vistaFrontal(S){
+  const c=[]; for(let r=0;r<S.H;r++){const z=S.H-1-r,row=[];for(let x=0;x<S.W;x++){let f=false;for(let y=0;y<S.D;y++) if(S.hm[x][y]>z) f=true; row.push(f);} c.push(row);}
+  return {cells:c,cols:S.W,rows:S.H};
+}
+function vistaLateral(S){
+  const c=[]; for(let r=0;r<S.H;r++){const z=S.H-1-r,row=[];for(let k=0;k<S.D;k++){const y=S.D-1-k;let f=false;for(let x=0;x<S.W;x++) if(S.hm[x][y]>z) f=true; row.push(f);} c.push(row);}
+  return {cells:c,cols:S.D,rows:S.H};
+}
+
+/* ==================== banco de questões ==================== */
+function conceitual(assunto,it){
+  const mm=montar(it.c,shuffle(it.d.slice()));
+  return {assunto,enunciado:it.e,figura:it.f||null,tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,resolucao:it.r,chave:it.k||null};
+}
+
+/* ---------- 1. projeção sobre uma reta ---------- */
+function retaComprimento(){
+  const ang=pick([30,45,60]), a=ANG[ang], Lm=pick([8,10,12,14,16,18,20,24]);
+  const certa=porRazao(Lm,a.cos)+' cm';
+  const mm=montar(certa,[
+    porRazao(Lm,a.sen)+' cm', porRazao(Lm,a.tg)+' cm',
+    fracRaiz(Lm*a.cos[2],a.cos[0]*a.cos[1],a.cos[1])+' cm',
+    num(Lm)+' cm', num(Lm/2)+' cm', porRazao(Lm/2,a.cos)+' cm',
+    num(2*Lm)+' cm', num(Lm/4)+' cm', porRazao(Lm,ANG[30].cos)+' cm'
+  ]);
+  return {assunto:'reta',
+    enunciado:'Um segmento de reta <b>AB</b> mede '+D(Lm+' cm')+' e forma um ângulo de '+D(ang+'°')+
+      ' com uma reta <b>r</b>. Qual é a medida da projeção ortogonal de AB sobre r?',
+    figura:figReta(ang,'AB = '+Lm,'?'),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'A′B′ = AB · cos θ',
+    resolucao:[
+      'A projeção de AB sobre r é o segmento <b>AB′</b>, em que B′ é o pé da perpendicular baixada de B até r.',
+      'No triângulo retângulo ABB′, AB é a <b>hipotenusa</b> e AB′ é o cateto <b>adjacente</b> ao ângulo de '+ang+'°.',
+      'Logo <span class="mono">cos '+ang+'° = AB′/AB</span>, ou seja <span class="mono">AB′ = AB · cos '+ang+'°</span>.',
+      '<span class="mono">AB′ = '+Lm+' · '+a.cosT+' = '+porRazao(Lm,a.cos)+' cm</span>.'
+    ]};
+}
+function retaAngulo(){
+  const ang=pick([30,45,60]), a=ANG[ang], Lm=pick([8,10,12,16,20,24]);
+  const p=porRazao(Lm,a.cos);
+  const mm=montar(ang+'°',['15°','75°','90°','30°','45°','60°']);
+  return {assunto:'reta',
+    enunciado:'A projeção ortogonal de um segmento <b>AB</b> sobre uma reta <b>r</b> mede '+D(p+' cm')+
+      ', e o próprio segmento mede '+D(Lm+' cm')+'. Qual é o ângulo formado entre AB e r?',
+    figura:figReta(ang,'AB = '+Lm,'A B′ = '+p),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'cos θ = A′B′ / AB',
+    resolucao:[
+      'Da relação <span class="mono">A′B′ = AB · cos θ</span> isolamos o cosseno: <span class="mono">cos θ = A′B′/AB</span>.',
+      '<span class="mono">cos θ = '+p+' / '+Lm+' = '+a.cosT+'</span>.',
+      'O arco cujo cosseno vale <span class="mono">'+a.cosT+'</span> é <b>'+ang+'°</b>.'
+    ]};
+}
+function retaDistancia(){
+  const ang=pick([30,45,60]), a=ANG[ang], Lm=pick([8,10,12,16,18,20,24]);
+  const certa=porRazao(Lm,a.sen)+' cm';
+  const mm=montar(certa,[
+    porRazao(Lm,a.cos)+' cm', porRazao(Lm,a.tg)+' cm', num(Lm)+' cm',
+    num(Lm/2)+' cm', porRazao(Lm/2,a.sen)+' cm', fracRaiz(Lm*a.sen[2],a.sen[0]*a.sen[1],a.sen[1])+' cm',
+    num(2*Lm)+' cm', num(Lm/4)+' cm', porRazao(Lm,ANG[60].sen)+' cm'
+  ]);
+  return {assunto:'reta',
+    enunciado:'O segmento <b>AB</b> mede '+D(Lm+' cm')+' e forma '+D(ang+'°')+' com a reta <b>r</b>, com '+
+      'A pertencente a r. Qual é a <b>distância do ponto B até a reta r</b>?',
+    figura:figReta(ang,'AB = '+Lm,'projeção'),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'d(B, r) = AB · sen θ',
+    resolucao:[
+      'A distância de B até r é medida na <b>perpendicular</b>: é o segmento BB′.',
+      'No triângulo ABB′, BB′ é o cateto <b>oposto</b> ao ângulo de '+ang+'°.',
+      '<span class="mono">sen '+ang+'° = BB′/AB ⟹ BB′ = '+Lm+' · '+a.senT+' = '+porRazao(Lm,a.sen)+' cm</span>.',
+      'Cuidado: quem usa cosseno acha a <b>projeção</b> ('+porRazao(Lm,a.cos)+' cm), não a distância.'
+    ]};
+}
+const BANCO_RETA=[
+  {e:'Um segmento <b>AB</b> é perpendicular a uma reta <b>r</b>. A projeção ortogonal de AB sobre r é:',
+   c:'um ponto', d:['um segmento de mesma medida que AB','um segmento com metade da medida de AB','a própria reta r','um segmento perpendicular a r'],
+   k:'θ = 90° ⟹ cos θ = 0',
+   r:['Com <span class="mono">θ = 90°</span>, temos <span class="mono">cos 90° = 0</span>.',
+      'Então <span class="mono">A′B′ = AB · 0 = 0</span>: a projeção degenera em <b>um único ponto</b>.',
+      'Geometricamente, as perpendiculares baixadas de A e de B caem no mesmo ponto de r.']},
+  {e:'A projeção ortogonal de um segmento <b>AB</b> sobre uma reta <b>r</b> tem exatamente a mesma medida de AB. Pode-se concluir que:',
+   c:'AB é paralelo a r ou está contido em r', d:['AB é perpendicular a r','AB forma 45° com r','AB forma 60° com r','AB mede o dobro da projeção'],
+   k:'A′B′ = AB ⟺ cos θ = 1 ⟺ θ = 0°',
+   r:['<span class="mono">A′B′ = AB · cos θ = AB</span> exige <span class="mono">cos θ = 1</span>.',
+      'Logo <span class="mono">θ = 0°</span>: o segmento é <b>paralelo</b> à reta (ou está sobre ela).']},
+  {e:'Sobre a projeção ortogonal de um segmento sobre uma reta, é <b>sempre</b> verdadeiro que:',
+   c:'a projeção nunca é maior que o segmento', d:['a projeção nunca é menor que o segmento','a projeção mede sempre metade do segmento','a projeção é sempre um ponto','a projeção é sempre perpendicular ao segmento'],
+   k:'0 ≤ cos θ ≤ 1 ⟹ A′B′ ≤ AB',
+   r:['Como <span class="mono">A′B′ = AB · cos θ</span> e <span class="mono">0 ≤ cos θ ≤ 1</span> para <span class="mono">0° ≤ θ ≤ 90°</span>...',
+      '...a projeção vale no máximo AB (quando θ = 0°) e no mínimo 0 (quando θ = 90°).',
+      'Projetar <b>encurta</b> ou mantém — nunca aumenta.']}
+];
+
+/* ---------- 2. triângulo retângulo ---------- */
+const TRIS=[
+  {a:25,b:15,c:20,m:9,n:16,h:12},
+  {a:50,b:30,c:40,m:18,n:32,h:24},
+  {a:75,b:45,c:60,m:27,n:48,h:36},
+  {a:100,b:60,c:80,m:36,n:64,h:48},
+  {a:125,b:75,c:100,m:45,n:80,h:60},
+  {a:169,b:65,c:156,m:25,n:144,h:60},
+  {a:289,b:136,c:255,m:64,n:225,h:120}
+];
+function triangulo(){
+  const t=Object.assign({},pick(TRIS));
+  if(Math.random()<0.5){const b=t.b,m=t.m;t.b=t.c;t.m=t.n;t.c=b;t.n=m;}
+  return t;
+}
+function rotsTri(t,mostra){
+  const r={};
+  ['a','b','c','m','n','h'].forEach(k=>{
+    r[k]= mostra[k]===undefined ? '' : (mostra[k]===true ? num(t[k]) : mostra[k]);
+  });
+  return r;
+}
+function triAltura(){
+  const t=triangulo();
+  const mm=montar(num(t.h)+' cm',[
+    num((t.m+t.n)/2)+' cm', num(t.m+t.n)+' cm', num(Math.abs(t.n-t.m))+' cm',
+    num(t.h/2)+' cm', num(Math.sqrt(t.m+t.n))+' cm'
+  ]);
+  return {assunto:'triangulo',
+    enunciado:'Num triângulo retângulo, a altura relativa à hipotenusa divide-a em dois segmentos — as '+
+      '<b>projeções dos catetos</b> — que medem '+D(num(t.m)+' cm')+' e '+D(num(t.n)+' cm')+'. Quanto mede essa altura?',
+    figura:figTriangulo(t.a,t.m,t.n,t.h,t.b,t.c,rotsTri(t,{m:true,n:true,h:'?'})),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'h² = m · n',
+    resolucao:[
+      'A altura relativa à hipotenusa é <b>média geométrica</b> entre as projeções dos catetos: <span class="mono">h² = m · n</span>.',
+      '<span class="mono">h² = '+num(t.m)+' · '+num(t.n)+' = '+num(t.m*t.n)+'</span>.',
+      '<span class="mono">h = √'+num(t.m*t.n)+' = '+num(t.h)+' cm</span>.',
+      'Repare que a <b>média aritmética</b> ('+num((t.m+t.n)/2)+' cm) daria outro valor — a relação é geométrica.'
+    ]};
+}
+function triCateto(){
+  const t=triangulo();
+  const mm=montar(num(t.b)+' cm',[
+    num(t.n)+' cm', num(t.h)+' cm', num(t.c)+' cm',
+    num(Math.sqrt(t.a*t.a-t.m*t.m))+' cm', num(t.a-t.m)+' cm'
+  ]);
+  return {assunto:'triangulo',
+    enunciado:'A hipotenusa de um triângulo retângulo mede '+D(num(t.a)+' cm')+' e a projeção ortogonal de um '+
+      'dos catetos sobre ela mede '+D(num(t.m)+' cm')+'. Quanto mede <b>esse</b> cateto?',
+    figura:figTriangulo(t.a,t.m,t.n,t.h,t.b,t.c,rotsTri(t,{a:true,m:true,b:'?'})),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'b² = a · m',
+    resolucao:[
+      'Cada cateto é média geométrica entre a hipotenusa e a <b>sua própria</b> projeção: <span class="mono">b² = a · m</span>.',
+      '<span class="mono">b² = '+num(t.a)+' · '+num(t.m)+' = '+num(t.a*t.m)+'</span>.',
+      '<span class="mono">b = √'+num(t.a*t.m)+' = '+num(t.b)+' cm</span>.',
+      'Se você usasse a outra projeção (<span class="mono">n = '+num(t.n)+'</span>), acharia o <b>outro</b> cateto, '+num(t.c)+' cm.'
+    ]};
+}
+function triProjecao(){
+  const t=triangulo();
+  const mm=montar(num(t.m)+' cm',[
+    num(t.n)+' cm', num(t.h)+' cm', num(t.b/2)+' cm',
+    num(Math.round(t.b*t.b/t.c*100)/100)+' cm', num(t.a-t.b)+' cm'
+  ]);
+  return {assunto:'triangulo',
+    enunciado:'Os catetos de um triângulo retângulo medem '+D(num(t.b)+' cm')+' e '+D(num(t.c)+' cm')+
+      '. Qual é a medida da projeção ortogonal do cateto de '+D(num(t.b)+' cm')+' sobre a hipotenusa?',
+    figura:figTriangulo(t.a,t.m,t.n,t.h,t.b,t.c,rotsTri(t,{b:true,c:true,m:'?'})),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'a² = b² + c²  e  b² = a · m',
+    resolucao:[
+      'Primeiro a hipotenusa: <span class="mono">a² = '+num(t.b)+'² + '+num(t.c)+'² = '+num(t.b*t.b+t.c*t.c)+
+        ' ⟹ a = '+num(t.a)+' cm</span>.',
+      'Agora <span class="mono">b² = a · m</span>, isolando <span class="mono">m = b²/a</span>.',
+      '<span class="mono">m = '+num(t.b*t.b)+' / '+num(t.a)+' = '+num(t.m)+' cm</span>.',
+      'Conferência: a outra projeção seria <span class="mono">n = '+num(t.c*t.c)+'/'+num(t.a)+' = '+num(t.n)+
+        '</span>, e de fato <span class="mono">'+num(t.m)+' + '+num(t.n)+' = '+num(t.a)+'</span>.'
+    ]};
+}
+function triProjDoisDados(){
+  const t=triangulo();
+  const mm=montar(num(t.c)+' cm',[
+    num(t.b)+' cm', num(t.h)+' cm', num(t.a)+' cm',
+    num(Math.round(Math.sqrt(t.n*t.n+t.h*t.h)*100)/100)+' cm', num(t.n+t.h)+' cm'
+  ]);
+  return {assunto:'triangulo',
+    enunciado:'As projeções dos catetos sobre a hipotenusa de um triângulo retângulo medem '+
+      D(num(t.m)+' cm')+' e '+D(num(t.n)+' cm')+'. Quanto mede o cateto cuja projeção é a de '+D(num(t.n)+' cm')+'?',
+    figura:figTriangulo(t.a,t.m,t.n,t.h,t.b,t.c,rotsTri(t,{m:true,n:true,c:'?'})),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'a = m + n  e  c² = a · n',
+    resolucao:[
+      'A hipotenusa é a soma das projeções: <span class="mono">a = '+num(t.m)+' + '+num(t.n)+' = '+num(t.a)+' cm</span>.',
+      'O cateto procurado é média geométrica entre a hipotenusa e a projeção <b>dele</b>: <span class="mono">c² = a · n</span>.',
+      '<span class="mono">c² = '+num(t.a)+' · '+num(t.n)+' = '+num(t.a*t.n)+' ⟹ c = '+num(t.c)+' cm</span>.'
+    ]};
+}
+const BANCO_TRI=[
+  {e:'Num triângulo retângulo, a relação <span class="mono">h² = m · n</span> diz que a altura relativa à hipotenusa é:',
+   c:'a média geométrica entre as projeções dos catetos',
+   d:['a média aritmética entre as projeções dos catetos','a metade da hipotenusa','a média geométrica entre os catetos','igual à soma das projeções'],
+   k:'h² = m · n',
+   r:['Média geométrica de dois números é a raiz do produto deles: <span class="mono">h = √(m·n)</span>.',
+      'A média <b>aritmética</b> seria <span class="mono">(m+n)/2</span> — que é o raio da circunferência circunscrita, não a altura.']},
+  {e:'Num triângulo retângulo cujos catetos medem <b>b</b> e <b>c</b>, e a hipotenusa mede <b>a</b>, a projeção do cateto <b>b</b> sobre a hipotenusa vale:',
+   c:'b²/a', d:['c²/a','a/b','b·c/a','a − b'],
+   k:'b² = a · m ⟹ m = b²/a',
+   r:['A relação métrica é <span class="mono">b² = a · m</span>.',
+      'Isolando: <span class="mono">m = b²/a</span>.',
+      '<span class="mono">c²/a</span> é a projeção do <b>outro</b> cateto, e <span class="mono">b·c/a</span> é a altura h.']},
+  {e:'A soma das projeções dos dois catetos sobre a hipotenusa é igual a:',
+   c:'a própria hipotenusa', d:['a altura relativa à hipotenusa','a soma dos catetos','o dobro da hipotenusa','a média dos catetos'],
+   k:'m + n = a',
+   r:['O pé da altura divide a hipotenusa em dois pedaços, m e n.',
+      'Juntando os dois pedaços temos a hipotenusa inteira: <span class="mono">m + n = a</span>.',
+      'É a conferência mais rápida do exercício: se m + n não der a, algum passo saiu errado.']}
+];
+
+/* ---------- 3. projeção sobre um plano ---------- */
+function planoArea(){
+  const ang=pick([30,45,60]), a=ANG[ang], A=pick([12,16,20,24,30,36,40,48,60]);
+  const mm=montar(porRazao(A,a.cos)+' cm²',[
+    porRazao(A,a.sen)+' cm²', porRazao(A,a.tg)+' cm²', num(A)+' cm²',
+    fracRaiz(A*a.cos[2],a.cos[0]*a.cos[1],a.cos[1])+' cm²', num(A/2)+' cm²',
+    num(A/4)+' cm²', num(2*A)+' cm²', porRazao(A/2,a.sen)+' cm²', porRazao(A,ANG[30].cos)+' cm²'
+  ]);
+  return {assunto:'plano',
+    enunciado:'Uma figura plana de área '+D(A+' cm²')+' está contida num plano β que forma um ângulo de '+
+      D(ang+'°')+' com o plano α. Qual é a área da projeção ortogonal dessa figura sobre α?',
+    figura:null,tipo:'texto',alternativas:mm.alternativas,correta:mm.correta,
+    chave:'A′ = A · cos θ',
+    resolucao:[
+      'Ao projetar, uma das dimensões da figura é multiplicada por <span class="mono">cos θ</span> e a outra fica intacta.',
+      'Por isso a área projetada é <span class="mono">A′ = A · cos θ</span>.',
+      '<span class="mono">A′ = '+A+' · '+a.cosT+' = '+porRazao(A,a.cos)+' cm²</span>.',
+      'Note que a área <b>diminui</b> — projeção ortogonal nunca amplia.'
+    ]};
+}
+function planoSegmento(){
+  const tr=pick([[6,8,10],[8,6,10],[5,12,13],[12,5,13],[9,12,15],[12,9,15],[8,15,17],[7,24,25],[12,16,20]]);
+  const dif=tr[0], p=tr[1], Lm=tr[2];
+  const h1=R(1,6), h2=h1+dif;
+  const mm=montar(num(p)+' cm',[
+    num(Lm-dif)+' cm', num(Math.round(Math.sqrt(Lm*Lm+dif*dif)*100)/100)+' cm',
+    num(Lm)+' cm', num(dif)+' cm', num(Math.round(Math.sqrt(Math.abs(Lm*Lm-(h1+h2)*(h1+h2)))*100)/100)+' cm'
+  ]);
+  return {assunto:'plano',
+    enunciado:'Os pontos <b>A</b> e <b>B</b> estão do mesmo lado de um plano α, a distâncias de '+
+      D(h1+' cm')+' e '+D(h2+' cm')+' do plano, respectivamente. Sabendo que <b>AB</b> mede '+D(Lm+' cm')+
+      ', qual é a medida da projeção ortogonal de AB sobre α?',
+    figura:figPlano(h1,h2,'AB = '+Lm,'A′B′ = ?'),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'AB² = A′B′² + (h₂ − h₁)²',
+    resolucao:[
+      'Baixando as perpendiculares de A e de B até α, formamos um <b>trapézio retângulo</b>. Traçando por A '+
+        'a paralela a A′B′, sobra um triângulo retângulo.',
+      'Os catetos desse triângulo são a projeção <span class="mono">A′B′</span> e a diferença de alturas '+
+        '<span class="mono">h₂ − h₁ = '+h2+' − '+h1+' = '+dif+'</span>; a hipotenusa é <span class="mono">AB = '+Lm+'</span>.',
+      '<span class="mono">A′B′² = '+Lm+'² − '+dif+'² = '+(Lm*Lm)+' − '+(dif*dif)+' = '+(Lm*Lm-dif*dif)+'</span>.',
+      '<span class="mono">A′B′ = '+p+' cm</span>. Como os pontos estão do <b>mesmo lado</b>, entra a diferença '+
+        'das alturas — se estivessem em lados opostos, entraria a soma.'
+    ]};
+}
+function planoCubo(){
+  const a=pick([2,3,4,5,6,8,10]);
+  const mm=montar(fracRaiz(a,1,2)+' cm',[
+    fracRaiz(a,1,3)+' cm', num(a)+' cm', fracRaiz(a,2,2)+' cm',
+    num(2*a)+' cm', fracRaiz(a,2,3)+' cm', fracRaiz(a,3,6)+' cm'
+  ]);
+  return {assunto:'plano',
+    enunciado:'Num cubo de aresta '+D(a+' cm')+', qual é a medida da projeção ortogonal da <b>diagonal do cubo</b> '+
+      'sobre o plano da base?',
+    figura:figCuboDiagonal('a = '+a,'d = '+fracRaiz(a,1,3)),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'projeção da diagonal do cubo = diagonal da face = a√2',
+    resolucao:[
+      'A diagonal do cubo sai de um vértice da base e chega ao vértice oposto do topo.',
+      'Ao projetar sobre a base, o vértice de cima "desce" na vertical e cai no vértice da base que está '+
+        'diretamente abaixo dele.',
+      'Sobra a <b>diagonal da face inferior</b>, que mede <span class="mono">a√2 = '+fracRaiz(a,1,2)+' cm</span>.',
+      'A diagonal do cubo em si mede <span class="mono">a√3 = '+fracRaiz(a,1,3)+' cm</span> — esse é o valor não projetado.'
+    ]};
+}
+function planoCuboAngulo(){
+  const qual=pick(['cos','tg']);
+  const certa = qual==='cos' ? '√6/3' : '√2/2';
+  const mm=montar(certa,['√3/3','√2/2','√6/3','√2/3','1/2','√3/2']);
+  return {assunto:'plano',
+    enunciado:'Considere a diagonal de um cubo e o plano da sua base. Qual é o valor da <b>'+
+      (qual==='cos'?'cosseno':'tangente')+'</b> do ângulo θ formado entre essa diagonal e o plano da base?',
+    figura:figCuboDiagonal('a','a√3'),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'o ângulo reta/plano é o ângulo entre a reta e sua projeção',
+    resolucao:[
+      'O ângulo entre uma reta e um plano é, por definição, o ângulo entre a reta e a <b>sua projeção</b> sobre o plano.',
+      'A diagonal do cubo mede <span class="mono">a√3</span>, sua projeção na base é a diagonal da face, '+
+        '<span class="mono">a√2</span>, e a altura (aresta vertical) mede <span class="mono">a</span>.',
+      qual==='cos'
+        ? 'No triângulo retângulo formado, <span class="mono">cos θ = projeção/diagonal = a√2 / a√3 = √2/√3 = √6/3</span>.'
+        : 'No triângulo retângulo formado, <span class="mono">tg θ = altura/projeção = a / a√2 = 1/√2 = √2/2</span>.',
+      'Racionalizar no fim evita errar a alternativa.'
+    ]};
+}
+function planoAngulo(){
+  const ang=pick([30,45,60]), a=ANG[ang], Lm=pick([8,10,12,16,20,24]);
+  const p=porRazao(Lm,a.cos);
+  const mm=montar(ang+'°',['15°','75°','90°','30°','45°','60°']);
+  return {assunto:'plano',
+    enunciado:'Um segmento <b>AB</b> mede '+D(Lm+' cm')+' e sua projeção ortogonal sobre um plano α mede '+
+      D(p+' cm')+'. Qual é o ângulo formado entre a reta AB e o plano α?',
+    figura:null,tipo:'texto',alternativas:mm.alternativas,correta:mm.correta,
+    chave:'cos θ = A′B′ / AB',
+    resolucao:[
+      'O ângulo entre a reta e o plano é o ângulo entre AB e sua projeção A′B′.',
+      'Esses dois segmentos são lados de um triângulo retângulo em que AB é a hipotenusa.',
+      '<span class="mono">cos θ = '+p+'/'+Lm+' = '+a.cosT+' ⟹ θ = '+ang+'°</span>.'
+    ]};
+}
+function planoPiramide(){
+  const a=pick([4,6,8,10,12]);
+  const mm=montar(fracRaiz(a,2,2)+' cm',[
+    fracRaiz(a,1,2)+' cm', num(a/2)+' cm', fracRaiz(a,2,3)+' cm',
+    num(a)+' cm', fracRaiz(a,4,2)+' cm'
+  ]);
+  return {assunto:'plano',
+    enunciado:'Numa pirâmide quadrangular regular, a aresta da base mede '+D(a+' cm')+'. Qual é a medida da '+
+      'projeção ortogonal de uma <b>aresta lateral</b> sobre o plano da base?',
+    figura:null,tipo:'texto',alternativas:mm.alternativas,correta:mm.correta,
+    chave:'projeção da aresta lateral = metade da diagonal da base',
+    resolucao:[
+      'Numa pirâmide <b>regular</b>, o vértice fica exatamente acima do <b>centro</b> da base.',
+      'Projetando a aresta lateral, o vértice do topo cai no centro do quadrado: sobra o segmento que vai '+
+        'do vértice da base até o centro, isto é, <b>metade da diagonal</b>.',
+      'A diagonal do quadrado mede <span class="mono">a√2 = '+fracRaiz(a,1,2)+'</span>.',
+      'Logo a projeção mede <span class="mono">a√2/2 = '+fracRaiz(a,2,2)+' cm</span>.'
+    ]};
+}
+const BANCO_PLANO=[
+  {e:'A projeção ortogonal de uma reta <b>perpendicular</b> a um plano α, sobre esse plano, é:',
+   c:'um ponto', d:['uma reta paralela a α','a própria reta','um segmento','duas retas concorrentes'],
+   k:'reta ⊥ plano ⟹ projeção = ponto',
+   r:['Se a reta é perpendicular ao plano, todos os seus pontos se projetam pela <b>mesma</b> perpendicular.',
+      'Todos caem no mesmo lugar: o pé da perpendicular. A projeção é <b>um ponto</b>.']},
+  {e:'Uma circunferência está contida num plano β <b>oblíquo</b> ao plano α. Sua projeção ortogonal sobre α é:',
+   c:'uma elipse', d:['uma circunferência de mesmo raio','um ponto','uma parábola','um segmento de reta'],
+   k:'projeção comprime uma direção por cos θ',
+   r:['A projeção mantém as medidas na direção da interseção dos planos e multiplica as medidas '+
+      'perpendiculares a ela por <span class="mono">cos θ</span>.',
+      'Uma circunferência "achatada" em uma só direção vira uma <b>elipse</b>.',
+      'Casos extremos: com β paralelo a α, sai uma circunferência igual; com β perpendicular a α, sai um segmento de medida 2r.']},
+  {e:'Por definição, o ângulo entre uma reta oblíqua <b>r</b> e um plano α é o ângulo formado entre:',
+   c:'r e a projeção ortogonal de r sobre α',
+   d:['r e qualquer reta de α','r e a perpendicular a α','r e a interseção de α com o plano de r','a projeção de r e a perpendicular a α'],
+   k:'ângulo(r, α) = ângulo(r, r′)',
+   r:['Entre todas as retas do plano, a projeção <span class="mono">r′</span> é a que forma o <b>menor</b> ângulo com r.',
+      'Por isso ela é a escolhida como referência na definição.',
+      'Consequência prática: para achar o ângulo, sempre desenhe a projeção e forme o triângulo retângulo.']},
+  {e:'Um segmento <b>AB</b> é paralelo a um plano α. Sobre a projeção ortogonal A′B′ de AB sobre α, é correto afirmar:',
+   c:'A′B′ tem a mesma medida de AB', d:['A′B′ é um ponto','A′B′ mede metade de AB','A′B′ é maior que AB','A′B′ é perpendicular a AB'],
+   k:'θ = 0° ⟹ A′B′ = AB',
+   r:['Com AB paralelo ao plano, o ângulo entre eles é <span class="mono">0°</span>.',
+      '<span class="mono">A′B′ = AB · cos 0° = AB</span>: a figura projetada é <b>congruente</b> à original.',
+      'A projeção forma um retângulo com o segmento original.']}
+];
+
+/* ---------- 4. vetores e geometria analítica ---------- */
+function vetProjecao(){
+  const v=pick([[3,4],[4,3],[1,1],[2,1],[1,2],[1,-1],[-3,4],[3,-4]]);
+  const k=pick([1,1,2,-1]), j=pick([1,-1]);
+  const w=[-v[1],v[0]];
+  const pr=[k*v[0],k*v[1]];
+  const u=[pr[0]+j*w[0],pr[1]+j*w[1]];
+  const par=q=>'('+num(q[0])+', '+num(q[1])+')';
+  const mm=montar(par(pr),[
+    par([j*w[0],j*w[1]]), par(u), par(v),
+    par([(k+1)*v[0],(k+1)*v[1]]), par([pr[1],pr[0]]), par([-pr[0],-pr[1]]),
+    par([pr[0]+v[0],pr[1]+v[1]]), par([pr[0]-v[0],pr[1]-v[1]]), par([2*pr[0],2*pr[1]])
+  ]);
+  const uv=u[0]*v[0]+u[1]*v[1], v2=v[0]*v[0]+v[1]*v[1];
+  return {assunto:'vetor',
+    enunciado:'Considere os vetores <span class="dado">u = '+par(u)+'</span> e <span class="dado">v = '+par(v)+
+      '</span>. Qual é a projeção ortogonal de <b>u sobre v</b>?',
+    figura:figVetores(u,v,pr),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'proj_v u = ((u · v)/|v|²) · v',
+    resolucao:[
+      'Produto escalar: <span class="mono">u · v = '+num(u[0])+'·'+num(v[0])+' + '+num(u[1])+'·'+num(v[1])+' = '+num(uv)+'</span>.',
+      'Módulo ao quadrado de v: <span class="mono">|v|² = '+num(v[0])+'² + '+num(v[1])+'² = '+num(v2)+'</span>.',
+      '<span class="mono">proj = ('+num(uv)+'/'+num(v2)+') · '+par(v)+' = '+num(uv/v2)+' · '+par(v)+' = '+par(pr)+'</span>.',
+      'Confira: a projeção é sempre <b>múltipla de v</b>, e <span class="mono">u − proj = '+
+        par([u[0]-pr[0],u[1]-pr[1]])+'</span> é ortogonal a v.'
+    ]};
+}
+function vetMedida(){
+  const v=pick([[3,4],[4,3],[-3,4],[6,8],[5,0],[0,5],[5,12],[12,5]]);
+  const k=pick([1,2,1]), j=pick([1,-1]);
+  const w=[-v[1],v[0]], pr=[k*v[0],k*v[1]];
+  const u=[pr[0]+j*w[0],pr[1]+j*w[1]];
+  const nv=Math.hypot(v[0],v[1]), nu=Math.hypot(u[0],u[1]);
+  const uv=u[0]*v[0]+u[1]*v[1], v2=nv*nv;
+  const par=q=>'('+num(q[0])+', '+num(q[1])+')';
+  const mm=montar(num(k*nv),[
+    num(Math.round(nu*100)/100), num(uv), num(Math.round(uv/nu*100)/100),
+    num(nv), num(k*nv*2), num(k*nv/2), num(k*nv+nv), num(Math.round(nu*nv*100)/100)
+  ]);
+  return {assunto:'vetor',
+    enunciado:'Dados <span class="dado">u = '+par(u)+'</span> e <span class="dado">v = '+par(v)+
+      '</span>, qual é o <b>comprimento</b> da projeção ortogonal de u sobre v?',
+    figura:figVetores(u,v,pr),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'|proj_v u| = |u · v| / |v|',
+    resolucao:[
+      '<span class="mono">u · v = '+num(uv)+'</span> e <span class="mono">|v| = √'+num(v2)+' = '+num(nv)+'</span>.',
+      '<span class="mono">|proj| = |u·v|/|v| = '+num(Math.abs(uv))+'/'+num(nv)+' = '+num(k*nv)+'</span>.',
+      'Erro clássico: dividir por <span class="mono">|u|</span> em vez de <span class="mono">|v|</span> — '+
+        'a projeção mora na direção de <b>v</b>.'
+    ]};
+}
+function vetPontoReta(){
+  const d=pick([[1,1],[1,2],[2,1],[3,4],[1,-1],[4,3]]);
+  const t=pick([1,2,-1,2]), s=pick([1,-1,2]);
+  const w=[-d[1],d[0]];
+  const F=[t*d[0],t*d[1]];
+  const Pp=[F[0]+s*w[0],F[1]+s*w[1]];
+  const par=q=>'('+num(q[0])+', '+num(q[1])+')';
+  const mm=montar(par(F),[
+    par(Pp), par([s*w[0],s*w[1]]), par(d),
+    par([F[1],F[0]]), par([Pp[0],0]), par([0,Pp[1]]),
+    par([F[0]+d[0],F[1]+d[1]]), par([-F[0],-F[1]]), par([2*F[0],2*F[1]])
+  ]);
+  return {assunto:'vetor',
+    enunciado:'Seja <b>r</b> a reta que passa pela origem e tem a direção do vetor <span class="dado">d = '+par(d)+
+      '</span>. Qual é a projeção ortogonal do ponto <span class="dado">P'+par(Pp)+'</span> sobre a reta r?',
+    figura:figVetores(Pp,d,F),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'a projeção de P sobre r é proj_d(OP)',
+    resolucao:[
+      'Projetar o ponto P sobre r é projetar o vetor <span class="mono">OP = '+par(Pp)+'</span> sobre a direção '+
+        '<span class="mono">d = '+par(d)+'</span>.',
+      '<span class="mono">OP · d = '+num(Pp[0]*d[0]+Pp[1]*d[1])+'</span> e <span class="mono">|d|² = '+
+        num(d[0]*d[0]+d[1]*d[1])+'</span>.',
+      '<span class="mono">proj = ('+num(Pp[0]*d[0]+Pp[1]*d[1])+'/'+num(d[0]*d[0]+d[1]*d[1])+')·'+par(d)+' = '+par(F)+'</span>.',
+      'O pé da perpendicular é o ponto de r <b>mais próximo</b> de P — daí a distância de ponto a reta.'
+    ]};
+}
+function vetDistancia(){
+  const d=pick([[3,4],[4,3],[-3,4],[3,-4]]);
+  const t=pick([1,-1]), s=pick([2,-2,3,-3]);
+  const w=[-d[1],d[0]], F=[t*d[0],t*d[1]];
+  const Pp=[F[0]+s*w[0],F[1]+s*w[1]];
+  const nd=Math.hypot(d[0],d[1]);
+  const par=q=>'('+num(q[0])+', '+num(q[1])+')';
+  const mm=montar(num(Math.abs(s)*nd),[
+    num(Math.round(Math.hypot(Pp[0],Pp[1])*100)/100), num(Math.abs(s)),
+    num(Math.abs(t)*nd), num(nd), num(Math.abs(s)*nd*2),
+    num(Math.abs(s)*nd/2), num(Math.abs(s)*nd+nd), num(Math.abs(s)*Math.abs(t))
+  ]);
+  return {assunto:'vetor',
+    enunciado:'A reta <b>r</b> passa pela origem com direção <span class="dado">d = '+par(d)+'</span> e o ponto '+
+      '<span class="dado">P'+par(Pp)+'</span> está fora dela. Qual é a <b>distância</b> de P até r?',
+    figura:figVetores(Pp,d,F),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'d(P, r) = |P − proj_d P|',
+    resolucao:[
+      'A distância de um ponto a uma reta é medida até a <b>projeção ortogonal</b> dele na reta.',
+      'A projeção de P sobre r é <span class="mono">P′ = '+par(F)+'</span>.',
+      'Logo <span class="mono">d = |P − P′| = |'+par([Pp[0]-F[0],Pp[1]-F[1]])+'| = √'+
+        num((Pp[0]-F[0])*(Pp[0]-F[0])+(Pp[1]-F[1])*(Pp[1]-F[1]))+' = '+num(Math.abs(s)*nd)+'</span>.',
+      'O vetor <span class="mono">P − P′</span> é justamente a componente de P <b>ortogonal</b> a d.'
+    ]};
+}
+const BANCO_VETOR=[
+  {e:'Sendo <span class="dado">proj_v u</span> a projeção ortogonal de u sobre v, o vetor <span class="dado">u − proj_v u</span> é:',
+   c:'ortogonal a v', d:['paralelo a v','igual a u','o vetor nulo, sempre','ortogonal a u'],
+   k:'u = proj_v u + componente ortogonal',
+   r:['Todo vetor u se decompõe em duas parcelas: uma <b>paralela</b> a v (a projeção) e outra <b>ortogonal</b> a v.',
+      'A parcela ortogonal é exatamente <span class="mono">u − proj_v u</span>.',
+      'Verificação: <span class="mono">(u − proj_v u) · v = 0</span>.']},
+  {e:'Se os vetores <b>u</b> e <b>v</b> são ortogonais e não nulos, então a projeção ortogonal de u sobre v é:',
+   c:'o vetor nulo', d:['o próprio u','o próprio v','um vetor de mesmo módulo que u','um vetor ortogonal a v'],
+   k:'u ⊥ v ⟹ u · v = 0',
+   r:['Se u ⊥ v, então <span class="mono">u · v = 0</span>.',
+      'Na fórmula <span class="mono">proj = ((u·v)/|v|²)·v</span>, o numerador zera.',
+      'Resultado: o <b>vetor nulo</b> — é o caso análogo ao segmento perpendicular à reta, cuja projeção é um ponto.']},
+  {e:'Na fórmula da projeção ortogonal de u sobre v, o denominador correto é:',
+   c:'|v|²', d:['|u|²','|u|·|v|','|v|','|u|²·|v|²'],
+   k:'proj_v u = ((u · v)/|v|²) · v',
+   r:['A projeção precisa ser um <b>múltiplo de v</b>, e o fator multiplicativo é <span class="mono">(u·v)/|v|²</span>.',
+      'Trocar por <span class="mono">|u|²</span> é o erro mais comum: daria a projeção de <b>v sobre u</b> (com o vetor errado do lado de fora).']}
+];
+
+/* ---------- 5. vistas ortográficas ---------- */
+function setaFrente(P3,reg2,W,Dd){
+  const tip=P3([W/2,Dd,0.4]);
+  const tail=reg2([tip[0]-54,tip[1]+34]);
+  const dx=tip[0]-tail[0],dy=tip[1]-tail[1],m=Math.hypot(dx,dy),ux=dx/m,uy=dy/m,px=-uy,py=ux;
+  const p1=[tip[0]-11*ux+5*px,tip[1]-11*uy+5*py], p2=[tip[0]-11*ux-5*px,tip[1]-11*uy-5*py];
+  reg2([tail[0]-24,tail[1]+14]);
+  return L(tail[0],tail[1],tip[0]-8*ux,tip[1]-8*uy,'fg-linha')+
+    poly([[tip[0]-3*ux,tip[1]-3*uy],p1,p2],'fg-pt')+
+    T(tail[0]-2,tail[1]+15,'frente','fg-rot mono','middle');
+}
+function figSolido(S){
+  return figIso(S.hm,S.W,S.D,30,(P3,reg2)=>setaFrente(P3,reg2,S.W,S.D));
+}
+function figAlturas(S){
+  const s=30; let inner='';
+  for(let r=0;r<S.D;r++){
+    const y=S.D-1-r;
+    for(let x=0;x<S.W;x++){
+      const h=S.hm[x][y];
+      inner+='<rect x="'+(x*s)+'" y="'+(r*s)+'" width="'+s+'" height="'+s+'" class="'+(h?'gr-cheia':'gr-vazia')+'"/>';
+      if(h) inner+=T(x*s+s/2,r*s+s/2+5,String(h),'fg-rot','middle');
+    }
+  }
+  inner+=T(S.W*s/2,S.D*s+18,'frente','fg-rot mono','middle');
+  return svgFig('-3 -3 '+(S.W*s+6)+' '+(S.D*s+30),inner,'Alturas de cada coluna vistas de cima',S.W*s+6);
+}
+function painelVistas(S){
+  const mk=(g,t)=>'<div style="display:flex;flex-direction:column;align-items:center;gap:6px">'+
+    figGrade(g,22,'vista '+t)+'<span class="fig-legenda">'+t+'</span></div>';
+  return '<div style="display:flex;gap:26px;justify-content:center;flex-wrap:wrap;align-items:flex-end">'+
+    mk(vistaFrontal(S),'frontal')+mk(vistaSuperior(S),'superior')+mk(vistaLateral(S),'lateral esq.')+'</div>';
+}
+function distratoresGrade(g){
+  const fora=[], vistos=new Set([chaveGrade(g)]);
+  const base=[espelhaH(g),espelhaV(g),gira180(g)];
+  for(let i=0;i<80&&fora.length<8;i++){
+    const cand = i<3 ? base[i] : mexeCelula(i%5===0?gira180(g):g);
+    if(!cand) continue;
+    const k=chaveGrade(cand);
+    if(vistos.has(k)) continue;
+    vistos.add(k); fora.push(cand);
+  }
+  return shuffle(fora);
+}
+function vistaQual(){
+  const S=geraSolido();
+  const qual=pick(['frontal','superior','lateral','frontal','superior']);
+  const g = qual==='frontal'?vistaFrontal(S):(qual==='superior'?vistaSuperior(S):vistaLateral(S));
+  const cands=[{key:chaveGrade(g),svg:figGrade(g,26)}];
+  for(const o of distratoresGrade(g)) cands.push({key:chaveGrade(o),svg:figGrade(o,26)});
+  const mm=montarFig(chaveGrade(g),cands);
+  const txt={
+    frontal:'Qual é a <b>vista frontal</b> do sólido abaixo, isto é, o que se enxerga olhando na direção indicada por "frente"?',
+    superior:'Qual é a <b>vista superior</b> do sólido abaixo (olhando de cima)? Como manda o 1º diedro, considere a <b>frente do objeto voltada para baixo</b> no desenho.',
+    lateral:'Qual é a <b>vista lateral esquerda</b> do sólido abaixo (olhando pelo lado esquerdo)? Como manda o 1º diedro, a <b>frente do objeto aparece à direita</b> no desenho.'
+  }[qual];
+  const comoTxt={
+    frontal:'Olhando de frente, a <b>profundidade some</b>: sobram largura e altura. Em cada coluna de largura, o contorno sobe até a <b>maior</b> altura daquela fileira.',
+    superior:'Olhando de cima, a <b>altura some</b>: sobram largura e profundidade. Basta marcar as casas que têm pelo menos um cubo, sem se importar com quantos.',
+    lateral:'Olhando pelo lado, a <b>largura some</b>: sobram profundidade e altura. Em cada faixa de profundidade, o contorno sobe até a maior altura encontrada.'
+  }[qual];
+  return {assunto:'vistas',
+    enunciado:txt,figura:figSolido(S),tipo:'figura',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'vista frontal: largura × altura · superior: largura × profundidade · lateral: profundidade × altura',
+    resolucao:[
+      comoTxt,
+      'Um jeito seguro de resolver: anote de cima a altura de cada coluna de cubos —',
+      figAlturas(S),
+      'Com esse mapa, cada vista sai por leitura direta: '+
+        '<b>frontal</b> = maior altura de cada coluna vertical do mapa; '+
+        '<b>superior</b> = as casas preenchidas; '+
+        '<b>lateral esquerda</b> = maior altura de cada linha do mapa, com a frente à direita.',
+      'As alternativas erradas costumam ser a vista <b>espelhada</b> — por isso a orientação (onde fica a frente) vale nota.'
+    ]};
+}
+function vistaSolido(){
+  const S=geraSolido();
+  const ch=s=>chaveGrade(vistaFrontal(s))+'#'+chaveGrade(vistaSuperior(s))+'#'+chaveGrade(vistaLateral(s));
+  const cands=[{key:ch(S),svg:figSolido(S)}];
+  for(let i=0;i<30&&cands.length<7;i++){
+    const O=geraSolido();
+    cands.push({key:ch(O),svg:figSolido(O)});
+  }
+  const mm=montarFig(ch(S),cands);
+  return {assunto:'vistas',
+    enunciado:'As três vistas ortográficas abaixo (1º diedro) foram tiradas de um sólido formado por cubos iguais. '+
+      '<b>Qual dos sólidos</b> corresponde a elas?',
+    figura:painelVistas(S),tipo:'figura',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'cruzar as três vistas: largura, profundidade e altura',
+    resolucao:[
+      'Comece pela <b>vista superior</b>: ela dá a planta, ou seja, quais casas do chão estão ocupadas.',
+      'A <b>vista frontal</b> diz, para cada coluna de largura, qual é a altura máxima; a <b>lateral</b> faz o mesmo para cada profundidade.',
+      'Cruzando as três, o sólido correto é o abaixo — confira contando as alturas de cada coluna:',
+      figAlturas(S),
+      'Nas alternativas erradas, quase sempre uma única coluna tem altura trocada. Compare coluna a coluna, não a silhueta inteira de uma vez.'
+    ]};
+}
+function vistaContagem(){
+  const S=geraSolido();
+  const t=S.total;
+  const mm=montar(num(t)+' cubos',[num(t-1)+' cubos',num(t+1)+' cubos',num(t-2)+' cubos',num(t+2)+' cubos',num(t+3)+' cubos']);
+  return {assunto:'vistas',
+    enunciado:'O sólido abaixo é formado por cubos iguais e maciço (não há cubos flutuando nem buracos escondidos). '+
+      '<b>Quantos cubos</b> o formam?',
+    figura:figSolido(S),tipo:'texto',
+    alternativas:mm.alternativas,correta:mm.correta,
+    chave:'conte por colunas, não por faces visíveis',
+    resolucao:[
+      'Conte <b>coluna por coluna</b>, usando a planta do sólido e a altura de cada pilha:',
+      figAlturas(S),
+      'Somando as alturas: <span class="mono">'+(function(){const v=[];for(let y=S.D-1;y>=0;y--)for(let x=0;x<S.W;x++) if(S.hm[x][y]) v.push(S.hm[x][y]);return v.join(' + ')+' = '+t;})()+'</span>.',
+      'Contar faces visíveis leva a erro: as faces de trás e de baixo não aparecem no desenho isométrico.'
+    ]};
+}
+const BANCO_VISTAS=[
+  {e:'No <b>1º diedro</b> (norma ABNT, usada no Brasil), a vista superior é desenhada:',
+   c:'abaixo da vista frontal', d:['acima da vista frontal','à esquerda da vista frontal','à direita da vista frontal','sobreposta à vista frontal'],
+   k:'1º diedro: superior embaixo, lateral esquerda à direita',
+   r:['No 1º diedro o objeto fica <b>entre</b> o observador e o plano de projeção: a imagem é "empurrada" para o outro lado.',
+      'Ao rebater os planos, a vista de cima vai parar <b>embaixo</b> e a vista do lado esquerdo vai parar à <b>direita</b>.',
+      'No 3º diedro (americano) é o contrário: superior em cima, lateral esquerda à esquerda.']},
+  {e:'No 1º diedro, a <b>vista lateral esquerda</b> de uma peça é desenhada:',
+   c:'à direita da vista frontal', d:['à esquerda da vista frontal','acima da vista frontal','abaixo da vista frontal','em folha separada'],
+   k:'1º diedro inverte o lado da vista lateral',
+   r:['A vista obtida olhando pela <b>esquerda</b> é projetada no plano que está à <b>direita</b> do objeto.',
+      'Rebatendo esse plano, o desenho aparece à direita da vista frontal.',
+      'Além disso, a frente do objeto fica do lado <b>mais afastado</b> da vista frontal, ou seja, à direita do desenho.']},
+  {e:'Numa vista ortográfica, uma aresta que existe na peça mas fica <b>escondida</b> pelo próprio material é representada por:',
+   c:'linha tracejada', d:['linha contínua larga','linha traço-ponto estreita','linha contínua estreita','nenhuma linha — arestas ocultas não se representam'],
+   k:'contínua larga = visível · tracejada = oculta · traço-ponto = eixo',
+   r:['Linha <b>contínua larga</b>: arestas e contornos visíveis.',
+      'Linha <b>tracejada</b>: arestas ocultas — existem, mas não são vistas daquele ponto de observação.',
+      'Linha <b>traço-ponto estreita</b>: eixos e linhas de centro.']},
+  {e:'Na <b>vista superior</b> de uma peça aparecem, em verdadeira grandeza:',
+   c:'a largura e a profundidade', d:['a largura e a altura','a altura e a profundidade','somente a largura','a altura e a diagonal'],
+   k:'cada vista mostra duas das três dimensões',
+   r:['Cada vista ortográfica perde justamente a dimensão que está na direção do olhar.',
+      'De cima, perde-se a <b>altura</b>: sobram largura e profundidade.',
+      'De frente: largura e altura. Do lado: profundidade e altura.']},
+  {e:'A projeção usada no desenho técnico é <b>ortogonal</b> porque os raios projetantes são:',
+   c:'paralelos entre si e perpendiculares ao plano de projeção',
+   d:['convergentes para o olho do observador','paralelos e inclinados 30° em relação ao plano','divergentes a partir da peça','perpendiculares entre si'],
+   k:'projeção cilíndrica ortogonal',
+   r:['Na projeção <b>cônica</b> (perspectiva) os raios convergem para um ponto: a peça parece menor ao longe.',
+      'Na projeção <b>ortogonal</b> eles são paralelos e caem a 90° no plano, então as medidas paralelas ao plano ficam em <b>verdadeira grandeza</b>.',
+      'É por isso que o desenho técnico pode ser medido com escala — a perspectiva, não.']},
+  {e:'Duas peças diferentes podem ter exatamente a <b>mesma vista frontal</b>. Para evitar ambiguidade, o desenho técnico:',
+   c:'usa mais de uma vista, em geral três', d:['usa sempre escala 1:1','usa cores diferentes','usa apenas a perspectiva isométrica','proíbe linhas tracejadas'],
+   k:'uma vista não determina o sólido',
+   r:['Uma única projeção perde uma dimensão inteira, então infinitos sólidos podem ter a mesma vista.',
+      'Combinando <b>frontal + superior + lateral</b>, cada dimensão aparece em duas vistas e a peça fica determinada.',
+      'Quando ainda assim resta dúvida, acrescentam-se cortes ou vistas auxiliares.']}
+];
+
+/* ==================== aplicação ==================== */
+const ASSUNTOS=[
+  {id:'reta',nome:'Projeção sobre reta',curto:'Sobre reta'},
+  {id:'triangulo',nome:'Triângulo retângulo',curto:'Triângulo retângulo'},
+  {id:'plano',nome:'Projeção sobre plano',curto:'Sobre plano'},
+  {id:'vetor',nome:'Vetores e analítica',curto:'Vetores'},
+  {id:'vistas',nome:'Vistas ortográficas',curto:'Vistas ortográficas'}
+];
+const GER={
+  reta:[retaComprimento,retaComprimento,retaAngulo,retaDistancia,()=>conceitual('reta',pick(BANCO_RETA))],
+  triangulo:[triAltura,triCateto,triProjecao,triProjDoisDados,()=>conceitual('triangulo',pick(BANCO_TRI))],
+  plano:[planoSegmento,planoArea,planoCubo,planoCuboAngulo,planoAngulo,planoPiramide,()=>conceitual('plano',pick(BANCO_PLANO))],
+  vetor:[vetProjecao,vetMedida,vetPontoReta,vetDistancia,()=>conceitual('vetor',pick(BANCO_VETOR))],
+  vistas:[vistaQual,vistaQual,vistaSolido,vistaContagem,()=>conceitual('vistas',pick(BANCO_VISTAS))]
+};
+const SIM_N=10, SIM_SEG=20*60, CHAVE='mkre-projecao-v1';
+const el=id=>document.getElementById(id);
+const nomeAssunto=id=>(ASSUNTOS.find(a=>a.id===id)||{nome:id}).nome;
+
+let stats=(function(){
+  try{const r=localStorage.getItem(CHAVE); if(r){const o=JSON.parse(r); if(o&&o.porAssunto) return o;}}catch(e){}
+  return {ok:0,tot:0,seq:0,melhor:0,porAssunto:{}};
+})();
+function salva(){try{localStorage.setItem(CHAVE,JSON.stringify(stats));}catch(e){}}
+
+const estado={modo:'treino',assunto:'misto',q:null,respondida:false,ultimoGer:null,sim:null};
+
+function sorteiaQuestao(){
+  const alvos = estado.assunto==='misto' ? ASSUNTOS.map(a=>a.id) : [estado.assunto];
+  for(let t=0;t<14;t++){
+    const g=pick(GER[pick(alvos)]);
+    if(g===estado.ultimoGer && t<8) continue;
+    estado.ultimoGer=g; return g();
+  }
+  return pick(GER[pick(alvos)])();
+}
+
+/* ---------- placar e desempenho ---------- */
+function pintaBarra(){
+  el('pl-acertos').textContent=stats.ok;
+  el('pl-total').textContent=stats.tot;
+  el('pl-seq').textContent=stats.seq;
+}
+function pintaDesempenho(){
+  let s='';
+  for(const a of ASSUNTOS){
+    const p=stats.porAssunto[a.id]||{ok:0,tot:0};
+    const pct=p.tot?Math.round(p.ok/p.tot*100):0;
+    let selo='';
+    if(p.tot>=3&&pct<60) selo='<span class="selo rever">reforçar</span>';
+    else if(p.tot>=3&&pct>=80) selo='<span class="selo firme">firme</span>';
+    s+='<div class="barra-item">'+
+       '<span class="barra-nome">'+a.nome+selo+'</span>'+
+       '<span class="barra-val">'+(p.tot?(p.ok+'/'+p.tot+' · '+pct+'%'):'ainda sem registro')+'</span>'+
+       '<span class="trilho"><i style="width:'+(p.tot?Math.max(pct,2):0)+'%"></i></span></div>';
+  }
+  el('barras').innerHTML=s;
+}
+function registra(assunto,acertou){
+  stats.tot++;
+  if(acertou){stats.ok++;stats.seq++;stats.melhor=Math.max(stats.melhor,stats.seq);} else stats.seq=0;
+  const p=stats.porAssunto[assunto]||(stats.porAssunto[assunto]={ok:0,tot:0});
+  p.tot++; if(acertou)p.ok++;
+  salva(); pintaBarra(); pintaDesempenho();
+}
+
+/* ---------- montagem do cartão ---------- */
+function htmlAlternativas(q,marcada,revelar){
+  let s='<ul class="alts'+(q.tipo==='figura'?' grade':'')+'">';
+  q.alternativas.forEach((a,i)=>{
+    let cls='alt';
+    if(revelar){
+      if(i===q.correta) cls+=' certa';
+      else if(i===marcada) cls+=' errada';
+      else cls+=' apagada';
+    } else if(i===marcada) cls+=' marcada';
+    s+='<li><button type="button" class="'+cls+'" data-i="'+i+'"'+(revelar?' disabled':'')+'>'+
+       '<span class="letra">'+'abcde'[i]+'</span><span class="txt">'+a+'</span></button></li>';
+  });
+  return s+'</ul>';
+}
+function htmlResolucao(q){
+  let s='';
+  if(q.chave) s+='<div class="chave">'+q.chave+'</div>';
+  s+='<ol class="passos">';
+  for(const p of q.resolucao){
+    const fig=/^\s*<(svg|div)/.test(p);
+    s+='<li'+(fig?' class="fig"':'')+'>'+p+'</li>';
+  }
+  return s+'</ol>';
+}
+function htmlCard(q,cab,marcada,revelar){
+  return '<article class="card">'+
+    '<div class="q-head">'+cab+'<span class="tag">'+nomeAssunto(q.assunto)+'</span></div>'+
+    '<p class="enunciado">'+q.enunciado+'</p>'+
+    (q.figura?'<div class="figura">'+q.figura+'</div>':'')+
+    htmlAlternativas(q,marcada,revelar)+'</article>';
+}
+
+/* ---------- modo treino ---------- */
+function novaQuestaoTreino(){
+  estado.q=sorteiaQuestao(); estado.respondida=false; pintaTreino(null);
+}
+function pintaTreino(marcada){
+  const q=estado.q;
+  let s=htmlCard(q,'<span class="tag q">Treino</span>',marcada,estado.respondida);
+  if(estado.respondida){
+    const ok=marcada===q.correta;
+    s+='<div class="feedback '+(ok?'ok':'nao')+'">'+
+       '<div class="fb-topo">'+(ok?'✓ Correto':'✗ Não foi dessa vez')+'</div>'+
+       '<div class="fb-corpo">'+
+       (ok?'':'<p class="sub">Resposta correta: alternativa '+'abcde'[q.correta]+'</p>')+
+       '<p class="sub">Resolução</p>'+htmlResolucao(q)+
+       '<div class="acoes"><button class="btn" id="btn-proxima" type="button">Próxima questão</button></div>'+
+       '<p class="dica-teclado">Atalhos: 1–5 respondem · Enter vai para a próxima</p>'+
+       '</div></div>';
+  } else {
+    s+='<p class="dica-teclado">Escolha uma alternativa — ou use as teclas 1 a 5.</p>';
+  }
+  el('palco').innerHTML=s;
+}
+
+/* ---------- modo simulado ---------- */
+function iniciaSimulado(){
+  const itens=[];
+  for(let i=0;i<SIM_N;i++) itens.push({q:sorteiaQuestao(),marcada:null});
+  estado.sim={i:0,itens,fim:Date.now()+SIM_SEG*1000,timer:null,encerrado:false};
+  el('pl-cron').hidden=false;
+  tiquetaque();
+  estado.sim.timer=setInterval(tiquetaque,1000);
+  pintaSimulado();
+}
+function tiquetaque(){
+  if(!estado.sim||estado.sim.encerrado) return;
+  const rest=Math.max(0,Math.round((estado.sim.fim-Date.now())/1000));
+  el('cron').textContent=String(Math.floor(rest/60)).padStart(2,'0')+':'+String(rest%60).padStart(2,'0');
+  if(rest===0) encerraSimulado();
+}
+function pintaSimulado(){
+  const S=estado.sim, it=S.itens[S.i];
+  let s='<div class="progresso"><i style="width:'+((S.i)/SIM_N*100)+'%"></i></div>';
+  s+=htmlCard(it.q,'<span class="tag q">Questão '+(S.i+1)+' de '+SIM_N+'</span>',it.marcada,false);
+  s+='<div class="acoes">'+
+     '<button class="btn" id="btn-proxima" type="button">'+(S.i===SIM_N-1?'Encerrar e ver o resultado':'Próxima questão')+'</button>'+
+     (S.i>0?'<button class="btn sec" id="btn-voltar" type="button">Voltar</button>':'')+
+     '</div><p class="dica-teclado">No simulado o gabarito só aparece no fim. Você pode voltar e trocar a resposta.</p>';
+  el('palco').innerHTML=s;
+}
+function encerraSimulado(){
+  const S=estado.sim; if(!S||S.encerrado) return;
+  S.encerrado=true; clearInterval(S.timer); el('pl-cron').hidden=true;
+  S.itens.forEach(it=>registra(it.q.assunto,it.marcada===it.q.correta));
+  const acertos=S.itens.filter(it=>it.marcada===it.q.correta).length;
+  const gasto=Math.min(SIM_SEG,Math.round(SIM_SEG-(S.fim-Date.now())/1000));
+  const porAss={};
+  S.itens.forEach(it=>{
+    const p=porAss[it.q.assunto]||(porAss[it.q.assunto]={ok:0,tot:0});
+    p.tot++; if(it.marcada===it.q.correta)p.ok++;
+  });
+  let s='<article class="card relatorio"><h2>Resultado do simulado</h2>'+
+    '<p class="nota"><b>'+acertos+'</b> de '+SIM_N+' · '+Math.round(acertos/SIM_N*100)+'% · tempo '+
+    String(Math.floor(gasto/60)).padStart(2,'0')+':'+String(gasto%60).padStart(2,'0')+'</p>';
+  s+='<p class="sub">Por assunto neste simulado</p><div class="barras" style="margin-top:12px">';
+  for(const id in porAss){
+    const p=porAss[id], pct=Math.round(p.ok/p.tot*100);
+    s+='<div class="barra-item"><span class="barra-nome">'+nomeAssunto(id)+'</span>'+
+       '<span class="barra-val">'+p.ok+'/'+p.tot+' · '+pct+'%</span>'+
+       '<span class="trilho"><i style="width:'+Math.max(pct,2)+'%"></i></span></div>';
+  }
+  s+='</div><p class="sub">Revisão questão a questão</p><ul class="revisao">';
+  S.itens.forEach((it,i)=>{
+    const ok=it.marcada===it.q.correta;
+    s+='<li><details'+(ok?'':' open')+'><summary><span class="marca '+(ok?'ok':'nao')+'">'+(ok?'✓':'✗')+'</span>'+
+       '<span>Questão '+(i+1)+' — '+nomeAssunto(it.q.assunto)+'</span></summary>'+
+       '<div class="corpo"><p class="enunciado" style="font-size:16px;margin-top:12px">'+it.q.enunciado+'</p>'+
+       (it.q.figura?'<div class="figura">'+it.q.figura+'</div>':'')+
+       htmlAlternativas(it.q,it.marcada,true)+
+       '<p class="sub">Resolução</p>'+htmlResolucao(it.q)+'</div></details></li>';
+  });
+  s+='</ul><div class="acoes">'+
+     '<button class="btn" id="btn-novo-sim" type="button">Novo simulado</button>'+
+     '<button class="btn sec" id="btn-treino" type="button">Voltar ao treino</button></div></article>';
+  el('palco').innerHTML=s;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ---------- eventos ---------- */
+el('palco').addEventListener('click',ev=>{
+  const alt=ev.target.closest('.alt');
+  if(alt && !alt.disabled){
+    const i=+alt.dataset.i;
+    if(estado.modo==='treino'){
+      if(estado.respondida) return;
+      estado.respondida=true;
+      registra(estado.q.assunto,i===estado.q.correta);
+      pintaTreino(i);
+    } else if(estado.sim && !estado.sim.encerrado){
+      estado.sim.itens[estado.sim.i].marcada=i;
+      pintaSimulado();
+    }
+    return;
+  }
+  const b=ev.target.closest('button'); if(!b) return;
+  if(b.id==='btn-proxima'){
+    if(estado.modo==='treino'){ novaQuestaoTreino(); }
+    else if(estado.sim && !estado.sim.encerrado){
+      if(estado.sim.i===SIM_N-1) encerraSimulado();
+      else { estado.sim.i++; pintaSimulado(); window.scrollTo({top:0,behavior:'smooth'}); }
+    }
+  } else if(b.id==='btn-voltar'){ estado.sim.i--; pintaSimulado(); }
+  else if(b.id==='btn-novo-sim'){ iniciaSimulado(); }
+  else if(b.id==='btn-treino'){ trocaModo('treino'); }
+});
+function trocaModo(m){
+  estado.modo=m;
+  Array.from(el('modos').children).forEach(b=>b.classList.toggle('on',b.dataset.modo===m));
+  if(estado.sim&&estado.sim.timer) clearInterval(estado.sim.timer);
+  el('pl-cron').hidden=true;
+  if(m==='treino'){ estado.sim=null; novaQuestaoTreino(); } else { iniciaSimulado(); }
+}
+el('modos').addEventListener('click',ev=>{
+  const b=ev.target.closest('button'); if(b) trocaModo(b.dataset.modo);
+});
+(function montaChips(){
+  const alvo=el('chips');
+  const mk=(id,txt)=>{const b=document.createElement('button');b.type='button';b.className='chip'+(id==='misto'?' on':'');b.dataset.id=id;b.textContent=txt;return b;};
+  alvo.appendChild(mk('misto','Misto'));
+  ASSUNTOS.forEach(a=>alvo.appendChild(mk(a.id,a.curto)));
+  alvo.addEventListener('click',ev=>{
+    const b=ev.target.closest('.chip'); if(!b) return;
+    estado.assunto=b.dataset.id;
+    Array.from(alvo.children).forEach(c=>c.classList.toggle('on',c===b));
+    if(estado.modo==='treino') novaQuestaoTreino();
+  });
+})();
+el('btn-zerar').addEventListener('click',()=>{
+  if(!confirm('Apagar o histórico de acertos guardado neste navegador?')) return;
+  stats={ok:0,tot:0,seq:0,melhor:0,porAssunto:{}};
+  salva(); pintaBarra(); pintaDesempenho();
+});
+document.addEventListener('keydown',ev=>{
+  if(ev.metaKey||ev.ctrlKey||ev.altKey) return;
+  const t=ev.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return;
+  const k=(ev.key||'').toLowerCase();
+  let i=-1;
+  if('12345'.indexOf(k)>=0) i=+k-1;
+  else if('abcde'.indexOf(k)>=0 && k.length===1) i='abcde'.indexOf(k);
+  if(i>=0){
+    const b=el('palco').querySelector('.alt[data-i="'+i+'"]');
+    if(b&&!b.disabled){ b.click(); ev.preventDefault(); }
+    return;
+  }
+  if(k==='enter'){ const b=el('btn-proxima'); if(b){ b.click(); ev.preventDefault(); } }
+});
+
+pintaBarra(); pintaDesempenho(); novaQuestaoTreino();
+})();
+</script>

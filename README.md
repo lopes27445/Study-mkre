@@ -23,6 +23,18 @@ com relatório por assunto no fim). O desempenho por assunto fica guardado no na
 com *reforçar* o que está abaixo de 60%. A página traz ainda um formulário com as relações
 usadas e uma lista de armadilhas de prova.
 
+`treino/visao-ortogonal.html` — **prancheta ortogonal**: escolha um sólido ou peça, gire em 3D
+e veja as três vistas saindo dele. Publicado também como página:
+https://claude.ai/artifact/Y8xjshWMMeq68P5RDPtzyJ
+
+Catálogo com 13 objetos — cubo, bloco, cilindro, cone, esfera, pirâmide, prisma hexagonal, cunha,
+peça em L, peça em T, escada, peça com rasgo e peça com furo passante — mais um construtor onde
+você empilha cubos numa grade 4×4 e vê as vistas se refazerem na hora. O desenho técnico é gerado
+por projeção de verdade: linha contínua para aresta visível, tracejada para aresta oculta, e a
+oculta que cai sobre uma visível não é desenhada. Clicando numa vista, o objeto gira até o olhar do
+observador e a silhueta encosta no plano de projeção. Dá para alternar entre 1º e 3º diedro e entre
+lateral esquerda e direita, ligar ou desligar o plano e os raios projetantes.
+
 ## Análise de conteúdo
 
 `analise/mapa-mackenzie.html` — análise comparativa das duas últimas provas, com os

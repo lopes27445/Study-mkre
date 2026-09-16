@@ -1,0 +1,860 @@
+<title>Prancheta Ortogonal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA; --surface:#FFFFFF; --surface-2:#EDF0F5;
+  --ink:#131E36; --grafite:#5A6478; --grafite-soft:#828B9E;
+  --linha:#D9DEE8; --linha-forte:#BAC2D2;
+  --azul:#1B4AA0; --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F; --vermelho-soft:#FBEAE7;
+  --ocre:#84600F; --ocre-soft:#F8F0DC;
+  --verde:#1A6A4C; --verde-soft:#E1F0E8;
+  --solido:#7D93BC; --plano:#1B4AA0; --raio:#84600F;
+  --papel-tec:#FFFFFF;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523; --surface:#161F31; --surface-2:#1D283D;
+    --ink:#E3E8F2; --grafite:#A3AEC4; --grafite-soft:#7E8AA2;
+    --linha:#2A3549; --linha-forte:#3B4863;
+    --azul:#8FB3EE; --azul-soft:#1C2A46;
+    --vermelho:#EE8478; --vermelho-soft:#33201E;
+    --ocre:#DDB667; --ocre-soft:#2C2618;
+    --verde:#62C79A; --verde-soft:#13291F;
+    --solido:#8EA6D0; --plano:#8FB3EE; --raio:#DDB667;
+    --papel-tec:#131A29;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523; --surface:#161F31; --surface-2:#1D283D;
+  --ink:#E3E8F2; --grafite:#A3AEC4; --grafite-soft:#7E8AA2;
+  --linha:#2A3549; --linha-forte:#3B4863;
+  --azul:#8FB3EE; --azul-soft:#1C2A46;
+  --vermelho:#EE8478; --vermelho-soft:#33201E;
+  --ocre:#DDB667; --ocre-soft:#2C2618;
+  --verde:#62C79A; --verde-soft:#13291F;
+  --solido:#8EA6D0; --plano:#8FB3EE; --raio:#DDB667;
+  --papel-tec:#131A29;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding-inline:20px;padding-block:0 72px}
+
+.topo{padding-block:38px 20px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--azul);display:flex;gap:10px;flex-wrap:wrap;margin:0}
+.eyebrow span{color:var(--grafite-soft)}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,42px);line-height:1.08;letter-spacing:-.02em;margin:13px 0 0;text-wrap:balance}
+.dek{font-size:17px;color:var(--grafite);margin:10px 0 0;max-width:62ch;text-wrap:pretty}
+
+/* controles */
+.controles{display:flex;flex-direction:column;gap:12px;padding-block:18px;border-bottom:1px solid var(--linha);margin-bottom:20px}
+.grupo{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.rot{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite-soft);width:66px;flex:0 0 auto}
+.chip{font-family:var(--body);font-size:13.5px;font-weight:600;background:var(--surface);border:1px solid var(--linha);color:var(--grafite);border-radius:999px;padding:6px 13px;cursor:pointer}
+.chip:hover{border-color:var(--linha-forte);color:var(--ink)}
+.chip.on{background:var(--azul-soft);border-color:var(--azul);color:var(--azul)}
+.segmented{display:inline-flex;border:1px solid var(--linha-forte);border-radius:3px;overflow:hidden}
+.segmented button{font-family:var(--body);font-size:13.5px;font-weight:600;background:var(--surface);border:0;color:var(--grafite);padding:7px 14px;cursor:pointer}
+.segmented button + button{border-left:1px solid var(--linha-forte)}
+.segmented button.on{background:var(--ink);color:var(--paper)}
+
+/* estúdio */
+.estudio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:820px){.estudio{grid-template-columns:minmax(0,1fr)}}
+.painel{background:var(--surface);border:1px solid var(--linha);border-radius:4px;box-shadow:var(--shadow);overflow:hidden}
+.painel-topo{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:11px 14px;border-bottom:1px solid var(--linha);background:var(--surface-2)}
+.painel-tit{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite);margin:0}
+.painel-topo .espaco{flex:1 1 auto}
+.mini{font-family:var(--mono);font-size:11px;letter-spacing:.06em;background:var(--surface);border:1px solid var(--linha);color:var(--grafite);border-radius:3px;padding:5px 8px;cursor:pointer}
+.mini:hover{border-color:var(--azul);color:var(--azul)}
+.mini.on{background:var(--azul);border-color:var(--azul);color:#fff}
+#palco3d{display:block;width:100%;height:auto;touch-action:none;cursor:grab;background:var(--papel-tec)}
+#palco3d.arrastando{cursor:grabbing}
+.dica{font-family:var(--mono);font-size:11px;color:var(--grafite-soft);padding:9px 14px;border-top:1px solid var(--linha);margin:0}
+
+/* prancheta */
+.prancheta{background:var(--papel-tec);padding:14px}
+#prancheta{display:block;width:100%;height:auto}
+.grade-vistas{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,auto);gap:8px;align-items:center;justify-items:center}
+.cel{width:100%;display:flex;justify-content:center}
+.vista{border:0;background:none;padding:6px;cursor:pointer;border-radius:3px;display:flex;flex-direction:column;align-items:center;gap:5px;width:100%}
+.vista:hover{background:var(--azul-soft)}
+.vista.ativa{background:var(--azul-soft);outline:1px solid var(--azul)}
+.vista svg{display:block;width:100%;height:auto;max-width:210px}
+.vista-rot{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite)}
+.vista.ativa .vista-rot{color:var(--azul)}
+
+/* legenda e notas */
+.legenda{display:flex;gap:14px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--linha);font-family:var(--mono);font-size:11px;color:var(--grafite)}
+.legenda i{display:inline-block;width:26px;height:0;border-top:2px solid var(--ink);margin-right:6px;vertical-align:middle}
+.legenda i.trac{border-top-style:dashed;border-color:var(--grafite)}
+.legenda i.eixo{border-top:1px dashed var(--azul)}
+.notas{margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.nota{background:var(--surface);border:1px solid var(--linha);border-left:3px solid var(--azul);border-radius:0 3px 3px 0;padding:13px 15px}
+.nota h3{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--azul);margin:0 0 7px}
+.nota p{margin:0;font-size:15px;color:var(--grafite)}
+.nota b{color:var(--ink)}
+.medidas{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.medida{font-family:var(--mono);font-size:11.5px;background:var(--surface-2);border:1px solid var(--linha);border-radius:3px;padding:4px 8px;color:var(--grafite)}
+.medida b{color:var(--ink);font-weight:600}
+
+/* construtor */
+.construtor{margin-top:26px;background:var(--surface);border:1px solid var(--linha);border-radius:4px;padding:18px}
+.construtor h2{font-family:var(--display);font-size:20px;margin:0 0 4px}
+.construtor p.intro{color:var(--grafite);font-size:15px;margin:0 0 14px}
+.malha{display:grid;grid-template-columns:repeat(4,44px);gap:5px;justify-content:start}
+.cubinho{width:44px;height:44px;border:1px solid var(--linha-forte);border-radius:3px;background:var(--surface-2);font-family:var(--mono);font-size:15px;font-weight:600;color:var(--grafite);cursor:pointer;display:grid;place-items:center}
+.cubinho[data-h="1"]{background:color-mix(in srgb,var(--solido) 34%,transparent);color:var(--ink)}
+.cubinho[data-h="2"]{background:color-mix(in srgb,var(--solido) 62%,transparent);color:var(--ink)}
+.cubinho[data-h="3"]{background:var(--solido);color:var(--papel-tec)}
+#previa{display:block;width:100%;height:auto;max-width:300px}
+.malha-legenda{font-family:var(--mono);font-size:11px;color:var(--grafite-soft);margin:10px 0 0}
+.linha-construtor{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+
+footer{margin-top:36px;padding-top:16px;border-top:1px solid var(--linha);font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.8}
+footer a{color:var(--azul)}
+:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+
+/* svg */
+.f3d{stroke:var(--ink);stroke-width:.8;stroke-linejoin:round}
+.a3d{stroke:var(--ink);stroke-width:1.7;fill:none;stroke-linecap:round}
+.plano3d{fill:var(--plano);fill-opacity:.09;stroke:var(--plano);stroke-width:1.2;stroke-dasharray:6 4}
+.img3d{stroke:var(--plano);stroke-width:1.9;fill:none;stroke-linecap:round}
+.img3d.oculta{stroke-dasharray:5 4;stroke-width:1.2;opacity:.75}
+.raio3d{stroke:var(--raio);stroke-width:1;stroke-dasharray:3 5;fill:none;opacity:.85}
+.eixo3d{stroke:var(--grafite-soft);stroke-width:1;stroke-dasharray:4 4}
+.rot3d{fill:var(--grafite);font-family:var(--mono);font-size:11px}
+.v-vis{stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.v-oc{stroke:var(--grafite);stroke-width:1.2;fill:none;stroke-dasharray:6 3.5;stroke-linecap:butt}
+.v-eixo{stroke:var(--azul);stroke-width:.9;stroke-dasharray:7 3 1.5 3}
+.v-chamada{stroke:var(--azul);stroke-width:.7;stroke-dasharray:2 4;opacity:.75}
+</style>
+
+<div class="wrap">
+  <header class="topo">
+    <p class="eyebrow">Study-mkre <span>·</span> Caderno de treino</p>
+    <h1>Prancheta Ortogonal</h1>
+    <p class="dek">Escolha um sólido ou uma peça, gire em 3D e veja as vistas ortográficas saindo dele.
+    Clique numa vista para o objeto se alinhar com o olhar do observador: quando a silhueta encosta
+    no plano de projeção, o desenho é exatamente o que você está vendo.</p>
+  </header>
+
+  <section class="controles">
+    <div class="grupo">
+      <span class="rot">Objeto</span>
+      <div class="chips" id="chips-obj" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+    <div class="grupo">
+      <span class="rot">Diedro</span>
+      <div class="segmented" id="seg-diedro">
+        <button type="button" data-v="1" class="on">1º (ABNT)</button>
+        <button type="button" data-v="3">3º (americano)</button>
+      </div>
+      <span class="rot" style="width:auto;margin-left:10px">Lateral</span>
+      <div class="segmented" id="seg-lado">
+        <button type="button" data-v="esq" class="on">Esquerda</button>
+        <button type="button" data-v="dir">Direita</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="estudio">
+    <section class="painel">
+      <div class="painel-topo">
+        <p class="painel-tit">Sólido em 3D</p>
+        <span class="espaco"></span>
+        <button class="mini" type="button" data-ang="iso">Isométrica</button>
+        <button class="mini" type="button" data-ang="frontal">Frente</button>
+        <button class="mini" type="button" data-ang="superior">Topo</button>
+        <button class="mini" type="button" data-ang="lateral">Lado</button>
+      </div>
+      <svg id="palco3d" viewBox="0 0 480 400" role="img" aria-label="Sólido em três dimensões com o plano de projeção"></svg>
+      <div class="legenda">
+        <button class="mini on" type="button" id="bt-plano">Plano de projeção</button>
+        <button class="mini on" type="button" id="bt-raios">Raios projetantes</button>
+        <button class="mini" type="button" id="bt-aramado">Aramado</button>
+      </div>
+      <p class="dica">Arraste sobre o desenho para girar o objeto.</p>
+    </section>
+
+    <section class="painel">
+      <div class="painel-topo">
+        <p class="painel-tit">Vistas ortográficas</p>
+        <span class="espaco"></span>
+        <span class="vista-rot" id="rot-diedro">1º diedro</span>
+      </div>
+      <div class="prancheta">
+        <svg id="prancheta" viewBox="0 0 400 300" role="img" aria-label="As três vistas ortográficas do objeto"></svg>
+      </div>
+      <div class="legenda">
+        <span><i></i>aresta visível</span>
+        <span><i class="trac"></i>aresta oculta</span>
+        <span><i class="eixo"></i>linha de chamada</span>
+      </div>
+    </section>
+  </div>
+
+  <div class="notas" id="notas"></div>
+
+  <section class="construtor">
+    <h2>Monte o seu sólido</h2>
+    <p class="intro">Clique nas casas para empilhar cubos — cada clique sobe um andar, o quarto zera.
+    As vistas ao lado se refazem na hora. É o exercício mais direto de visão ortogonal: mude uma
+    pilha e veja qual das três vistas muda junto.</p>
+    <div class="linha-construtor">
+      <div>
+        <div class="malha" id="malha"></div>
+        <p class="malha-legenda">↑ fundo do objeto · ↓ frente do objeto</p>
+      </div>
+      <div style="flex:1 1 240px;min-width:220px">
+        <p class="malha-legenda" style="margin:0 0 8px">Pré-visualização</p>
+        <svg id="previa" viewBox="0 0 260 200" role="img" aria-label="Pré-visualização do sólido montado"></svg>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Study-mkre · treino/visao-ortogonal.html<br>
+    Para resolver questões sobre isto: <a href="https://claude.ai/artifact/9XUJruJJYCgf96XGvktocN">Treino de Projeção Ortogonal</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+'use strict';
+/* ============ eixos: x = largura (direita), y = profundidade (fundo), z = altura ============ */
+
+/* ---- construtores de malha ---- */
+function extrudeY(perfil,prof){            /* perfil [x,z] anti-horário visto de frente */
+  const n=perfil.length,verts=[],faces=[];
+  perfil.forEach(p=>verts.push([p[0],0,p[1]]));
+  perfil.forEach(p=>verts.push([p[0],prof,p[1]]));
+  faces.push(perfil.map((_,i)=>i));
+  faces.push(perfil.map((_,i)=>2*n-1-i));
+  for(let i=0;i<n;i++){const j=(i+1)%n; faces.push([i,n+i,n+j,j]);}
+  return {verts,faces};
+}
+function extrudeZ(perfil,alt){             /* perfil [x,y] anti-horário visto de cima */
+  const n=perfil.length,verts=[],faces=[];
+  perfil.forEach(p=>verts.push([p[0],p[1],alt]));
+  perfil.forEach(p=>verts.push([p[0],p[1],0]));
+  faces.push(perfil.map((_,i)=>i));
+  faces.push(perfil.map((_,i)=>2*n-1-i));
+  for(let i=0;i<n;i++){const j=(i+1)%n; faces.push([i,n+i,n+j,j]);}
+  return {verts,faces};
+}
+function circulo(cx,cy,r,n,fase){
+  const p=[]; for(let i=0;i<n;i++){const a=(fase||0)+2*Math.PI*i/n; p.push([cx+r*Math.cos(a),cy+r*Math.sin(a)]);} return p;
+}
+function tuboY(interno,externo,prof){      /* anel entre dois perfis, furo passante em y */
+  const n=interno.length,verts=[],faces=[];
+  const put=p=>{verts.push(p);return verts.length-1;};
+  const ci=interno.map(p=>put([p[0],0,p[1]])), ce=externo.map(p=>put([p[0],0,p[1]]));
+  const bi=interno.map(p=>put([p[0],prof,p[1]])), be=externo.map(p=>put([p[0],prof,p[1]]));
+  for(let i=0;i<n;i++){const j=(i+1)%n;
+    faces.push([ci[i],ce[i],ce[j],ci[j]]);          /* anel da frente  (−y) */
+    faces.push([bi[i],bi[j],be[j],be[i]]);          /* anel de trás    (+y) */
+    faces.push([ci[i],ci[j],bi[j],bi[i]]);          /* parede do furo (para dentro) */
+    faces.push([ce[i],be[i],be[j],ce[j]]);          /* faces externas */
+  }
+  return {verts,faces};
+}
+function voxels(hm,W,D){                   /* hm[x][y] = altura em cubos */
+  const verts=[],faces=[],mapa=new Map();
+  const id=(x,y,z)=>{const k=x+','+y+','+z; if(mapa.has(k))return mapa.get(k);
+    mapa.set(k,verts.length); verts.push([x,y,z]); return verts.length-1;};
+  const cheio=(x,y,z)=>x>=0&&y>=0&&x<W&&y<D&&z>=0&&z<hm[x][y];
+  for(let x=0;x<W;x++)for(let y=0;y<D;y++)for(let z=0;z<hm[x][y];z++){
+    if(!cheio(x,y-1,z)) faces.push([id(x,y,z),id(x+1,y,z),id(x+1,y,z+1),id(x,y,z+1)]);
+    if(!cheio(x,y+1,z)) faces.push([id(x,y+1,z),id(x,y+1,z+1),id(x+1,y+1,z+1),id(x+1,y+1,z)]);
+    if(!cheio(x-1,y,z)) faces.push([id(x,y,z),id(x,y,z+1),id(x,y+1,z+1),id(x,y+1,z)]);
+    if(!cheio(x+1,y,z)) faces.push([id(x+1,y,z),id(x+1,y+1,z),id(x+1,y+1,z+1),id(x+1,y,z+1)]);
+    if(!cheio(x,y,z-1)) faces.push([id(x,y,z),id(x,y+1,z),id(x+1,y+1,z),id(x+1,y,z)]);
+    if(!cheio(x,y,z+1)) faces.push([id(x,y,z+1),id(x+1,y,z+1),id(x+1,y+1,z+1),id(x,y+1,z+1)]);
+  }
+  return {verts,faces};
+}
+function esfera(r,nu,nv){
+  const verts=[],faces=[];
+  for(let j=0;j<=nv;j++){const fi=Math.PI*j/nv;
+    for(let i=0;i<nu;i++){const te=2*Math.PI*i/nu;
+      verts.push([r*Math.sin(fi)*Math.cos(te), r*Math.sin(fi)*Math.sin(te), r*Math.cos(fi)]);}}
+  const at=(i,j)=>(j*nu)+(i%nu);
+  for(let j=0;j<nv;j++)for(let i=0;i<nu;i++){
+    const a=at(i,j),b=at(i+1,j),c=at(i+1,j+1),d=at(i,j+1);
+    if(j===0) faces.push([a,c,d]); else if(j===nv-1) faces.push([a,b,d]); else faces.push([a,b,c,d]);
+  }
+  return {verts,faces};
+}
+function piramide(perfilBase,alt){          /* base no plano z=0, ápice no centro */
+  const n=perfilBase.length,verts=[],faces=[];
+  perfilBase.forEach(p=>verts.push([p[0],p[1],0]));
+  let cx=0,cy=0; perfilBase.forEach(p=>{cx+=p[0];cy+=p[1];}); cx/=n; cy/=n;
+  verts.push([cx,cy,alt]); const ap=n;
+  faces.push(perfilBase.map((_,i)=>n-1-i));   /* base para baixo */
+  for(let i=0;i<n;i++) faces.push([i,(i+1)%n,ap]);
+  return {verts,faces};
+}
+
+/* ---- catálogo ---- */
+function centraliza(m){
+  let mn=[1e9,1e9,1e9],mx=[-1e9,-1e9,-1e9];
+  m.verts.forEach(v=>{for(let k=0;k<3;k++){mn[k]=Math.min(mn[k],v[k]);mx[k]=Math.max(mx[k],v[k]);}});
+  m.dim={l:mx[0]-mn[0], p:mx[1]-mn[1], a:mx[2]-mn[2]};
+  m.centro=[(mn[0]+mx[0])/2,(mn[1]+mx[1])/2,(mn[2]+mx[2])/2];
+  m.min=mn; m.max=mx;
+  m.raio=Math.max(m.dim.l,m.dim.p,m.dim.a);
+  return m;
+}
+const CATALOGO=[
+  {id:'cubo',nome:'Cubo',grupo:'forma',faz:()=>extrudeY([[0,0],[6,0],[6,6],[0,6]],6),
+   nota:'As três vistas do cubo são quadrados iguais. É o único sólido em que trocar a vista não muda nada — por isso ele sozinho não prova que você entendeu a projeção.'},
+  {id:'bloco',nome:'Bloco',grupo:'forma',faz:()=>extrudeY([[0,0],[9,0],[9,4],[0,4]],5),
+   nota:'Cada vista mostra duas das três medidas: a frontal dá largura e altura, a superior dá largura e profundidade, a lateral dá profundidade e altura.'},
+  {id:'cilindro',nome:'Cilindro',grupo:'forma',faz:()=>extrudeZ(circulo(0,0,3.2,36),7),
+   nota:'De frente e de lado o cilindro vira um retângulo; só de cima aparece o círculo. Duas vistas iguais e uma diferente é a assinatura dos sólidos de revolução.'},
+  {id:'cone',nome:'Cone',grupo:'forma',faz:()=>piramide(circulo(0,0,3.4,36),7),
+   nota:'Frontal e lateral são triângulos idênticos; a superior é um círculo. A geratriz que aparece no contorno do triângulo é a silhueta — não é uma aresta do sólido.'},
+  {id:'esfera',nome:'Esfera',grupo:'forma',faz:()=>esfera(3.4,28,16),
+   nota:'As três vistas são círculos iguais. Sem eixos e sem outra referência, nenhuma vista distingue a esfera de um disco visto de frente.'},
+  {id:'piramide',nome:'Pirâmide',grupo:'forma',faz:()=>piramide([[-3,-3],[3,-3],[3,3],[-3,3]],7),
+   nota:'Na vista superior aparecem as quatro arestas laterais como as diagonais do quadrado — elas se projetam sobre o plano da base porque o ápice cai no centro.'},
+  {id:'prisma',nome:'Prisma hexagonal',grupo:'forma',faz:()=>extrudeZ(circulo(0,0,3.4,6,Math.PI/6),6.5),
+   nota:'A vista superior mostra o hexágono em verdadeira grandeza. Na frontal, as faces inclinadas ficam mais estreitas do que realmente são: é a projeção encurtando.'},
+  {id:'cunha',nome:'Cunha',grupo:'forma',faz:()=>extrudeY([[0,0],[9,0],[9,5]],5),
+   nota:'A face inclinada não aparece em verdadeira grandeza em nenhuma das três vistas — só na frontal ela vira uma linha reta, e nas outras duas ela encurta.'},
+  {id:'L',nome:'Peça em L',grupo:'peca',faz:()=>extrudeY([[0,0],[9,0],[9,3],[3.5,3],[3.5,8],[0,8]],5),
+   nota:'O degrau do L aparece como um canto na vista frontal, mas some na superior e na lateral: cada vista só enxerga o contorno naquela direção.'},
+  {id:'T',nome:'Peça em T',grupo:'peca',faz:()=>extrudeY([[0,0],[9,0],[9,2.8],[5.9,2.8],[5.9,8],[3.1,8],[3.1,2.8],[0,2.8]],5),
+   nota:'Frontal mostra o T inteiro; superior e lateral viram retângulos simples. Duas peças diferentes podem ter a mesma vista superior — por isso três vistas.'},
+  {id:'degraus',nome:'Escada',grupo:'peca',faz:()=>{
+     const l=9,a=7.5,n=3,pts=[[0,0],[l,0]];
+     for(let k=n-1;k>=0;k--){const h=a*(n-k)/n; pts.push([(k+1)*l/n,h]); pts.push([k*l/n,h]);}
+     return extrudeY(pts,5);},
+   nota:'Na vista superior a escada vira um retângulo cheio: os degraus somem porque a altura é justamente a dimensão que a vista de cima perde.'},
+  {id:'rasgo',nome:'Peça com rasgo',grupo:'peca',faz:()=>extrudeY([[0,0],[9,0],[9,6],[6,6],[6,3.4],[3,3.4],[3,6],[0,6]],5),
+   nota:'O rasgo é aberto na frente e no fundo, então na vista superior ele aparece com linhas contínuas — o que se vê de cima é a própria abertura.'},
+  {id:'furo',nome:'Peça com furo',grupo:'peca',faz:()=>{
+     const l=9,a=6.4,prof=5,cx=4.5,cz=3.2,r=1.7,N=32;
+     const angs=[];
+     for(let i=0;i<N;i++) angs.push(-Math.PI+2*Math.PI*i/N);
+     [[0,0],[l,0],[l,a],[0,a]].forEach(c=>angs.push(Math.atan2(c[1]-cz,c[0]-cx)));
+     angs.sort((A,B)=>A-B);
+     const lim=[];
+     angs.forEach(x=>{ if(!lim.length||Math.abs(x-lim[lim.length-1])>2e-3) lim.push(x); });
+     if(lim.length>1 && Math.abs(lim[0]+2*Math.PI-lim[lim.length-1])<2e-3) lim.pop();
+     const interno=lim.map(g=>[cx+r*Math.cos(g), cz+r*Math.sin(g)]);
+     const externo=lim.map(g=>{
+       const dx=Math.cos(g),dz=Math.sin(g); let t=Infinity;
+       if(Math.abs(dx)>1e-9) t=Math.min(t,(dx>0?(l-cx):-cx)/dx);
+       if(Math.abs(dz)>1e-9) t=Math.min(t,(dz>0?(a-cz):-cz)/dz);
+       return [cx+t*dx, cz+t*dz];
+     });
+     return tuboY(interno,externo,prof);},
+   nota:'O furo passante é o caso clássico da linha tracejada: de frente ele é um círculo visível, mas de cima e de lado vira um par de tracejados — a parede do furo existe e não é vista.'},
+  {id:'meu',nome:'Seu sólido',grupo:'peca',faz:()=>voxels(ESTADO.hm,4,4),
+   nota:'Monte no construtor abaixo. Cada pilha de cubos vira altura na vista frontal e na lateral, e só uma casa preenchida na vista superior.'}
+];
+
+/* ==================== projeção ==================== */
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const G=Math.PI/180;
+function baseCam(az,el){
+  const ca=Math.cos(az),sa=Math.sin(az),ce=Math.cos(el),se=Math.sin(el);
+  const c=[sa*ce,-ca*ce,se], r=[ca,sa,0];
+  const u=[c[1]*r[2]-c[2]*r[1], c[2]*r[0]-c[0]*r[2], c[0]*r[1]-c[1]*r[0]];
+  return {c,r,u};
+}
+const VISTAS={
+  frontal:{az:0,el:0,nome:'Vista frontal',curto:'frontal',medidas:'largura × altura'},
+  superior:{az:0,el:90*G,nome:'Vista superior',curto:'superior',medidas:'largura × profundidade'},
+  esq:{az:-90*G,el:0,nome:'Vista lateral esquerda',curto:'lateral esq.',medidas:'profundidade × altura'},
+  dir:{az:90*G,el:0,nome:'Vista lateral direita',curto:'lateral dir.',medidas:'profundidade × altura'}
+};
+function prepara(m){
+  centraliza(m);
+  const mapa=new Map();
+  m.faces.forEach((f,fi)=>{
+    for(let i=0;i<f.length;i++){
+      const a=f[i],b=f[(i+1)%f.length],k=Math.min(a,b)+'_'+Math.max(a,b);
+      const e=mapa.get(k);
+      if(e){ if(e.faces.length<2) e.faces.push(fi); }
+      else mapa.set(k,{a:Math.min(a,b),b:Math.max(a,b),faces:[fi]});
+    }
+  });
+  m.arestas=[...mapa.values()];
+  m.nw=m.faces.map(f=>{
+    let nx=0,ny=0,nz=0;
+    for(let i=0;i<f.length;i++){const A=m.verts[f[i]],B=m.verts[f[(i+1)%f.length]];
+      nx+=(A[1]-B[1])*(A[2]+B[2]); ny+=(A[2]-B[2])*(A[0]+B[0]); nz+=(A[0]-B[0])*(A[1]+B[1]);}
+    const t=Math.hypot(nx,ny,nz)||1; return [nx/t,ny/t,nz/t];
+  });
+  return m;
+}
+function paraCamera(m,cam){
+  const c=m.centro;
+  return m.verts.map(v=>{const p=[v[0]-c[0],v[1]-c[1],v[2]-c[2]];
+    return [dot(p,cam.r),dot(p,cam.u),dot(p,cam.c)];});
+}
+function dadosFaces(m,P){
+  return m.faces.map((f,fi)=>{
+    let nx=0,ny=0,nz=0;
+    for(let i=0;i<f.length;i++){const A=P[f[i]],B=P[f[(i+1)%f.length]];
+      nx+=(A[1]-B[1])*(A[2]+B[2]); ny+=(A[2]-B[2])*(A[0]+B[0]); nz+=(A[0]-B[0])*(A[1]+B[1]);}
+    const t=Math.hypot(nx,ny,nz)||1; const n=[nx/t,ny/t,nz/t];
+    let cd=0,x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+    const pts=f.map(i=>{const p=P[i]; cd+=p[2];
+      x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);y0=Math.min(y0,p[1]);y1=Math.max(y1,p[1]);
+      return [p[0],p[1]];});
+    cd/=f.length;
+    const v0=P[f[0]];
+    return {i:fi,f,n,cd,pts,bb:[x0,y0,x1,y1],K:n[0]*v0[0]+n[1]*v0[1]+n[2]*v0[2]};
+  });
+}
+const CREASE=Math.cos(16*G);
+function arestasDesenho(m,fd){
+  const out=[];
+  for(const e of m.arestas){
+    if(e.faces.length===1){out.push(e);continue;}
+    const n1=fd[e.faces[0]].n, n2=fd[e.faces[1]].n;
+    if(dot(n1,n2)<CREASE) out.push(e);
+    else if((n1[2]>0)!==(n2[2]>0)) out.push(e);
+  }
+  return out;
+}
+function dentro(pts,x,y){
+  let d=false;
+  for(let i=0,j=pts.length-1;i<pts.length;j=i++){
+    const xi=pts[i][0],yi=pts[i][1],xj=pts[j][0],yj=pts[j][1];
+    if((yi>y)!==(yj>y) && x < (xj-xi)*(y-yi)/(yj-yi)+xi) d=!d;
+  }
+  return d;
+}
+/* divide uma aresta em trechos visíveis e ocultos */
+function trechos(P,fd,frente,e,eps){
+  const A=P[e.a],B=P[e.b];
+  const len=Math.hypot(B[0]-A[0],B[1]-A[1]);
+  const n=Math.max(5,Math.min(44,Math.ceil(len*2.2)));
+  const est=new Array(n);
+  for(let i=0;i<n;i++){
+    const t=(i+0.5)/n;
+    const x=A[0]+(B[0]-A[0])*t, y=A[1]+(B[1]-A[1])*t, d=A[2]+(B[2]-A[2])*t;
+    let oc=false;
+    for(const F of frente){
+      if(x<F.bb[0]||x>F.bb[2]||y<F.bb[1]||y>F.bb[3]) continue;
+      if(F.f.indexOf(e.a)>=0&&F.f.indexOf(e.b)>=0) continue;
+      if(!dentro(F.pts,x,y)) continue;
+      if((F.K-F.n[0]*x-F.n[1]*y)/F.n[2] > d+eps){oc=true;break;}
+    }
+    est[i]=oc;
+  }
+  const out=[]; let ini=0;
+  for(let i=1;i<=n;i++) if(i===n||est[i]!==est[ini]){out.push([ini/n,i/n,est[ini]]);ini=i;}
+  return out;
+}
+/* distância de ponto a segmento */
+function distPS(px,py,x1,y1,x2,y2){
+  const dx=x2-x1,dy=y2-y1,L=dx*dx+dy*dy;
+  let t=L?((px-x1)*dx+(py-y1)*dy)/L:0;
+  t=Math.max(0,Math.min(1,t));
+  return Math.hypot(px-(x1+dx*t),py-(y1+dy*t));
+}
+/* no desenho técnico, aresta oculta sob uma visível não se desenha */
+function limpaCoincidentes(segs,eps){
+  const vis=segs.filter(s=>!s.oc), out=vis.slice();
+  for(const s of segs){
+    if(!s.oc) continue;
+    const len=Math.hypot(s.x2-s.x1,s.y2-s.y1);
+    const n=Math.max(4,Math.min(34,Math.ceil(len*2.2)));
+    const cob=new Array(n);
+    for(let i=0;i<n;i++){
+      const t=(i+0.5)/n, x=s.x1+(s.x2-s.x1)*t, y=s.y1+(s.y2-s.y1)*t;
+      let c=false;
+      for(const v of vis) if(distPS(x,y,v.x1,v.y1,v.x2,v.y2)<eps){c=true;break;}
+      cob[i]=c;
+    }
+    let ini=0;
+    for(let i=1;i<=n;i++) if(i===n||cob[i]!==cob[ini]){
+      if(!cob[ini]){
+        const a=ini/n,b=i/n;
+        out.push({x1:s.x1+(s.x2-s.x1)*a,y1:s.y1+(s.y2-s.y1)*a,
+                  x2:s.x1+(s.x2-s.x1)*b,y2:s.y1+(s.y2-s.y1)*b,oc:true});
+      }
+      ini=i;
+    }
+  }
+  return out;
+}
+/* desenho técnico de uma vista: devolve {segs, larg, alt} em unidades do objeto */
+const CACHE=new Map();
+function vistaTecnica(m,chave){
+  const ck=m.id+'|'+chave;
+  if(CACHE.has(ck)) return CACHE.get(ck);
+  const V=VISTAS[chave], cam=baseCam(V.az,V.el);
+  const P=paraCamera(m,cam), fd=dadosFaces(m,P);
+  const frente=fd.filter(F=>F.n[2]>1e-6);
+  const eps=m.raio*2e-3;
+  const segs=[];
+  for(const e of arestasDesenho(m,fd)){
+    const A=P[e.a],B=P[e.b];
+    for(const t of trechos(P,fd,frente,e,eps))
+      segs.push({x1:A[0]+(B[0]-A[0])*t[0], y1:A[1]+(B[1]-A[1])*t[0],
+                 x2:A[0]+(B[0]-A[0])*t[1], y2:A[1]+(B[1]-A[1])*t[1], oc:t[2]});
+  }
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+  P.forEach(p=>{x0=Math.min(x0,p[0]);x1=Math.max(x1,p[0]);y0=Math.min(y0,p[1]);y1=Math.max(y1,p[1]);});
+  const limpos=limpaCoincidentes(segs,m.raio*0.013);
+  const r={segs:limpos,larg:x1-x0,alt:y1-y0,cx:(x0+x1)/2,cy:(y0+y1)/2};
+  CACHE.set(ck,r); return r;
+}
+
+/* ==================== prancheta (as três vistas) ==================== */
+function esc2(n){return (Math.round(n*100)/100);}
+function caminho(segs,esc,ox,oy,cx,cy,oculto){
+  let d='';
+  for(const s of segs){ if(!!s.oc!==oculto) continue;
+    d+='M'+esc2(ox+(s.x1-cx)*esc)+' '+esc2(oy-(s.y1-cy)*esc)+'L'+esc2(ox+(s.x2-cx)*esc)+' '+esc2(oy-(s.y2-cy)*esc);
+  }
+  return d;
+}
+function desenhaPrancheta(m,diedro,lado,ativa){
+  const F=vistaTecnica(m,'frontal'), S=vistaTecnica(m,'superior'), Lv=vistaTecnica(m,lado);
+  const gap=Math.max(m.dim.l,m.dim.p,m.dim.a)*0.30+0.6;
+  const cyS=(diedro===1?1:-1)*(F.alt/2+gap+S.alt/2);
+  const sinal=(diedro===1)===(lado==='esq')?1:-1;
+  const cxL=sinal*(F.larg/2+gap+Lv.larg/2);
+  const postos=[
+    {k:'frontal',v:F,cx:0,cy:0},
+    {k:'superior',v:S,cx:0,cy:cyS},
+    {k:lado,v:Lv,cx:cxL,cy:0}
+  ];
+  let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+  postos.forEach(p=>{x0=Math.min(x0,p.cx-p.v.larg/2);x1=Math.max(x1,p.cx+p.v.larg/2);
+    y0=Math.min(y0,p.cy-p.v.alt/2);y1=Math.max(y1,p.cy+p.v.alt/2);});
+  const margem=Math.max(m.dim.l,m.dim.a)*0.14+1.4;
+  const larguraUtil=430;
+  const esc=Math.min(larguraUtil/(x1-x0+2*margem), 330/(y1-y0+2*margem));
+  const W=(x1-x0+2*margem)*esc, H=(y1-y0+2*margem)*esc;
+  const PX=vx=>(vx-x0+margem)*esc, PY=vy=>(y1+margem-vy)*esc;
+  let s='';
+  /* linhas de chamada */
+  const fx0=-F.larg/2, fx1=F.larg/2, fy0=-F.alt/2, fy1=F.alt/2;
+  const sy0=cyS-S.alt/2, sy1=cyS+S.alt/2;
+  const lx0=cxL-Lv.larg/2, lx1=cxL+Lv.larg/2;
+  const ch=[];
+  [fx0,fx1].forEach(x=>ch.push([PX(x),PY(diedro===1?fy0:fy1),PX(x),PY(diedro===1?sy1:sy0)]));
+  [fy0,fy1].forEach(y=>ch.push([PX(sinal>0?fx1:fx0),PY(y),PX(sinal>0?lx0:lx1),PY(y)]));
+  s+='<path class="v-chamada" d="'+ch.map(c=>'M'+esc2(c[0])+' '+esc2(c[1])+'L'+esc2(c[2])+' '+esc2(c[3])).join('')+'"/>';
+  /* vistas */
+  for(const p of postos){
+    const ox=PX(p.cx), oy=PY(p.cy);
+    const lp=p.v.larg*esc/2+7, ap=p.v.alt*esc/2+7;
+    const V=VISTAS[p.k];
+    s+='<g>';
+    if(ativa===p.k) s+='<rect x="'+esc2(ox-lp)+'" y="'+esc2(oy-ap)+'" width="'+esc2(lp*2)+'" height="'+esc2(ap*2+16)+
+       '" rx="3" fill="var(--azul-soft)"/>';
+    s+='<path class="v-oc" d="'+caminho(p.v.segs,esc,ox,oy,p.v.cx,p.v.cy,true)+'"/>';
+    s+='<path class="v-vis" d="'+caminho(p.v.segs,esc,ox,oy,p.v.cx,p.v.cy,false)+'"/>';
+    s+='<text x="'+esc2(ox)+'" y="'+esc2(oy+ap+13)+'" text-anchor="middle" class="rot3d" '+
+       (ativa===p.k?'fill="var(--azul)"':'')+'>'+V.curto+'</text>';
+    s+='<rect class="alvo" data-vista="'+p.k+'" x="'+esc2(ox-lp)+'" y="'+esc2(oy-ap)+'" width="'+esc2(lp*2)+
+       '" height="'+esc2(ap*2+16)+'" fill="transparent" style="cursor:pointer"><title>'+V.nome+'</title></rect>';
+    s+='</g>';
+  }
+  return {svg:s,W,H};
+}
+
+/* ==================== palco 3D ==================== */
+/* cores opacas derivadas do tema, para o pintor esconder o que está atrás */
+const CORES={sombra:[70,88,120],luz:[214,224,240]};
+function hex2rgb(t){
+  t=(t||'').trim();
+  const m=/^#([0-9a-f]{6})$/i.exec(t);
+  if(!m) return null;
+  const n=parseInt(m[1],16);
+  return [(n>>16)&255,(n>>8)&255,n&255];
+}
+function mistura(a,b,k){return [0,1,2].map(i=>Math.round(a[i]+(b[i]-a[i])*k));}
+function leCores(){
+  const cs=getComputedStyle(document.documentElement);
+  const sol=hex2rgb(cs.getPropertyValue('--solido')),
+        ink=hex2rgb(cs.getPropertyValue('--ink')),
+        pap=hex2rgb(cs.getPropertyValue('--papel-tec'));
+  if(sol&&ink&&pap){ CORES.sombra=mistura(sol,ink,0.52); CORES.luz=mistura(sol,pap,0.42); }
+}
+function tom(l){
+  const c=mistura(CORES.sombra,CORES.luz,Math.max(0,Math.min(1,l)));
+  return 'rgb('+c[0]+','+c[1]+','+c[2]+')';
+}
+const LUZ=(function(){const v=[0.36,-0.52,0.78],t=Math.hypot(v[0],v[1],v[2]);return [v[0]/t,v[1]/t,v[2]/t];})();
+function geoPlano(m,chave,diedro){
+  const V=VISTAS[chave], cam=baseCam(V.az,V.el);
+  let ext=0; m.verts.forEach(v=>{const p=[v[0]-m.centro[0],v[1]-m.centro[1],v[2]-m.centro[2]];
+    ext=Math.max(ext,Math.abs(dot(p,cam.c)));});
+  const dist=ext+m.raio*0.62, sgn=(diedro===1?-1:1);
+  const C=[m.centro[0]+cam.c[0]*sgn*dist, m.centro[1]+cam.c[1]*sgn*dist, m.centro[2]+cam.c[2]*sgn*dist];
+  const T=vistaTecnica(m,chave);
+  const hw=T.larg/2+m.raio*0.16, hh=T.alt/2+m.raio*0.16;
+  const canto=(a,b)=>[C[0]+cam.r[0]*a+cam.u[0]*b, C[1]+cam.r[1]*a+cam.u[1]*b, C[2]+cam.r[2]*a+cam.u[2]*b];
+  const quad=[canto(-hw,-hh),canto(hw,-hh),canto(hw,hh),canto(-hw,hh)];
+  const img=T.segs.map(s=>[canto(s.x1-T.cx,s.y1-T.cy),canto(s.x2-T.cx,s.y2-T.cy),s.oc]);
+  /* raios a partir dos vértices da silhueta */
+  const P=paraCamera(m,cam), fd=dadosFaces(m,P);
+  const vs=new Set();
+  arestasDesenho(m,fd).forEach(e=>{
+    const n1=fd[e.faces[0]].n, n2=e.faces[1]!=null?fd[e.faces[1]].n:n1;
+    if((n1[2]>0)!==(n2[2]>0)){vs.add(e.a);vs.add(e.b);}
+  });
+  let lista=[...vs];
+  if(lista.length>16){const passo=lista.length/16,red=[];for(let i=0;i<16;i++)red.push(lista[Math.floor(i*passo)]);lista=red;}
+  const raios=lista.map(i=>[m.verts[i], canto(P[i][0]-T.cx,P[i][1]-T.cy)]);
+  return {quad,img,raios,C,cam};
+}
+function desenha3D(m,az,el,st){
+  const W=480,H=400;
+  const cam=baseCam(az,el);
+  const P=paraCamera(m,cam), fd=dadosFaces(m,P);
+  const pl=st.plano?geoPlano(m,st.vista,st.diedro):null;
+  /* enquadra o conteúdo real projetado: objeto mais plano, quando visível */
+  let mx=0,my=0;
+  P.forEach(p=>{mx=Math.max(mx,Math.abs(p[0]));my=Math.max(my,Math.abs(p[1]));});
+  if(pl) pl.quad.forEach(v=>{
+    const q=[v[0]-m.centro[0],v[1]-m.centro[1],v[2]-m.centro[2]];
+    mx=Math.max(mx,Math.abs(dot(q,cam.r))); my=Math.max(my,Math.abs(dot(q,cam.u)));
+  });
+  const esc=Math.min((W/2-14)/Math.max(mx,1e-6),(H/2-14)/Math.max(my,1e-6));
+  const pj=v=>{const p=[v[0]-m.centro[0],v[1]-m.centro[1],v[2]-m.centro[2]];
+    return [W/2+dot(p,cam.r)*esc, H/2-dot(p,cam.u)*esc, dot(p,cam.c)];};
+  const XY=i=>[W/2+P[i][0]*esc, H/2-P[i][1]*esc];
+  const chaves=new Set();
+  arestasDesenho(m,fd).forEach(e=>chaves.add(e.a+'_'+e.b));
+  const itens=fd.map(F=>({cd:F.cd,tipo:'face',F}));
+  if(pl){
+    const q=pl.quad.map(pj);
+    itens.push({cd:(q[0][2]+q[1][2]+q[2][2]+q[3][2])/4,tipo:'plano',q,pl});
+  }
+  itens.sort((a,b)=>a.cd-b.cd);
+  let s='';
+  for(const it of itens){
+    if(it.tipo==='plano'){
+      s+='<polygon class="plano3d" points="'+it.q.map(p=>esc2(p[0])+','+esc2(p[1])).join(' ')+'"/>';
+      let dv='',doc='';
+      for(const g of it.pl.img){const A=pj(g[0]),B=pj(g[1]);
+        const seg='M'+esc2(A[0])+' '+esc2(A[1])+'L'+esc2(B[0])+' '+esc2(B[1]);
+        if(g[2]) doc+=seg; else dv+=seg;}
+      s+='<path class="img3d oculta" d="'+doc+'"/><path class="img3d" d="'+dv+'"/>';
+      if(st.raios){
+        let dr='';
+        for(const r of it.pl.raios){const A=pj(r[0]),B=pj(r[1]);
+          dr+='M'+esc2(A[0])+' '+esc2(A[1])+'L'+esc2(B[0])+' '+esc2(B[1]);}
+        s+='<path class="raio3d" d="'+dr+'"/>';
+      }
+      continue;
+    }
+    const F=it.F;
+    const pts=F.f.map(i=>{const p=XY(i);return esc2(p[0])+','+esc2(p[1]);}).join(' ');
+    if(!st.aramado){
+      const lum=Math.max(0,dot(m.nw[F.i],LUZ));
+      s+='<polygon class="f3d" points="'+pts+'" fill="'+tom(0.12+0.88*lum)+'" stroke="none"/>';
+    }
+    let d='';
+    for(let i=0;i<F.f.length;i++){
+      const a=F.f[i],b=F.f[(i+1)%F.f.length];
+      if(!chaves.has(Math.min(a,b)+'_'+Math.max(a,b))) continue;
+      const A=XY(a),B=XY(b);
+      d+='M'+esc2(A[0])+' '+esc2(A[1])+'L'+esc2(B[0])+' '+esc2(B[1]);
+    }
+    if(d) s+='<path class="a3d" d="'+d+'"'+(st.aramado?' opacity=".8"':'')+'/>';
+  }
+  return s;
+}
+
+/* ==================== aplicação ==================== */
+const ESTADO={obj:'bloco',az:38*Math.PI/180,el:24*Math.PI/180,diedro:1,lado:'esq',
+  vista:'frontal',plano:true,raios:true,aramado:false,
+  hm:[[0,2,2,0],[0,2,0,0],[1,1,0,0],[1,0,0,0]]};
+const MALHAS={};
+const el=id=>document.getElementById(id);
+const semMovimento=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+function obterMalha(id){
+  if(id==='meu'){
+    let tot=0; ESTADO.hm.forEach(c=>c.forEach(v=>tot+=v));
+    if(!tot) ESTADO.hm[0][0]=1;
+    const k='meu_'+ESTADO.hm.map(c=>c.join('')).join('');
+    if(!MALHAS[k]){const m=prepara(voxels(ESTADO.hm,4,4)); m.id=k; MALHAS[k]=m;}
+    return MALHAS[k];
+  }
+  if(!MALHAS[id]){const it=CATALOGO.find(c=>c.id===id); const m=prepara(it.faz()); m.id=id; MALHAS[id]=m;}
+  return MALHAS[id];
+}
+function pinta3D(){
+  const m=obterMalha(ESTADO.obj);
+  el('palco3d').innerHTML=desenha3D(m,ESTADO.az,ESTADO.el,ESTADO,480,400);
+}
+function pintaPrancheta(){
+  const m=obterMalha(ESTADO.obj);
+  const pr=desenhaPrancheta(m,ESTADO.diedro,ESTADO.lado,ESTADO.vista);
+  const sv=el('prancheta');
+  sv.setAttribute('viewBox','0 0 '+esc2(pr.W)+' '+esc2(pr.H));
+  sv.innerHTML=pr.svg;
+}
+function pintaNotas(){
+  const m=obterMalha(ESTADO.obj), it=CATALOGO.find(c=>c.id===ESTADO.obj);
+  const V=VISTAS[ESTADO.vista];
+  el('notas').innerHTML=
+    '<div class="nota"><h3>'+it.nome+'</h3><p>'+it.nota+'</p></div>'+
+    '<div class="nota"><h3>Medidas do objeto</h3><p>Cada vista guarda duas delas.</p>'+
+      '<div class="medidas"><span class="medida">largura <b>'+esc2(m.dim.l)+'</b></span>'+
+      '<span class="medida">profundidade <b>'+esc2(m.dim.p)+'</b></span>'+
+      '<span class="medida">altura <b>'+esc2(m.dim.a)+'</b></span></div>'+
+      '<p style="margin-top:8px">Em destaque: <b>'+V.nome.toLowerCase()+'</b> — mostra '+V.medidas+'.</p></div>'+
+    '<div class="nota"><h3>'+(ESTADO.diedro===1?'1º diedro (ABNT)':'3º diedro (americano)')+'</h3><p>'+
+      (ESTADO.diedro===1
+        ? 'O objeto fica <b>entre o observador e o plano</b>: a imagem é empurrada para trás. Ao rebater, a vista superior cai <b>abaixo</b> da frontal e a lateral esquerda vai para a <b>direita</b>.'
+        : 'O plano fica <b>entre o observador e o objeto</b>, como um vidro: a imagem se forma na frente. A vista superior fica <b>acima</b> e a lateral esquerda, à <b>esquerda</b>.')+
+      '</p></div>';
+}
+function render(){ pinta3D(); pintaPrancheta(); pintaNotas(); pintaPrevia(); }
+
+/* animação da câmera */
+let anim=null;
+function vaiPara(az,el2){
+  if(anim) cancelAnimationFrame(anim);
+  if(semMovimento){ESTADO.az=az;ESTADO.el=el2;pinta3D();return;}
+  const a0=ESTADO.az,e0=ESTADO.el,t0=performance.now();
+  let da=az-a0; while(da>Math.PI)da-=2*Math.PI; while(da<-Math.PI)da+=2*Math.PI;
+  const de=el2-e0;
+  (function passo(t){
+    const k=Math.min(1,(t-t0)/560), s=k<0.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    ESTADO.az=a0+da*s; ESTADO.el=e0+de*s; pinta3D();
+    if(k<1) anim=requestAnimationFrame(passo); else anim=null;
+  })(t0);
+}
+function escolheVista(k){
+  ESTADO.vista=k;
+  pintaPrancheta(); pintaNotas();
+  vaiPara(VISTAS[k].az,VISTAS[k].el);
+}
+
+/* arrastar para girar */
+(function(){
+  const pal=el('palco3d'); let arr=null,pend=false;
+  const agenda=()=>{if(pend)return;pend=true;requestAnimationFrame(()=>{pend=false;pinta3D();});};
+  pal.addEventListener('pointerdown',e=>{
+    if(anim){cancelAnimationFrame(anim);anim=null;}
+    arr={x:e.clientX,y:e.clientY,az:ESTADO.az,el:ESTADO.el};
+    pal.setPointerCapture(e.pointerId); pal.classList.add('arrastando');
+  });
+  pal.addEventListener('pointermove',e=>{
+    if(!arr)return;
+    ESTADO.az=arr.az+(e.clientX-arr.x)*0.0115;
+    ESTADO.el=Math.max(-88*G,Math.min(88*G,arr.el-(e.clientY-arr.y)*0.0115));
+    agenda();
+  });
+  const solta=()=>{arr=null;pal.classList.remove('arrastando');};
+  pal.addEventListener('pointerup',solta); pal.addEventListener('pointercancel',solta);
+})();
+
+/* prancheta clicável */
+el('prancheta').addEventListener('click',ev=>{
+  const alvo=ev.target.closest('[data-vista]'); if(alvo) escolheVista(alvo.dataset.vista);
+});
+
+/* controles */
+(function(){
+  const cont=el('chips-obj');
+  CATALOGO.forEach(c=>{
+    const b=document.createElement('button');
+    b.type='button'; b.className='chip'+(c.id===ESTADO.obj?' on':''); b.dataset.id=c.id; b.textContent=c.nome;
+    cont.appendChild(b);
+  });
+  cont.addEventListener('click',ev=>{
+    const b=ev.target.closest('.chip'); if(!b)return;
+    ESTADO.obj=b.dataset.id;
+    Array.from(cont.children).forEach(c=>c.classList.toggle('on',c===b));
+    render();
+  });
+})();
+el('seg-diedro').addEventListener('click',ev=>{
+  const b=ev.target.closest('button'); if(!b)return;
+  ESTADO.diedro=+b.dataset.v;
+  Array.from(el('seg-diedro').children).forEach(c=>c.classList.toggle('on',c===b));
+  el('rot-diedro').textContent=ESTADO.diedro===1?'1º diedro':'3º diedro';
+  if(ESTADO.vista!=='frontal'&&ESTADO.vista!=='superior') ESTADO.vista=ESTADO.lado;
+  render();
+});
+el('seg-lado').addEventListener('click',ev=>{
+  const b=ev.target.closest('button'); if(!b)return;
+  const novo=b.dataset.v;
+  if(ESTADO.vista===ESTADO.lado) ESTADO.vista=novo;
+  ESTADO.lado=novo;
+  Array.from(el('seg-lado').children).forEach(c=>c.classList.toggle('on',c===b));
+  render();
+  if(ESTADO.vista===novo) vaiPara(VISTAS[novo].az,VISTAS[novo].el);
+});
+document.querySelectorAll('[data-ang]').forEach(b=>b.addEventListener('click',()=>{
+  const k=b.dataset.ang;
+  if(k==='iso'){ vaiPara(38*G,24*G); return; }
+  escolheVista(k==='lateral'?ESTADO.lado:k);
+}));
+function alterna(id,campo){
+  el(id).addEventListener('click',()=>{
+    ESTADO[campo]=!ESTADO[campo];
+    el(id).classList.toggle('on',ESTADO[campo]);
+    pinta3D();
+  });
+}
+alterna('bt-plano','plano'); alterna('bt-raios','raios'); alterna('bt-aramado','aramado');
+
+/* construtor */
+function pintaPrevia(){
+  const m=obterMalha('meu');
+  el('previa').innerHTML=desenha3D(m,38*G,24*G,{plano:false,raios:false,aramado:false},260,200);
+}
+(function(){
+  const malha=el('malha');
+  for(let r=0;r<4;r++)for(let c=0;c<4;c++){
+    const b=document.createElement('button');
+    b.type='button'; b.className='cubinho'; b.dataset.c=c; b.dataset.r=r;
+    malha.appendChild(b);
+  }
+  function pinta(){
+    Array.from(malha.children).forEach(b=>{
+      const h=ESTADO.hm[+b.dataset.c][3-(+b.dataset.r)];
+      b.dataset.h=h; b.textContent=h||'';
+      b.setAttribute('aria-label','coluna '+(+b.dataset.c+1)+', fileira '+(+b.dataset.r+1)+': '+h+' cubos');
+    });
+  }
+  malha.addEventListener('click',ev=>{
+    const b=ev.target.closest('.cubinho'); if(!b)return;
+    const c=+b.dataset.c, y=3-(+b.dataset.r);
+    ESTADO.hm[c][y]=(ESTADO.hm[c][y]+1)%4;
+    pinta();
+    if(ESTADO.obj!=='meu'){
+      ESTADO.obj='meu';
+      Array.from(el('chips-obj').children).forEach(x=>x.classList.toggle('on',x.dataset.id==='meu'));
+    }
+    render();
+  });
+  pinta();
+})();
+
+leCores();
+render();
+if(window.matchMedia){
+  const mq=window.matchMedia('(prefers-color-scheme: dark)');
+  if(mq.addEventListener) mq.addEventListener('change',()=>{leCores();render();});
+}
+})();
+</script>

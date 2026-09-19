@@ -15,6 +15,8 @@
   --linha-forte:#BAC2D2;
   --azul:#1B4AA0;
   --azul-soft:#E7EDF9;
+  --azul-barra:#2E5FB5;
+  --trilho:#E2E7F0;
   --vermelho:#AC2A1F;
   --vermelho-soft:#FBEAE7;
   --ocre:#84600F;
@@ -37,6 +39,8 @@
     --linha-forte:#3B4863;
     --azul:#8FB3EE;
     --azul-soft:#1C2A46;
+    --azul-barra:#5B87D6;
+    --trilho:#243049;
     --vermelho:#EE8478;
     --vermelho-soft:#33201E;
     --ocre:#DDB667;
@@ -56,6 +60,8 @@
   --linha-forte:#3B4863;
   --azul:#8FB3EE;
   --azul-soft:#1C2A46;
+  --azul-barra:#5B87D6;
+  --trilho:#243049;
   --vermelho:#EE8478;
   --vermelho-soft:#33201E;
   --ocre:#DDB667;
@@ -73,10 +79,10 @@ body{
   line-height:1.62;
   -webkit-font-smoothing:antialiased;
 }
-.wrap{max-width:960px;margin:0 auto;padding:0 24px 96px}
+.wrap{max-width:980px;margin:0 auto;padding-inline:24px;padding-block:0 96px}
 
 /* ---------- Cabeçalho ---------- */
-.topo{padding:52px 0 30px;border-bottom:2px solid var(--ink)}
+.topo{padding-block:52px 30px;border-bottom:2px solid var(--ink)}
 .eyebrow{
   font-family:var(--mono);font-size:11.5px;font-weight:500;
   letter-spacing:.16em;text-transform:uppercase;color:var(--azul);
@@ -87,46 +93,51 @@ h1{
   font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,52px);
   line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance;
 }
-.dek{
-  font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:64ch;
-  text-wrap:pretty;
+.dek{font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:64ch;text-wrap:pretty}
+
+.corpus{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(152px,1fr));
+  gap:1px;margin-top:26px;background:var(--linha);
+  border:1px solid var(--linha);border-radius:5px;overflow:hidden;
 }
-.fontes{
-  display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;
-  font-family:var(--mono);font-size:12px;color:var(--grafite);
+.corpus div{background:var(--surface);padding:11px 13px}
+.corpus b{
+  display:block;font-family:var(--mono);font-size:12.5px;font-weight:600;
+  color:var(--azul);letter-spacing:.02em;
 }
-.fontes b{
-  background:var(--surface);border:1px solid var(--linha);border-radius:3px;
-  padding:5px 9px;font-weight:500;display:inline-block;
+.corpus em{
+  display:block;font-style:normal;font-size:12.5px;color:var(--grafite);
+  font-family:var(--mono);margin-top:1px;
 }
 
 /* ---------- Seções ---------- */
-section{padding-top:56px}
-h2{
-  font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.015em;
-  margin:0 0 6px;display:flex;align-items:baseline;gap:12px;text-wrap:balance;
+section{padding-top:60px}
+.sec-tag{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--azul);
+  display:inline-block;background:var(--azul-soft);
+  padding:4px 9px;border-radius:3px;margin-bottom:11px;
 }
-h2 .num{
-  font-family:var(--mono);font-size:13px;font-weight:600;color:var(--azul);
-  letter-spacing:.06em;flex:none;
+h2{
+  font-family:var(--display);font-weight:700;font-size:28px;letter-spacing:-.015em;
+  margin:0 0 6px;text-wrap:balance;
 }
 h3{
-  font-family:var(--display);font-weight:600;font-size:18.5px;
-  margin:34px 0 10px;letter-spacing:-.01em;
+  font-family:var(--display);font-weight:600;font-size:19px;
+  margin:38px 0 10px;letter-spacing:-.01em;
 }
 .sub{color:var(--grafite);margin:0 0 22px;max-width:68ch;text-wrap:pretty}
 p{max-width:68ch;text-wrap:pretty}
 
-/* ---------- Achado principal (objeto elevado) ---------- */
+/* ---------- Objeto elevado ---------- */
 .achado{
   background:var(--surface);border:1px solid var(--linha);border-radius:6px;
   box-shadow:var(--shadow);padding:26px 26px 22px;margin-top:26px;
 }
-.achado-tit{
-  font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 4px;
-}
+.achado-tit{font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 4px}
 .achado-txt{margin:0 0 24px;color:var(--grafite);font-size:15.5px;max-width:none}
 
+/* ---------- Faixa de estrutura da prova ---------- */
 .blueprint{display:flex;width:100%;height:46px;border-radius:4px;overflow:hidden;border:1px solid var(--linha-forte)}
 .bp{
   display:flex;align-items:center;justify-content:center;
@@ -135,31 +146,43 @@ p{max-width:68ch;text-wrap:pretty}
   border-right:1px solid var(--linha);overflow:hidden;white-space:nowrap;
 }
 .bp:last-child{border-right:0}
-.bp.foco{background:var(--azul);color:#fff}
-:root[data-theme="dark"] .bp.foco{color:#0E1523}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bp.foco{color:#0E1523}}
-
-.escala{
-  display:flex;width:100%;margin-top:7px;
-  font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft);
-}
-.escala div{border-right:1px solid transparent;padding-left:2px;overflow:hidden;white-space:nowrap}
-
+.bp.foco{background:var(--azul);color:var(--surface)}
+.escala{display:flex;width:100%;margin-top:7px;font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft)}
+.escala div{padding-left:2px;overflow:hidden;white-space:nowrap}
 .legenda{
   display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:20px;
   font-family:var(--mono);font-size:11.5px;color:var(--grafite);
 }
 .legenda i{font-style:normal;color:var(--ink);font-weight:600}
 
-/* ---------- Lista de temas (não são cards) ---------- */
+/* ---------- Barras de frequência (uma série, magnitude) ---------- */
+.barras{display:flex;flex-direction:column;gap:11px;margin-top:6px}
+.barra{display:grid;grid-template-columns:minmax(0,15.5rem) 1fr auto;gap:0 14px;align-items:center}
+.barra .rot{font-size:14.5px;line-height:1.35;color:var(--ink)}
+.barra .trilho{background:var(--trilho);border-radius:3px;height:14px;position:relative;min-width:40px}
+.barra .fill{
+  position:absolute;inset-block:0;left:0;
+  background:var(--azul-barra);border-radius:0 4px 4px 0;
+}
+.barra .val{
+  font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--grafite);
+  font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.barras-nota{
+  font-family:var(--mono);font-size:11px;color:var(--grafite-soft);
+  margin-top:16px;letter-spacing:.02em;
+}
+@media (max-width:640px){
+  .barra{grid-template-columns:1fr auto;gap:3px 12px}
+  .barra .trilho{grid-column:1;height:11px}
+  .barra .rot{grid-column:1 / -1}
+}
+
+/* ---------- Lista de temas ---------- */
 .temas{display:flex;flex-direction:column;margin-top:8px}
 .tema{
-  display:grid;
-  grid-template-columns:64px 1fr auto;
-  gap:6px 18px;align-items:baseline;
-  padding:15px 0 15px 16px;
-  border-top:1px solid var(--linha);
-  border-left:3px solid transparent;
+  display:grid;grid-template-columns:76px 1fr auto;gap:6px 18px;align-items:baseline;
+  padding:15px 0 15px 16px;border-top:1px solid var(--linha);border-left:3px solid transparent;
 }
 .tema:last-child{border-bottom:1px solid var(--linha)}
 .tema.alta{border-left-color:var(--vermelho)}
@@ -176,11 +199,9 @@ p{max-width:68ch;text-wrap:pretty}
   text-transform:uppercase;color:var(--grafite);
   background:var(--neutro-chip);border-radius:3px;padding:3px 7px;white-space:nowrap;
 }
-.tema .det{
-  grid-column:2 / -1;margin:5px 0 0;font-size:14.5px;color:var(--grafite);
-  line-height:1.55;max-width:66ch;
-}
-.tema .det code{
+.tema .det{grid-column:2 / -1;margin:5px 0 0;font-size:14.5px;color:var(--grafite);line-height:1.58;max-width:66ch}
+.tema .det + .det{margin-top:8px}
+.tema .det code,.det code,.destaque code,td code{
   font-family:var(--mono);font-size:12.5px;color:var(--azul);
   background:var(--azul-soft);padding:1px 5px;border-radius:3px;white-space:nowrap;
 }
@@ -196,22 +217,26 @@ p{max-width:68ch;text-wrap:pretty}
   padding:16px 20px;margin:26px 0 0;border-radius:0 4px 4px 0;
 }
 .destaque p{margin:0;font-size:15.5px;max-width:none}
+.destaque p + p{margin-top:9px}
 .destaque strong{font-weight:700}
 
-/* ---------- Tabela de blocos ---------- */
+/* ---------- Tabelas ---------- */
 .tabela-wrap{overflow-x:auto;margin-top:20px}
-table{border-collapse:collapse;width:100%;font-size:15px;min-width:460px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
 th{
   text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:600;
   letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);
-  padding:0 14px 9px 0;border-bottom:1px solid var(--linha-forte);
+  padding:0 14px 9px 0;border-bottom:1px solid var(--linha-forte);vertical-align:bottom;
 }
 td{padding:11px 14px 11px 0;border-bottom:1px solid var(--linha);vertical-align:top}
-td:first-child{font-family:var(--mono);font-size:13px;color:var(--azul);white-space:nowrap;font-variant-numeric:tabular-nums}
+td:first-child{
+  font-family:var(--mono);font-size:13px;color:var(--azul);
+  white-space:nowrap;font-variant-numeric:tabular-nums;
+}
 tr:last-child td{border-bottom:0}
 
 /* ---------- Checklist ---------- */
-.check{display:flex;flex-direction:column;gap:0;margin-top:10px}
+.check{display:flex;flex-direction:column;margin-top:10px}
 .check-item{
   display:flex;gap:13px;align-items:flex-start;
   padding:11px 4px;border-bottom:1px solid var(--linha);cursor:pointer;
@@ -232,37 +257,47 @@ tr:last-child td{border-bottom:0}
 .check-item input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
 .check-item span{font-size:15.5px;line-height:1.5}
 .check-item input:checked + span{color:var(--grafite-soft);text-decoration:line-through}
-.check-meta{
-  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);
-  margin-top:12px;
-}
+.check-meta{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);margin-top:12px}
 
 footer{
   margin-top:64px;padding-top:22px;border-top:1px solid var(--linha);
   font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.7;
 }
+footer p{max-width:none;margin:0 0 10px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 
 <div class="wrap">
 
 <header class="topo">
-  <div class="eyebrow">Análise comparativa <span>·</span> 2 provas <span>·</span> 120 questões</div>
+  <div class="eyebrow">12 aplicações <span>·</span> jun/2022 a nov/2025 <span>·</span> 720 questões</div>
   <h1>Mapa do Vestibular Mackenzie</h1>
-  <p class="dek">O que as duas últimas provas do Mackenzie realmente cobraram — e onde vale a pena gastar as próximas semanas de estudo. Foco em Matemática, Português e Geografia.</p>
-  <div class="fontes">
-    <b>Processo Seletivo 2026 · 1º sem · 26/11/2025 · Grupo 1</b>
-    <b>Vestibular 2025/2 · Higienópolis · 11/06/2025 · Prova B</b>
+  <p class="dek">O que o Mackenzie cobrou de Português, Literatura, Geografia e Matemática nos últimos cinco anos — questão por questão, lidas de ponta a ponta. E o que isso diz sobre o que vem na próxima prova.</p>
+
+  <div class="corpus">
+    <div><b>2022/2</b><em>21/06/2022</em></div>
+    <div><b>2023/1 · manhã</b><em>dez/2022</em></div>
+    <div><b>2023/1 · tarde</b><em>dez/2022</em></div>
+    <div><b>2023/2</b><em>15/06/2023</em></div>
+    <div><b>2024/1 · dia 1</b><em>28/11/2023</em></div>
+    <div><b>2024/1 · dia 2</b><em>29/11/2023</em></div>
+    <div><b>2024/2</b><em>jun/2024</em></div>
+    <div><b>2025/1 · dia 1</b><em>27/11/2024</em></div>
+    <div><b>2025/1 · dia 2</b><em>28/11/2024</em></div>
+    <div><b>2025/2</b><em>11/06/2025</em></div>
+    <div><b>2026/1 · Grupo 1</b><em>26/11/2025</em></div>
+    <div><b>2026/1 · Grupo 2</b><em>27/11/2025</em></div>
   </div>
 </header>
 
 <section>
-  <h2><span class="num">01</span> A estrutura da prova é fixa</h2>
-  <p class="sub">As duas provas têm exatamente o mesmo desenho: 60 questões objetivas mais uma redação, distribuídas nas mesmas faixas de numeração. Isso significa que você entra na prova já sabendo em que página está cada matéria.</p>
+  <div class="sec-tag">Q1 a Q60</div>
+  <h2>A prova tem um só desenho, e ele não mudou em cinco anos</h2>
+  <p class="sub">Nas doze aplicações lidas, as 60 questões objetivas caem sempre nas mesmas faixas de numeração, na mesma ordem, com a redação sempre antes da questão 1. Você entra na prova sabendo em que página está cada matéria.</p>
 
   <div class="achado">
-    <p class="achado-tit">Distribuição das 60 questões — idêntica nas duas provas</p>
-    <p class="achado-txt">Suas três matérias-foco somam 27 das 60 questões, ou 45% da prova objetiva.</p>
+    <p class="achado-tit">Distribuição das 60 questões</p>
+    <p class="achado-txt">Português, Matemática e Geografia somam 27 das 60 questões — 45% da prova objetiva.</p>
 
     <div class="blueprint">
       <div class="bp foco" style="flex:10" title="Português: questões 1 a 10">PORT · 10</div>
@@ -275,14 +310,9 @@ footer{
       <div class="bp foco" style="flex:7" title="Geografia: questões 54 a 60">GEO · 7</div>
     </div>
     <div class="escala">
-      <div style="flex:10">Q1</div>
-      <div style="flex:5">Q11</div>
-      <div style="flex:7">Q16</div>
-      <div style="flex:7">Q23</div>
-      <div style="flex:10">Q30</div>
-      <div style="flex:7">Q40</div>
-      <div style="flex:7">Q47</div>
-      <div style="flex:7">Q54</div>
+      <div style="flex:10">Q1</div><div style="flex:5">Q11</div><div style="flex:7">Q16</div>
+      <div style="flex:7">Q23</div><div style="flex:10">Q30</div><div style="flex:7">Q40</div>
+      <div style="flex:7">Q47</div><div style="flex:7">Q54</div>
     </div>
 
     <div class="legenda">
@@ -294,278 +324,387 @@ footer{
   </div>
 
   <div class="destaque">
-    <p><strong>Use isso na estratégia de prova.</strong> São 4 horas para 60 questões e a redação. Como a ordem é previsível, você pode ir direto para os blocos em que rende mais, sem folhear a prova inteira procurando.</p>
+    <p><strong>Uma única exceção em cinco anos.</strong> Na prova de junho de 2022, o caderno vinha deslocado: Português ia da 1 à 9, Inglês tinha 7 questões (10 a 16) e Matemática, 9 (31 a 39). De dezembro de 2022 em diante, a distribuição acima se repetiu nas onze aplicações seguintes, sem um único desvio.</p>
+    <p><strong>Cada processo seletivo tem duas provas diferentes.</strong> O vestibular de novembro é aplicado em dois dias, para grupos distintos de cursos, com provas inteiramente diferentes — mesma estrutura, outras questões. As duas valem como material de estudo.</p>
   </div>
 </section>
 
 <section>
-  <h2><span class="num">02</span> Matemática · Q30–Q39</h2>
-  <p class="sub">Oito dos dez temas se repetiram nas duas provas — ou seja, 80% da prova de Matemática sai de um conjunto pequeno e estável de assuntos. E há um vencedor claro.</p>
+  <div class="sec-tag">Q30 a Q39 · Matemática</div>
+  <h2>Matemática: geometria e trigonometria decidem o bloco</h2>
+  <p class="sub">119 questões lidas. O repertório é pequeno e estável: nove eixos cobrem tudo, e os dois primeiros valem quase metade do bloco.</p>
 
-  <div class="destaque">
-    <p><strong>Geometria é quase metade da prova de Matemática.</strong> Em 2026 foram 5 das 10 questões (Q33 a Q37, seguidas); em 2025/2, outras 4. Se você tiver pouco tempo, geometria é onde ele deve ir.</p>
+  <div class="achado">
+    <p class="achado-tit">Os nove eixos de Matemática</p>
+    <p class="achado-txt">Número de questões em 119, somando as 12 aplicações. Algumas questões cruzam dois eixos e contam nos dois.</p>
+    <div class="barras">
+      <div class="barra"><div class="rot">Geometria plana, espacial e analítica</div><div class="trilho"><div class="fill" style="width:100%"></div></div><div class="val">28 · 12 de 12 provas</div></div>
+      <div class="barra"><div class="rot">Funções, polinômios e sistemas</div><div class="trilho"><div class="fill" style="width:86%"></div></div><div class="val">24 · 12 de 12</div></div>
+      <div class="barra"><div class="rot">Razão, porcentagem e financeira</div><div class="trilho"><div class="fill" style="width:57%"></div></div><div class="val">16 · 9 de 12</div></div>
+      <div class="barra"><div class="rot">Trigonometria</div><div class="trilho"><div class="fill" style="width:46%"></div></div><div class="val">13 · 12 de 12</div></div>
+      <div class="barra"><div class="rot">Progressões (PA e PG)</div><div class="trilho"><div class="fill" style="width:46%"></div></div><div class="val">13 · 11 de 12</div></div>
+      <div class="barra"><div class="rot">Exponencial e logaritmo</div><div class="trilho"><div class="fill" style="width:43%"></div></div><div class="val">12 · 10 de 12</div></div>
+      <div class="barra"><div class="rot">Contagem, probabilidade, estatística</div><div class="trilho"><div class="fill" style="width:36%"></div></div><div class="val">10 · 9 de 12</div></div>
+      <div class="barra"><div class="rot">Matrizes e determinantes</div><div class="trilho"><div class="fill" style="width:21%"></div></div><div class="val">6 · 6 de 12</div></div>
+      <div class="barra"><div class="rot">Raciocínio lógico</div><div class="trilho"><div class="fill" style="width:4%"></div></div><div class="val">1 · 1 de 12</div></div>
+    </div>
+    <p class="barras-nota">Trigonometria é o único assunto presente nas doze aplicações, sem falhar uma vez.</p>
   </div>
 
+  <h3>Como cada tema é cobrado</h3>
   <div class="temas">
     <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Geometria plana</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Áreas, semelhança de triângulos, Teorema de Tales, relações métricas no círculo, polígonos regulares. Em 2026 caiu duas vezes: <code>Q35</code> Tales num mapa de avenidas paralelas e <code>Q36</code> relações métricas para achar o raio. Em 2025/2, <code>Q32</code> hexágono regular com redução de área a 25%.</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Geometria analítica — circunferência</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Equação reduzida e geral, identificar centro e raio completando quadrados, distância entre pontos, reta tangente. <code>Q34</code> em 2026 (duas circunferências e uma tangente comum) e <code>Q37</code> em 2025/2 (coroa circular a partir de x²+y²−8x−8y+7=0).</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Geometria espacial — cilindro</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">O cilindro apareceu nas duas, sempre com volume e/ou área lateral. <code>Q37</code> em 2026 com um cone inscrito no cilindro (a relação V<sub>cone</sub> = ⅓ V<sub>cilindro</sub> era a chave); <code>Q38</code> em 2025/2, área lateral de uma garrafa térmica.</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
+      <div class="freq">12 / 12</div>
       <div class="nome">Trigonometria</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">Lei dos cossenos com ângulo obtuso em <code>Q33</code>/2026 (rota de drone, 135°) e razões no triângulo retângulo em <code>Q36</code>/2025/2 (cabo de ponte estaiada, 60°). Saiba de cor os valores de 30°, 45°, 60° e o cosseno dos ângulos obtusos notáveis.</p>
+      <p class="det">Único tema em todas as provas, e cobrado de dois modos que se dividem no tempo. Até 2024 dominava a <strong>função trigonométrica com máximo ou mínimo</strong>, quase sempre no mesmo molde narrativo: um brinquedo que sobe e desce ou a temperatura de uma cidade, com lei do tipo <code>H(t) = a·sen(kt)</code> — helicóptero de brinquedo em 2022/2, carrossel em 2023/2, temperatura em 2023/1 tarde e 2024/1.</p>
+      <p class="det">De 2025 em diante virou <strong>lei dos senos e lei dos cossenos em triângulo não retângulo</strong>: vale de um rio em 2025/1, ponte estaiada em 2025/2, rota de drone com ângulo de 135° e estrutura de telhado em 2026. Quando o enunciado entrega √2 ≈ 1,4 e √3 ≈ 1,7, a resposta sai de uma dessas leis.</p>
     </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Análise combinatória</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Sempre permutação, nunca fórmula solta. <code>Q39</code>/2026: anagramas de GEEE@2026 (permutação com letras repetidas). <code>Q35</code>/2025/2: exercícios de academia em blocos que devem ficar juntos (permuta-se dentro e entre os blocos).</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Progressões — PA e PG</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Uma de cada. <code>Q38</code>/2026: soma de PG infinita (bolinha que volta a 80% da altura — cuidado, a distância total conta subida e descida). <code>Q33</code>/2025/2: termo geral da PA e soma dos 2025 primeiros termos.</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Logaritmos</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Propriedades operatórias em <code>Q32</code>/2026 (dentro de uma matriz com lei de formação a<sub>ij</sub> = log(i²+j)) e função logarítmica com leitura de gráfico em <code>Q34</code>/2025/2. Domine log do produto, do quociente e da potência.</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Funções afim e quadrática</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det"><code>Q31</code> nas duas provas, na mesma posição. Em 2026, vértice e valor máximo da parábola; em 2025/2, taxa de variação, raízes e interseção com os eixos da função afim.</p>
-    </div>
-    <div class="tema media">
-      <div class="freq">1 / 2</div>
-      <div class="nome">Estatística e porcentagem</div>
-      <div class="tag">Revisar</div>
-      <p class="det">Ocupam a <code>Q30</code>, a primeira do bloco, e são as questões mais rápidas da prova. Média, moda e mediana a partir de gráfico (2026); porcentagem em massa de solução (2025/2).</p>
-    </div>
-    <div class="tema media">
-      <div class="freq">1 / 2</div>
-      <div class="nome">Matrizes e noção de limite</div>
-      <div class="tag">Revisar</div>
-      <p class="det">Aparecem como tempero, quase sempre coladas em outro conteúdo. Matriz por lei de formação em 2026; em 2025/2, <code>Q39</code> pediu um limite — mas o enunciado ensinava o método, e a conta real era fatorar x²−1 e simplificar.</p>
-    </div>
-  </div>
-</section>
 
-<section>
-  <h2><span class="num">03</span> Português · Q1–Q10</h2>
-  <p class="sub">O bloco também tem uma divisão interna fixa: seis questões de interpretação sobre um conjunto de textos, depois quatro de literatura. Repare que a literatura vale só 4 pontos — e a interpretação, 6.</p>
+    <div class="tema alta">
+      <div class="freq">11 / 12</div>
+      <div class="nome">Progressões: PA e PG</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">13 questões, e nunca a fórmula solta — sempre embrulhada numa história curta: idades de quatro irmãs, passageiros por vagão, poltronas por fileira, docinhos por bandeja, carga de musculação que dobra a cada treino. Precisa reconhecer a progressão no enunciado antes de calcular.</p>
+      <p class="det">O que costuma ser pedido: termo geral, soma dos <em>n</em> primeiros termos, e o cruzamento PA × PG na mesma questão (2023/2, 2025/1, 2026 G2). <strong>Soma de PG infinita</strong> apareceu uma vez, em 2026 G1 — a bolinha que volta a 80% da altura, contando subida e descida.</p>
+    </div>
 
-  <div class="tabela-wrap">
-    <table>
-      <thead><tr><th>Questões</th><th>O que é cobrado</th><th>Nas duas provas</th></tr></thead>
-      <tbody>
-        <tr><td>Q1–Q6</td><td>Interpretação de um bloco de 2 a 3 textos, com um deles verbo-visual (infográfico, charge, esquema)</td><td>Sim, sem exceção</td></tr>
-        <tr><td>Q7–Q10</td><td>Literatura brasileira: escolas literárias, autores e gêneros</td><td>Sim, sem exceção</td></tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="tema alta">
+      <div class="freq">10 / 12</div>
+      <div class="nome">Exponencial e logaritmo</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">Dois usos distintos. O primeiro é <strong>equação exponencial com bases redutíveis</strong> a uma potência comum — 0,0625 e ¼, 0,5 e 0,25, 1,1 elevado a expressões em <em>t</em>. O segundo é o <strong>logaritmo como ferramenta de decaimento ou crescimento</strong>: meia-vida do césio-137 no acidente de Goiânia (2026 G2), população de bactérias (2025/1), mudança de base com calculadora (2024/1).</p>
+      <p class="det">O aviso está no enunciado: quando aparece <code>Admita log 2 = 0,3</code> ou <code>log 5 ≅ 0,7</code>, a questão é de logaritmo. Propriedades de soma, produto e mudança de base resolvem quase todas.</p>
+    </div>
 
-  <h3>Interpretação e gramática em contexto</h3>
-  <div class="temas">
     <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Funções da linguagem</div>
+      <div class="freq">9 / 12</div>
+      <div class="nome">Geometria analítica: a circunferência</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">O conteúdo mais recorrente do bloco. Em 2026, <code>Q4</code> pedia identificar referencial, conativa, metalinguística e fática em quatro trechos diferentes; em 2025/2, <code>Q3</code> girava em torno da função referencial. Decore as seis e saiba reconhecê-las por uma frase curta.</p>
+      <p class="det">Nove questões, e a circunferência é o objeto em oito delas. As formas que se repetem: <strong>reconhecer a cônica pela equação geral</strong> (2022/2, 2023/2 com equações paramétricas), <strong>completar quadrados</strong> para achar centro e raio, <strong>tangência entre reta e circunferência</strong> pela distância do centro à reta (2025/1), e <strong>duas circunferências</strong> tangentes ou com tangente comum (2024/1, 2026 G1).</p>
+      <p class="det">Variações recentes: coroa circular a partir de <code>x² + y² − 8x − 8y + 7 = 0</code> (2025/2) e área definida por um sistema de inequações com reta e circunferência (2026 G2). Reta e triângulo no plano cartesiano aparecem menos (2024/2, 2024/1 d2).</p>
     </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Tipologia textual</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Narrativo, descritivo, dissertativo-expositivo, injuntivo — e a diferença entre tipo e gênero, que é o que as alternativas erradas exploram. Caiu em <code>Q1</code> e <code>Q3</code>/2026 e em <code>Q3</code>/2025/2.</p>
-    </div>
-    <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Semântica e sentido figurado</div>
-      <div class="tag">Prioridade máxima</div>
-      <p class="det">Substituir uma palavra sem alterar o sentido, reconhecer metáfora, entender o valor das aspas e dos parênteses. <code>Q6</code>/2026 (acarretam, sobremaneira) e <code>Q4</code>/2025/2 (aspas em "mais simples", "pesa na balança").</p>
-    </div>
-    <div class="tema media">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Coesão: pronomes e conjunções</div>
-      <div class="tag">Estudar</div>
-      <p class="det">Uma questão por prova, sempre sobre o texto. Referência anafórica dos pronomes <em>os</em> e <em>lhes</em> em <code>Q6</code>/2026; valor concessivo de <em>embora</em> e <em>conquanto</em>, mais a distinção por que / porque, em <code>Q6</code>/2025/2.</p>
-    </div>
-    <div class="tema media">
-      <div class="freq">1 / 2</div>
-      <div class="nome">Pressuposto e subentendido</div>
-      <div class="tag">Estudar</div>
-      <p class="det">O que o texto afirma sem dizer. Foi o eixo inteiro da <code>Q5</code>/2025/2 e reaparece disfarçado nas alternativas de várias outras questões de interpretação.</p>
-    </div>
-  </div>
 
-  <h3>Literatura</h3>
-  <div class="temas">
     <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Modernismo brasileiro e suas três fases</div>
+      <div class="freq">9 / 12</div>
+      <div class="nome">Geometria espacial: sólidos redondos</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">O assunto literário mais cobrado, com folga. <code>Q10</code>/2026 pedia distinguir as três fases uma a uma; em 2025/2 ele domina três questões seguidas — <code>Q7</code> e <code>Q8</code> sobre "No meio do caminho", de Drummond, e <code>Q9</code> sobre a Geração de 30.</p>
+      <p class="det">Cilindro, cone, esfera e tronco de cone respondem por quase todo o eixo — poliedro praticamente não cai. Volume de cilindro pela altura (2024/1), área da superfície do cone pela geratriz (2023/2, 2024/2), esfera deslocando água num cilindro (2025/1 d2), cone inscrito no cilindro (2026 G1), e <strong>tronco de cone com a lateral planificada como setor circular</strong> (2026 G2) — a mais difícil da série.</p>
+      <p class="det">Duas questões saíram do molde e usaram prisma: empacotamento de caixas em 2022/2 e custo do material de uma caixa cúbica em 2023/1. As provas mandam adotar <code>π = 3</code> quando a conta precisa.</p>
     </div>
+
     <div class="tema alta">
-      <div class="freq">2 / 2</div>
-      <div class="nome">Cecília Meireles e Clarice Lispector</div>
+      <div class="freq">8 / 12</div>
+      <div class="nome">Geometria plana</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">As duas autoras apareceram nas duas provas. Cecília: Geração de 30, musicalidade, introspecção e o <em>Romanceiro da Inconfidência</em>. Clarice: prosa introspectiva, crônica e conto — em 2026 um trecho dela era o próprio texto-base.</p>
+      <p class="det">Dez questões, o tema mais frequente do eixo de geometria. O <strong>hexágono regular</strong> apareceu duas vezes (área menos um círculo inscrito em 2023/1 tarde; redução a 25% da área em 2025/2). <strong>Teorema de Tales e semelhança</strong> aparecem sempre num contexto real: lotes de terreno, sombra de uma torre, avenidas paralelas num mapa do Google.</p>
+      <p class="det">Também cobrados: relações métricas no círculo (2026 G1), diagonal e Pitágoras em malha quadriculada (2024/1 d2), área de trapézio sob o gráfico de uma função (2025/2). Nesta última, geometria plana e logaritmo vieram na mesma questão.</p>
     </div>
+
     <div class="tema media">
-      <div class="freq">1 / 2</div>
-      <div class="nome">Romantismo e Simbolismo</div>
+      <div class="freq">9 / 12</div>
+      <div class="nome">Razão, porcentagem e matemática financeira</div>
       <div class="tag">Estudar</div>
-      <p class="det">Em 2026 vieram juntos: <code>Q8</code> sobre Cruz e Sousa (sugestão, musicalidade, aliteração) e <code>Q9</code> sobre Álvares de Azevedo e a segunda geração romântica, o "Mal do Século". São escolas de definição rápida — bom custo-benefício.</p>
+      <p class="det">16 questões, e quase sempre na <code>Q30</code> ou <code>Q31</code> — a abertura do bloco e as contas mais rápidas da prova. Regra de três simples, composta e inversa (calopsitas, latas de azeite, trabalhadores e máquinas em 2026 G2), variação percentual, lucro sobre custo com desconto (2025/1), juros compostos em dois meses (2024/1) e taxa mensal implícita num pagamento em duas parcelas (2025/1 d2). Não deixe esses pontos para trás.</p>
     </div>
+
     <div class="tema media">
-      <div class="freq">1 / 2</div>
-      <div class="nome">Gêneros literários</div>
+      <div class="freq">12 / 12</div>
+      <div class="nome">Funções, polinômios e sistemas</div>
       <div class="tag">Estudar</div>
-      <p class="det">Definição do conto e sua diferença para o romance e a crônica (<code>Q10</code>/2025/2). Em 2026 o equivalente foi a leitura de um poema contemporâneo, de Mar Becker: eu lírico, tema e comparação.</p>
+      <p class="det">24 questões espalhadas em muitos subtemas — nenhum deles isolado é frequente, mas o eixo aparece em todas as provas. <strong>Função quadrática</strong> com vértice e valor máximo (lucro, trajetória de projétil, produção de milho). <strong>Domínio de função</strong> com raiz e denominador. <strong>Polinômios</strong>: relações de Girard, raízes em progressão, resto da divisão por <em>x − a</em>. <strong>Sistemas lineares</strong> 2×2 e 3×3, com incógnitas disfarçadas (<code>1/u</code> e <code>1/v</code> em 2025/1).</p>
+      <p class="det">Apareceram uma vez cada: números complexos (2023/2), equação modular (2024/1 d2 e 2024/2) e <strong>noção de limite</strong> (2025/2) — nesta última o enunciado ensinava o método, e a conta real era fatorar e simplificar.</p>
+    </div>
+
+    <div class="tema media">
+      <div class="freq">9 / 12</div>
+      <div class="nome">Contagem, probabilidade e estatística</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Combinatória vem quase sempre como <strong>permutação</strong>, não como fórmula avulsa: anagramas de MACKENZIE (2023/2) e de GEEE@2026 com repetição (2026 G1), exercícios de academia agrupados em blocos que devem ficar juntos (2025/2). Probabilidade aparece como condicional (2022/2, 2023/1 tarde), eventos independentes (2025/1 d2), binomial (2024/1 d2) e posições numa fileira (2026 G2).</p>
+      <p class="det"><strong>Estatística descritiva entrou em 2026</strong>: média, moda e mediana lidas de um gráfico de barras na <code>Q30</code> do Grupo 1. Conteúdo curto, questão rápida — atenção só à mediana quando o número de dados é par.</p>
+    </div>
+
+    <div class="tema media">
+      <div class="freq">6 / 12</div>
+      <div class="nome">Matrizes e determinantes</div>
+      <div class="tag">Revisar por cima</div>
+      <p class="det">Sempre matriz 2×2, e em três formatos: <strong>lei de formação</strong> <code>a<sub>ij</sub> = f(i, j)</code> seguida do determinante (2024/1, 2026 G1, onde a lei era um logaritmo), <strong>equação matricial</strong> do tipo <code>X · A = B</code> ou <code>A · B = C</code> resolvida por sistema (2023/2, 2025/1 d2), e <strong>potências de uma matriz</strong> com ciclo (2025/1). Conteúdo pequeno, retorno alto.</p>
     </div>
   </div>
 
   <div class="destaque">
-    <p><strong>Padrão de formato que vale ouro.</strong> Cerca de um terço das questões de Português vem no modelo "afirmações I, II e III — assinale a correta". Nesse formato, achar <em>uma</em> afirmação claramente falsa já elimina duas ou três alternativas. E cada prova traz exatamente uma questão pedindo a alternativa INCORRETA — circule essa palavra.</p>
+    <p><strong>Os enunciados ficaram longos a partir de 2025.</strong> Até 2024 a questão típica cabia em três linhas e ia direto ao ponto. Nas provas de 2025/2 e 2026 os enunciados passaram a ter um parágrafo de contexto — drones com inteligência artificial, placas piezoelétricas, etiquetas de DNA, ponte estaiada — com gráficos, tabelas e imagens creditadas como <em>"próprio autor, com auxílio de IA"</em>. A matemática por baixo continua a mesma; o que mudou é o tempo de leitura. Treine extrair o dado do texto.</p>
+    <p><strong>As aproximações fornecidas dizem qual ferramenta usar.</strong> <code>π = 3</code> aponta para volume ou área de sólido redondo; <code>√2 ≈ 1,4</code> e <code>√3 ≈ 1,7</code>, para lei dos cossenos ou triângulo notável; <code>log 2 = 0,3</code>, para logaritmo. Ler os dados antes do enunciado economiza tempo.</p>
   </div>
 </section>
 
 <section>
-  <h2><span class="num">04</span> Geografia · Q54–Q60</h2>
-  <p class="sub">São só 7 questões, mas as mais previsíveis da prova inteira: duas frentes concentram mais da metade delas.</p>
+  <div class="sec-tag">Q1 a Q6 · Português</div>
+  <h2>Interpretação: o texto-base fala sobre a própria língua</h2>
+  <p class="sub">As seis primeiras questões são sempre sobre uma coletânea de textos. A descoberta mais útil das doze provas está no assunto dessa coletânea.</p>
+
+  <div class="destaque">
+    <p><strong>Em 10 das 12 provas, o texto de abertura é um texto teórico sobre linguagem.</strong> Não é coincidência nem variedade: é o recorte da banca. Os assuntos já usados foram denotação e conotação (2022/2), os sentidos das palavras (2023/1 manhã), línguas artificiais (2023/1 tarde), língua e identidade nacional (2024/1 d1), a história do português brasileiro (2024/1 d2), a função da literatura (2025/1), língua falada × língua escrita (2025/2), o processo de comunicação (2026 G1) e linguagem literária × não literária (2026 G2). As duas exceções falavam de leitura e de cultura — ainda dentro do mesmo campo.</p>
+    <p>Ler um resumo de variação linguística, funções da linguagem e diferença entre língua falada e escrita é preparação direta para as seis primeiras questões da prova.</p>
+  </div>
+
+  <h3>O molde da coletânea</h3>
+  <p>A composição se repete: um <strong>texto teórico</strong> em linguagem referencial, um <strong>quadro ou infográfico</strong> (nas provas recentes, sempre creditado ao Brasil Escola) e um <strong>texto literário</strong> — crônica de Clarice Lispector em 2026 G1, poema de Conceição Evaristo em 2026 G2. As linhas vêm numeradas, e as questões citam número de linha: você vai voltar ao texto o tempo todo.</p>
+
+  <h3>As seis questões seguem quase sempre a mesma sequência</h3>
+  <div class="tabela-wrap">
+    <table>
+      <thead><tr><th>Questão</th><th>O que costuma cobrar</th><th>Em quantas provas</th></tr></thead>
+      <tbody>
+        <tr><td>Q1</td><td>Tipologia e gênero textual, mais função da linguagem predominante</td><td>10 de 12</td></tr>
+        <tr><td>Q2</td><td>Tese central ou inferência — “depreende-se corretamente que…”</td><td>12 de 12</td></tr>
+        <tr><td>Q3</td><td>Afirmações I, II e III sobre a organização argumentativa do texto</td><td>10 de 12</td></tr>
+        <tr><td>Q4</td><td>Aplicação de um conceito, ou a alternativa <strong>INCORRETA</strong></td><td>11 de 12</td></tr>
+        <tr><td>Q5</td><td>Relação sinonímica, ou o que o texto afirma sem dizer</td><td>11 de 12</td></tr>
+        <tr><td>Q6</td><td>Coesão: conjunção, pronome, pontuação, ortografia — sempre com linha citada</td><td>10 de 12</td></tr>
+      </tbody>
+    </table>
+  </div>
 
   <div class="temas">
     <div class="tema alta">
-      <div class="freq">4 questões</div>
-      <div class="nome">Cartografia</div>
+      <div class="freq">12 / 12</div>
+      <div class="nome">Tese, inferência e pressuposto</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">A campeã absoluta. Escala grande × escala pequena e nível de detalhe (<code>Q56</code>/2026); cálculo de distância real a partir da escala (<code>Q59</code>/2025/2, 1:9.500.000); anamorfose como mapa temático (<code>Q55</code>/2026); e localizar países num mapa mudo da Ásia (<code>Q55</code>/2025/2). Treine a conta dos dois lados: mapa → real e real → mapa.</p>
+      <p class="det">Presente em todas as provas, e normalmente em duas questões. As alternativas erradas seguem três receitas: <strong>exageram</strong> a tese (“só é possível analisar a língua escrita”), <strong>invertem</strong> o que o texto diz (“a escrita é superior à oralidade”), ou trazem uma afirmação verdadeira sobre o mundo que o texto não faz. Treine perguntar “o texto disse isso?”, não “isso é verdade?”.</p>
     </div>
     <div class="tema alta">
-      <div class="freq">4 questões</div>
+      <div class="freq">10 / 12</div>
+      <div class="nome">Funções da linguagem e tipologia textual</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">As seis funções são cobradas pelo nome e por reconhecimento em frase curta. A <code>Q4</code> de 2026 G1 pedia identificar referencial, conativa, metalinguística e fática em cinco trechos diferentes. As alternativas erradas exploram a confusão entre <strong>tipo</strong> (narrativo, descritivo, dissertativo, injuntivo) e <strong>gênero</strong> (notícia, crônica, verbete, charge) — e a palavra <em>sincrético</em> aparece como pegadinha quando o texto não tem linguagem visual.</p>
+    </div>
+    <div class="tema alta">
+      <div class="freq">11 / 12</div>
+      <div class="nome">Semântica e vocabulário em contexto</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det">A questão de <strong>relação sinonímica</strong> — trocar uma palavra do texto sem alterar o sentido — aparece com esse nome em metade das provas e é das mais rápidas de resolver: costuma ter quatro pares absurdos e um correto. Palavras já usadas: <em>depreender</em>, <em>versar</em>, <em>conjectura</em>, <em>acarretar</em>, <em>sobremaneira</em>, <em>fluentemente</em>.</p>
+      <p class="det">Somam-se as figuras de linguagem lidas dentro do texto, o valor das aspas e dos parênteses, e a duplicidade de sentido — em 2026 G2 a palavra <em>fim</em> valia ao mesmo tempo “finalidade” e “destruição”.</p>
+    </div>
+    <div class="tema media">
+      <div class="freq">10 / 12</div>
+      <div class="nome">Coesão: conjunções, pronomes, pontuação</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Uma questão por prova, sempre ancorada numa linha. Valor das conjunções (<em>embora</em> e <em>conquanto</em> como concessivas, <em>contudo</em> e <em>mas</em> como adversativas, <em>na medida em que</em> × <em>à medida que</em>), referência anafórica de pronomes, e ortografia que muda com o sentido: <em>por que</em> × <em>porque</em>, <em>trás</em> × <em>traz</em>.</p>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Gramática isolada não caiu uma única vez em cinco anos.</strong> Em 119 questões de Português não há uma classificação de orações, uma análise sintática ou um exercício de concordância fora de contexto. Toda gramática vem colada ao texto, com o número da linha no enunciado. Estudar listas de regras rende menos aqui do que treinar leitura atenta com o dedo na linha citada.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-tag">Q7 a Q10 · Literatura</div>
+  <h2>Literatura: Modernismo em todas as provas, sem exceção</h2>
+  <p class="sub">As quatro últimas questões de Português são de literatura — 47 questões nas doze aplicações. E uma escola domina o bloco de um jeito que não deixa dúvida sobre onde estudar.</p>
+
+  <div class="achado">
+    <p class="achado-tit">Escolas literárias cobradas</p>
+    <p class="achado-txt">Número de questões em 47. Cada questão foi atribuída à escola que ela efetivamente cobra.</p>
+    <div class="barras">
+      <div class="barra"><div class="rot">Modernismo (as três fases)</div><div class="trilho"><div class="fill" style="width:100%"></div></div><div class="val">20 · 12 de 12 provas</div></div>
+      <div class="barra"><div class="rot">Romantismo</div><div class="trilho"><div class="fill" style="width:25%"></div></div><div class="val">5 · 3 de 12</div></div>
+      <div class="barra"><div class="rot">Realismo</div><div class="trilho"><div class="fill" style="width:15%"></div></div><div class="val">3 · 3 de 12</div></div>
+      <div class="barra"><div class="rot">Simbolismo</div><div class="trilho"><div class="fill" style="width:15%"></div></div><div class="val">3 · 2 de 12</div></div>
+      <div class="barra"><div class="rot">Literatura contemporânea</div><div class="trilho"><div class="fill" style="width:15%"></div></div><div class="val">3 · 2 de 12</div></div>
+      <div class="barra"><div class="rot">Naturalismo</div><div class="trilho"><div class="fill" style="width:10%"></div></div><div class="val">2 · 2 de 12</div></div>
+      <div class="barra"><div class="rot">Literatura popular (cordel)</div><div class="trilho"><div class="fill" style="width:10%"></div></div><div class="val">2 · 1 de 12</div></div>
+      <div class="barra"><div class="rot">Panorama entre escolas</div><div class="trilho"><div class="fill" style="width:10%"></div></div><div class="val">2 · 2 de 12</div></div>
+      <div class="barra"><div class="rot">Barroco, Arcadismo, Classicismo, Humanismo, Pré-Modernismo, Tropicalismo, teoria literária</div><div class="trilho"><div class="fill" style="width:5%"></div></div><div class="val">1 cada</div></div>
+    </div>
+    <p class="barras-nota">Modernismo responde por 43% de toda a literatura cobrada e apareceu nas doze aplicações.</p>
+  </div>
+
+  <h3>O que cai dentro do Modernismo</h3>
+  <p><strong>Mário de Andrade é o autor mais cobrado do vestibular.</strong> <em>Macunaíma</em> apareceu em três provas — trecho de abertura e análise da linguagem em 2023/2, leitura crítica em 2024/1 d2 — e o poema “O trovador” em 2023/1. A <strong>Semana de Arte Moderna de 1922</strong> foi objeto direto de questão em cinco provas, e a divisão nas <strong>três fases</strong> (1922, Geração de 30, Geração de 45) foi cobrada uma a uma em 2026 G1.</p>
+  <p>Os outros nomes que reaparecem: Manuel Bandeira (“Os sapos”, versos de <em>Belo belo</em>), Oswald de Andrade (“As meninas da gare”, antropofagia), Carlos Drummond de Andrade (“No meio do caminho” e <em>Alguma Poesia</em>, 1930), Cecília Meireles (<em>Romanceiro da Inconfidência</em>, Geração de 30), Graciliano Ramos e o Romance de 30, Clarice Lispector, João Cabral, Jorge Amado, Murilo Mendes, Ariano Suassuna e o <em>Auto da Compadecida</em>.</p>
+
+  <h3>A estrutura das quatro questões</h3>
+  <div class="tabela-wrap">
+    <table>
+      <thead><tr><th>Questão</th><th>Formato recorrente</th><th>Exemplos das provas</th></tr></thead>
+      <tbody>
+        <tr><td>Q7</td><td>Um <strong>poema inteiro</strong> reproduzido, com análise: alternativas longas que amarram interpretação e escola literária</td><td>“Modinha para violão”, “O trovador”, “Ismália”, “Canção do exílio”, “No meio do caminho”, Mar Becker, Jarid Arraes</td></tr>
+        <tr><td>Q8</td><td>Segunda questão <strong>sobre o mesmo texto</strong>, agora sobre sua linguagem — oralidade, rima, vocabulário, forma fixa</td><td>Linguagem de <em>Macunaíma</em>, oralidade no cordel, contrastes espaciais em “Ismália”</td></tr>
+        <tr><td>Q9</td><td>“Sobre a vida e a obra de…” — um autor canônico, em afirmações I, II e III</td><td>Machado de Assis, Gonçalves Dias, Lima Barreto, Cecília Meireles, Gil Vicente, Manuel Bandeira</td></tr>
+        <tr><td>Q10</td><td>Uma <strong>escola inteira</strong> ou um <strong>gênero</strong>, em definição — a questão mais decorável do bloco</td><td>Arcadismo, Indianismo, Realismo, as três fases do Modernismo, o gênero conto, poesia contemporânea</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="destaque">
+    <p><strong>As alternativas erradas de literatura erram sempre pelos mesmos dois caminhos.</strong> O primeiro é <strong>atribuir o texto à escola errada</strong> — dizem que um poema modernista é “típico do Trovadorismo”, que Drummond tem “influência do Naturalismo”, que <em>Macunaíma</em> é “da primeira fase do Romantismo”, que “Ismália” é um soneto. O segundo é <strong>inventar biografia</strong>: Machado que “não conseguiu reconhecimento em vida”, Cecília Meireles “descoberta nos anos 2000”, Camões que “não existiu”, Suassuna que escreveu <em>Dom Casmurro</em>.</p>
+    <p>A consequência prática é boa: você não precisa ter lido as obras. Precisa saber, para cada autor canônico, <strong>a escola, a obra principal e dois fatos verdadeiros</strong>. Isso derruba três ou quatro alternativas de cada questão.</p>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Novidade de 2026, nas duas provas: poesia contemporânea de autoras que você não vai conhecer.</strong> Mar Becker no Grupo 1, Jarid Arraes no Grupo 2 — e Conceição Evaristo como texto-base. Como não há o que decorar, a questão é de análise pura: o que o eu lírico faz com a imagem, o que a palavra significa nos dois sentidos. Vale saber as características gerais: verso livre, liberdade formal, temática feminina e racial, tom político, intertextualidade. Os nomes de referência citados pela banca foram Ferreira Gullar, Adélia Prado e Conceição Evaristo.</p>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Cerca de um terço das questões de Português vem no formato “afirmações I, II e III”.</strong> São cerca de três por prova, e o formato é uma vantagem: achar <em>uma</em> afirmação claramente falsa já elimina duas ou três alternativas. E onze das doze provas trazem ao menos uma questão pedindo a alternativa <strong>INCORRETA</strong> — circule essa palavra ao ler.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-tag">Q54 a Q60 · Geografia</div>
+  <h2>Geografia: sete questões, e a mais previsível da prova inteira</h2>
+  <p class="sub">84 questões lidas. Metade do bloco é atualidade lida em notícia; a outra metade se prepara com conteúdo fixo. E existe uma questão que aparece em nove das doze provas.</p>
+
+  <div class="achado">
+    <p class="achado-tit">Os seis eixos de Geografia</p>
+    <p class="achado-txt">Número de questões em 84. Questões que cruzam dois eixos contam nos dois.</p>
+    <div class="barras">
+      <div class="barra"><div class="rot">Geopolítica e regiões do mundo</div><div class="trilho"><div class="fill" style="width:100%"></div></div><div class="val">25 · 11 de 12 provas</div></div>
+      <div class="barra"><div class="rot">Geografia física (clima, biomas, relevo, água)</div><div class="trilho"><div class="fill" style="width:96%"></div></div><div class="val">24 · 12 de 12</div></div>
+      <div class="barra"><div class="rot">Cartografia</div><div class="trilho"><div class="fill" style="width:68%"></div></div><div class="val">17 · 10 de 12</div></div>
+      <div class="barra"><div class="rot">População e demografia</div><div class="trilho"><div class="fill" style="width:56%"></div></div><div class="val">14 · 8 de 12</div></div>
+      <div class="barra"><div class="rot">Meio ambiente e energia</div><div class="trilho"><div class="fill" style="width:36%"></div></div><div class="val">9 · 7 de 12</div></div>
+      <div class="barra"><div class="rot">Brasil: regionalização e território</div><div class="trilho"><div class="fill" style="width:24%"></div></div><div class="val">6 · 6 de 12</div></div>
+    </div>
+    <p class="barras-nota">Cartografia é o terceiro eixo em volume, mas concentra a questão mais repetida de todo o vestibular.</p>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Cálculo de escala apareceu em 9 das 12 provas.</strong> É a questão mais previsível do vestibular inteiro — mais até que qualquer tema de Matemática. Se sobrar tempo para revisar um único assunto na véspera, é este.</p>
+  </div>
+
+  <div class="temas">
+    <div class="tema alta">
+      <div class="freq">10 / 12</div>
+      <div class="nome">Cartografia: escala, fusos e anamorfose</div>
+      <div class="tag">Prioridade máxima</div>
+      <p class="det"><strong>Escala em 9 provas.</strong> O molde é sempre o mesmo: duas cidades reais, a distância em linha reta em quilômetros, e a escala — Kiev e Moscou em 1:5.000.000, Trípoli e Luanda, Curitiba e Florianópolis em 1:8.000.000, Vancouver e Los Angeles em 1:15.000.000, Brasília e Buenos Aires em 1:9.500.000, Santos e Cajati em 1:1.500.000. <strong>O erro mora na conversão de unidades</strong>: as alternativas trazem o mesmo número em cm, dm e m de propósito. Treine nos dois sentidos, mapa → real e real → mapa.</p>
+      <p class="det">Em 2026 G1 a banca cobrou o <strong>conceito</strong>: escala grande (1:5.000, mais detalhe, área menor) contra escala pequena (1:5.000.000) — é contraintuitivo e por isso cai. <strong>Fuso horário</strong> em 4 provas: UTC do Qatar, noite polar no Alasca, Linha Internacional de Data entre Fiji (UTC+12) e Havaí (UTC−10), e Cidade do México (UTC−6) para o Rio de Janeiro. <strong>Anamorfose</strong> estreou em 2026, nas duas provas — e as alternativas erradas são sempre mapa coroplético, mapa de pontos e cartograma de fluxos.</p>
+    </div>
+
+    <div class="tema alta">
+      <div class="freq">11 / 12</div>
       <div class="nome">Geopolítica e atualidades</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">Sempre a partir de uma notícia dos 12 meses anteriores à prova. Em 2026: o acordo Armênia–Azerbaijão em Nagorno-Karabakh, mediado pelos EUA em agosto de 2025, e o conceito de enclave. Em 2025/2: a queda de Bashar al-Assad na Síria e o acordo Mercosul–União Europeia, ambos de dezembro de 2024.</p>
+      <p class="det">25 questões, e a regra é firme: a notícia é dos <strong>doze meses anteriores à prova</strong>, e nunca se pede um dado decorado — se pede saber quem está de que lado e por quê. Os teatros que voltam: <strong>Rússia e Ucrânia</strong> em quatro provas (invasão, Crimeia, expansão da OTAN pelos Bálticos), <strong>Oriente Médio</strong> em três (execuções na Arábia Saudita, crise no Líbano, queda de Bashar al-Assad na Síria com Rússia e Irã como aliados do regime), <strong>Cáucaso</strong> (Armênia e Azerbaijão em Nagorno-Karabakh, acordo mediado pelos EUA em 2025) e <strong>China e Taiwan</strong>.</p>
+      <p class="det"><strong>Blocos econômicos</strong> em quatro provas: BRICS ampliado, OTAN, e o acordo Mercosul–União Europeia de dezembro de 2024. <strong>África</strong> em quatro: genocídio em Ruanda, países de maioria islâmica, Sudão, os 30 anos do fim do apartheid. E em 2026 G1 a banca pediu um <strong>conceito puro</strong>: a definição de enclave — vale revisar também exclave, território, fronteira e soberania.</p>
     </div>
+
     <div class="tema alta">
-      <div class="freq">3 questões</div>
-      <div class="nome">Brasil: território e meio ambiente</div>
+      <div class="freq">8 / 12</div>
+      <div class="nome">Demografia: o envelhecimento é o roteiro fixo</div>
       <div class="tag">Prioridade máxima</div>
-      <p class="det">SNUC e a diferença entre unidades de proteção integral e de uso sustentável (<code>Q60</code>/2026 — saiba onde entram estação ecológica, parque nacional, APA e reserva extrativista). Do outro lado: a seca e os incêndios no Pantanal (<code>Q58</code>) e a regionalização do IBGE com população por região (<code>Q60</code>) em 2025/2.</p>
+      <p class="det">O tema individual mais cobrado de Geografia, com 11 questões, e sempre a mesma história: <strong>queda da fecundidade e envelhecimento populacional</strong>. Japão em três provas (declínio de quase um milhão de habitantes, pressão sobre previdência e saúde), Coreia do Sul com 0,72 filho por mulher, China e seus incentivos à natalidade, Índia ultrapassando a China.</p>
+      <p class="det">No Brasil, o roteiro é o IBGE: queda nos nascimentos, estrutura etária em transição, projeção de população parando de crescer em 2041, estimativas de 2025 e o uso desses dados no repasse de recursos federais. Saber <strong>a ordem das regiões por população e por área</strong> e os estados mais populosos resolve várias alternativas.</p>
     </div>
+
     <div class="tema media">
-      <div class="freq">3 questões</div>
-      <div class="nome">Economia mundial e comércio</div>
+      <div class="freq">12 / 12</div>
+      <div class="nome">Geografia física: clima, biomas, relevo e água</div>
       <div class="tag">Estudar</div>
-      <p class="det">PIB total × PIB per capita e concentração de renda pelo Índice de Gini (<code>Q55</code>/2026); pauta de exportação do Brasil para o Japão, com peso das commodities (<code>Q56</code>/2025/2); blocos econômicos no acordo Mercosul–UE (<code>Q57</code>).</p>
+      <p class="det">Único eixo presente em todas as provas, com 24 questões. <strong>Climatologia</strong>: massas de ar que atuam no Brasil (a do Chaco, quente e seca), ciclones lidos em imagem de satélite com centro de baixa pressão, El Niño, papel dos oceanos, noite polar. <strong>Biomas</strong>: Pantanal e a seca de 2024, Pampa e a perda de vegetação nativa, manguezais, Cerrado, Mata Atlântica, domínios morfoclimáticos comparados em fotografia.</p>
+      <p class="det"><strong>Hidrografia</strong>: bacia do São Francisco, rio Reno e a navegação na Alemanha, Tigre e Eufrates que nascem na Turquia e se encontram no Iraque, rio sob o gelo na Antártida, os “rios voadores” da Amazônia. <strong>Relevo</strong>: Andes, deserto do Atacama, cavernas brasileiras.</p>
     </div>
+
     <div class="tema media">
-      <div class="freq">2 questões</div>
-      <div class="nome">Climatologia e fusos horários</div>
+      <div class="freq">7 / 12</div>
+      <div class="nome">Meio ambiente, energia e unidades de conservação</div>
       <div class="tag">Estudar</div>
-      <p class="det">Ciclones lidos em imagem de satélite — centros de alta e baixa pressão e o sentido de rotação em cada hemisfério (<code>Q54</code>/2026). E a Linha Internacional de Data com fusos extremos, Fiji em UTC+12 contra o Havaí em UTC−10 (<code>Q57</code>/2026).</p>
+      <p class="det"><strong>Energia</strong> em três provas: volta do carvão na Alemanha, fechamento da última usina de carvão do Reino Unido, entrada do Brasil no top 10 da solar fotovoltaica. <strong>Questão ambiental</strong> em cinco: microplásticos no estuário de Santos, massa antropogênica ultrapassando a biomassa, queimadas no Mato Grosso do Sul, desmatamento na Amazônia.</p>
+      <p class="det">Em 2026 G1 caiu o <strong>SNUC</strong>, e a cobrança foi direta: distinguir unidades de <strong>proteção integral</strong> (estação ecológica, parque nacional) de unidades de <strong>uso sustentável</strong> (APA, reserva extrativista). É a distinção que a banca pede — decore os exemplos de cada grupo.</p>
+    </div>
+
+    <div class="tema media">
+      <div class="freq">6 / 12</div>
+      <div class="nome">Brasil: os modelos de regionalização</div>
+      <div class="tag">Estudar</div>
+      <p class="det">Três modelos se alternam e precisam ser distinguidos: as <strong>cinco regiões oficiais do IBGE</strong>, os <strong>três complexos regionais de Pedro Geiger</strong> (Amazônia, Nordeste, Centro-Sul) e os <strong>quatro Brasis de Milton Santos e Maria Laura Silveira</strong> (baseados na difusão do meio técnico-científico-informacional). Aparecem como alternativas do mesmo mapa, o que torna a confusão fácil.</p>
+      <p class="det">Também cobrados: mapa mudo com estados numerados (região Centro-Oeste em 2026 G2, com o Pantanal entre MT e MS e as fronteiras de MS com Paraguai e Bolívia), regiões e capitais, e o crescimento das cidades médias no Censo.</p>
     </div>
   </div>
 
   <div class="destaque">
-    <p><strong>Geografia se prepara com jornal.</strong> Nenhuma das questões de atualidades exigia dado decorado — exigia saber quem estava de que lado. Acompanhe conflitos, acordos comerciais e dados ambientais do Brasil durante o ano da prova; o enunciado sempre entrega o contexto e cobra a interpretação.</p>
+    <p><strong>Geografia se estuda com jornal e com uma tabela de conversão.</strong> Metade do bloco vem de notícia do ano da prova — acompanhe conflitos, acordos comerciais, dados do IBGE e do MapBiomas. A outra metade é conteúdo fixo que rende muito: escala, fusos, tipos de mapa, biomas, massas de ar, SNUC e os modelos de regionalização. Cerca de duas questões por prova usam o formato de afirmações I, II e III, e mapas mudos com países ou estados numerados são recorrentes.</p>
   </div>
 </section>
 
 <section>
-  <h2><span class="num">05</span> Redação</h2>
-  <p class="sub">Mesma proposta nas duas provas, palavra por palavra: dissertação a partir de três textos, com coesão, coerência e norma culta.</p>
-
-  <div class="tabela-wrap">
-    <table>
-      <thead><tr><th>Prova</th><th>Tema</th><th>Composição dos textos</th></tr></thead>
-      <tbody>
-        <tr><td>2026</td><td>Consumo de ultraprocessados, saúde pública e tributação de alimentos</td><td>2 textos verbais + 1 peça visual</td></tr>
-        <tr><td>2025/2</td><td>Desinformação, risco à democracia e educação midiática</td><td>2 textos verbais + 1 charge</td></tr>
-      </tbody>
-    </table>
-  </div>
+  <div class="sec-tag">Redação</div>
+  <h2>A proposta é a mesma há cinco anos, palavra por palavra</h2>
+  <p class="sub">Em onze das doze aplicações o comando é idêntico: dissertação a partir dos textos, com coesão, coerência e norma culta. Só a prova de junho de 2022 usa uma redação um pouco diferente do enunciado.</p>
 
   <div class="destaque">
-    <p><strong>Título é obrigatório e sempre foi.</strong> As duas propostas pedem título explicitamente, além de exigir que o tema seja depreendido da leitura de <em>todos</em> os textos — incluindo o visual. São 40 linhas no rascunho. Tema social contemporâneo brasileiro nas duas vezes, com um dado ou proposta de política pública embutido em um dos textos: use esse dado no seu argumento.</p>
+    <p><strong>Três exigências repetidas em todas as propostas:</strong> o texto deve ter <strong>título</strong>; o tema deve ser depreendido da leitura <strong>de todos os textos, inclusive o visual</strong>; e você deve observar os <strong>posicionamentos</strong> de cada texto para construir a argumentação. A coletânea é sempre composta por dois textos verbais e uma peça visual — charge, cartum ou infográfico.</p>
+    <p><strong>O tema é sempre um problema social brasileiro com um dado dentro da coletânea</strong> — uma estatística, um estudo de universidade, uma proposta de política pública. Esse dado é repertório pronto: use-o no seu argumento.</p>
   </div>
-</section>
-
-<section>
-  <h2><span class="num">06</span> As outras matérias, em uma linha cada</h2>
-  <p class="sub">Fora do seu foco principal, mas são 33 das 60 questões — vale saber o que esperar.</p>
 
   <div class="tabela-wrap">
     <table>
-      <thead><tr><th>Bloco</th><th>Matéria</th><th>O que apareceu nas duas provas</th></tr></thead>
+      <thead><tr><th>Prova</th><th>Tema da redação</th></tr></thead>
       <tbody>
-        <tr><td>Q11–Q15</td><td>Inglês</td><td>Um texto jornalístico longo mais um texto curto (tirinha ou anúncio); sempre uma questão de sinônimos ou antônimos de palavras em negrito e uma de inferência</td></tr>
-        <tr><td>Q16–Q22</td><td>Física</td><td>Conservação de energia mecânica, termodinâmica, circuitos e resistores, empuxo</td></tr>
-        <tr><td>Q23–Q29</td><td>Química</td><td>Química orgânica (funções, isomeria, reações), eletroquímica e potencial de redução, forças intermoleculares</td></tr>
-        <tr><td>Q40–Q46</td><td>Biologia</td><td>Citologia, evolução, ecologia e impacto ambiental, fisiologia humana, genética</td></tr>
-        <tr><td>Q47–Q53</td><td>História</td><td>Antiguidade e Idade Média, Brasil Colônia e Império, Era Vargas e ditadura militar — sempre a partir de um documento ou imagem</td></tr>
+        <tr><td>2022/2</td><td>Escolhas individuais e influência social</td></tr>
+        <tr><td>2023/1 · manhã</td><td>Raça, cultura e relativismo cultural</td></tr>
+        <tr><td>2023/1 · tarde</td><td>Ação coletiva e o problema do “carona”</td></tr>
+        <tr><td>2023/2</td><td>Inteligência artificial: riscos e controle</td></tr>
+        <tr><td>2024/1 · dia 1</td><td>Envelhecimento populacional</td></tr>
+        <tr><td>2024/1 · dia 2</td><td>Medicamentos para emagrecer, beleza e lucro</td></tr>
+        <tr><td>2024/2</td><td>Comunidades virtuais e sociabilidade</td></tr>
+        <tr><td>2025/1 · dia 1</td><td>Turismo de massa e turismo predatório</td></tr>
+        <tr><td>2025/1 · dia 2</td><td>Saúde mental, endividamento e suicídio</td></tr>
+        <tr><td>2025/2</td><td>Desinformação, democracia e educação midiática</td></tr>
+        <tr><td>2026/1 · Grupo 1</td><td>Ultraprocessados, saúde pública e tributação de alimentos</td></tr>
+        <tr><td>2026/1 · Grupo 2</td><td>Educação como via de mobilidade social</td></tr>
       </tbody>
     </table>
   </div>
+
+  <p style="margin-top:20px">Os eixos que se repetem são <strong>tecnologia e sociedade</strong>, <strong>saúde pública</strong>, <strong>desigualdade e educação</strong> e <strong>vida coletiva</strong>. Montar repertório nesses quatro campos cobre os doze temas acima.</p>
 </section>
 
 <section>
-  <h2><span class="num">07</span> Por onde começar</h2>
-  <p class="sub">A ordem abaixo segue o retorno por hora estudada: temas que caíram nas duas provas vêm primeiro. Marque o que já fechou — a página lembra suas marcações neste navegador.</p>
+  <div class="sec-tag">Prioridades</div>
+  <h2>Por onde começar</h2>
+  <p class="sub">A ordem abaixo segue o retorno por hora estudada: primeiro o que apareceu em quase todas as provas, depois o que rende por ser conteúdo curto. Marque o que já fechou — a página lembra suas marcações neste navegador.</p>
 
   <div class="check" id="lista"></div>
-  <p class="check-meta" id="progresso">0 de 14 concluídos</p>
+  <p class="check-meta" id="progresso">0 de 18 concluídos</p>
 </section>
 
 <footer>
-  Análise baseada na leitura integral das duas provas: Processo Seletivo Mackenzie 1º semestre 2026 (Grupo 1, 26/11/2025) e Vestibular Higienópolis 2º semestre 2025 (Prova B, 11/06/2025).<br>
-  Frequências indicam em quantas das duas provas o tema apareceu. Duas provas são uma amostra pequena: trate isto como ordem de prioridade, não como garantia de incidência.
+  <p><strong>Corpus.</strong> Doze aplicações do vestibular Mackenzie, lidas questão por questão: 2022/2 (21/06/2022), 2023/1 manhã e tarde (dez/2022), 2023/2 (15/06/2023), 2024/1 dias 1 e 2 (28 e 29/11/2023), 2024/2 (jun/2024), 2025/1 dias 1 e 2 (27 e 28/11/2024), 2025/2 (11/06/2025) e 2026/1 Grupos 1 e 2 (26 e 27/11/2025). São 720 questões, das quais 119 de Português, 119 de Matemática e 84 de Geografia.</p>
+  <p><strong>Fontes.</strong> Cadernos de prova e resoluções comentadas publicados pelo Curso Objetivo e pela Universidade Presbiteriana Mackenzie. Os textos extraídos estão em <code>analise/provas/</code> no repositório.</p>
+  <p><strong>Como ler as frequências.</strong> “9 de 12” significa que o tema apareceu em nove das doze aplicações. As contagens de questões somam as doze provas; questões que cobram dois conteúdos foram contadas nos dois. Isto é ordem de prioridade construída a partir do passado, não previsão garantida.</p>
 </footer>
 
 </div>
 
 <script>
 var itens = [
-  "Geometria plana: áreas, semelhança, Tales e relações métricas no círculo",
+  "Cartografia: cálculo de escala nos dois sentidos, com atenção às unidades",
+  "Cartografia: escala grande × escala pequena, e os tipos de mapa temático",
+  "Cartografia: fusos horários, UTC e Linha Internacional de Data",
+  "Trigonometria: lei dos senos, lei dos cossenos e triângulo retângulo",
+  "Trigonometria: função seno e cosseno, máximo, mínimo e período",
   "Geometria analítica: equação da circunferência, centro, raio e tangência",
-  "Geometria espacial: volume e área lateral do cilindro, cone inscrito",
-  "Trigonometria: lei dos cossenos e razões no triângulo retângulo",
-  "Progressões: termo geral e soma da PA, soma da PG infinita",
-  "Análise combinatória: permutação com repetição e com blocos",
-  "Logaritmos: propriedades operatórias e função logarítmica",
-  "Funções afim e quadrática: gráfico, raízes e vértice",
-  "Funções da linguagem: as seis, reconhecidas por frase curta",
-  "Modernismo brasileiro: as três fases e seus autores",
-  "Cecília Meireles e Clarice Lispector: obra e características",
-  "Cartografia: escala grande e pequena, e cálculo nos dois sentidos",
-  "Geopolítica atual: conflitos, blocos econômicos e acordos do ano",
-  "SNUC, biomas brasileiros e regionalização do IBGE"
+  "Geometria espacial: cilindro, cone, esfera, tronco e planificação",
+  "Geometria plana: áreas, hexágono regular, Tales e semelhança",
+  "Progressões: termo geral e soma da PA, e soma da PG infinita",
+  "Logaritmos e exponenciais: propriedades, mudança de base e meia-vida",
+  "Modernismo brasileiro: as três fases, Mário de Andrade e a Semana de 22",
+  "Para cada autor canônico: escola, obra principal e dois fatos verdadeiros",
+  "Funções da linguagem e a diferença entre tipo e gênero textual",
+  "Variação linguística e língua falada × língua escrita",
+  "Demografia: envelhecimento, fecundidade, Japão e projeções do IBGE",
+  "Geopolítica atual: Ucrânia, Oriente Médio, Cáucaso, BRICS e Mercosul–UE",
+  "Biomas brasileiros, massas de ar e o SNUC (proteção integral × uso sustentável)",
+  "Os três modelos de regionalização do Brasil: IBGE, Geiger e Milton Santos"
 ];
 
 var lista = document.getElementById("lista");
 var progresso = document.getElementById("progresso");
-var KEY = "mack-mapa-v1";
+var KEY = "mack-mapa-v3";
 var estado = {};
 
 try {
@@ -586,6 +725,7 @@ for (var i = 0; i < itens.length; i++) {
     label.className = "check-item";
     var box = document.createElement("input");
     box.type = "checkbox";
+    box.id = "chk-" + idx;
     box.checked = !!estado[idx];
     var texto = document.createElement("span");
     texto.textContent = itens[idx];

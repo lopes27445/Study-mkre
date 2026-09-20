@@ -1,0 +1,1077 @@
+<title>Mapa do Investment Banking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --vermelho-soft:#FBEAE7;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --neutro-chip:#EDF0F5;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --vermelho:#EE8478;
+    --vermelho-soft:#33201E;
+    --ocre:#DDB667;
+    --ocre-soft:#2C2618;
+    --neutro-chip:#212C42;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --vermelho:#EE8478;
+  --vermelho-soft:#33201E;
+  --ocre:#DDB667;
+  --ocre-soft:#2C2618;
+  --neutro-chip:#212C42;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding-inline:24px;padding-block:0 88px}
+@media (max-width:480px){.wrap{padding-inline:18px}}
+
+/* ---------- Cabeçalho ---------- */
+.topo{padding:52px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--azul);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+}
+.eyebrow span{color:var(--grafite-soft)}
+h1{
+  font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,52px);
+  line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance;
+}
+.dek{font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:64ch;text-wrap:pretty}
+.fontes{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;
+  font-family:var(--mono);font-size:12px;color:var(--grafite);
+}
+.fontes b{
+  background:var(--surface);border:1px solid var(--linha);border-radius:3px;
+  padding:5px 9px;font-weight:500;display:inline-block;
+}
+
+/* ---------- Índice fixo ---------- */
+.indice{
+  position:sticky;top:env(safe-area-inset-top, 0px);z-index:5;
+  margin-inline:-24px;padding:9px 24px;
+  background:var(--paper);border-bottom:1px solid var(--linha);
+  overflow-x:auto;white-space:nowrap;
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;
+  scrollbar-width:thin;
+}
+@media (max-width:480px){.indice{margin-inline:-18px;padding-inline:18px}}
+.indice a{
+  color:var(--grafite);text-decoration:none;padding:4px 9px;border-radius:3px;
+  display:inline-block;
+}
+.indice a:hover{background:var(--surface-2);color:var(--ink)}
+.indice a:focus-visible{outline:2px solid var(--azul);outline-offset:1px}
+
+/* ---------- Seções ---------- */
+section{padding-top:56px;scroll-margin-top:64px}
+h2{
+  font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.015em;
+  margin:0 0 6px;display:flex;align-items:baseline;gap:12px;text-wrap:balance;
+}
+h2 .num{
+  font-family:var(--mono);font-size:13px;font-weight:600;color:var(--azul);
+  letter-spacing:.06em;flex:none;
+}
+h3{
+  font-family:var(--display);font-weight:600;font-size:18.5px;
+  margin:34px 0 10px;letter-spacing:-.01em;
+}
+.sub{color:var(--grafite);margin:0 0 22px;max-width:68ch;text-wrap:pretty}
+p{max-width:68ch;text-wrap:pretty}
+strong{font-weight:700}
+.wrap a{color:var(--azul)}
+code{
+  font-family:var(--mono);font-size:12.5px;color:var(--azul);
+  background:var(--azul-soft);padding:1px 5px;border-radius:3px;
+}
+
+/* ---------- Painel elevado ---------- */
+.painel{
+  background:var(--surface);border:1px solid var(--linha);border-radius:6px;
+  box-shadow:var(--shadow);padding:24px;margin-top:24px;
+}
+.painel-tit{font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 4px}
+.painel-txt{margin:0 0 20px;color:var(--grafite);font-size:15.5px;max-width:none}
+
+/* ---------- Faixas de destaque ---------- */
+.destaque{
+  border-left:3px solid var(--azul);background:var(--azul-soft);
+  padding:16px 20px;margin:26px 0 0;border-radius:0 4px 4px 0;
+}
+.destaque p{margin:0;font-size:15.5px;max-width:none}
+.destaque.ocre{border-left-color:var(--ocre);background:var(--ocre-soft)}
+.destaque.vermelho{border-left-color:var(--vermelho);background:var(--vermelho-soft)}
+
+/* ---------- Números do mercado ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linha);border:1px solid var(--linha);margin-top:24px;border-radius:5px;overflow:hidden}
+.stat{background:var(--surface);padding:16px 18px 15px}
+.stat .n{
+  font-family:var(--display);font-weight:700;font-size:26px;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;line-height:1.15;display:block;
+}
+.stat .r{font-size:14.5px;color:var(--grafite);line-height:1.4;margin-top:4px;display:block}
+.stat .f{font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft);letter-spacing:.05em;margin-top:9px;display:block;text-transform:uppercase}
+@media (max-width:760px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:430px){.stats{grid-template-columns:1fr}}
+
+/* ---------- Grade de áreas (folha de especificação, não cards) ---------- */
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:0 34px;margin-top:14px}
+.item{padding:16px 0 17px;border-top:1px solid var(--linha)}
+.item .rot{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--azul);display:block;margin-bottom:3px;
+}
+.item .nome{font-family:var(--display);font-weight:600;font-size:17px;line-height:1.3;display:block}
+.item p{margin:6px 0 0;font-size:15px;color:var(--grafite);line-height:1.55;max-width:46ch}
+.item .fee{
+  font-family:var(--mono);font-size:11.5px;color:var(--ink);margin-top:9px;display:block;
+  background:var(--surface-2);border-radius:3px;padding:4px 8px;
+}
+
+/* ---------- Fluxo do deal ---------- */
+.fluxo{margin-top:20px;border-left:2px solid var(--linha-forte);padding-left:0}
+.passo{position:relative;padding:0 0 22px 26px}
+.passo:last-child{padding-bottom:0}
+.passo::before{
+  content:"";position:absolute;left:-6px;top:7px;width:10px;height:10px;
+  border-radius:50%;background:var(--azul);border:2px solid var(--paper);
+}
+.passo .etapa{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--grafite-soft);
+}
+.passo .tit{font-weight:700;font-size:16.5px;display:block;margin-top:1px}
+.passo p{margin:3px 0 0;font-size:15px;color:var(--grafite);line-height:1.55}
+.passo .doc{
+  font-family:var(--mono);font-size:11.5px;color:var(--ocre);
+  background:var(--ocre-soft);border-radius:3px;padding:2px 7px;
+  display:inline-block;margin-top:7px;
+}
+
+/* ---------- Tombstone ---------- */
+.tomb-bloco{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:22px;align-items:start}
+@media (max-width:720px){.tomb-bloco{grid-template-columns:1fr;gap:22px}}
+.tomb{
+  background:var(--surface);border:1px solid var(--linha-forte);
+  box-shadow:var(--shadow);padding:26px 22px;margin:0;text-align:center;
+}
+.tomb-mini{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite-soft);margin-bottom:18px}
+.tomb-emp{font-family:var(--display);font-weight:700;font-size:21px;line-height:1.2;letter-spacing:-.01em}
+.tomb-val{font-family:var(--display);font-weight:700;font-size:32px;letter-spacing:-.03em;margin:12px 0 6px;font-variant-numeric:tabular-nums}
+.tomb-desc{font-size:14.5px;color:var(--grafite);line-height:1.5}
+.tomb-rule{height:1px;background:var(--linha-forte);margin:20px 0 18px}
+.tomb-rol{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite-soft);margin-bottom:4px}
+.tomb-bancos{font-family:var(--display);font-weight:600;font-size:14.5px;line-height:1.45;margin-bottom:14px}
+.tomb-bancos.lider{font-size:17px}
+.tomb-data{font-family:var(--mono);font-size:11px;color:var(--grafite);letter-spacing:.06em;margin-top:6px}
+.anatomia{margin:0;padding:0;list-style:none}
+.anatomia li{border-top:1px solid var(--linha);padding:11px 0;font-size:15px;line-height:1.5}
+.anatomia li:first-child{border-top:0;padding-top:0}
+.anatomia b{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--azul);display:block}
+
+/* ---------- Gráfico de barras ---------- */
+.grafico{margin:24px 0 0;padding:0}
+.grafico figcaption{font-family:var(--display);font-weight:600;font-size:16px;margin-bottom:3px}
+.grafico .cap{font-size:14.5px;color:var(--grafite);margin:0 0 18px;max-width:60ch}
+.barras{display:flex;flex-direction:column;gap:2px}
+.barra{
+  display:grid;grid-template-columns:168px minmax(0,1fr) 96px;align-items:center;gap:12px;
+  padding:5px 4px;border-radius:3px;cursor:default;
+}
+.barra:hover,.barra:focus-visible{background:var(--surface-2);outline:none}
+.barra .rot{font-size:14.5px;line-height:1.3}
+.barra .trilho{height:14px;background:var(--surface-2);border-radius:0 3px 3px 0}
+.barra .fill{height:14px;background:var(--azul);border-radius:0 4px 4px 0;display:block}
+.barra .val{
+  font-family:var(--mono);font-size:13px;font-weight:600;text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.eixo{display:grid;grid-template-columns:168px minmax(0,1fr) 96px;gap:12px;margin-top:6px}
+.eixo .marcas{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft);border-top:1px solid var(--linha);padding-top:4px}
+.leitura{
+  font-family:var(--mono);font-size:12px;color:var(--grafite);margin-top:14px;
+  min-height:1.5em;border-left:2px solid var(--linha-forte);padding-left:10px;
+}
+@media (max-width:560px){
+  .barra{grid-template-columns:1fr auto;gap:2px 10px}
+  .barra .trilho{grid-column:1 / -1;order:3}
+  .barra .val{order:2}
+  .eixo{grid-template-columns:1fr}
+}
+
+/* ---------- Tabelas ---------- */
+.tabela-wrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th{
+  text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);
+  padding:0 14px 9px 0;border-bottom:1px solid var(--linha-forte);vertical-align:bottom;
+}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--linha);vertical-align:top;line-height:1.5}
+td:first-child{font-weight:600}
+tr:last-child td{border-bottom:0}
+td .miudo{display:block;font-size:13.5px;color:var(--grafite);line-height:1.45;margin-top:2px}
+.num-col{font-family:var(--mono);font-size:13px;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--azul)}
+
+/* ---------- Lado duro ---------- */
+.duro{display:flex;flex-direction:column;margin-top:8px}
+.duro-item{padding:14px 0 14px 16px;border-top:1px solid var(--linha);border-left:3px solid var(--vermelho)}
+.duro-item:last-child{border-bottom:1px solid var(--linha)}
+.duro-item b{display:block;font-size:16px}
+.duro-item p{margin:3px 0 0;font-size:15px;color:var(--grafite);line-height:1.55}
+
+/* ---------- Glossário ---------- */
+.busca-linha{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-top:20px}
+#busca-glossario{
+  flex:1 1 240px;font-family:var(--body);font-size:15.5px;color:var(--ink);
+  background:var(--surface);border:1px solid var(--linha-forte);border-radius:4px;
+  padding:9px 12px;
+}
+#busca-glossario:focus-visible{outline:2px solid var(--azul);outline-offset:1px;border-color:var(--azul)}
+#glossario-contador{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);letter-spacing:.06em;white-space:nowrap}
+.glossario{margin:16px 0 0;display:flex;flex-direction:column}
+.termo{display:grid;grid-template-columns:184px minmax(0,1fr);gap:4px 18px;padding:12px 0;border-top:1px solid var(--linha)}
+.termo:last-of-type{border-bottom:1px solid var(--linha)}
+.termo dt{font-weight:700;font-size:15.5px;line-height:1.4}
+.termo dt em{display:block;font-family:var(--mono);font-size:11px;font-style:normal;color:var(--grafite-soft);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.termo dd{margin:0;font-size:15px;color:var(--grafite);line-height:1.55}
+@media (max-width:600px){.termo{grid-template-columns:1fr}}
+#glossario-vazio{font-size:15px;color:var(--grafite);padding:16px 0}
+
+/* ---------- Checklist ---------- */
+.check{display:flex;flex-direction:column;margin-top:14px}
+.check-item{
+  display:flex;gap:13px;align-items:flex-start;
+  padding:11px 4px;border-bottom:1px solid var(--linha);cursor:pointer;
+}
+.check-item:hover{background:var(--surface-2)}
+.check-item input{
+  appearance:none;-webkit-appearance:none;
+  width:17px;height:17px;flex:none;margin-top:4px;
+  border:1.5px solid var(--linha-forte);border-radius:3px;
+  background:var(--surface);cursor:pointer;position:relative;
+}
+.check-item input:checked{background:var(--azul);border-color:var(--azul)}
+.check-item input:checked::after{
+  content:"";position:absolute;left:5px;top:1.5px;
+  width:4px;height:9px;border:solid var(--surface);
+  border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+:root[data-theme="dark"] .check-item input:checked::after{border-color:#0E1523}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .check-item input:checked::after{border-color:#0E1523}}
+.check-item input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.check-item span{font-size:15.5px;line-height:1.5}
+.check-item input:checked + span{color:var(--grafite-soft);text-decoration:line-through}
+.check-meta{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);margin-top:12px}
+
+.nota{font-family:var(--mono);font-size:12px;color:var(--grafite-soft);line-height:1.6;margin-top:14px;max-width:70ch}
+
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.75;
+}
+footer a{color:var(--grafite)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="topo">
+  <div class="eyebrow">Panorama de carreira <span>·</span> Mercado financeiro <span>·</span> Setembro de 2026</div>
+  <h1>Mapa do Investment Banking</h1>
+  <p class="dek">O que um banco de investimento faz, de onde vem o dinheiro dele, o que as pessoas realmente fazem lá dentro, como é a carreira — e como está o mercado brasileiro agora.</p>
+  <div class="fontes">
+    <b>ANBIMA · mercado de capitais 2025</b>
+    <b>Bain &amp; Company · M&amp;A Report 2026</b>
+    <b>LSEG / Reuters · fees globais</b>
+    <b>TTR Data · league tables Brasil</b>
+    <b>B3 · IPOs</b>
+    <b>Copom · 16/09/2026</b>
+  </div>
+</header>
+
+<nav class="indice" aria-label="Seções desta página">
+  <a href="#s1">01 O que é</a>
+  <a href="#s2">02 As áreas</a>
+  <a href="#s3">03 Como ganha dinheiro</a>
+  <a href="#s4">04 O ciclo de um deal</a>
+  <a href="#s5">05 Valuation</a>
+  <a href="#s6">06 Quem são os players</a>
+  <a href="#s7">07 O mercado agora</a>
+  <a href="#s8">08 A carreira</a>
+  <a href="#s9">09 Como se entra</a>
+  <a href="#s10">10 O lado duro</a>
+  <a href="#s11">11 Glossário</a>
+  <a href="#s12">12 Começar agora</a>
+</nav>
+
+<section id="s1">
+  <h2><span class="num">01</span> O que é um banco de investimento</h2>
+  <p class="sub">A definição mais curta: é um intermediário entre quem tem capital e quem precisa de capital. Ele não guarda o seu salário nem financia a sua casa — ele monta, precifica e vende transações grandes, e cobra uma fatia por isso.</p>
+
+  <div class="painel">
+    <p class="painel-tit">A diferença que organiza tudo</p>
+    <p class="painel-txt">Quase toda confusão sobre a área some quando se separa o banco comercial do banco de investimento.</p>
+    <div class="tabela-wrap">
+      <table>
+        <thead>
+          <tr><th>&nbsp;</th><th>Banco comercial / varejo</th><th>Banco de investimento</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cliente</td><td>Pessoa física, pequena e média empresa</td><td>Grandes empresas, governos, fundos, famílias com muito patrimônio</td></tr>
+          <tr><td>Produto</td><td>Conta, crédito, cartão, financiamento</td><td>Assessoria em transações, emissão de ações e dívida, operações de mercado</td></tr>
+          <tr><td>Como ganha</td><td>Spread: capta barato, empresta caro</td><td>Comissão sobre a transação, spread de mercado e taxa sobre patrimônio administrado</td></tr>
+          <tr><td>Balanço</td><td>Milhões de contratos pequenos</td><td>Poucas operações, cada uma muito grande</td></tr>
+          <tr><td>O que é vendido</td><td>Um produto de prateleira</td><td>Confiança, acesso e um preço — cada operação é única</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>No Brasil, quase ninguém é só uma coisa.</strong> Itaú, Bradesco e Santander são bancos universais: têm agência na esquina e banco de investimento no mesmo grupo — o Itaú BBA e o Bradesco BBI são justamente os braços de atacado dessas casas. O BTG Pactual é o que mais se aproxima do modelo puro de banco de investimento, e nasceu assim. Casas como XP e as boutiques independentes vivem só de pedaços dessa cadeia.</p>
+  </div>
+
+  <h3>As três maneiras de ganhar dinheiro</h3>
+  <div class="grade">
+    <div class="item">
+      <span class="rot">Assessoria</span>
+      <span class="nome">Cobrar para aconselhar</span>
+      <p>O banco assessora uma empresa que vai ser comprada, vendida ou reestruturada. Entrega análise, valuation, acesso a compradores e condução do processo. Recebe quando a transação fecha.</p>
+      <span class="fee">Success fee: % sobre o valor do negócio</span>
+    </div>
+    <div class="item">
+      <span class="rot">Distribuição</span>
+      <span class="nome">Cobrar para colocar papel na mão de investidor</span>
+      <p>A empresa quer levantar dinheiro emitindo ações ou dívida. O banco estrutura, precifica e vende esses papéis à sua base de investidores — às vezes garantindo a colocação com o próprio balanço.</p>
+      <span class="fee">Comissão de underwriting: % sobre o volume emitido</span>
+    </div>
+    <div class="item">
+      <span class="rot">Mercado e gestão</span>
+      <span class="nome">Cobrar pelo fluxo e pelo patrimônio</span>
+      <p>As mesas compram e vendem ativos o dia inteiro e ganham no spread entre pontas. A gestora e o private banking cobram uma taxa anual sobre o patrimônio que administram.</p>
+      <span class="fee">Spread + taxa de administração e performance</span>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <h2><span class="num">02</span> As áreas de um banco por dentro</h2>
+  <p class="sub">"Trabalhar em banco de investimento" pode significar seis empregos muito diferentes. Vale saber qual deles você quer antes de dizer que quer o setor.</p>
+
+  <div class="grade">
+    <div class="item">
+      <span class="rot">Front office · IBD</span>
+      <span class="nome">Investment Banking Division</span>
+      <p>O coração da assessoria. Divide-se em <strong>M&amp;A</strong> (fusões e aquisições), <strong>ECM</strong> (emissão de ações: IPO e follow-on), <strong>DCM</strong> (emissão de dívida: debêntures e bonds), <strong>finanças estruturadas</strong> e <strong>reestruturação</strong> de empresas em crise. É onde se faz modelo financeiro e pitchbook.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Front office · Markets</span>
+      <span class="nome">Sales &amp; Trading</span>
+      <p>As mesas. <em>Equities</em> negocia ações; <em>FICC</em> cobre renda fixa, câmbio e commodities; os estruturadores montam derivativos sob medida. Trabalho de decisão rápida, medido todo dia pelo resultado da posição — o oposto do ritmo de projeto do IBD.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Front office</span>
+      <span class="nome">Research</span>
+      <p>Analistas que cobrem setores e empresas, projetam resultados e publicam recomendações de compra ou venda. Separado do IBD por uma barreira de informação (a <em>Chinese wall</em>), para que quem recomenda ação não saiba da fusão que o colega está montando.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Front office</span>
+      <span class="nome">Asset e Wealth Management</span>
+      <p>A gestora de fundos e o private banking. Aqui o dinheiro é de terceiros e a receita é recorrente — taxa de administração mais performance. No Brasil é a área que mais cresceu na última década, puxada pela migração da poupança para fundos e produtos de mercado.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Capital próprio</span>
+      <span class="nome">Principal investments</span>
+      <p>O banco investindo o próprio dinheiro em empresas, imóveis e crédito. É o que diferencia o modelo de <em>merchant bank</em>: em vez de só assessorar a transação, o banco entra como sócio dela.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Middle e back office</span>
+      <span class="nome">Risco, compliance, jurídico e operações</span>
+      <p>Controla limite de risco, checa regra da CVM e do Banco Central, liquida operação, fecha o balanço. Não aparece no noticiário e não recebe bônus de front office, mas é o que mantém a licença do banco de pé.</p>
+    </div>
+  </div>
+
+  <div class="destaque ocre">
+    <p><strong>Front, middle, back.</strong> O jargão divide o banco por proximidade com a receita. <em>Front office</em> fala com cliente e gera receita direta; <em>middle</em> controla risco e apoia a operação; <em>back</em> processa e liquida. A remuneração, a rotina e a estabilidade mudam radicalmente entre os três — e os processos seletivos também.</p>
+  </div>
+</section>
+
+<section id="s3">
+  <h2><span class="num">03</span> Quanto custa contratar um banco</h2>
+  <p class="sub">A conta do cliente é quase sempre proporcional ao tamanho da operação. Isso explica o comportamento do setor: um deal grande paga muito mais que dez pequenos, e por isso todo mundo persegue os grandes.</p>
+
+  <div class="tabela-wrap">
+    <table>
+      <thead>
+        <tr><th>Produto</th><th>O que o banco entrega</th><th>Como cobra</th><th>Ordem de grandeza</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>M&amp;A<span class="miudo">Fusões e aquisições</span></td>
+          <td>Conduz a venda ou a compra: valuation, lista de interessados, negociação, contrato</td>
+          <td>Retainer mensal pequeno + <em>success fee</em> só se fechar</td>
+          <td class="num-col">0,5% a 2% do valor<span class="miudo">Sobe muito em deals pequenos</span></td>
+        </tr>
+        <tr>
+          <td>ECM<span class="miudo">IPO e follow-on</span></td>
+          <td>Estrutura a oferta, prepara o prospecto, faz roadshow e forma o livro de ordens</td>
+          <td>Comissão sobre o volume captado, rateada entre os bancos do sindicato</td>
+          <td class="num-col">~2% a 4% do volume</td>
+        </tr>
+        <tr>
+          <td>DCM<span class="miudo">Debêntures e bonds</span></td>
+          <td>Estrutura e distribui a dívida; negocia prazo, taxa e garantias com investidores</td>
+          <td>Comissão sobre o volume emitido</td>
+          <td class="num-col">~0,2% a 1%<span class="miudo">Margem menor, volume muito maior</span></td>
+        </tr>
+        <tr>
+          <td>Trading<span class="miudo">Mesas de mercado</span></td>
+          <td>Compra e vende ativos, dá liquidez ao cliente e assume posição</td>
+          <td>Spread entre compra e venda, corretagem e resultado da posição</td>
+          <td class="num-col">Centavos por operação<span class="miudo">Multiplicados por volume enorme</span></td>
+        </tr>
+        <tr>
+          <td>Asset e wealth<span class="miudo">Gestão de recursos</span></td>
+          <td>Administra o patrimônio de fundos, famílias e institucionais</td>
+          <td>Taxa anual sobre o patrimônio + performance acima do benchmark</td>
+          <td class="num-col">0,5% a 2% a.a. + 20%<span class="miudo">Receita recorrente — a mais previsível</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="nota">Percentuais são faixas típicas de mercado para dar noção de escala, não tabela oficial: cada mandato é negociado caso a caso e varia com o tamanho, a complexidade e a concorrência pelo mandato.</p>
+
+  <div class="destaque">
+    <p><strong>Por que o success fee muda tudo.</strong> Em M&amp;A o banco só recebe de verdade se a transação fechar. Isso alinha incentivos com o cliente, mas também cria a pressão que define a cultura da área: meses de trabalho podem terminar em zero se o comprador desistir na véspera. É a razão de o setor ser tão cíclico — e de ninguém largar um deal pela metade.</p>
+  </div>
+</section>
+
+<section id="s4">
+  <h2><span class="num">04</span> O ciclo de um deal, passo a passo</h2>
+  <p class="sub">Uma venda de empresa conduzida por banco (o chamado <em>sell-side</em>) leva tipicamente de 6 a 12 meses e segue quase sempre a mesma sequência. Cada etapa tem um documento próprio — e o vocabulário da área é, em boa parte, o nome desses documentos.</p>
+
+  <div class="fluxo">
+    <div class="passo">
+      <span class="etapa">Etapa 1 · Origination</span>
+      <span class="tit">O banco bate na porta</span>
+      <p>Um banqueiro sênior leva uma ideia ao dono da empresa: vender agora, comprar o concorrente, abrir capital. Essa conversa é sustentada por uma apresentação preparada pelo time júnior.</p>
+      <span class="doc">Pitchbook</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 2 · Mandato</span>
+      <span class="tit">O contrato de assessoria</span>
+      <p>Define exclusividade, prazo, escopo e, principalmente, o fee. Ganhar o mandato é o que separa um banco do outro — e é por isso que sócios passam anos cultivando relacionamento antes de qualquer transação.</p>
+      <span class="doc">Engagement letter</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 3 · Preparação</span>
+      <span class="tit">Modelar, avaliar, escrever</span>
+      <p>Aqui mora o trabalho do analista: modelo financeiro da empresa, valuation por vários métodos, ajuste do EBITDA, e a construção dos dois materiais de venda — um teaser anônimo de uma página e um memorando com dezenas de páginas sobre o negócio.</p>
+      <span class="doc">Teaser · CIM (info memo)</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 4 · Sondagem</span>
+      <span class="tit">Abordar os possíveis compradores</span>
+      <p>Monta-se uma lista de <em>estratégicos</em> (concorrentes e empresas do setor) e <em>financeiros</em> (fundos de private equity). Cada interessado recebe o teaser e, depois de assinar confidencialidade, o memorando completo.</p>
+      <span class="doc">NDA</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 5 · Propostas</span>
+      <span class="tit">Primeiro preço, sem compromisso</span>
+      <p>Os interessados mandam uma proposta não vinculante com faixa de preço e premissas. O vendedor escolhe os finalistas que seguem para a fase de investigação.</p>
+      <span class="doc">NBO — non-binding offer</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 6 · Due diligence</span>
+      <span class="tit">Abrir a empresa inteira</span>
+      <p>Auditoria contábil, fiscal, trabalhista, jurídica, ambiental e de tecnologia, feita em um repositório de documentos controlado. É a etapa mais longa e onde a maioria dos negócios morre ou muda de preço: passivo trabalhista escondido, contrato mal feito, cliente concentrado demais.</p>
+      <span class="doc">Data room</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 7 · Negociação</span>
+      <span class="tit">Proposta firme e contrato</span>
+      <p>Preço, forma de pagamento, parcela condicionada a resultado futuro (<em>earn-out</em>), garantias, indenizações e as cláusulas que permitem desistir se algo grave acontecer antes do fechamento. Advogados assumem o protagonismo aqui.</p>
+      <span class="doc">SPA — contrato de compra e venda</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Etapa 8 · Signing e closing</span>
+      <span class="tit">Assinar, aprovar, transferir</span>
+      <p>Entre a assinatura e o fechamento efetivo ficam as condições precedentes — no Brasil, sobretudo a aprovação do CADE quando há risco de concentração, e de agências reguladoras em setores como energia, saúde e telecomunicações. Só então o dinheiro troca de mãos.</p>
+      <span class="doc">CADE · condições precedentes</span>
+    </div>
+  </div>
+
+  <div class="destaque ocre">
+    <p><strong>E no IPO?</strong> A sequência é parecida, mas com o regulador no meio: <em>kick-off</em> com bancos e advogados → due diligence → prospecto preliminar → pedido de registro na CVM → roadshow com investidores → <em>bookbuilding</em> (montagem do livro de ordens) → precificação → estreia na B3 → estabilização do preço nos primeiros dias, usando o lote suplementar. Depois vem o <em>lock-up</em>, o período em que os sócios antigos não podem vender.</p>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="num">05</span> A caixa de ferramentas: valuation</h2>
+  <p class="sub">Todo o trabalho técnico converge para uma pergunta: quanto vale essa empresa? Não existe resposta única — existe um intervalo defensável, construído por métodos que se checam uns aos outros. Num bom material, os métodos aparecem lado a lado num gráfico de barras chamado <em>football field</em>.</p>
+
+  <div class="tabela-wrap">
+    <table>
+      <thead>
+        <tr><th>Método</th><th>A pergunta que responde</th><th>Precisa de</th><th>Onde falha</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fluxo de caixa descontado<span class="miudo">DCF</span></td>
+          <td>Quanto valem hoje todos os caixas que a empresa vai gerar</td>
+          <td>Projeção de 5 a 10 anos, taxa de desconto (WACC) e valor na perpetuidade</td>
+          <td>Metade do valor costuma vir da perpetuidade; mudar 0,5 ponto na taxa muda o resultado em dezenas de por cento</td>
+        </tr>
+        <tr>
+          <td>Múltiplos de mercado<span class="miudo">EV/EBITDA, P/L</span></td>
+          <td>Quanto o mercado paga hoje por empresas parecidas</td>
+          <td>Um grupo de comparáveis listadas e dados de bolsa</td>
+          <td>Não existe comparável perfeito; se o setor inteiro está caro ou barato, o método herda a distorção</td>
+        </tr>
+        <tr>
+          <td>Transações precedentes</td>
+          <td>Quanto compradores pagaram de fato por ativos semelhantes</td>
+          <td>Base histórica de deals do setor</td>
+          <td>Inclui prêmio de controle e o humor do mercado na época da transação</td>
+        </tr>
+        <tr>
+          <td>LBO<span class="miudo">Leveraged buyout</span></td>
+          <td>Quanto um fundo consegue pagar usando dívida e ainda bater seu retorno-alvo</td>
+          <td>Capacidade de endividamento, TIR exigida e horizonte de saída</td>
+          <td>Dá um piso de preço financeiro, não o valor econômico do negócio</td>
+        </tr>
+        <tr>
+          <td>Soma das partes<span class="miudo">SOTP</span></td>
+          <td>Quanto vale cada negócio de um conglomerado, somado</td>
+          <td>Abertura de resultados por unidade</td>
+          <td>Ignora sinergias e o desconto que o mercado cobra de conglomerados</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="painel">
+    <p class="painel-tit">Os dois números que confundem todo mundo no começo</p>
+    <p class="painel-txt">Metade das entrevistas técnicas testa exatamente isso.</p>
+    <p><strong>Equity value</strong> é o valor das ações — o que sobra para o dono. <strong>Enterprise value</strong> é o valor da operação inteira, independentemente de quem a financia: <code>EV = valor de mercado das ações + dívida líquida</code>. Quem compra uma empresa herda a dívida dela, então o preço do negócio não é só o preço das ações. É por isso que o múltiplo mais usado em M&amp;A é <code>EV/EBITDA</code>: o numerador e o denominador falam da operação, antes de juros e de estrutura de capital.</p>
+  </div>
+
+  <div class="destaque">
+    <p><strong>A matemática do vestibular é a mesma daqui.</strong> Valor presente é juros compostos ao contrário: <code>VP = VF ÷ (1+i)ⁿ</code> — função exponencial e logaritmo. O valor na perpetuidade, <code>VP = FC ÷ (i − g)</code>, é literalmente a fórmula da soma de uma PG infinita de razão menor que 1. Sensibilidade de preço é função do 1º e 2º grau; cenários e risco são probabilidade e desvio padrão; e o dia a dia inteiro é variação percentual. Nada de exótico — é o conteúdo do ensino médio aplicado a valores com muitos zeros.</p>
+  </div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">06</span> Quem são os players</h2>
+  <p class="sub">O setor se organiza em camadas bem definidas, no mundo e no Brasil. Saber em que camada cada casa joga ajuda a entender salário, rotina e tipo de transação.</p>
+
+  <h3>No mundo</h3>
+  <div class="grade">
+    <div class="item">
+      <span class="rot">Bulge bracket</span>
+      <span class="nome">Os bancos globais completos</span>
+      <p>Goldman Sachs, Morgan Stanley, J.P. Morgan, Bank of America, Citi, Barclays, UBS, Deutsche Bank. Fazem tudo: assessoria, distribuição, mesas e gestão, em todos os continentes. Balanço grande é vantagem competitiva — eles conseguem emprestar para viabilizar a própria transação que assessoram.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Elite boutiques</span>
+      <span class="nome">Só assessoria, sem conflito</span>
+      <p>Evercore, Centerview, Lazard, Moelis, PJT, Perella Weinberg, Rothschild. Não têm mesa nem crédito para oferecer, o que vira argumento de venda: o conselho é isento porque a casa não tem nada mais para vender. Times menores, muito seniores, fee alto.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Middle market</span>
+      <span class="nome">O andar de baixo, em volume</span>
+      <p>Houlihan Lokey, Jefferies, William Blair e centenas de casas regionais. Transações menores, muito mais numerosas. É onde a maior parte do M&amp;A do mundo acontece de fato, longe das manchetes.</p>
+    </div>
+  </div>
+
+  <h3>No Brasil</h3>
+  <div class="grade">
+    <div class="item">
+      <span class="rot">Bancos nacionais</span>
+      <span class="nome">BTG Pactual, Itaú BBA, Bradesco BBI, Santander, Safra, XP, UBS BB</span>
+      <p>Dominam as league tables locais. A vantagem é o relacionamento de crédito: quem financia a empresa há anos costuma ser chamado quando ela decide comprar, vender ou emitir.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Globais no país</span>
+      <span class="nome">J.P. Morgan, Goldman, Morgan Stanley, BofA, Citi, BNP</span>
+      <p>Times menores, focados em transações grandes e em conectar o Brasil ao capital estrangeiro. Aparecem com força quando o comprador é de fora ou quando a emissão sai no mercado externo.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Boutiques</span>
+      <span class="nome">BR Partners, IGC Partners, Seneca Evercore, Vinci, Lazard e Rothschild no Brasil</span>
+      <p>Assessoria pura, frequentemente fundada por ex-sócios dos grandes bancos. Fortes em empresas familiares e no middle market — o segmento com mais transações no país.</p>
+    </div>
+  </div>
+
+  <div class="destaque ocre">
+    <p><strong>Como ler uma league table.</strong> É o ranking de bancos por transação assessorada, e sempre vem em duas versões que contam histórias diferentes: por <strong>volume</strong> (soma em reais ou dólares) e por <strong>número de operações</strong>. Um único megadeal joga um banco para o topo do ranking de volume; liderar o de quantidade indica presença constante no mercado. Em 2025 o BTG Pactual liderou o M&amp;A brasileiro em volume, com cerca de US$ 15 bilhões assessorados; no acumulado de 2026 até agosto, aparecia também na ponta em quantidade, com 31 transações pela TTR Data. No mundo, o Goldman Sachs terminou 2025 em primeiro, com US$ 1,48 trilhão em deals e receita recorde de US$ 9,3 bilhões em banco de investimento.</p>
+  </div>
+
+  <h3>A anatomia de um anúncio de transação</h3>
+  <p>Quando uma operação fecha, ela é anunciada num formato padronizado e quase cerimonial, chamado <em>tombstone</em> — o mesmo desenho desde os anúncios em jornal do século passado. Abaixo, o IPO que reabriu a bolsa brasileira em maio de 2026.</p>
+
+  <div class="tomb-bloco">
+    <figure class="tomb">
+      <div class="tomb-mini">Este anúncio aparece apenas como registro</div>
+      <div class="tomb-emp">Compass Gás e Energia S.A.</div>
+      <div class="tomb-val">R$ 3,2 bilhões</div>
+      <div class="tomb-desc">Oferta pública inicial de ações<br>R$ 28,00 por ação · Novo Mercado · B3</div>
+      <div class="tomb-rule"></div>
+      <div class="tomb-rol">Coordenador líder</div>
+      <div class="tomb-bancos lider">BTG Pactual</div>
+      <div class="tomb-rol">Coordenadores</div>
+      <div class="tomb-bancos">Bank of America · Bradesco BBI · Itaú BBA<br>Citi · Santander</div>
+      <div class="tomb-rol">Demais bookrunners</div>
+      <div class="tomb-bancos">J.P. Morgan · XP · UBS BB · BNP Paribas</div>
+      <div class="tomb-data">Maio de 2026</div>
+    </figure>
+    <ul class="anatomia">
+      <li><b>O emissor</b> Compass Gás e Energia, distribuidora de gás do grupo Cosan. Quem abriu o capital.</li>
+      <li><b>O valor</b> Cerca de R$ 3,2 bilhões captados, com a oferta-base precificada em R$ 28,00 por ação — o piso da faixa indicativa. Sair no piso significa que a demanda existiu, mas o investidor impôs preço.</li>
+      <li><b>O segmento</b> Novo Mercado é o nível mais exigente de governança da B3: só ações ordinárias, conselho com independentes, regras de transparência mais duras.</li>
+      <li><b>A ordem dos nomes</b> Não é alfabética nem decorativa. O coordenador líder vem primeiro e maior; a hierarquia seguinte reflete responsabilidade e fatia da comissão. Essa ordem é negociada com dureza — ela vale dinheiro e vale posição na league table.</li>
+      <li><b>Por que essa operação importa</b> Foi o primeiro IPO na B3 em quase cinco anos. A bolsa brasileira ficou sem nenhuma estreia desde 2021, e havia mais de 50 empresas já registradas esperando a janela reabrir.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="s7">
+  <h2><span class="num">07</span> O mercado agora</h2>
+  <p class="sub">A área é cíclica e o ciclo brasileiro tem um comando central: a taxa de juros. Este é o retrato de setembro de 2026.</p>
+
+  <div class="stats">
+    <div class="stat">
+      <span class="n">13,75%</span>
+      <span class="r">Selic ao ano, após o 5º corte consecutivo</span>
+      <span class="f">Copom · 16/09/2026</span>
+    </div>
+    <div class="stat">
+      <span class="n">R$ 838,8 bi</span>
+      <span class="r">Ofertas no mercado de capitais brasileiro em 2025 — recorde histórico</span>
+      <span class="f">ANBIMA</span>
+    </div>
+    <div class="stat">
+      <span class="n">US$ 4,5 tri</span>
+      <span class="r">M&amp;A global em 2025, o segundo maior volume já registrado</span>
+      <span class="f">LSEG</span>
+    </div>
+    <div class="stat">
+      <span class="n">US$ 50 bi+</span>
+      <span class="r">M&amp;A no Brasil em 2025, alta de 8% sobre 2024</span>
+      <span class="f">Bain &amp; Company</span>
+    </div>
+    <div class="stat">
+      <span class="n">US$ 100 bi+</span>
+      <span class="r">Fees pagos a bancos de investimento no mundo em 2025</span>
+      <span class="f">LSEG</span>
+    </div>
+    <div class="stat">
+      <span class="n">1</span>
+      <span class="r">IPO na B3 desde 2021 — a Compass, em maio de 2026</span>
+      <span class="f">B3</span>
+    </div>
+  </div>
+
+  <figure class="grafico">
+    <figcaption>O mercado de capitais brasileiro é, hoje, um mercado de dívida</figcaption>
+    <p class="cap">Composição das ofertas de 2025, em R$ bilhões. A renda fixa respondeu por R$ 737 bilhões do total de R$ 838,8 bilhões.</p>
+    <div class="barras" id="barras">
+      <div class="barra" tabindex="0" data-rot="Debêntures" data-share="59% do total">
+        <span class="rot">Debêntures</span>
+        <span class="trilho"><span class="fill" style="width:98.6%"></span></span>
+        <span class="val">492,8</span>
+      </div>
+      <div class="barra" tabindex="0" data-rot="Demais papéis de renda fixa" data-share="29% do total">
+        <span class="rot">Demais de renda fixa</span>
+        <span class="trilho"><span class="fill" style="width:48.8%"></span></span>
+        <span class="val">244,2</span>
+      </div>
+      <div class="barra" tabindex="0" data-rot="Renda variável, híbridos e demais" data-share="12% do total">
+        <span class="rot">Renda variável e demais</span>
+        <span class="trilho"><span class="fill" style="width:20.4%"></span></span>
+        <span class="val">101,8</span>
+      </div>
+    </div>
+    <div class="eixo" aria-hidden="true">
+      <span></span>
+      <span class="marcas"><span>0</span><span>250</span><span>500</span></span>
+      <span></span>
+    </div>
+    <p class="leitura" id="leitura-grafico">Passe o cursor ou navegue pelo teclado nas barras para ver a participação no total.</p>
+  </figure>
+  <p class="nota">Debêntures e renda fixa total conforme a ANBIMA; as duas outras barras são o resto do total de R$ 838,8 bi, calculado por diferença. Dentro das debêntures, R$ 178 bi foram incentivadas — as isentas de imposto de renda, ligadas a projetos de infraestrutura.</p>
+
+  <div class="destaque">
+    <p><strong>A leitura que importa.</strong> Com a Selic em dois dígitos, o investidor brasileiro não precisa comprar ação para ganhar dinheiro: uma debênture paga bem e com muito menos risco. O resultado é o mercado que se vê acima — recorde de dívida e quase nada de ações. As áreas de DCM viveram anos excelentes enquanto as de ECM ficaram paradas. A reabertura da janela de IPOs depende, antes de tudo, de a taxa cair para um dígito; o IPO da Compass foi o teste inicial, e a fila de empresas registradas está montada há tempo.</p>
+  </div>
+
+  <div class="destaque ocre">
+    <p><strong>O que olhar daqui para frente.</strong> Três indicadores explicam quase todo o humor do setor no Brasil: a trajetória da <strong>Selic</strong>, o fluxo de <strong>investidor estrangeiro</strong> na B3 e a agenda de <strong>eleições</strong> — anos eleitorais costumam empurrar ofertas para depois de outubro. No mundo, o motor de 2025 e 2026 foi a volta dos megadeals, com dezenas de transações acima de US$ 10 bilhões.</p>
+  </div>
+</section>
+
+<section id="s8">
+  <h2><span class="num">08</span> A escada de carreira</h2>
+  <p class="sub">A hierarquia é idêntica em praticamente todo banco do mundo, e a promoção segue um relógio conhecido. O que muda a cada degrau é a proporção entre tempo gasto em planilha e tempo gasto com gente.</p>
+
+  <div class="tabela-wrap">
+    <table>
+      <thead>
+        <tr><th>Nível</th><th>Tempo típico</th><th>O que faz de verdade</th><th>Remuneração no Brasil<br>ordem de grandeza</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Estagiário</td>
+          <td class="num-col">6 a 18 meses</td>
+          <td>Coleta dados, monta comparáveis, formata apresentação, checa número. É uma entrevista de um ano — a efetivação é a regra de entrada.</td>
+          <td class="num-col">R$ 2,5 a 4,5 mil/mês</td>
+        </tr>
+        <tr>
+          <td>Analista</td>
+          <td class="num-col">3 anos</td>
+          <td>Dono do modelo financeiro e do material. Constrói o DCF, o LBO, os comparáveis e o pitchbook. Carga horária mais pesada da carreira.</td>
+          <td class="num-col">R$ 10 a 20 mil/mês de base<span class="miudo">+ bônus anual</span></td>
+        </tr>
+        <tr>
+          <td>Associate</td>
+          <td class="num-col">3 a 4 anos</td>
+          <td>Revisa o trabalho do analista, controla o processo, responde ao cliente no dia a dia. Nos EUA é a porta de entrada de quem fez MBA; no Brasil, quase sempre promoção interna.</td>
+          <td class="num-col">Cerca de 2x a base do analista</td>
+        </tr>
+        <tr>
+          <td>Vice-presidente</td>
+          <td class="num-col">3 a 4 anos</td>
+          <td>Toca a transação de ponta a ponta, coordena advogados e auditores, começa a aparecer sozinho na frente do cliente.</td>
+          <td class="num-col">Bônus já supera a base</td>
+        </tr>
+        <tr>
+          <td>Diretor</td>
+          <td class="num-col">2 a 4 anos</td>
+          <td>Transição para a venda: menos execução, mais relacionamento e originação de mandato.</td>
+          <td class="num-col">Atrelada ao que origina</td>
+        </tr>
+        <tr>
+          <td>Managing director<span class="miudo">ou sócio</span></td>
+          <td class="num-col">Topo da escada</td>
+          <td>Traz o mandato. É julgado por uma métrica só: quanta receita entrou pelo seu relacionamento. Em casas como o BTG, o topo é sociedade, não cargo.</td>
+          <td class="num-col">Milhões por ano<span class="miudo">Muito variável com o ciclo</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="nota">Faixas montadas a partir de dados autodeclarados (Glassdoor, Levels.fyi) e de reportagens de mercado; variam bastante entre bancos, áreas e anos. A parte variável é o que domina a conta: o bônus costuma ser pago uma vez por ano, no início do ano seguinte, e em anos normais vai de meio a dois salários anuais no nível júnior. Em anos ruins, some.</p>
+
+  <div class="painel">
+    <p class="painel-tit">Um dia de analista em semana de transação</p>
+    <p class="painel-txt">Não é caricatura — é a rotina que quase todo mundo descreve.</p>
+    <p>Chega às 9h e encontra comentários do VP feitos de madrugada sobre o material de ontem. Refaz o modelo com as premissas novas até o começo da tarde. Entre 14h e 18h, call com o cliente, ajustes no memorando, pedido urgente de uma análise que não existia pela manhã. Por volta das 20h, quando o time sênior sai, chega a lista de correções — e a versão final do deck vira madrugada. No dia seguinte, o cliente adia a reunião em duas semanas. <strong>A habilidade central não é matemática: é aguentar refazer sem erro, com prazo curto, muitas vezes.</strong></p>
+  </div>
+
+  <h3>Para onde as pessoas vão depois</h3>
+  <p>Poucas carreiras têm saídas tão mapeadas. Dois a quatro anos de analista funcionam como moeda no mercado inteiro, e a maior parte das pessoas usa essa moeda antes dos 30.</p>
+  <div class="grade">
+    <div class="item">
+      <span class="rot">Buy-side</span>
+      <span class="nome">Private equity, venture capital, gestoras e hedge funds</span>
+      <p>O destino mais comum e mais disputado. Em vez de assessorar a transação, você decide se investe. Menos horas de formatação, mais responsabilidade sobre a tese.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Corporate</span>
+      <span class="nome">M&amp;A interno, estratégia, RI e planejamento financeiro</span>
+      <p>Ir para dentro de uma empresa grande, cuidar das aquisições dela ou da relação com investidores. Rotina muito mais previsível, remuneração menor.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Empreender</span>
+      <span class="nome">Boutique própria, family office, startup</span>
+      <p>Caminho típico de quem chega a VP ou diretor com carteira de relacionamento — ou de quem sai cedo para fundar algo com a bagagem de análise.</p>
+    </div>
+  </div>
+</section>
+
+<section id="s9">
+  <h2><span class="num">09</span> Como se entra, no Brasil</h2>
+  <p class="sub">A porta é estreita, mas o caminho é padronizado e começa cedo — no segundo ou terceiro ano da faculdade, não na formatura.</p>
+
+  <div class="fluxo">
+    <div class="passo">
+      <span class="etapa">Passo 1</span>
+      <span class="tit">Entrar numa faculdade onde os bancos recrutam</span>
+      <p>Administração, Economia, Engenharia e Contábeis são os cursos mais comuns; Direito abre portas em áreas específicas. Em São Paulo, os processos concentram recrutamento em um punhado de instituições — e o Mackenzie está no circuito, a poucos quilômetros da Faria Lima e da Avenida Paulista. O curso pesa menos do que a combinação de desempenho, inglês e iniciativa.</p>
+    </div>
+    <div class="passo">
+      <span class="etapa">Passo 2</span>
+      <span class="tit">Construir repertório antes de ser exigido</span>
+      <p>Liga de mercado financeiro, empresa júnior, competição de valuation, fundo de investimento estudantil. Serve para duas coisas: aprender o vocabulário e conhecer gente que já está lá dentro — boa parte das vagas circula por indicação antes de virar anúncio.</p>
+    </div>
+    <div class="passo">
+      <span class="etapa">Passo 3</span>
+      <span class="tit">Entrar pelo estágio</span>
+      <p>É a porta principal. Os bancos rodam programas anuais e estágios de férias — o BTG Pactual, por exemplo, mantém um estágio de verão em janeiro e fevereiro, com inscrições meses antes. Inscreva-se em vários: o funil é grande e a concorrência é nacional.</p>
+      <span class="doc">Calendário: inscrições de 6 a 12 meses antes</span>
+    </div>
+    <div class="passo">
+      <span class="etapa">Passo 4</span>
+      <span class="tit">Atravessar o funil</span>
+      <p>Triagem de currículo → testes online de lógica, inglês e às vezes Excel → dinâmica de grupo → estudo de caso → entrevistas técnicas e de perfil, que podem terminar em um dia inteiro de conversas seguidas com o time.</p>
+    </div>
+    <div class="passo">
+      <span class="etapa">Passo 5</span>
+      <span class="tit">Responder bem às perguntas de sempre</span>
+      <p>"Me fale de uma empresa que você acompanha e por que ela é interessante." "Como você avaliaria uma padaria?" "O que aconteceu com a Selic na última reunião do Copom e por quê?" "Como uma despesa de depreciação de R$ 100 passa pelos três demonstrativos?" Não é decoreba — é raciocínio em voz alta, com número.</p>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>O que realmente pesa na seleção.</strong> Inglês fluente não é diferencial, é pré-requisito: o material técnico e boa parte das reuniões são em inglês. Depois vêm Excel e PowerPoint de verdade, consistência acadêmica, e a capacidade demonstrada de entregar volume sob pressão. Certificações como CPA-20, CEA e CFA contam — o CFA pesa bastante em research e gestão, bem menos para entrar em M&amp;A.</p>
+  </div>
+</section>
+
+<section id="s10">
+  <h2><span class="num">10</span> O lado duro, sem maquiagem</h2>
+  <p class="sub">Vale conhecer isto antes de organizar quatro anos de faculdade em torno da área.</p>
+
+  <div class="duro">
+    <div class="duro-item">
+      <b>A carga horária é real</b>
+      <p>Em semana de fechamento, 70 a 100 horas semanais não é exagero de internet. Fins de semana entram quando o cronograma aperta, e o cronograma quase sempre aperta. Os bancos criaram regras de folga protegida depois da pressão pública sobre o tema; a aplicação varia muito de time para time.</p>
+    </div>
+    <div class="duro-item">
+      <b>O trabalho júnior é menos glamouroso do que parece</b>
+      <p>Boa parte dos dois primeiros anos é checar número, padronizar fonte de slide e refazer material por causa de uma premissa que mudou. A parte de decisão e negociação chega anos depois.</p>
+    </div>
+    <div class="duro-item">
+      <b>É um setor cíclico — e você sente no bolso</b>
+      <p>Quando a janela fecha, como aconteceu no Brasil entre 2022 e 2024, vêm corte de time e bônus murcho. A remuneração alta é, em parte, prêmio por essa instabilidade.</p>
+    </div>
+    <div class="duro-item">
+      <b>A tolerância a erro é baixa</b>
+      <p>Um número errado num material que vai ao conselho de administração é um problema de reputação para o banco. Isso cria uma cultura de revisão minuciosa que algumas pessoas acham formadora e outras acham insuportável.</p>
+    </div>
+    <div class="duro-item">
+      <b>A pergunta honesta</b>
+      <p>Você gosta de entender empresas e números, ou gosta da ideia de trabalhar num banco? As duas respostas são legítimas, mas só a primeira sustenta os três primeiros anos.</p>
+    </div>
+  </div>
+</section>
+
+<section id="s11">
+  <h2><span class="num">11</span> Glossário para não travar na conversa</h2>
+  <p class="sub">A barreira de entrada da área é, em boa medida, vocabular. Estes são os termos que aparecem em qualquer reunião, entrevista ou matéria do setor.</p>
+
+  <div class="busca-linha">
+    <input type="search" id="busca-glossario" placeholder="Filtrar termos — ex.: múltiplo, IPO, dívida" autocomplete="off" aria-label="Filtrar termos do glossário">
+    <span id="glossario-contador">41 termos</span>
+  </div>
+
+  <dl class="glossario" id="glossario">
+    <div class="termo"><dt>Sell-side e buy-side</dt><dd>Sell-side é quem estrutura e vende produto financeiro: bancos, corretoras, research de banco. Buy-side é quem compra e administra dinheiro: fundos, gestoras, private equity.</dd></div>
+    <div class="termo"><dt>Mandato</dt><dd>O contrato que dá ao banco o direito de conduzir a transação. Ganhar mandato é a métrica que define a carreira sênior.</dd></div>
+    <div class="termo"><dt>Pitchbook</dt><dd>Apresentação com que o banco tenta convencer o cliente a contratá-lo. Traz mercado, comparáveis, faixa de valuation e a lista de possíveis compradores.</dd></div>
+    <div class="termo"><dt>Teaser</dt><dd>Resumo de uma página sobre a empresa à venda, sem revelar o nome dela. É o primeiro contato com possíveis interessados.</dd></div>
+    <div class="termo"><dt>NDA</dt><dd>Acordo de confidencialidade. Só depois de assiná-lo o interessado descobre de qual empresa se trata e recebe o material completo.</dd></div>
+    <div class="termo"><dt>CIM <em>info memo</em></dt><dd>O memorando de informações: dezenas de páginas sobre operação, clientes, finanças e projeções da empresa à venda.</dd></div>
+    <div class="termo"><dt>Due diligence</dt><dd>A auditoria completa feita pelo comprador antes de fechar: contábil, fiscal, trabalhista, jurídica, ambiental. Onde preço é renegociado e negócio é abortado.</dd></div>
+    <div class="termo"><dt>Data room</dt><dd>Repositório digital controlado onde a empresa disponibiliza documentos para a due diligence, com registro de quem viu o quê.</dd></div>
+    <div class="termo"><dt>NBO e proposta vinculante</dt><dd>A proposta não vinculante traz uma faixa de preço sujeita a verificação; a vinculante já obriga quem a assina, nas condições descritas.</dd></div>
+    <div class="termo"><dt>SPA</dt><dd>O contrato de compra e venda de ações. Define preço, ajustes, garantias e as hipóteses de indenização entre as partes.</dd></div>
+    <div class="termo"><dt>Earn-out</dt><dd>Parte do preço que só é paga se a empresa atingir metas combinadas depois da venda. Serve para aproximar expectativas quando comprador e vendedor discordam do futuro.</dd></div>
+    <div class="termo"><dt>Signing e closing</dt><dd>Assinatura do contrato e conclusão efetiva da transação. Entre as duas ficam as condições precedentes, como aprovação do CADE.</dd></div>
+    <div class="termo"><dt>EBITDA</dt><dd>Lucro antes de juros, impostos, depreciação e amortização. Serve como aproximação da geração de caixa da operação, sem efeito de dívida e de contabilidade de ativos.</dd></div>
+    <div class="termo"><dt>Enterprise value</dt><dd>Valor da operação inteira: valor de mercado das ações mais a dívida líquida. É o preço de comprar o negócio, não só as ações.</dd></div>
+    <div class="termo"><dt>Equity value</dt><dd>Valor que sobra para os acionistas, depois da dívida. É o que a bolsa mostra como valor de mercado.</dd></div>
+    <div class="termo"><dt>Múltiplo</dt><dd>Quantas vezes uma métrica a empresa vale. EV/EBITDA e preço sobre lucro são os mais usados para comparar empresas do mesmo setor.</dd></div>
+    <div class="termo"><dt>DCF</dt><dd>Fluxo de caixa descontado: projeta o caixa futuro e traz a valor presente por uma taxa que reflete o risco.</dd></div>
+    <div class="termo"><dt>WACC</dt><dd>Custo médio ponderado de capital — a taxa que mistura o custo da dívida e o retorno exigido pelo acionista. É o desconto usado no DCF.</dd></div>
+    <div class="termo"><dt>Perpetuidade</dt><dd>O valor atribuído a tudo o que vem depois do último ano projetado. Costuma responder por mais da metade do valor num DCF.</dd></div>
+    <div class="termo"><dt>LBO</dt><dd>Compra alavancada: um fundo adquire a empresa usando muita dívida, que será paga pelo caixa da própria empresa comprada.</dd></div>
+    <div class="termo"><dt>TIR <em>IRR</em></dt><dd>Taxa interna de retorno — o rendimento anual implícito de um investimento. É a métrica com que fundos decidem se entram.</dd></div>
+    <div class="termo"><dt>Sinergia</dt><dd>Ganho que só existe se as duas empresas se juntarem: corte de custo duplicado ou receita adicional. Justifica o prêmio pago numa aquisição — e frequentemente não se realiza.</dd></div>
+    <div class="termo"><dt>IPO</dt><dd>Oferta pública inicial: a primeira venda de ações ao público, quando a empresa passa a ser listada em bolsa.</dd></div>
+    <div class="termo"><dt>Follow-on</dt><dd>Nova oferta de ações de uma empresa que já é listada.</dd></div>
+    <div class="termo"><dt>Primária e secundária</dt><dd>Na oferta primária, o dinheiro entra no caixa da empresa. Na secundária, sócios vendem suas ações e o dinheiro vai para eles.</dd></div>
+    <div class="termo"><dt>Bookbuilding</dt><dd>Processo de coletar intenções de compra dos investidores para descobrir a que preço e em que volume a oferta sai.</dd></div>
+    <div class="termo"><dt>Coordenador líder e bookrunners</dt><dd>O banco que comanda a oferta e os demais que distribuem os papéis. A hierarquia define responsabilidade e divisão da comissão.</dd></div>
+    <div class="termo"><dt>Lote suplementar <em>greenshoe</em></dt><dd>Ações extras que os bancos podem vender para estabilizar o preço nos primeiros dias de negociação.</dd></div>
+    <div class="termo"><dt>Lock-up</dt><dd>Período em que sócios e executivos ficam proibidos de vender suas ações depois do IPO.</dd></div>
+    <div class="termo"><dt>Novo Mercado</dt><dd>Segmento de listagem mais exigente da B3 em governança: só ações ordinárias, conselho com membros independentes e regras extras de transparência.</dd></div>
+    <div class="termo"><dt>Debênture</dt><dd>Título de dívida emitido por empresa. Foi o instrumento que sustentou o recorde do mercado de capitais brasileiro em 2025.</dd></div>
+    <div class="termo"><dt>Debênture incentivada</dt><dd>Debênture de projeto de infraestrutura, isenta de imposto de renda para a pessoa física — o que a torna muito atraente em juro alto.</dd></div>
+    <div class="termo"><dt>CRI, CRA e FIDC</dt><dd>Títulos de securitização: recebíveis imobiliários, do agronegócio e de crédito em geral, empacotados e vendidos a investidores.</dd></div>
+    <div class="termo"><dt>Covenant</dt><dd>Cláusula que obriga o devedor a manter certos indicadores, como dívida sobre EBITDA. Descumprir pode antecipar o vencimento de toda a dívida.</dd></div>
+    <div class="termo"><dt>Rating</dt><dd>Nota de risco de crédito dada por agência classificadora. Define quanto de juro a empresa vai pagar para se financiar.</dd></div>
+    <div class="termo"><dt>Spread</dt><dd>A diferença entre duas taxas ou entre preço de compra e de venda. É de onde sai a receita das mesas de negociação.</dd></div>
+    <div class="termo"><dt>League table</dt><dd>Ranking de bancos por volume ou por número de transações assessoradas num período. Serve de argumento comercial na disputa por mandato.</dd></div>
+    <div class="termo"><dt>Fairness opinion</dt><dd>Parecer formal de um banco declarando que o preço de uma transação é justo do ponto de vista financeiro. Protege o conselho de administração.</dd></div>
+    <div class="termo"><dt>Chinese wall</dt><dd>Barreira de informação entre áreas do banco, para impedir que quem sabe de uma transação sigilosa influencie quem recomenda ou negocia ações.</dd></div>
+    <div class="termo"><dt>Dry powder</dt><dd>Dinheiro já captado por fundos e ainda não investido. Muito dry powder costuma anteceder ciclos aquecidos de aquisição.</dd></div>
+    <div class="termo"><dt>CVM, ANBIMA e CADE</dt><dd>A CVM regula o mercado de capitais; a ANBIMA é a associação que autorregula e produz as estatísticas do setor; o CADE aprova ou barra transações por concentração de mercado.</dd></div>
+  </dl>
+  <p id="glossario-vazio" hidden>Nenhum termo corresponde ao filtro.</p>
+</section>
+
+<section id="s12">
+  <h2><span class="num">12</span> Por onde começar agora</h2>
+  <p class="sub">Nada aqui depende de já estar na faculdade. É o repertório que faz diferença numa entrevista daqui a três anos — e que já ajuda em atualidades e redação no vestibular.</p>
+
+  <div class="check">
+    <label class="check-item"><input type="checkbox" id="c1"><span>Ler diariamente, por 15 minutos, um veículo de negócios: <strong>Brazil Journal</strong>, <strong>NeoFeed</strong>, <strong>Valor Econômico</strong> ou <strong>Bloomberg Línea</strong>. É onde as transações são anunciadas e explicadas.</span></label>
+    <label class="check-item"><input type="checkbox" id="c2"><span>Escolher <strong>uma empresa listada</strong> de que você goste e acompanhar os resultados trimestrais dela por um ano. Uma só, a sério, vale mais que vinte superficialmente.</span></label>
+    <label class="check-item"><input type="checkbox" id="c3"><span>Aprender a ler os <strong>três demonstrativos</strong> — resultado, balanço e fluxo de caixa — e entender como um se liga ao outro.</span></label>
+    <label class="check-item"><input type="checkbox" id="c4"><span>Ficar bom em <strong>Excel</strong>: atalhos sem mouse, PROCV e ÍNDICE+CORRESP, tabela dinâmica, e um fluxo de caixa descontado simples montado do zero.</span></label>
+    <label class="check-item"><input type="checkbox" id="c5"><span>Tratar o <strong>inglês</strong> como matéria principal, com meta de ler notícia econômica em inglês sem tradutor.</span></label>
+    <label class="check-item"><input type="checkbox" id="c6"><span>Acompanhar as <strong>reuniões do Copom</strong> e saber explicar, em duas frases, por que a Selic subiu ou caiu.</span></label>
+    <label class="check-item"><input type="checkbox" id="c7"><span>Escrever uma <strong>tese de uma página</strong> sobre uma empresa: o que ela faz, como ganha dinheiro, quanto vale e por quê. É o exercício que mais aparece em processo seletivo.</span></label>
+    <label class="check-item"><input type="checkbox" id="c8"><span>Na faculdade, entrar numa <strong>liga de mercado financeiro</strong> ou empresa júnior no primeiro ano — é lá que circulam as vagas de estágio.</span></label>
+    <label class="check-item"><input type="checkbox" id="c9"><span>Mapear o <strong>calendário de estágios</strong> dos bancos com antecedência: as inscrições abrem muitos meses antes do início.</span></label>
+  </div>
+  <p class="check-meta" id="check-progresso">0 de 9 marcados</p>
+
+  <h3>O que ler quando quiser ir mais fundo</h3>
+  <div class="grade">
+    <div class="item">
+      <span class="rot">Técnico</span>
+      <span class="nome">Investment Banking, de Rosenbaum e Pearl</span>
+      <p>O manual usado pelos próprios bancos para treinar analista: comparáveis, DCF, LBO e M&amp;A, passo a passo. Damodaran, da NYU, publica material de valuation de graça no site dele.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Como as coisas acontecem</span>
+      <span class="nome">Barbarians at the Gate e Monkey Business</span>
+      <p>O primeiro reconstrói a maior compra alavancada da história; o segundo é o relato mais honesto que existe sobre a rotina de um analista júnior. <em>Sonho Grande</em>, de Cristiane Correa, faz o mesmo pelo capitalismo brasileiro.</p>
+    </div>
+    <div class="item">
+      <span class="rot">Contexto</span>
+      <span class="nome">Relatórios públicos e gratuitos</span>
+      <p>Comunicados do Copom, boletins da ANBIMA sobre mercado de capitais, o relatório anual de M&amp;A da Bain e os prospectos de ofertas no site da CVM. É material primário — o mesmo que os analistas leem.</p>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>O atalho que não existe.</strong> Não há curso pago, certificação ou networking que substitua o básico: entender empresas, saber matemática financeira, escrever com clareza e falar inglês. Quem tem isso aos 20 anos entra em qualquer processo seletivo do setor.</p>
+  </div>
+</section>
+
+<footer>
+  Mapa do Investment Banking · material de estudo · atualizado em 20 de setembro de 2026.<br>
+  Fontes dos números citados: ANBIMA (ofertas no mercado de capitais de 2025, R$ 838,8 bi); Bain &amp; Company, M&amp;A Report 2026 (Brasil acima de US$ 50 bi em 2025); LSEG via Reuters (M&amp;A global de US$ 4,5 tri e fees acima de US$ 100 bi em 2025); TTR Data (league tables brasileiras de 2026); B3 e imprensa especializada (IPO da Compass, maio de 2026); Banco Central do Brasil, comunicado do Copom de 16/09/2026 (Selic a 13,75%).<br>
+  Faixas de fee e de remuneração são ordens de grandeza de mercado, reunidas de reportagens e de bases autodeclaradas — servem para dar noção de escala, não como referência contratual.
+</footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- Glossário: filtro com normalização de acento ---- */
+  var busca = document.getElementById("busca-glossario");
+  var contador = document.getElementById("glossario-contador");
+  var vazio = document.getElementById("glossario-vazio");
+  var termos = [].slice.call(document.querySelectorAll("#glossario .termo"));
+
+  function normalizar(t){
+    return t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+  termos.forEach(function(el){ el.dataset.busca = normalizar(el.textContent); });
+
+  function filtrar(){
+    var q = normalizar(busca.value.trim());
+    var n = 0;
+    termos.forEach(function(el){
+      var achou = !q || el.dataset.busca.indexOf(q) !== -1;
+      el.hidden = !achou;
+      if (achou) n++;
+    });
+    contador.textContent = n === 1 ? "1 termo" : n + " termos";
+    vazio.hidden = n > 0;
+  }
+  busca.addEventListener("input", filtrar);
+  filtrar();
+
+  /* ---- Gráfico: leitura da participação no total ---- */
+  var leitura = document.getElementById("leitura-grafico");
+  var padrao = leitura.textContent;
+  [].slice.call(document.querySelectorAll("#barras .barra")).forEach(function(b){
+    function mostrar(){ leitura.textContent = b.dataset.rot + " — " + b.dataset.share + " de R$ 838,8 bi"; }
+    function limpar(){ leitura.textContent = padrao; }
+    b.addEventListener("mouseenter", mostrar);
+    b.addEventListener("focus", mostrar);
+    b.addEventListener("mouseleave", limpar);
+    b.addEventListener("blur", limpar);
+  });
+
+  /* ---- Checklist: estado por leitor, tolerante a storage bloqueado ---- */
+  var CHAVE = "ib-checklist-v1";
+  var progresso = document.getElementById("check-progresso");
+  var caixas = [].slice.call(document.querySelectorAll(".check-item input"));
+  var estado = {};
+  try { estado = JSON.parse(localStorage.getItem(CHAVE) || "{}") || {}; } catch (e) { estado = {}; }
+
+  function atualizar(){
+    var n = caixas.filter(function(c){ return c.checked; }).length;
+    progresso.textContent = n + " de " + caixas.length + " marcados";
+  }
+  caixas.forEach(function(c){
+    if (estado[c.id]) c.checked = true;
+    c.addEventListener("change", function(){
+      estado[c.id] = c.checked;
+      try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {}
+      atualizar();
+    });
+  });
+  atualizar();
+})();
+</script>

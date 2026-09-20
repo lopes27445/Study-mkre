@@ -39,6 +39,14 @@ um deal, os métodos de valuation, a escada de carreira, como se entra no Brasil
 duro do setor e um glossário de 41 termos.
 Publicado também como página: https://claude.ai/artifact/CHh2XwBs5nB6w6v71VptxF
 
+`analise/investment-banking.pdf` — a mesma análise em PDF A4 para leitura e impressão:
+25 páginas, com capa, sumário numerado, rodapé com contagem de páginas e marcadores de
+navegação por seção.
+
+`analise/gerar-pdf.py` — gera o PDF a partir do HTML, que continua sendo a fonte única de
+verdade. Requer `pip install pypdf` e `npm install playwright`; o Chromium do ambiente é
+reaproveitado. Rode `python3 analise/gerar-pdf.py` depois de editar o HTML.
+
 ### Dados de mercado usados (setembro de 2026)
 
 | Indicador | Valor | Fonte |

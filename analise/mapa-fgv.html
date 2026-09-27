@@ -1,0 +1,503 @@
+<title>Mapa do Vestibular FGV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --vermelho-soft:#FBEAE7;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --neutro-chip:#EDF0F5;
+  --barra:#1B4AA0;
+  --barra-texto:#FFFFFF;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --vermelho:#EE8478;
+    --vermelho-soft:#33201E;
+    --ocre:#DDB667;
+    --ocre-soft:#2C2618;
+    --neutro-chip:#212C42;
+    --barra:#5A8AE0;
+    --barra-texto:#0E1523;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --vermelho:#EE8478;
+  --vermelho-soft:#33201E;
+  --ocre:#DDB667;
+  --ocre-soft:#2C2618;
+  --neutro-chip:#212C42;
+  --barra:#5A8AE0;
+  --barra-texto:#0E1523;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 96px}
+@media (max-width:480px){.wrap{padding:0 16px 72px}}
+a{color:var(--azul);text-underline-offset:2px}
+a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+
+/* ---------- Cabeçalho ---------- */
+.topo{padding:52px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--azul);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+}
+.eyebrow span{color:var(--grafite-soft)}
+h1{
+  font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,52px);
+  line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance;
+}
+.dek{font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:64ch;text-wrap:pretty}
+.fontes{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;
+  font-family:var(--mono);font-size:12px;color:var(--grafite);
+}
+.fontes b{
+  background:var(--surface);border:1px solid var(--linha);border-radius:3px;
+  padding:5px 9px;font-weight:500;display:inline-block;
+}
+.proxima{
+  margin-top:26px;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:baseline;
+  padding:14px 18px;border:1px solid var(--linha-forte);border-radius:4px;background:var(--surface);
+}
+.proxima .quando{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--vermelho)}
+.proxima p{margin:0;font-size:15.5px;max-width:none}
+@media (max-width:620px){.proxima{grid-template-columns:1fr}}
+
+/* ---------- Seções ---------- */
+section{padding-top:56px}
+h2{
+  font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.015em;
+  margin:0 0 6px;display:flex;align-items:baseline;gap:12px;text-wrap:balance;
+}
+h2 .num{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--azul);letter-spacing:.06em;flex:none}
+h3{font-family:var(--display);font-weight:600;font-size:18.5px;margin:34px 0 10px;letter-spacing:-.01em}
+.sub{color:var(--grafite);margin:0 0 22px;max-width:68ch;text-wrap:pretty}
+p{max-width:68ch;text-wrap:pretty}
+
+/* ---------- Objeto elevado: desenho da prova ---------- */
+.achado{
+  background:var(--surface);border:1px solid var(--linha);border-radius:6px;
+  box-shadow:var(--shadow);padding:26px 26px 22px;margin-top:26px;
+}
+.achado-tit{font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 4px}
+.achado-txt{margin:0 0 20px;color:var(--grafite);font-size:15.5px;max-width:none}
+.bp-rotulo{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grafite);margin:18px 0 7px}
+.bp-rotulo:first-of-type{margin-top:0}
+.blueprint{display:flex;gap:2px;width:100%;height:44px;background:var(--surface)}
+.bp{
+  display:flex;align-items:center;justify-content:center;min-width:0;
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  background:var(--surface-2);color:var(--grafite);
+  overflow:hidden;white-space:nowrap;
+}
+.bp:first-child{border-radius:4px 0 0 4px}
+.bp:last-child{border-radius:0 4px 4px 0}
+.bp.foco{background:var(--barra);color:var(--barra-texto)}
+.bp b{font-weight:600}
+.bp span::before{content:"·";margin:0 6px}
+@media (max-width:620px){
+  .achado{padding:20px 16px 18px}
+  .bp{flex-direction:column;font-size:10.5px;line-height:1.2}
+  .bp span::before{content:none}
+}
+.escala{display:flex;gap:2px;width:100%;margin-top:6px;font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft)}
+.escala div{padding-left:2px;overflow:hidden;white-space:nowrap;min-width:0}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:20px;font-family:var(--mono);font-size:11.5px;color:var(--grafite)}
+.legenda i{font-style:normal;color:var(--ink);font-weight:600}
+
+/* ---------- Ranking com barras ---------- */
+.ranking{margin:24px 0 0;padding:20px 22px 14px;background:var(--surface);border:1px solid var(--linha);border-radius:6px}
+.ranking figcaption{font-family:var(--display);font-weight:600;font-size:16.5px;margin:0 0 2px}
+.cap-sub{font-size:14px;color:var(--grafite);margin:0 0 14px;max-width:none}
+.rk-head,.rk-row{display:grid;grid-template-columns:minmax(0,15.5rem) minmax(0,1fr) 3.4rem;gap:6px 14px;align-items:center}
+.rk-head{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grafite);padding-bottom:7px;border-bottom:1px solid var(--linha);margin-bottom:4px;
+}
+.rk-head span:last-child{text-align:right}
+.rk-row{padding:5px 6px;margin:0 -6px;border-radius:3px;cursor:default}
+.rk-row:hover,.rk-row:focus-visible{background:var(--surface-2)}
+.rk-row:hover .rk-bar,.rk-row:focus-visible .rk-bar{opacity:.82}
+.rk-nome{font-size:14.5px;line-height:1.3}
+.rk-track{display:flex;align-items:center;gap:8px;min-width:0}
+.rk-bar{height:12px;flex:none;max-width:calc(100% - 2.4rem);background:var(--barra);border-radius:0 4px 4px 0}
+.rk-val{font-family:var(--mono);font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+.rk-provas{font-family:var(--mono);font-size:12.5px;color:var(--grafite);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:620px){
+  .ranking{padding:18px 16px 12px}
+  .rk-head{grid-template-columns:minmax(0,1fr) 3.4rem}
+  .rk-head span:nth-child(2){display:none}
+  .rk-row{grid-template-columns:minmax(0,1fr) 3.4rem;row-gap:4px}
+  .rk-nome{grid-column:1 / -1}
+  .rk-track{grid-column:1}
+}
+#tip{
+  position:fixed;z-index:10;max-width:300px;pointer-events:none;
+  background:var(--ink);color:var(--paper);
+  font-size:13px;line-height:1.45;padding:8px 10px;border-radius:4px;box-shadow:var(--shadow);
+}
+
+/* ---------- Lista de temas ---------- */
+.temas{display:flex;flex-direction:column;margin-top:8px}
+.tema{
+  display:grid;grid-template-columns:78px 1fr auto;gap:6px 18px;align-items:baseline;
+  padding:15px 0 15px 16px;border-top:1px solid var(--linha);border-left:3px solid transparent;
+}
+.tema:last-child{border-bottom:1px solid var(--linha)}
+.tema.alta{border-left-color:var(--vermelho)}
+.tema.media{border-left-color:var(--ocre)}
+.tema.baixa{border-left-color:var(--linha-forte)}
+.tema .freq{font-family:var(--mono);font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--grafite);letter-spacing:.02em}
+.tema.alta .freq{color:var(--vermelho)}
+.tema.media .freq{color:var(--ocre)}
+.tema .nome{font-weight:600;font-size:16.5px;line-height:1.4}
+.tema .tag{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--grafite);background:var(--neutro-chip);border-radius:3px;padding:3px 7px;white-space:nowrap;
+}
+.tema .det{grid-column:2 / -1;margin:5px 0 0;font-size:14.5px;color:var(--grafite);line-height:1.55;max-width:66ch}
+.tema .det code{
+  font-family:var(--mono);font-size:12.5px;color:var(--azul);background:var(--azul-soft);
+  padding:1px 5px;border-radius:3px;white-space:nowrap;
+}
+@media (max-width:620px){
+  .tema{grid-template-columns:1fr auto;padding-left:13px}
+  .tema .freq{grid-column:1 / -1;order:-1}
+  .tema .det{grid-column:1 / -1}
+}
+
+/* ---------- Faixa de destaque ---------- */
+.destaque{border-left:3px solid var(--azul);background:var(--azul-soft);padding:16px 20px;margin:26px 0 0;border-radius:0 4px 4px 0}
+.destaque p{margin:0;font-size:15.5px;max-width:none}
+
+/* ---------- Tabelas ---------- */
+.tabela-wrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th{
+  text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grafite);padding:0 14px 9px 0;border-bottom:1px solid var(--linha-forte);
+}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+td:first-child{font-family:var(--mono);font-size:13px;color:var(--azul);white-space:nowrap;font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+@media (max-width:620px){
+  .empilha table{min-width:0}
+  .empilha thead{display:none}
+  .empilha tr{display:block;padding:12px 0;border-bottom:1px solid var(--linha)}
+  .empilha tr:last-child{border-bottom:0}
+  .empilha td{display:block;border:0;padding:3px 0}
+  .empilha td:first-child{white-space:normal}
+  .empilha td:nth-child(3){color:var(--grafite);font-size:14.5px}
+}
+
+/* ---------- Checklist ---------- */
+.check{display:flex;flex-direction:column;margin-top:10px}
+.check-item{display:flex;gap:13px;align-items:flex-start;padding:11px 4px;border-bottom:1px solid var(--linha);cursor:pointer}
+.check-item:hover{background:var(--surface-2)}
+.check-item input{
+  appearance:none;-webkit-appearance:none;width:17px;height:17px;flex:none;margin-top:4px;
+  border:1.5px solid var(--linha-forte);border-radius:3px;background:var(--surface);cursor:pointer;position:relative;
+}
+.check-item input:checked{background:var(--azul);border-color:var(--azul)}
+.check-item input:checked::after{
+  content:"";position:absolute;left:5px;top:1.5px;width:4px;height:9px;
+  border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.check-item input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.check-item span{font-size:15.5px;line-height:1.5}
+.check-item input:checked + span{color:var(--grafite-soft);text-decoration:line-through}
+.check-meta{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);margin-top:12px}
+
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.7;
+}
+footer p{max-width:none;margin:0 0 10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="topo">
+  <div class="eyebrow">Análise de 11 provas <span>·</span> 2020–2026 <span>·</span> 495 questões classificadas</div>
+  <h1>Mapa do Vestibular FGV</h1>
+  <p class="dek">O que as provas objetivas da FGV-SP cobraram em Matemática, Português e História de 2020 a 2026, questão por questão, e em que ordem vale a pena estudar.</p>
+  <div class="fontes">
+    <b>Unificado 2021.1 a 2026.1 · 6 provas de novembro</b>
+    <b>Meio de ano 2022.2 a 2026.2 · 5 provas de maio/junho</b>
+    <b>Provas oficiais · vestibular.fgv.br</b>
+  </div>
+  <div class="proxima">
+    <span class="quando">18 out 2026</span>
+    <p><strong>Próxima prova: Vestibular FGV 2027.1.</strong> Todas as escolas fazem prova em 18 de outubro; Direito SP e Economia têm um segundo dia em 19 de outubro. O edital 2027 mantém as quatro provas objetivas analisadas aqui: Matemática, Língua Portuguesa, Inglês e Ciências Humanas.</p>
+  </div>
+</header>
+
+<section>
+  <h2><span class="num">01</span> A prova objetiva tem um desenho fixo</h2>
+  <p class="sub">Todas as 11 provas têm 60 questões de múltipla escolha (A a E), 15 por área, sempre na mesma ordem. O caderno objetivo é o mesmo para Administração, Administração Pública, Direito, Economia e Relações Internacionais em São Paulo; o que muda de um curso para outro é a fase discursiva.</p>
+
+  <div class="achado">
+    <p class="achado-tit">Onde cada matéria está nas 60 questões</p>
+    <p class="achado-txt">Suas três matérias ocupam 36 questões: as 15 de Matemática, as 15 de Português e 6 das 15 de Ciências Humanas. São 3h30 para as quatro provas objetivas, sem calculadora.</p>
+
+    <p class="bp-rotulo">Caderno objetivo · 60 questões</p>
+    <div class="blueprint" role="img" aria-label="Matemática nas questões 1 a 15, Língua Portuguesa de 16 a 30, Inglês de 31 a 45 e Ciências Humanas de 46 a 60">
+      <div class="bp foco" style="flex:15"><b>MAT</b><span>15</span></div>
+      <div class="bp foco" style="flex:15"><b>PORT</b><span>15</span></div>
+      <div class="bp" style="flex:15"><b>ING</b><span>15</span></div>
+      <div class="bp" style="flex:15"><b>HUMANAS</b><span>15</span></div>
+    </div>
+    <div class="escala" aria-hidden="true">
+      <div style="flex:15">Q1</div><div style="flex:15">Q16</div><div style="flex:15">Q31</div><div style="flex:15">Q46</div>
+    </div>
+
+    <p class="bp-rotulo">Ciências Humanas por dentro · igual desde 2024.1</p>
+    <div class="blueprint" role="img" aria-label="Atualidades nas questões 46 a 48, História de 49 a 54 e Geografia de 55 a 60">
+      <div class="bp" style="flex:3"><b>ATUAL.</b><span>3</span></div>
+      <div class="bp foco" style="flex:6"><b>HISTÓRIA</b><span>6</span></div>
+      <div class="bp" style="flex:6"><b>GEOGRAFIA</b><span>6</span></div>
+    </div>
+    <div class="escala" aria-hidden="true">
+      <div style="flex:3">Q46</div><div style="flex:6">Q49</div><div style="flex:6">Q55</div>
+    </div>
+
+    <div class="legenda">
+      <span><i>Matemática</i> Q1–Q15</span>
+      <span><i>Português</i> Q16–Q30</span>
+      <span><i>História</i> Q49–Q54</span>
+    </div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>A ordem de História também é previsível.</strong> Desde 2024.1, as seis questões vêm em ordem quase cronológica: a Q49 foi Antiguidade ou Idade Média em 5 das 6 provas, e a Q54 foi século XX em todas as 6. Até 2022.2, eram 5 questões de História, no começo do bloco.</p>
+  </div>
+
+  <h3>O que muda por curso (edital 2027)</h3>
+  <div class="tabela-wrap empilha">
+    <table>
+      <thead><tr><th>Curso em SP</th><th>Fase discursiva</th><th>O que isso significa para você</th></tr></thead>
+      <tbody>
+        <tr><td>Administração</td><td>Matemática Discursiva e Redação</td><td>A fase discursiva pesa 3 e a objetiva, 2. Matemática Discursiva é o primeiro critério de desempate. Nota abaixo de 2,0 (de 10) em qualquer prova objetiva elimina: na prática, menos de 3 acertos em 15.</td></tr>
+        <tr><td>Economia</td><td>Matemática Discursiva e Redação; no 2º dia, Português Discursiva e prova objetiva de Biologia, Física e Química</td><td>Matemática aparece duas vezes, na objetiva e na discursiva.</td></tr>
+        <tr><td>Relações Int.</td><td>Matemática Discursiva e Redação</td><td>Matemática aparece duas vezes, na objetiva e na discursiva.</td></tr>
+        <tr><td>Adm. Pública</td><td>Ciências Humanas (História e Geografia) e Redação</td><td>Na objetiva, os pesos são Português 3, Matemática 2, Humanas 2 e Inglês 1. História aparece duas vezes.</td></tr>
+        <tr><td>Direito</td><td>Ciências Humanas (História e Geografia) e Redação; no 2º dia, Português Discursiva e Artes e Questões Contemporâneas; depois, exame oral</td><td>Nota abaixo de 3,0 em Português, Humanas, Inglês ou Redação elimina: nas objetivas, menos de 5 acertos em 15. Em Matemática, só a nota zero elimina.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span> Matemática · Q1–Q15</h2>
+  <p class="sub">A FGV espalha as 15 questões por quase todo o programa, sem um assunto dominante. Mesmo assim, dois temas caíram em todas as 11 provas e três estão crescendo nas mais recentes. As questões são problemas com contexto, raramente contas soltas.</p>
+
+  <figure class="ranking"><figcaption>Questões de Matemática por assunto</figcaption><p class="cap-sub">165 questões (Q1–Q15 de 11 provas). A barra mostra quantas questões o assunto somou; a coluna da direita, em quantas provas ele apareceu.</p><div class="rk-head" aria-hidden="true"><span>Assunto</span><span>Questões</span><span>Provas</span></div><div class="rk-row" tabindex="0" data-tip="Geometria plana: 19 questões em 11 provas (1,7 por prova) · caiu em 11 de 11 · nas 4 mais recentes: 6 · última vez: 2026.2"><span class="rk-nome">Geometria plana</span><span class="rk-track"><span class="rk-bar" style="width:100.0%"></span><span class="rk-val">19</span></span><span class="rk-provas">11/11</span></div><div class="rk-row" tabindex="0" data-tip="Probabilidade: 16 questões em 11 provas (1,5 por prova) · caiu em 11 de 11 · nas 4 mais recentes: 7 · última vez: 2026.2"><span class="rk-nome">Probabilidade</span><span class="rk-track"><span class="rk-bar" style="width:84.2%"></span><span class="rk-val">16</span></span><span class="rk-provas">11/11</span></div><div class="rk-row" tabindex="0" data-tip="Porcentagem e juros: 15 questões em 11 provas (1,4 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 7 · última vez: 2026.2"><span class="rk-nome">Porcentagem e juros</span><span class="rk-track"><span class="rk-bar" style="width:78.9%"></span><span class="rk-val">15</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Razão, proporção e grandezas: 13 questões em 11 provas (1,2 por prova) · caiu em 7 de 11 · nas 4 mais recentes: 3 · última vez: 2025.2"><span class="rk-nome">Razão, proporção e grandezas</span><span class="rk-track"><span class="rk-bar" style="width:68.4%"></span><span class="rk-val">13</span></span><span class="rk-provas">7/11</span></div><div class="rk-row" tabindex="0" data-tip="Equações, inequações e sistemas: 12 questões em 11 provas (1,1 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 4 · última vez: 2026.1"><span class="rk-nome">Equações, inequações e sistemas</span><span class="rk-track"><span class="rk-bar" style="width:63.2%"></span><span class="rk-val">12</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Progressões e sequências: 11 questões em 11 provas (1,0 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 7 · última vez: 2026.2"><span class="rk-nome">Progressões e sequências</span><span class="rk-track"><span class="rk-bar" style="width:57.9%"></span><span class="rk-val">11</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Geometria espacial: 11 questões em 11 provas (1,0 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 5 · última vez: 2026.2"><span class="rk-nome">Geometria espacial</span><span class="rk-track"><span class="rk-bar" style="width:57.9%"></span><span class="rk-val">11</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Geometria analítica: 10 questões em 11 provas (0,9 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 2 · última vez: 2026.2"><span class="rk-nome">Geometria analítica</span><span class="rk-track"><span class="rk-bar" style="width:52.6%"></span><span class="rk-val">10</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Trigonometria: 9 questões em 11 provas (0,8 por prova) · caiu em 9 de 11 · nas 4 mais recentes: 4 · última vez: 2026.2"><span class="rk-nome">Trigonometria</span><span class="rk-track"><span class="rk-bar" style="width:47.4%"></span><span class="rk-val">9</span></span><span class="rk-provas">9/11</span></div><div class="rk-row" tabindex="0" data-tip="Análise combinatória: 9 questões em 11 provas (0,8 por prova) · caiu em 7 de 11 · nas 4 mais recentes: 1 · última vez: 2026.1"><span class="rk-nome">Análise combinatória</span><span class="rk-track"><span class="rk-bar" style="width:47.4%"></span><span class="rk-val">9</span></span><span class="rk-provas">7/11</span></div><div class="rk-row" tabindex="0" data-tip="Estatística: 8 questões em 11 provas (0,7 por prova) · caiu em 7 de 11 · nas 4 mais recentes: 3 · última vez: 2026.2"><span class="rk-nome">Estatística</span><span class="rk-track"><span class="rk-bar" style="width:42.1%"></span><span class="rk-val">8</span></span><span class="rk-provas">7/11</span></div><div class="rk-row" tabindex="0" data-tip="Exponencial e logaritmo: 8 questões em 11 provas (0,7 por prova) · caiu em 6 de 11 · nas 4 mais recentes: 2 · última vez: 2026.2"><span class="rk-nome">Exponencial e logaritmo</span><span class="rk-track"><span class="rk-bar" style="width:42.1%"></span><span class="rk-val">8</span></span><span class="rk-provas">6/11</span></div><div class="rk-row" tabindex="0" data-tip="Números inteiros e aritmética: 8 questões em 11 provas (0,7 por prova) · caiu em 7 de 11 · nas 4 mais recentes: 5 · última vez: 2026.2"><span class="rk-nome">Números inteiros e aritmética</span><span class="rk-track"><span class="rk-bar" style="width:42.1%"></span><span class="rk-val">8</span></span><span class="rk-provas">7/11</span></div><div class="rk-row" tabindex="0" data-tip="Lógica e conjuntos: 7 questões em 11 provas (0,6 por prova) · caiu em 6 de 11 · nas 4 mais recentes: 2 · última vez: 2026.1"><span class="rk-nome">Lógica e conjuntos</span><span class="rk-track"><span class="rk-bar" style="width:36.8%"></span><span class="rk-val">7</span></span><span class="rk-provas">6/11</span></div><div class="rk-row" tabindex="0" data-tip="Função afim e quadrática: 6 questões em 11 provas (0,5 por prova) · caiu em 5 de 11 · nas 4 mais recentes: 2 · última vez: 2025.2"><span class="rk-nome">Função afim e quadrática</span><span class="rk-track"><span class="rk-bar" style="width:31.6%"></span><span class="rk-val">6</span></span><span class="rk-provas">5/11</span></div><div class="rk-row" tabindex="0" data-tip="Funções: outros tópicos: 3 questões em 11 provas (0,3 por prova) · caiu em 3 de 11 · nas 4 mais recentes: 0 · última vez: 2024.1"><span class="rk-nome">Funções: outros tópicos</span><span class="rk-track"><span class="rk-bar" style="width:15.8%"></span><span class="rk-val">3</span></span><span class="rk-provas">3/11</span></div></figure>
+
+  <div class="destaque">
+    <p><strong>Geometria e trigonometria somam 30% da prova.</strong> Plana, espacial, analítica e trigonometria são 49 das 165 questões. Probabilidade e contagem, outras 25 (15%). Porcentagem, razão e números inteiros, 36 (22%).</p>
+  </div>
+
+  <div class="temas">
+    <div class="tema alta"><div class="freq">11/11</div><div class="nome">Probabilidade</div><div class="tag">Prioridade máxima</div><p class="det">16 questões, uma ou duas em toda prova, e 7 nas quatro mais recentes. Quase sempre com contagem por trás: casos favoráveis sobre possíveis, eventos independentes, probabilidade condicional e conjuntos. <code>Q8</code>/2026.1 playoff melhor de três; <code>Q14</code>/2026.2 permutações de JANEIRO com cinco letras no lugar; <code>Q15</code>/2026.2 carteiras vizinhas numa sala 5×5; <code>Q14</code>/2025.1 chance de uma função ser injetiva.</p></div><div class="tema alta"><div class="freq">11/11</div><div class="nome">Geometria plana</div><div class="tag">Prioridade máxima</div><p class="det">A maior fatia da prova: 19 questões. Áreas de figuras compostas e sombreadas, semelhança de triângulos, relações métricas e círculo. <code>Q4</code>/2026.1 razão entre áreas de triângulos; <code>Q15</code>/2025.2 semelhança num triângulo isósceles; <code>Q9</code>/2025.1 altura relativa à hipotenusa (h² = m·n); <code>Q8</code>/2026.2 perímetros com um arame de 12 cm.</p></div><div class="tema alta"><div class="freq">8/11</div><div class="nome">Porcentagem e juros</div><div class="tag">Prioridade máxima</div><p class="det">Em alta: 7 das 15 questões saíram nas quatro provas mais recentes. Aumentos e descontos sucessivos, valor bruto a partir do líquido, participação percentual, misturas e juros compostos. <code>Q4</code>/2026.2 −15% seguido de +20% dá +2%; <code>Q2</code>/2026.2 quanto pagar para o artista receber 60 mil depois de 20% de comissão; <code>Q9</code>/2026.1 carteira em que um ativo cai 50%.</p></div><div class="tema alta"><div class="freq">8/11</div><div class="nome">Progressões e sequências</div><div class="tag">Prioridade máxima</div><p class="det">Também em alta: 7 das 11 questões nas quatro mais recentes. Termo geral e soma da PA, PG infinita e sequências definidas por uma regra. <code>Q10</code>/2026.2 soma de PA; <code>Q3</code>/2026.2 soma alternada 1 + 2 + 3 − 4 + …; <code>Q2</code>/2026.1 tabela com PAs nas linhas e colunas; <code>Q10</code>/2025.1 soma de PGs infinitas.</p></div><div class="tema alta"><div class="freq">9/11</div><div class="nome">Trigonometria</div><div class="tag">Prioridade máxima</div><p class="det">Uma questão em quase toda prova. Seno e cosseno por quadrante, lei dos senos e funções periódicas usadas como modelo. <code>Q15</code>/2026.1 preço sazonal P(t) = A·cos(2πt/12) + B; <code>Q6</code>/2026.2 cosseno da diferença de arcos; <code>Q15</code>/2025.1 lei dos senos.</p></div><div class="tema media"><div class="freq">8/11</div><div class="nome">Geometria espacial</div><div class="tag">Estudar</div><p class="det">11 questões, 5 nas quatro mais recentes. Volume de cone e cilindro, planificação e poliedros. A relação de Euler caiu duas vezes (<code>Q10</code>/2024.2 e <code>Q10</code>/2026.1). <code>Q5</code>/2026.1 água do copo cônico passada para o cilíndrico; <code>Q9</code>/2026.2 cone planificado.</p></div><div class="tema media"><div class="freq">8/11</div><div class="nome">Equações e sistemas</div><div class="tag">Estudar</div><p class="det">12 questões. Problemas de 1º grau e sistemas lineares montados a partir de uma situação. <code>Q3</code>/2026.1 quantias que dobram; <code>Q6</code>/2025.1 sistema com pizza e manteiga; <code>Q9</code>/2024.1 soma e produto das raízes.</p></div><div class="tema media"><div class="freq">7/11</div><div class="nome">Números inteiros</div><div class="tag">Estudar</div><p class="det">5 das 8 questões nas quatro mais recentes. Divisibilidade, múltiplos, MMC, potências e quadrados perfeitos. <code>Q6</code>/2025.2 números de 1 a 2025 sem os múltiplos de 3 e de 5; <code>Q1</code>/2026.2 soma de 1 a 10 que vira quadrado perfeito.</p></div><div class="tema media"><div class="freq">7/11</div><div class="nome">Estatística</div><div class="tag">Estudar</div><p class="det">Médias, simples e ponderada, são as mais cobradas; também mediana e moda. <code>Q12</code>/2026.1 média de avaliações em três plataformas; <code>Q12</code>/2026.2 idade descoberta pela mudança das médias.</p></div><div class="tema media"><div class="freq">7/11</div><div class="nome">Razão e proporção</div><div class="tag">Estudar</div><p class="det">13 questões, mas só 3 nas quatro mais recentes. Regra de três simples e composta, divisão proporcional, velocidade média e conversão de unidades.</p></div><div class="tema media"><div class="freq">8/11</div><div class="nome">Geometria analítica</div><div class="tag">Estudar</div><p class="det">10 questões, 2 nas quatro mais recentes. Área e distância com coordenadas e equação da reta; rotação de pontos caiu duas vezes.</p></div><div class="tema baixa"><div class="freq">até 7/11</div><div class="nome">Combinatória, logaritmo, lógica e funções</div><div class="tag">Revisar</div><p class="det">Análise combinatória (9 questões, mas só 1 como assunto principal nas quatro mais recentes: ela aparece dentro das de probabilidade). Exponencial e logaritmo (8), sempre como modelo: decibéis em <code>Q13</code>/2026.1, 0,9ⁿ ≥ 0,01 em <code>Q11</code>/2026.2. Lógica e conjuntos (7). Funções afim e quadrática (6) aparecem pouco na objetiva, e costumam ir para a discursiva.</p></div>
+  </div>
+
+  <h3>Se o seu curso tem Matemática Discursiva</h3>
+  <p>Administração, Economia e Relações Internacionais fazem uma segunda prova de Matemática, com 8 questões e resolução completa. Uma leitura das 11 provas discursivas do período (sem contagem questão a questão) mostra os mesmos assuntos da objetiva, com mais raciocínio: números inteiros e paridade, sequências e recorrências, contagem e probabilidade, médias, geometria plana por semelhança e modelos com funções, como oferta e demanda, curva de Lorenz e índice de Gini (2026.1) e uma reta em escala logarítmica (2025.1).</p>
+</section>
+
+<section>
+  <h2><span class="num">03</span> Português · Q16–Q30</h2>
+  <p class="sub">Quase metade do bloco é literatura, sempre com trechos de autores da lista oficial da FGV. A outra metade é gramática aplicada ao texto, com alguns pontos que voltam prova após prova.</p>
+
+  <div class="tabela-wrap empilha">
+    <table>
+      <thead><tr><th>Posição</th><th>O que vem</th><th>Nas 11 provas</th></tr></thead>
+      <tbody>
+        <tr><td>Q16</td><td>Tirinha, cartum ou charge (em 2026.2 foi para a Q30)</td><td>10 de 11</td></tr>
+        <tr><td>~Q17–Q21</td><td>Texto jornalístico ou de opinião: interpretação e gramática aplicada ao texto</td><td>11 de 11</td></tr>
+        <tr><td>~Q21–Q30</td><td>Dois ou três textos literários, com questões de literatura e de gramática sobre eles</td><td>11 de 11</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <figure class="ranking"><figcaption>Questões de Português por assunto</figcaption><p class="cap-sub">165 questões (Q16–Q30 de 11 provas). Cada questão foi contada por um assunto principal.</p><div class="rk-head" aria-hidden="true"><span>Assunto</span><span>Questões</span><span>Provas</span></div><div class="rk-row" tabindex="0" data-tip="Literatura (todas as escolas): 76 questões em 11 provas (6,9 por prova) · caiu em 11 de 11 · nas 4 mais recentes: 27 · última vez: 2026.2"><span class="rk-nome">Literatura (todas as escolas)</span><span class="rk-track"><span class="rk-bar" style="width:100.0%"></span><span class="rk-val">76</span></span><span class="rk-provas">11/11</span></div><div class="rk-row" tabindex="0" data-tip="Semântica e vocabulário: 17 questões em 11 provas (1,5 por prova) · caiu em 11 de 11 · nas 4 mais recentes: 6 · última vez: 2026.2"><span class="rk-nome">Semântica e vocabulário</span><span class="rk-track"><span class="rk-bar" style="width:22.4%"></span><span class="rk-val">17</span></span><span class="rk-provas">11/11</span></div><div class="rk-row" tabindex="0" data-tip="Morfossintaxe (pronomes, sujeito, vozes): 14 questões em 11 provas (1,3 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 5 · última vez: 2026.1"><span class="rk-nome">Morfossintaxe (pronomes, sujeito, vozes)</span><span class="rk-track"><span class="rk-bar" style="width:18.4%"></span><span class="rk-val">14</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Figuras de linguagem: 13 questões em 11 provas (1,2 por prova) · caiu em 9 de 11 · nas 4 mais recentes: 4 · última vez: 2026.2"><span class="rk-nome">Figuras de linguagem</span><span class="rk-track"><span class="rk-bar" style="width:17.1%"></span><span class="rk-val">13</span></span><span class="rk-provas">9/11</span></div><div class="rk-row" tabindex="0" data-tip="Conectivos e relações entre orações: 11 questões em 11 provas (1,0 por prova) · caiu em 11 de 11 · nas 4 mais recentes: 4 · última vez: 2026.2"><span class="rk-nome">Conectivos e relações entre orações</span><span class="rk-track"><span class="rk-bar" style="width:14.5%"></span><span class="rk-val">11</span></span><span class="rk-provas">11/11</span></div><div class="rk-row" tabindex="0" data-tip="Tirinha, cartum e charge: 10 questões em 11 provas (0,9 por prova) · caiu em 10 de 11 · nas 4 mais recentes: 4 · última vez: 2026.2"><span class="rk-nome">Tirinha, cartum e charge</span><span class="rk-track"><span class="rk-bar" style="width:13.2%"></span><span class="rk-val">10</span></span><span class="rk-provas">10/11</span></div><div class="rk-row" tabindex="0" data-tip="Interpretação de texto: 8 questões em 11 provas (0,7 por prova) · caiu em 7 de 11 · nas 4 mais recentes: 3 · última vez: 2026.1"><span class="rk-nome">Interpretação de texto</span><span class="rk-track"><span class="rk-bar" style="width:10.5%"></span><span class="rk-val">8</span></span><span class="rk-provas">7/11</span></div><div class="rk-row" tabindex="0" data-tip="Formação de palavras: 8 questões em 11 provas (0,7 por prova) · caiu em 7 de 11 · nas 4 mais recentes: 4 · última vez: 2026.2"><span class="rk-nome">Formação de palavras</span><span class="rk-track"><span class="rk-bar" style="width:10.5%"></span><span class="rk-val">8</span></span><span class="rk-provas">7/11</span></div><div class="rk-row" tabindex="0" data-tip="Pontuação: 4 questões em 11 provas (0,4 por prova) · caiu em 4 de 11 · nas 4 mais recentes: 3 · última vez: 2026.2"><span class="rk-nome">Pontuação</span><span class="rk-track"><span class="rk-bar" style="width:5.3%"></span><span class="rk-val">4</span></span><span class="rk-provas">4/11</span></div><div class="rk-row" tabindex="0" data-tip="Norma-padrão e variação linguística: 4 questões em 11 provas (0,4 por prova) · caiu em 4 de 11 · nas 4 mais recentes: 0 · última vez: 2024.2"><span class="rk-nome">Norma-padrão e variação linguística</span><span class="rk-track"><span class="rk-bar" style="width:5.3%"></span><span class="rk-val">4</span></span><span class="rk-provas">4/11</span></div></figure>
+
+  <div class="destaque">
+    <p><strong>Literatura: 76 das 165 questões (46%).</strong> Toda prova trouxe um trecho de prosa do século XIX ou de <em>Os sertões</em>, e 10 das 11 trouxeram também Modernismo ou prosa contemporânea.</p>
+  </div>
+
+  <h3>Literatura</h3>
+  <div class="temas">
+    <div class="tema alta"><div class="freq">7/11</div><div class="nome">Machado de Assis</div><div class="tag">Prioridade máxima</div><p class="det">24 questões. Quando a prova traz um trecho dele, vêm três ou quatro questões seguidas sobre o mesmo texto. <em>Dom Casmurro</em> caiu três vezes (2022.2, 2023.1 e 2026.2), com perguntas sobre o narrador, Capitu e a escravidão ao fundo. Também <em>Memórias póstumas de Brás Cubas</em> (2022.1, e como resposta em 2023.2 e 2024.2), <em>Iaiá Garcia</em> (2025.2) e o conto “Pai contra mãe” (2021.1). As perguntas giram em torno de ironia, narrador pouco confiável, escravidão e relações de favor.</p></div><div class="tema alta"><div class="freq">9/11</div><div class="nome">Modernismo</div><div class="tag">Prioridade máxima</div><p class="det">24 questões somando os autores. Drummond em três provas, com poemas de <em>Alguma poesia</em> (“Fuga”, “O sobrevivente”, “No meio do caminho”); João Cabral em três (<em>A educação pela pedra</em> duas vezes); Mário de Andrade em duas (“Cabo Machado” e <em>Macunaíma</em>); Clarice Lispector em 2026.2 (<em>A hora da estrela</em>). Pede projeto modernista, primitivismo, metalinguagem e recursos do poema.</p></div><div class="tema alta"><div class="freq">4/11</div><div class="nome">Romantismo</div><div class="tag">Prioridade máxima</div><p class="det">12 questões, todas de 2023.2 para cá. <em>Memórias de um sargento de milícias</em> caiu duas vezes (2024.2 e 2026.1), com a alternância entre ordem e desordem e os homens livres pobres numa sociedade escravista. Também <em>O Guarani</em> (bom selvagem, medievalismo) e o Romantismo como projeto de nação (2026.2).</p></div><div class="tema media"><div class="freq">3/11</div><div class="nome">Realismo, Naturalismo e Pré-Modernismo</div><div class="tag">Estudar</div><p class="det">9 questões. <em>O cortiço</em> (2026.1: animalização e determinismo), <em>O Ateneu</em> (2025.1) e <em>Os sertões</em> (2024.1).</p></div><div class="tema media"><div class="freq">3/11</div><div class="nome">Prosa contemporânea</div><div class="tag">Estudar</div><p class="det">7 questões. Chico Buarque (<em>Estorvo</em>, 2024.1), Raduan Nassar (<em>Lavoura arcaica</em>, 2024.2) e Rubem Fonseca (2021.1).</p></div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>A FGV não indica livros de leitura obrigatória</strong>, mas publica uma lista de autores, e todos os que caíram estão nela. Da mesma lista, nenhum texto destes autores foi cobrado nestas 11 provas: Gregório de Matos, Antônio Vieira, os árcades, Gonçalves Dias, Álvares de Azevedo, Castro Alves, os parnasianos, os simbolistas, Lima Barreto, Monteiro Lobato, Manuel Bandeira, Graciliano Ramos, Guimarães Rosa, Jorge Amado, José Lins do Rego, Vinicius de Moraes, Nelson Rodrigues e João Ubaldo Ribeiro.</p>
+  </div>
+
+  <h3>Gramática e interpretação</h3>
+  <div class="temas">
+    <div class="tema alta"><div class="freq">11/11</div><div class="nome">Conectivos e relações entre orações</div><div class="tag">Prioridade máxima</div><p class="det">Exatamente uma questão em cada prova: qual ideia a oração ou o conectivo expressa, ou por qual expressão ele pode ser trocado. Concessão caiu três vezes (“embora”, “apesar de”, “ainda quando” = “posto que”), condição três (“não fosse”, “sem que”, oração reduzida), tempo três (“mal caiu”, “desde que”), além de consequência e conclusão (“sendo assim”).</p></div><div class="tema alta"><div class="freq">11/11</div><div class="nome">Semântica e vocabulário</div><div class="tag">Prioridade máxima</div><p class="det">17 questões. Sentido da palavra no contexto, sinônimos e a diferença entre sentido literal e figurado (denotação e conotação), que caiu em cinco provas. <code>Q16</code>/2026.2 “corpo a corpo” e “idas e vindas”; <code>Q19</code>/2025.2 “achar” no sentido de julgar.</p></div><div class="tema alta"><div class="freq">10/11</div><div class="nome">Tirinha, cartum ou charge</div><div class="tag">Prioridade máxima</div><p class="det">Quase sempre a primeira questão do bloco. Pede o recurso que produz o humor: quebra de expectativa, contraste, ambiguidade, metalinguagem ou intertextualidade.</p></div><div class="tema media"><div class="freq">9/11</div><div class="nome">Figuras de linguagem</div><div class="tag">Estudar</div><p class="det">13 questões. Antítese (três vezes), gradação, eufemismo, ironia, metáfora e hipérbole, pleonasmo, elipse e zeugma, muitas vezes identificados dentro do trecho literário.</p></div><div class="tema media"><div class="freq">8/11</div><div class="nome">Pronomes, sujeito e vozes verbais</div><div class="tag">Estudar</div><p class="det">14 questões de morfossintaxe. Pronomes em cinco provas (o “lhe” com valor possessivo caiu em 2024.1 e 2025.2), sujeito posposto (2024.1 e 2026.1), passagem entre voz passiva e ativa (2024.2 e 2026.1), tempos e locuções verbais.</p></div><div class="tema media"><div class="freq">7/11</div><div class="nome">Formação de palavras</div><div class="tag">Estudar</div><p class="det">Caiu nas três provas mais recentes. Derivação imprópria (2023.1 e 2026.2), parassíntese (2026.1), prefixação e sufixação ao mesmo tempo (2025.2 e 2026.2), sufixo -mento e neologismo.</p></div><div class="tema baixa"><div class="freq">até 7/11</div><div class="nome">Interpretação, pontuação e norma</div><div class="tag">Revisar</div><p class="det">Interpretação do texto de opinião (8 questões, fora as de literatura, que também são de leitura). Pontuação (4: vírgula, aspas e dois-pontos, três delas nas quatro provas mais recentes). Norma-padrão e variedade culta × coloquial (4).</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span> História · Q49–Q54</h2>
+  <p class="sub">São 6 das 15 questões de Ciências Humanas; as outras 9 são de Geografia e Atualidades. O programa da FGV avisa que a banca não equilibra as épocas. Na prática, 40% é Brasil e 60% é história geral, em geral a partir de um trecho de historiador, charge, pintura ou foto.</p>
+
+  <figure class="ranking"><figcaption>Questões de História por período</figcaption><p class="cap-sub">63 questões de História dentro do bloco de Ciências Humanas das 11 provas, em ordem cronológica. Brasil nas três últimas linhas.</p><div class="rk-head" aria-hidden="true"><span>Assunto</span><span>Questões</span><span>Provas</span></div><div class="rk-row" tabindex="0" data-tip="Antiguidade e Idade Média: 5 questões em 11 provas (0,5 por prova) · caiu em 5 de 11 · nas 4 mais recentes: 3 · última vez: 2026.2"><span class="rk-nome">Antiguidade e Idade Média</span><span class="rk-track"><span class="rk-bar" style="width:35.7%"></span><span class="rk-val">5</span></span><span class="rk-provas">5/11</span></div><div class="rk-row" tabindex="0" data-tip="Idade Moderna: 14 questões em 11 provas (1,3 por prova) · caiu em 10 de 11 · nas 4 mais recentes: 5 · última vez: 2026.2"><span class="rk-nome">Idade Moderna</span><span class="rk-track"><span class="rk-bar" style="width:100.0%"></span><span class="rk-val">14</span></span><span class="rk-provas">10/11</span></div><div class="rk-row" tabindex="0" data-tip="Revoluções e século XIX: 6 questões em 11 provas (0,5 por prova) · caiu em 4 de 11 · nas 4 mais recentes: 3 · última vez: 2026.1"><span class="rk-nome">Revoluções e século XIX</span><span class="rk-track"><span class="rk-bar" style="width:42.9%"></span><span class="rk-val">6</span></span><span class="rk-provas">4/11</span></div><div class="rk-row" tabindex="0" data-tip="Século XX no mundo: 13 questões em 11 provas (1,2 por prova) · caiu em 9 de 11 · nas 4 mais recentes: 4 · última vez: 2026.2"><span class="rk-nome">Século XX no mundo</span><span class="rk-track"><span class="rk-bar" style="width:92.9%"></span><span class="rk-val">13</span></span><span class="rk-provas">9/11</span></div><div class="rk-row" tabindex="0" data-tip="Brasil Colônia: 6 questões em 11 provas (0,5 por prova) · caiu em 6 de 11 · nas 4 mais recentes: 3 · última vez: 2026.2"><span class="rk-nome">Brasil Colônia</span><span class="rk-track"><span class="rk-bar" style="width:42.9%"></span><span class="rk-val">6</span></span><span class="rk-provas">6/11</span></div><div class="rk-row" tabindex="0" data-tip="Brasil: Corte e Império (1808–1889): 9 questões em 11 provas (0,8 por prova) · caiu em 8 de 11 · nas 4 mais recentes: 3 · última vez: 2026.2"><span class="rk-nome">Brasil: Corte e Império (1808–1889)</span><span class="rk-track"><span class="rk-bar" style="width:64.3%"></span><span class="rk-val">9</span></span><span class="rk-provas">8/11</span></div><div class="rk-row" tabindex="0" data-tip="Brasil República: 10 questões em 11 provas (0,9 por prova) · caiu em 9 de 11 · nas 4 mais recentes: 3 · última vez: 2026.2"><span class="rk-nome">Brasil República</span><span class="rk-track"><span class="rk-bar" style="width:71.4%"></span><span class="rk-val">10</span></span><span class="rk-provas">9/11</span></div></figure>
+
+  <div class="temas">
+    <div class="tema alta"><div class="freq">6/11</div><div class="nome">Ditadura militar e abertura (1964–1985)</div><div class="tag">Prioridade máxima</div><p class="det">O assunto isolado que mais se repete, e em sete provas se contarmos as ditaduras do Cone Sul. Lei da Anistia (2022.2), Riocentro (2023.2), oposição entre 1974 e 1980 com Herzog, UNE e campanha pela anistia (2025.1), charge sobre Médici e a sucessão (2026.1), abertura de Figueiredo (2026.2) e a política dos anos 1980 (2023.1). Em 2024.2, as ditaduras do Cone Sul e o apoio dos EUA.</p></div><div class="tema alta"><div class="freq">10/11</div><div class="nome">Idade Moderna</div><div class="tag">Prioridade máxima</div><p class="det">14 questões, o período mais cobrado. Reformas religiosas e Igreja (Concílio de Trento, jesuítas, Maria I da Inglaterra, Barroco); conquista e colonização da América espanhola (México, mita e encomienda, a conquista como ocidentalização); absolutismo de Bodin e revoluções inglesas (Cromwell); Adam Smith contra o mercantilismo.</p></div><div class="tema alta"><div class="freq">8/11</div><div class="nome">Brasil: Corte e Império (1808–1889)</div><div class="tag">Prioridade máxima</div><p class="det">9 questões. Da chegada da Corte à Constituição de 1824 e ao Poder Moderador (quatro questões), e da Regência ao fim do Império: Revolta dos Malês, capoeira, IHGB, parlamentarismo do Segundo Reinado e crise da monarquia (cinco).</p></div><div class="tema alta"><div class="freq">9/11</div><div class="nome">Século XX no mundo</div><div class="tag">Prioridade máxima</div><p class="det">13 questões. Entreguerras, fascismos e crise de 1929 (República de Weimar, New Deal, Revolução Alemã, salazarismo, as crises de 1929, 1973 e 2008); Guerra Fria (1968, ditaduras do Cone Sul, política de Truman); Israel e Palestina (2025.1 e 2026.2); Apartheid e feminismo.</p></div><div class="tema media"><div class="freq">5 das 6 últimas</div><div class="nome">Antiguidade e Idade Média</div><div class="tag">Estudar</div><p class="det">Nenhuma questão até 2023.2; desde 2024.1 costuma abrir o bloco, na Q49. Cristianismo e Império Romano, fim do Império do Ocidente, mulheres e <em>pater familias</em>, teocracias da Antiguidade ao Irã, comércio afro-asiático e o papel do Islã.</p></div><div class="tema media"><div class="freq">6/11</div><div class="nome">Brasil Colônia</div><div class="tag">Estudar</div><p class="det">Sociedade colonial (indígenas no século XVI, engenhos de açúcar, irmandades e coroação de reis negros), revoltas (Beckman, Inconfidência Mineira e sua memória) e União Ibérica.</p></div><div class="tema media"><div class="freq">4/11</div><div class="nome">Revoluções e século XIX</div><div class="tag">Estudar</div><p class="det">Revolução Francesa (Declaração de 1789, queda da Bastilha), Napoleão visto por Metternich, Revolução Industrial, hegemonia britânica e o liberalismo de Stuart Mill.</p></div><div class="tema baixa"><div class="freq">3/11</div><div class="nome">Era Vargas e populismo</div><div class="tag">Revisar</div><p class="det">Populismo (2022.1), Integralismo (2022.2) e charge de 1934 sobre Vargas (2024.1). Não cai desde então, mas segue no programa.</p></div>
+  </div>
+
+  <div class="destaque">
+    <p><strong>Escravidão e racismo atravessam a prova inteira.</strong> Em História foram 8 questões em 8 provas: capoeira, Revolta dos Malês, irmandades negras, engenhos, escravidão nas Américas, mita e encomienda, Apartheid e a “Resposta Histórica” do Vasco em 1924. Em Português, os trechos de Machado de Assis e de <em>Memórias de um sargento de milícias</em> voltam ao tema. Vale estudar a escravidão como um eixo que liga Colônia, Império e República.</p>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span> Por onde começar</h2>
+  <p class="sub">A ordem segue o retorno por hora de estudo: primeiro o que caiu em quase todas as provas e continua caindo nas mais recentes. Marque o que já fechou; a página guarda suas marcações neste navegador.</p>
+
+  <div class="check" id="lista"></div>
+  <p class="check-meta" id="progresso">0 de 18 concluídos</p>
+</section>
+
+<footer>
+  <p>Análise baseada na leitura integral das provas objetivas de 11 edições do Vestibular FGV-SP: Unificado 2021.1 (22/11/2020), 2022.1 (15/11/2021), 2023.1 (14/11/2022), 2024.1 (15/11/2023), 2025.1 (14/11/2024) e 2026.1 (02/11/2025); meio de ano 2022.2 (22/05/2022), 2023.2 (04/06/2023), 2024.2 (09/06/2024), 2025.2 (junho de 2025) e 2026.2 (24/05/2026). Em 2022.1 foi usada a aplicação principal, de 15/11/2021.</p>
+  <p>Cada questão foi classificada por um assunto principal; a classificação completa, questão por questão, está em analise/fgv/classificacao-fgv.csv. Uma frequência como “8/11” indica em quantas das 11 provas o assunto apareceu. Onze provas são uma boa amostra, mas trate a lista como ordem de prioridade, não como garantia de que o assunto vai cair.</p>
+  <p>Fontes: <a href="https://vestibular.fgv.br/provas-gabaritos">provas e gabaritos oficiais</a> · <a href="https://vestibular.fgv.br/sites/default/files/2026-07/materiais/edital-unificado_01-2027_4.pdf">Edital Unificado 1º/2027</a> · <a href="https://www18.fgv.br/processoseletivo/arquivos/edital/2027/CONTEUDO_01_2027.pdf">conteúdo programático 2027</a>.</p>
+</footer>
+
+</div>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+var itens = ["Matemática · Probabilidade: casos favoráveis e possíveis, eventos independentes, condicional", "Matemática · Geometria plana: semelhança, áreas compostas, relações métricas, círculo", "Matemática · Porcentagem: aumentos e descontos sucessivos, valor líquido, misturas, juros compostos", "Matemática · Progressões: termo geral e soma da PA, PG infinita, sequências por regra", "Matemática · Trigonometria: quadrantes, lei dos senos e cossenos, modelos com cosseno", "Matemática · Geometria espacial: cone, cilindro, planificação e relação de Euler", "Português · Conectivos: concessão, condição, tempo, consequência e conclusão", "Português · Machado de Assis: Dom Casmurro, Memórias póstumas e contos", "Português · Denotação e conotação, sinônimos e sentido no contexto", "Português · Formação de palavras: derivação imprópria, parassíntese, prefixo + sufixo", "Português · Romantismo (Memórias de um sargento de milícias, Alencar) e O cortiço", "Português · Modernismo: Drummond, João Cabral, Macunaíma e A hora da estrela", "Português · Pronome com valor possessivo, sujeito posposto e voz passiva", "História · Ditadura militar: Anistia, oposição, abertura e redemocratização", "História · Brasil Império: Corte, Independência, Constituição de 1824, Regência", "História · Idade Moderna: Reformas, absolutismo, revoluções inglesas, conquista da América", "História · Século XX: fascismos, crise de 1929, Guerra Fria, Israel e Palestina", "História · Roma e Idade Média: cristianismo, fim do Império, teocracias, Islã"];
+
+var lista = document.getElementById("lista");
+var progresso = document.getElementById("progresso");
+var KEY = "fgv-mapa-v1";
+var estado = {};
+
+try {
+  var salvo = localStorage.getItem(KEY);
+  if (salvo) { estado = JSON.parse(salvo) || {}; }
+} catch (e) { estado = {}; }
+
+function atualizar() {
+  var feitos = 0;
+  for (var i = 0; i < itens.length; i++) { if (estado[i]) { feitos++; } }
+  progresso.textContent = feitos + " de " + itens.length + " concluídos";
+  try { localStorage.setItem(KEY, JSON.stringify(estado)); } catch (e) {}
+}
+
+for (var i = 0; i < itens.length; i++) {
+  (function (idx) {
+    var label = document.createElement("label");
+    label.className = "check-item";
+    var box = document.createElement("input");
+    box.type = "checkbox";
+    box.id = "item-" + idx;
+    box.checked = !!estado[idx];
+    var texto = document.createElement("span");
+    texto.textContent = itens[idx];
+    box.addEventListener("change", function () {
+      estado[idx] = box.checked;
+      atualizar();
+    });
+    label.appendChild(box);
+    label.appendChild(texto);
+    lista.appendChild(label);
+  })(i);
+}
+atualizar();
+
+/* Dica flutuante nas barras: complementa os números já impressos na linha */
+var tip = document.getElementById("tip");
+function posicionar(x, y) {
+  var w = tip.offsetWidth, h = tip.offsetHeight;
+  var left = Math.min(x + 14, window.innerWidth - w - 8);
+  var top = y + 16;
+  if (top + h > window.innerHeight - 8) { top = y - h - 12; }
+  tip.style.left = Math.max(8, left) + "px";
+  tip.style.top = Math.max(8, top) + "px";
+}
+function mostrar(el, x, y) {
+  tip.textContent = el.getAttribute("data-tip");
+  tip.hidden = false;
+  posicionar(x, y);
+}
+function esconder() { tip.hidden = true; }
+var linhas = document.querySelectorAll(".rk-row[data-tip]");
+for (var j = 0; j < linhas.length; j++) {
+  (function (el) {
+    el.addEventListener("pointermove", function (ev) {
+      if (ev.pointerType === "touch") { return; }
+      mostrar(el, ev.clientX, ev.clientY);
+    });
+    el.addEventListener("pointerleave", esconder);
+    el.addEventListener("focus", function () {
+      var r = el.getBoundingClientRect();
+      mostrar(el, r.left + r.width * 0.35, r.bottom - 6);
+    });
+    el.addEventListener("blur", esconder);
+  })(linhas[j]);
+}
+window.addEventListener("scroll", esconder, { passive: true });
+</script>

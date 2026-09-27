@@ -1,0 +1,496 @@
+edicao,data_aplicacao,tipo,bloco,questao,area,assunto,detalhe,descricao
+2021.1,22/11/2020,Unificado,Matemática,1,Matemática,Progressões e sequências,,PA: primeiro termo maior que 2020
+2021.1,22/11/2020,Unificado,Matemática,2,Matemática,Estatística,,média aritmética
+2021.1,22/11/2020,Unificado,Matemática,3,Matemática,"Razão, proporção e grandezas",,rodízio de cinco pneus (proporção)
+2021.1,22/11/2020,Unificado,Matemática,4,Matemática,"Equações, inequações e sistemas",,equação com frações
+2021.1,22/11/2020,Unificado,Matemática,5,Matemática,Geometria plana,,hexágono regular: área de região comum
+2021.1,22/11/2020,Unificado,Matemática,6,Matemática,Geometria analítica,,feixe de retas y = mx + h com ponto fixo
+2021.1,22/11/2020,Unificado,Matemática,7,Matemática,Geometria plana,,"triângulo, ponto médio e ângulos"
+2021.1,22/11/2020,Unificado,Matemática,8,Matemática,"Equações, inequações e sistemas",,sistema de inequações com solução inteira
+2021.1,22/11/2020,Unificado,Matemática,9,Matemática,Geometria espacial,,cubo montado com cubinhos: fração da superfície
+2021.1,22/11/2020,Unificado,Matemática,10,Matemática,Lógica e conjuntos,,urna: mínimo de bolas para garantir 16 da mesma cor
+2021.1,22/11/2020,Unificado,Matemática,11,Matemática,Trigonometria,,"equação trigonométrica em [0, π]"
+2021.1,22/11/2020,Unificado,Matemática,12,Matemática,Geometria plana,,pontos C que formam triângulo retângulo de área dada
+2021.1,22/11/2020,Unificado,Matemática,13,Matemática,Probabilidade,,probabilidade condicional
+2021.1,22/11/2020,Unificado,Matemática,14,Matemática,Funções: outros tópicos,,função definida por recorrência
+2021.1,22/11/2020,Unificado,Matemática,15,Matemática,Análise combinatória,,permutações com restrição de ordem
+2021.1,22/11/2020,Unificado,Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha (Calvin): efeito de humor
+2021.1,22/11/2020,Unificado,Língua Portuguesa,17,Língua Portuguesa,Interpretação de texto,,compreensão de texto argumentativo (negacionismo)
+2021.1,22/11/2020,Unificado,Língua Portuguesa,18,Língua Portuguesa,Semântica e vocabulário,,pleonasmo (redundância)
+2021.1,22/11/2020,Unificado,Língua Portuguesa,19,Língua Portuguesa,Morfossintaxe,pronomes,função sintática do pronome relativo “que”
+2021.1,22/11/2020,Unificado,Língua Portuguesa,20,Língua Portuguesa,Conectivos e relações entre orações,,orações de concessão e conformidade
+2021.1,22/11/2020,Unificado,Língua Portuguesa,21,Língua Portuguesa,Literatura,Machado de Assis,“Pai contra mãe”: ironia
+2021.1,22/11/2020,Unificado,Língua Portuguesa,22,Língua Portuguesa,Literatura,Machado de Assis,“Pai contra mãe”: tortura normalizada na escravidão
+2021.1,22/11/2020,Unificado,Língua Portuguesa,23,Língua Portuguesa,Literatura,Machado de Assis,“Pai contra mãe”: momento histórico do narrador
+2021.1,22/11/2020,Unificado,Língua Portuguesa,24,Língua Portuguesa,Literatura,Machado de Assis,“Pai contra mãe”: interlocução com o leitor
+2021.1,22/11/2020,Unificado,Língua Portuguesa,25,Língua Portuguesa,Figuras de linguagem,,elipse
+2021.1,22/11/2020,Unificado,Língua Portuguesa,26,Língua Portuguesa,Morfossintaxe,verbos,futuro do presente composto
+2021.1,22/11/2020,Unificado,Língua Portuguesa,27,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,“Fuga”: estrofe remete ao Parnaso-Simbolismo
+2021.1,22/11/2020,Unificado,Língua Portuguesa,28,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,“Fuga”: crítica ao eurocentrismo
+2021.1,22/11/2020,Unificado,Língua Portuguesa,29,Língua Portuguesa,Figuras de linguagem,,assonância e aliteração
+2021.1,22/11/2020,Unificado,Língua Portuguesa,30,Língua Portuguesa,Literatura,Prosa contemporânea,Rubem Fonseca (brutalismo urbano)
+2021.1,22/11/2020,Unificado,Ciências Humanas,16,História,Brasil Colônia,Revoltas coloniais e Inconfidência,Revolta de Beckman (1684)
+2021.1,22/11/2020,Unificado,Ciências Humanas,17,História,Idade Moderna,América: conquista e sistema colonial,conquista do México e epidemias
+2021.1,22/11/2020,Unificado,Ciências Humanas,18,História,Revoluções e século XIX,Revolução Industrial e imperialismo,Revolução Industrial na Inglaterra
+2021.1,22/11/2020,Unificado,Ciências Humanas,19,História,Brasil República,Primeira República,"Vasco da Gama, 1924: racismo pós-abolição"
+2021.1,22/11/2020,Unificado,Ciências Humanas,20,História,Revoluções e século XIX,Revolução Francesa e Napoleão,Declaração dos Direitos do Homem e do Cidadão
+2021.1,22/11/2020,Unificado,Ciências Humanas,21,Geografia,,,massas de ar no Centro-Oeste
+2021.1,22/11/2020,Unificado,Ciências Humanas,22,Geografia,,,agricultura de corte e queima
+2021.1,22/11/2020,Unificado,Ciências Humanas,23,Geografia,,,economia brasileira 1980–2020
+2021.1,22/11/2020,Unificado,Ciências Humanas,24,Geografia,,,IDH dos BRICS
+2021.1,22/11/2020,Unificado,Ciências Humanas,25,Geografia,,,desterritorialização
+2021.1,22/11/2020,Unificado,Ciências Humanas,26,Atualidades,,,pandemia: choques de oferta e demanda
+2021.1,22/11/2020,Unificado,Ciências Humanas,27,Atualidades,,,"China, democracia e pandemia"
+2021.1,22/11/2020,Unificado,Ciências Humanas,28,Atualidades,,,órgãos do Ministério da Economia
+2021.1,22/11/2020,Unificado,Ciências Humanas,29,Atualidades,,,polarização política no Brasil
+2021.1,22/11/2020,Unificado,Ciências Humanas,30,Artes e cultura,,,Hopper e foto do Copan
+2022.1,15/11/2021,Unificado,Matemática,1,Matemática,"Razão, proporção e grandezas",,divisão proporcional de corrida de táxi
+2022.1,15/11/2021,Unificado,Matemática,2,Matemática,Geometria plana,,círculo e quadrado sobrepostos: área e perímetro
+2022.1,15/11/2021,Unificado,Matemática,3,Matemática,"Equações, inequações e sistemas",,sistema linear (números pensados)
+2022.1,15/11/2021,Unificado,Matemática,4,Matemática,Geometria analítica,,robô com passos dobrando: distância final
+2022.1,15/11/2021,Unificado,Matemática,5,Matemática,Progressões e sequências,,soma de PA (descida de skate)
+2022.1,15/11/2021,Unificado,Matemática,6,Matemática,Probabilidade,,jogo de dedos e resto da divisão por 3
+2022.1,15/11/2021,Unificado,Matemática,7,Matemática,Estatística,,média ponderada de duas turmas
+2022.1,15/11/2021,Unificado,Matemática,8,Matemática,"Razão, proporção e grandezas",,órbitas de planetas: próximo alinhamento
+2022.1,15/11/2021,Unificado,Matemática,9,Matemática,Trigonometria,,comprimento de arco e ângulo em radianos
+2022.1,15/11/2021,Unificado,Matemática,10,Matemática,Estatística,,mediana de lista
+2022.1,15/11/2021,Unificado,Matemática,11,Matemática,Geometria plana,,cordas determinadas por retas paralelas num círculo
+2022.1,15/11/2021,Unificado,Matemática,12,Matemática,Funções: outros tópicos,,função definida por partes: f(f(n)) = 8
+2022.1,15/11/2021,Unificado,Matemática,13,Matemática,Função afim e quadrática,,função quadrática com p(x+1) = p(x) + 8x − 4
+2022.1,15/11/2021,Unificado,Matemática,14,Matemática,Probabilidade,,dados tetraédrico e cúbico
+2022.1,15/11/2021,Unificado,Matemática,15,Matemática,Geometria analítica,,rotação de 90° seguida de reflexão
+2022.1,15/11/2021,Unificado,Língua Portuguesa,16,Língua Portuguesa,Semântica e vocabulário,,ambiguidade (homonímia)
+2022.1,15/11/2021,Unificado,Língua Portuguesa,17,Língua Portuguesa,Interpretação de texto,,compreensão de texto argumentativo
+2022.1,15/11/2021,Unificado,Língua Portuguesa,18,Língua Portuguesa,Semântica e vocabulário,,sentido figurado × denotativo
+2022.1,15/11/2021,Unificado,Língua Portuguesa,19,Língua Portuguesa,Pontuação,,vírgula na norma-padrão
+2022.1,15/11/2021,Unificado,Língua Portuguesa,20,Língua Portuguesa,Formação de palavras,,"derivação imprópria, neologismo, prefixos e parassíntese"
+2022.1,15/11/2021,Unificado,Língua Portuguesa,21,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,"Mário de Andrade, “Cabo Machado”: identidade nacional"
+2022.1,15/11/2021,Unificado,Língua Portuguesa,22,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,Modernismo de 1922 × Romantismo
+2022.1,15/11/2021,Unificado,Língua Portuguesa,23,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,"literatura e artes (Tarsila, Villa-Lobos, Di Cavalcanti)"
+2022.1,15/11/2021,Unificado,Língua Portuguesa,24,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,valores culturais no poema
+2022.1,15/11/2021,Unificado,Língua Portuguesa,25,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,versos com atitudes opostas
+2022.1,15/11/2021,Unificado,Língua Portuguesa,26,Língua Portuguesa,Literatura,Machado de Assis,Memórias póstumas: desejo mediado pela classe social
+2022.1,15/11/2021,Unificado,Língua Portuguesa,27,Língua Portuguesa,Literatura,Machado de Assis,Memórias póstumas: preterição e hipocrisia do narrador
+2022.1,15/11/2021,Unificado,Língua Portuguesa,28,Língua Portuguesa,Literatura,Machado de Assis,Memórias póstumas: o narrador e as citações de prestígio
+2022.1,15/11/2021,Unificado,Língua Portuguesa,29,Língua Portuguesa,Conectivos e relações entre orações,,orações reduzidas de tempo e causa
+2022.1,15/11/2021,Unificado,Língua Portuguesa,30,Língua Portuguesa,Figuras de linguagem,,zeugma
+2022.1,15/11/2021,Unificado,Ciências Humanas,16,História,Idade Moderna,Renascimento e expansão marítima,Renascimento (Peter Burke)
+2022.1,15/11/2021,Unificado,Ciências Humanas,17,História,Brasil: período joanino e Império,"Corte portuguesa, Independência e Primeiro Reinado",Corte no Brasil em 1808
+2022.1,15/11/2021,Unificado,Ciências Humanas,18,História,Século XX no mundo,Primeira Guerra Mundial,nacionalismos após 1918 (Hobsbawm)
+2022.1,15/11/2021,Unificado,Ciências Humanas,19,História,Brasil: período joanino e Império,Regência e Segundo Reinado,crise da monarquia
+2022.1,15/11/2021,Unificado,Ciências Humanas,20,História,Brasil República,Era Vargas e populismo,populismo 1930–1964 (Weffort)
+2022.1,15/11/2021,Unificado,Ciências Humanas,21,Geografia,,,mudanças climáticas no Brasil
+2022.1,15/11/2021,Unificado,Ciências Humanas,22,Geografia,,,economias de aglomeração
+2022.1,15/11/2021,Unificado,Ciências Humanas,23,Geografia,,,megacidades
+2022.1,15/11/2021,Unificado,Ciências Humanas,24,Geografia,,,petróleo no Golfo da Guiné
+2022.1,15/11/2021,Unificado,Ciências Humanas,25,Geografia,,,Ásia do Pacífico
+2022.1,15/11/2021,Unificado,Ciências Humanas,26,Atualidades,,,marco temporal indígena
+2022.1,15/11/2021,Unificado,Ciências Humanas,27,Atualidades,,,autonomia do Banco Central
+2022.1,15/11/2021,Unificado,Ciências Humanas,28,Atualidades,,,IA e trabalho (Harari)
+2022.1,15/11/2021,Unificado,Ciências Humanas,29,Atualidades,,,hidrogênio verde
+2022.1,15/11/2021,Unificado,Ciências Humanas,30,Artes e cultura,,,Jaider Esbell na Bienal
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,1,Matemática,Probabilidade,,probabilidade com conjuntos (musculação e yoga)
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,2,Matemática,"Equações, inequações e sistemas",,problema do 1º grau
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,3,Matemática,Geometria plana,,caixa sem tampa: área da folha
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,4,Matemática,"Razão, proporção e grandezas",,"passos, pulos e distância entre postes"
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,5,Matemática,"Equações, inequações e sistemas",,sistema linear 2×2 (pizzaria)
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,6,Matemática,"Equações, inequações e sistemas",,equações e inequações com cartas
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,7,Matemática,Exponencial e logaritmo,,crescimento exponencial com logaritmo
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,8,Matemática,Análise combinatória,,permutações sem três termos consecutivos crescentes
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,9,Matemática,"Razão, proporção e grandezas",,grandezas direta e inversamente proporcionais
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,10,Matemática,Geometria analítica,,ponto da reta mais próximo de outro ponto
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,11,Matemática,Geometria espacial,,embalagens semelhantes: razão de volumes
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,12,Matemática,Porcentagem e juros,,taxa equivalente de rendimento (juros compostos)
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,13,Matemática,Trigonometria,,pontos do ciclo trigonométrico e triângulo isósceles
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,14,Matemática,"Razão, proporção e grandezas",,velocidade média de ônibus
+2022.2,22/05/2022,Administração SP (meio de ano),Matemática,15,Matemática,Geometria plana,,retângulos semelhantes
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: nepotismo
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,17,Língua Portuguesa,Semântica e vocabulário,,sentido de “caleidoscópio”
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,18,Língua Portuguesa,Figuras de linguagem,,"intertextualidade, eufemismo, personificação, paradoxo"
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,19,Língua Portuguesa,Norma-padrão e variação linguística,,variedade culta × coloquial
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,20,Língua Portuguesa,Conectivos e relações entre orações,,“apesar de” (concessão): substituição
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,21,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: naturalidade diante da escravidão
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,22,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: aspectos da escravidão no excerto
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,23,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: escravidão como condicionante do romance
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,24,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: Escobar e seus indícios
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,25,Língua Portuguesa,Semântica e vocabulário,,acepção do verbo “contar”
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,26,Língua Portuguesa,Morfossintaxe,verbos,locução verbal “há de”
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,27,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Tecendo a manhã”: frases truncadas
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,28,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Tecendo a manhã”: prosopopeia e metalinguagem
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,29,Língua Portuguesa,Figuras de linguagem,,gradação
+2022.2,22/05/2022,Administração SP (meio de ano),Língua Portuguesa,30,Língua Portuguesa,Formação de palavras,,neologismo
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,16,História,Brasil República,Era Vargas e populismo,Integralismo
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,17,História,Brasil República,Ditadura militar e abertura,Lei da Anistia (1979)
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,18,História,Brasil: período joanino e Império,Regência e Segundo Reinado,capoeira no século XIX (Rugendas)
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,19,História,Idade Moderna,"Iluminismo, liberalismo e independência dos EUA",independência dos EUA
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,20,História,Idade Moderna,Reformas religiosas e Igreja,"Barroco, religião e Antigo Regime"
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,21,Geografia,,,urbanização de São Paulo (Emicida)
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,22,Geografia,,,hidrelétricas
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,23,Geografia,,,ciclos do capitalismo
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,24,Geografia,,,integração latino-americana
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,25,Atualidades,,,invasão da Ucrânia
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,26,Atualidades,,,OTAN
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,27,Atualidades,,,desmatamento na Amazônia
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,28,Artes e cultura,,,centenário da Semana de 22
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,29,Atualidades,,,racismo estrutural (Moïse Kabagambe)
+2022.2,22/05/2022,Administração SP (meio de ano),Ciências Humanas,30,Artes e cultura,,,Bienal e Thiago de Mello
+2023.1,14/11/2022,Unificado,Matemática,1,Matemática,Porcentagem e juros,,gorjeta de 10% e divisão da conta
+2023.1,14/11/2022,Unificado,Matemática,2,Matemática,Geometria analítica,,área do triângulo formado por três retas
+2023.1,14/11/2022,Unificado,Matemática,3,Matemática,Progressões e sequências,,PA: razão a partir da média dos termos
+2023.1,14/11/2022,Unificado,Matemática,4,Matemática,Geometria analítica,,distância do taxista
+2023.1,14/11/2022,Unificado,Matemática,5,Matemática,Porcentagem e juros,,imposto embutido na nota fiscal
+2023.1,14/11/2022,Unificado,Matemática,6,Matemática,Geometria plana,,triângulo e círculo tangente: área externa
+2023.1,14/11/2022,Unificado,Matemática,7,Matemática,Lógica e conjuntos,,fichas em saquinhos (contagem lógica)
+2023.1,14/11/2022,Unificado,Matemática,8,Matemática,Porcentagem e juros,,aumento e desconto do mesmo percentual
+2023.1,14/11/2022,Unificado,Matemática,9,Matemática,Análise combinatória,,senhas com restrições
+2023.1,14/11/2022,Unificado,Matemática,10,Matemática,Exponencial e logaritmo,,função inversa de modelo exponencial (boato)
+2023.1,14/11/2022,Unificado,Matemática,11,Matemática,Geometria espacial,,contêiner cúbico: área × volume
+2023.1,14/11/2022,Unificado,Matemática,12,Matemática,Probabilidade,,par ordenado não decrescente
+2023.1,14/11/2022,Unificado,Matemática,13,Matemática,Análise combinatória,,anagramas com letras não juntas
+2023.1,14/11/2022,Unificado,Matemática,14,Matemática,Números inteiros e aritmética,,semáforos: ciclos e MMC
+2023.1,14/11/2022,Unificado,Matemática,15,Matemática,Função afim e quadrática,,partículas: instante de menor distância (mínimo de quadrática)
+2023.1,14/11/2022,Unificado,Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: quebra de expectativa
+2023.1,14/11/2022,Unificado,Língua Portuguesa,17,Língua Portuguesa,Interpretação de texto,,perspectiva do texto
+2023.1,14/11/2022,Unificado,Língua Portuguesa,18,Língua Portuguesa,Interpretação de texto,,autor antecipa objeção do leitor
+2023.1,14/11/2022,Unificado,Língua Portuguesa,19,Língua Portuguesa,Norma-padrão e variação linguística,,"tratamento “você/imagine”, variedade, conotação e vírgula"
+2023.1,14/11/2022,Unificado,Língua Portuguesa,20,Língua Portuguesa,Conectivos e relações entre orações,,orações consecutivas
+2023.1,14/11/2022,Unificado,Língua Portuguesa,21,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: Capitu e o patriarcado
+2023.1,14/11/2022,Unificado,Língua Portuguesa,22,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: releitura das “curiosidades” de Capitu
+2023.1,14/11/2022,Unificado,Língua Portuguesa,23,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: esclarecimento × conservadorismo
+2023.1,14/11/2022,Unificado,Língua Portuguesa,24,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: estratégias de persuasão do narrador
+2023.1,14/11/2022,Unificado,Língua Portuguesa,25,Língua Portuguesa,Figuras de linguagem,,"gradação, trocadilho e antítese"
+2023.1,14/11/2022,Unificado,Língua Portuguesa,26,Língua Portuguesa,Semântica e vocabulário,,“porventura” = talvez
+2023.1,14/11/2022,Unificado,Língua Portuguesa,27,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Descoberta da literatura”: cordel
+2023.1,14/11/2022,Unificado,Língua Portuguesa,28,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Descoberta da literatura”: recepção da obra
+2023.1,14/11/2022,Unificado,Língua Portuguesa,29,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Descoberta da literatura”: fronteira de classe
+2023.1,14/11/2022,Unificado,Língua Portuguesa,30,Língua Portuguesa,Formação de palavras,,derivação imprópria
+2023.1,14/11/2022,Unificado,Ciências Humanas,16,Atualidades,,,juros nominais em 2022
+2023.1,14/11/2022,Unificado,Ciências Humanas,17,Atualidades,,,crise alimentar global
+2023.1,14/11/2022,Unificado,Ciências Humanas,18,Atualidades,,,Bruno Pereira e Dom Phillips
+2023.1,14/11/2022,Unificado,Ciências Humanas,19,História,Idade Moderna,Reformas religiosas e Igreja,Maria I da Inglaterra e tensões religiosas
+2023.1,14/11/2022,Unificado,Ciências Humanas,20,História,Brasil: período joanino e Império,"Corte portuguesa, Independência e Primeiro Reinado",D. Pedro I e a Constituinte de 1823
+2023.1,14/11/2022,Unificado,Ciências Humanas,21,História,Revoluções e século XIX,Revolução Industrial e imperialismo,hegemonia britânica no século XIX
+2023.1,14/11/2022,Unificado,Ciências Humanas,22,História,Século XX no mundo,Guerra Fria,1968 e contracultura
+2023.1,14/11/2022,Unificado,Ciências Humanas,23,História,Brasil República,Ditadura militar e abertura,PMDB e política nos anos 1980
+2023.1,14/11/2022,Unificado,Ciências Humanas,24,História,Idade Moderna,Reformas religiosas e Igreja,Companhia de Jesus na América
+2023.1,14/11/2022,Unificado,Ciências Humanas,25,Geografia,,,crise do fordismo
+2023.1,14/11/2022,Unificado,Ciências Humanas,26,Geografia,,,globalização
+2023.1,14/11/2022,Unificado,Ciências Humanas,27,Geografia,,,sistemas de transporte
+2023.1,14/11/2022,Unificado,Ciências Humanas,28,Geografia,,,questão energética
+2023.1,14/11/2022,Unificado,Ciências Humanas,29,Geografia,,,transportes e agronegócio
+2023.1,14/11/2022,Unificado,Ciências Humanas,30,Geografia,,,Mata Atlântica e café
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,1,Matemática,Exponencial e logaritmo,,chá esfriando: diferença cai à metade a cada 4 min
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,2,Matemática,"Razão, proporção e grandezas",,estimativa por amostragem (tilápias)
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,3,Matemática,Porcentagem e juros,,juros em compra parcelada
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,4,Matemática,Geometria plana,,pizza: raio para área quatro vezes maior
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,5,Matemática,Geometria analítica,,retângulo de vértices dados: área
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,6,Matemática,"Razão, proporção e grandezas",,regra de três composta (máquinas de sorvete)
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,7,Matemática,Exponencial e logaritmo,,propriedades dos logaritmos
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,8,Matemática,Geometria plana,,losango: área
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,9,Matemática,Trigonometria,,seno e cosseno com quadrantes
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,10,Matemática,Porcentagem e juros,,base +25%: redução percentual da altura
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,11,Matemática,Geometria plana,,retângulo dividido em quatro retângulos (perímetros)
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,12,Matemática,Números inteiros e aritmética,,pontuação 9/8: equação em inteiros
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,13,Matemática,Análise combinatória,,anagramas de EAESP sem consoantes juntas
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,14,Matemática,Estatística,,"média, mediana e moda"
+2023.2,04/06/2023,Administração SP (meio de ano),Matemática,15,Matemática,Probabilidade,,máquinas e peças defeituosas (probabilidade total)
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: recurso de humor
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,17,Língua Portuguesa,Interpretação de texto,,afirmações sobre texto de José Murilo de Carvalho
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,18,Língua Portuguesa,Semântica e vocabulário,,sentido figurado (“na cauda de outra pandemia”)
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,19,Língua Portuguesa,Norma-padrão e variação linguística,,"voz passiva, concordância e regência"
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,20,Língua Portuguesa,Morfossintaxe,pronomes,anáfora com o pronome “a”
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,21,Língua Portuguesa,Literatura,Romantismo,O Guarani: Peri e o bom selvagem
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,22,Língua Portuguesa,Literatura,Romantismo,O Guarani: medievalismo romântico
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,23,Língua Portuguesa,Literatura,Romantismo,O Guarani: fala atribuída ao indígena
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,24,Língua Portuguesa,Semântica e vocabulário,,substituição de palavras sem mudar o sentido
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,25,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,“O sobrevivente”: visão do progresso × Futurismo
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,26,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,“O sobrevivente”: impossibilidade da poesia moderna
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,27,Língua Portuguesa,Figuras de linguagem,,metáfora e hipérbole
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,28,Língua Portuguesa,Literatura,Machado de Assis,Lúcia Miguel-Pereira: Memórias póstumas e Machado
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,29,Língua Portuguesa,Literatura,Romantismo,cor local pitoresca → Romantismo
+2023.2,04/06/2023,Administração SP (meio de ano),Língua Portuguesa,30,Língua Portuguesa,Conectivos e relações entre orações,,“ainda quando” = “posto que” (concessão)
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,46,História,Idade Moderna,Reformas religiosas e Igreja,Concílio de Trento
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,47,História,Brasil Colônia,"Sociedade colonial: indígenas, açúcar e escravidão",sociedades indígenas no século XVI (John Monteiro)
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,48,História,Idade Moderna,América: conquista e sistema colonial,escravidão nas Américas
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,49,História,Século XX no mundo,"Entreguerras, fascismos e crise de 1929",República de Weimar (George Grosz)
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,50,História,Século XX no mundo,"Entreguerras, fascismos e crise de 1929",Roosevelt e o New Deal
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,51,História,Brasil República,Ditadura militar e abertura,atentado do Riocentro (1980)
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,52,Geografia,,,impactos ambientais na Grande SP
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,53,Geografia,,,globalização
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,54,Geografia,,,cidades globais
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,55,Geografia,,,envelhecimento na União Europeia
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,56,Geografia,,,agrotóxicos
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,57,Geografia,,,urbanização e transição demográfica
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,58,Atualidades,,,sistema tributário regressivo
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,59,Atualidades,,,reconhecimento facial
+2023.2,04/06/2023,Administração SP (meio de ano),Ciências Humanas,60,Atualidades,,,terceiro mandato de Xi Jinping
+2024.1,15/11/2023,Unificado,Matemática,1,Matemática,Números inteiros e aritmética,,3^2024 + 3^2024 + 3^2024 (potências)
+2024.1,15/11/2023,Unificado,Matemática,2,Matemática,Progressões e sequências,,soluços a cada 6 s: termo de PA
+2024.1,15/11/2023,Unificado,Matemática,3,Matemática,"Razão, proporção e grandezas",,frações de um grupo (médicos e enfermeiros)
+2024.1,15/11/2023,Unificado,Matemática,4,Matemática,"Razão, proporção e grandezas",,regra de três (drones)
+2024.1,15/11/2023,Unificado,Matemática,5,Matemática,Função afim e quadrática,,reta de tendência: zero da função afim
+2024.1,15/11/2023,Unificado,Matemática,6,Matemática,Estatística,,percentual combinado (média ponderada)
+2024.1,15/11/2023,Unificado,Matemática,7,Matemática,Probabilidade,,“chances contra” e probabilidade
+2024.1,15/11/2023,Unificado,Matemática,8,Matemática,Lógica e conjuntos,,mesa circular: mínimo de pessoas sentadas
+2024.1,15/11/2023,Unificado,Matemática,9,Matemática,"Equações, inequações e sistemas",,equação do 2º grau: soma e produto
+2024.1,15/11/2023,Unificado,Matemática,10,Matemática,Geometria espacial,,menor caminho na superfície de dois cubos
+2024.1,15/11/2023,Unificado,Matemática,11,Matemática,Funções: outros tópicos,,equação funcional
+2024.1,15/11/2023,Unificado,Matemática,12,Matemática,Geometria plana,,rolo de papel: coroa circular e comprimento da folha
+2024.1,15/11/2023,Unificado,Matemática,13,Matemática,Análise combinatória,,tabelas 5×5 de zeros e uns
+2024.1,15/11/2023,Unificado,Matemática,14,Matemática,Probabilidade,,amigo oculto: ciclo único
+2024.1,15/11/2023,Unificado,Matemática,15,Matemática,Trigonometria,,espiral logarítmica com seno e cosseno
+2024.1,15/11/2023,Unificado,Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: efeito de humor
+2024.1,15/11/2023,Unificado,Língua Portuguesa,17,Língua Portuguesa,Semântica e vocabulário,,alusão em “gurus do marketing”
+2024.1,15/11/2023,Unificado,Língua Portuguesa,18,Língua Portuguesa,Semântica e vocabulário,,“arrogam-se” = atribuem-se
+2024.1,15/11/2023,Unificado,Língua Portuguesa,19,Língua Portuguesa,Figuras de linguagem,,eufemismo
+2024.1,15/11/2023,Unificado,Língua Portuguesa,20,Língua Portuguesa,Conectivos e relações entre orações,,“Sendo assim” = conclusão
+2024.1,15/11/2023,Unificado,Língua Portuguesa,21,Língua Portuguesa,Literatura,Prosa contemporânea,"Chico Buarque, Estorvo: atmosfera alucinatória"
+2024.1,15/11/2023,Unificado,Língua Portuguesa,22,Língua Portuguesa,Literatura,Prosa contemporânea,Estorvo: percepção persecutória
+2024.1,15/11/2023,Unificado,Língua Portuguesa,23,Língua Portuguesa,Literatura,Prosa contemporânea,Estorvo: metáfora do Brasil
+2024.1,15/11/2023,Unificado,Língua Portuguesa,24,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",Os sertões: preterição e metadiscurso
+2024.1,15/11/2023,Unificado,Língua Portuguesa,25,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",Os sertões: a “vertigem” do autor
+2024.1,15/11/2023,Unificado,Língua Portuguesa,26,Língua Portuguesa,Morfossintaxe,pronomes,pronome oblíquo com valor possessivo
+2024.1,15/11/2023,Unificado,Língua Portuguesa,27,Língua Portuguesa,Morfossintaxe,sujeito,sujeito posposto
+2024.1,15/11/2023,Unificado,Língua Portuguesa,28,Língua Portuguesa,Figuras de linguagem,,pleonasmo sintático
+2024.1,15/11/2023,Unificado,Língua Portuguesa,29,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Um piolho de Rui Barbosa”: preconceito regional
+2024.1,15/11/2023,Unificado,Língua Portuguesa,30,Língua Portuguesa,Literatura,Modernismo: João Cabral de Melo Neto,“Um piolho de Rui Barbosa”: crítica à oratória
+2024.1,15/11/2023,Unificado,Ciências Humanas,46,Atualidades,,,"Drex, o real digital"
+2024.1,15/11/2023,Unificado,Ciências Humanas,47,Atualidades,,,China × EUA: chips e IA
+2024.1,15/11/2023,Unificado,Ciências Humanas,48,Atualidades,,,devolução do manto tupinambá
+2024.1,15/11/2023,Unificado,Ciências Humanas,49,História,Antiguidade e Idade Média,"Roma, teocracias e mundo medieval",cristianismo e Império Romano
+2024.1,15/11/2023,Unificado,Ciências Humanas,50,História,Brasil: período joanino e Império,"Corte portuguesa, Independência e Primeiro Reinado",Reino Unido (1815) e identidade (Jancsó)
+2024.1,15/11/2023,Unificado,Ciências Humanas,51,História,Brasil República,Era Vargas e populismo,charge de Belmonte (1934)
+2024.1,15/11/2023,Unificado,Ciências Humanas,52,História,Século XX no mundo,"Entreguerras, fascismos e crise de 1929",Revolução Alemã (1918–1919)
+2024.1,15/11/2023,Unificado,Ciências Humanas,53,História,Século XX no mundo,"Descolonização, Apartheid e movimentos sociais",ondas do feminismo
+2024.1,15/11/2023,Unificado,Ciências Humanas,54,História,Século XX no mundo,"Descolonização, Apartheid e movimentos sociais",Apartheid
+2024.1,15/11/2023,Unificado,Ciências Humanas,55,Geografia,,,desmatamento na Amazônia Legal
+2024.1,15/11/2023,Unificado,Ciências Humanas,56,Geografia,,,soja
+2024.1,15/11/2023,Unificado,Ciências Humanas,57,Geografia,,,economia brasileira e demanda externa
+2024.1,15/11/2023,Unificado,Ciências Humanas,58,Geografia,,,dimensões da globalização
+2024.1,15/11/2023,Unificado,Ciências Humanas,59,Geografia,,,transportes
+2024.1,15/11/2023,Unificado,Ciências Humanas,60,Geografia,,,matriz energética
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,1,Matemática,Geometria analítica,,área de triângulo por coordenadas
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,2,Matemática,Geometria plana,,área de figura com quadrado e paralelas
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,3,Matemática,Lógica e conjuntos,,ganhar 15 ou dobrar: máximo e mínimo
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,4,Matemática,Exponencial e logaritmo,,resfriamento na autoclave (exponencial)
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,5,Matemática,Porcentagem e juros,,carteira de investimentos: novo percentual
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,6,Matemática,"Equações, inequações e sistemas",,cartas em quatro caixas
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,7,Matemática,Porcentagem e juros,,erro percentual de fórmula aproximada (°F → °C)
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,8,Matemática,Análise combinatória,,combinações (Micro Sena)
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,9,Matemática,Função afim e quadrática,,função quadrática: soma das raízes
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,10,Matemática,Geometria espacial,,poliedro convexo: relação de Euler
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,11,Matemática,Geometria espacial,,furo 10% maior: aumento do volume consumido
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,12,Matemática,Lógica e conjuntos,,conjuntos: máximos e mínimos
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,13,Matemática,Probabilidade,,probabilidade com restos de divisão
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,14,Matemática,Análise combinatória,,sequências de saltos numa escada
+2024.2,09/06/2024,Administração SP (meio de ano),Matemática,15,Matemática,Exponencial e logaritmo,,pontos do gráfico de log₂ x e ponto médio
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,cartum: recursos de construção
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,17,Língua Portuguesa,Norma-padrão e variação linguística,,"coerência, concordância, ambiguidade e conjunção"
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,18,Língua Portuguesa,Semântica e vocabulário,,acepções de “reverbera” e “proselitismo”
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,19,Língua Portuguesa,Conectivos e relações entre orações,,elipse da conjunção condicional (“não fosse”)
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,20,Língua Portuguesa,Formação de palavras,,sufixo -mento
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,21,Língua Portuguesa,Literatura,Prosa contemporânea,"Raduan Nassar, Lavoura arcaica: alusão sexual"
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,22,Língua Portuguesa,Literatura,Prosa contemporânea,Lavoura arcaica: família tradicional
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,23,Língua Portuguesa,Literatura,Prosa contemporânea,Lavoura arcaica: aura religiosa
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,24,Língua Portuguesa,Morfossintaxe,vozes verbais,transposição para a voz passiva
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,25,Língua Portuguesa,Morfossintaxe,período,orações coordenadas como recurso de estilo
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,26,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento de milícias: ordem e desordem
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,27,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento: interlocução com o leitor (→ Brás Cubas)
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,28,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento: a vingança
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,29,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento: amor não idealizado
+2024.2,09/06/2024,Administração SP (meio de ano),Língua Portuguesa,30,Língua Portuguesa,Morfossintaxe,pronomes,pronome oblíquo que retoma uma oração
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,46,Atualidades,,,presidência brasileira do G20
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,47,Atualidades,,,TikTok nos EUA
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,48,Atualidades,,,câmbio flutuante
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,49,História,Antiguidade e Idade Média,"Roma, teocracias e mundo medieval",fim do Império Romano do Ocidente
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,50,História,Idade Moderna,"Iluminismo, liberalismo e independência dos EUA",Adam Smith × mercantilismo
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,51,História,Brasil Colônia,Revoltas coloniais e Inconfidência,Inconfidência Mineira e sua memória
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,52,História,Brasil: período joanino e Império,Regência e Segundo Reinado,Revolta dos Malês (1835)
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,53,História,Século XX no mundo,"Entreguerras, fascismos e crise de 1929",Salazarismo
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,54,História,Século XX no mundo,Guerra Fria,ditaduras do Cone Sul e EUA
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,55,Geografia,,,flexibilização do trabalho
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,56,Geografia,,,transportes e fluidez
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,57,Geografia,,,BRICS como doadores
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,58,Geografia,,,indústria cultural
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,59,Geografia,,,urbanização brasileira
+2024.2,09/06/2024,Administração SP (meio de ano),Ciências Humanas,60,Geografia,,,encostas e enchentes
+2025.1,14/11/2024,Unificado,Matemática,1,Matemática,"Razão, proporção e grandezas",,regra de três composta (tratores)
+2025.1,14/11/2024,Unificado,Matemática,2,Matemática,"Razão, proporção e grandezas",,tempo de download: conversão de unidades
+2025.1,14/11/2024,Unificado,Matemática,3,Matemática,Geometria espacial,,mesmo volume: placa quadrada → disco
+2025.1,14/11/2024,Unificado,Matemática,4,Matemática,Geometria plana,,quadrados sobrepostos: área sombreada
+2025.1,14/11/2024,Unificado,Matemática,5,Matemática,Números inteiros e aritmética,,"operações definidas (#, &)"
+2025.1,14/11/2024,Unificado,Matemática,6,Matemática,"Equações, inequações e sistemas",,sistema linear (pizza e manteiga)
+2025.1,14/11/2024,Unificado,Matemática,7,Matemática,Porcentagem e juros,,mistura de tintas (percentuais)
+2025.1,14/11/2024,Unificado,Matemática,8,Matemática,Probabilidade,,sapinho num tabuleiro 3×3
+2025.1,14/11/2024,Unificado,Matemática,9,Matemática,Geometria plana,,relações métricas no triângulo retângulo
+2025.1,14/11/2024,Unificado,Matemática,10,Matemática,Progressões e sequências,,soma de PGs infinitas
+2025.1,14/11/2024,Unificado,Matemática,11,Matemática,Progressões e sequências,,sequência: cada termo é o produto dos dois anteriores
+2025.1,14/11/2024,Unificado,Matemática,12,Matemática,Geometria espacial,,escada em volta de silo cilíndrico (planificação)
+2025.1,14/11/2024,Unificado,Matemática,13,Matemática,Geometria analítica,,rotação de ponto em torno de outro
+2025.1,14/11/2024,Unificado,Matemática,14,Matemática,Probabilidade,,probabilidade de função injetiva
+2025.1,14/11/2024,Unificado,Matemática,15,Matemática,Trigonometria,,lei dos senos: distância máxima
+2025.1,14/11/2024,Unificado,Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: humor por contraste
+2025.1,14/11/2024,Unificado,Língua Portuguesa,17,Língua Portuguesa,Pontuação,,vírgulas: oração adjetiva explicativa e vocativo
+2025.1,14/11/2024,Unificado,Língua Portuguesa,18,Língua Portuguesa,Interpretação de texto,,compreensão (volta do trabalho presencial)
+2025.1,14/11/2024,Unificado,Língua Portuguesa,19,Língua Portuguesa,Semântica e vocabulário,,sinônimos
+2025.1,14/11/2024,Unificado,Língua Portuguesa,20,Língua Portuguesa,Semântica e vocabulário,,linguagem conotativa
+2025.1,14/11/2024,Unificado,Língua Portuguesa,21,Língua Portuguesa,Morfossintaxe,sujeito,sujeito oracional com verbo no infinitivo
+2025.1,14/11/2024,Unificado,Língua Portuguesa,22,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O Ateneu: colégio como microcosmo
+2025.1,14/11/2024,Unificado,Língua Portuguesa,23,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O Ateneu: percepção do tempo
+2025.1,14/11/2024,Unificado,Língua Portuguesa,24,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O Ateneu: ilustração do próprio Raul Pompeia
+2025.1,14/11/2024,Unificado,Língua Portuguesa,25,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O Ateneu: relação dúplice com o passado
+2025.1,14/11/2024,Unificado,Língua Portuguesa,26,Língua Portuguesa,Conectivos e relações entre orações,,oração reduzida “Bem considerando”
+2025.1,14/11/2024,Unificado,Língua Portuguesa,27,Língua Portuguesa,Morfossintaxe,verbos,discurso direto → indireto
+2025.1,14/11/2024,Unificado,Língua Portuguesa,28,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,“No meio do caminho”: reiteração
+2025.1,14/11/2024,Unificado,Língua Portuguesa,29,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,conquista modernista: pesquisa estética
+2025.1,14/11/2024,Unificado,Língua Portuguesa,30,Língua Portuguesa,Literatura,Modernismo: Carlos Drummond de Andrade,licença poética: “tinha uma pedra”
+2025.1,14/11/2024,Unificado,Ciências Humanas,46,Atualidades,,,relações Brasil–China
+2025.1,14/11/2024,Unificado,Ciências Humanas,47,Atualidades,,,eleições na Venezuela
+2025.1,14/11/2024,Unificado,Ciências Humanas,48,Atualidades,,,desafio de leitura: Memórias póstumas
+2025.1,14/11/2024,Unificado,Ciências Humanas,49,História,Antiguidade e Idade Média,"Roma, teocracias e mundo medieval",mulheres no mundo romano
+2025.1,14/11/2024,Unificado,Ciências Humanas,50,História,Século XX no mundo,Oriente Médio: Israel e Palestina,criação de Israel (1948)
+2025.1,14/11/2024,Unificado,Ciências Humanas,51,História,Idade Moderna,Renascimento e expansão marítima,periodização e expansão marítima (De Certeau)
+2025.1,14/11/2024,Unificado,Ciências Humanas,52,História,Brasil Colônia,"Sociedade colonial: indígenas, açúcar e escravidão",engenhos de açúcar
+2025.1,14/11/2024,Unificado,Ciências Humanas,53,História,Brasil: período joanino e Império,"Corte portuguesa, Independência e Primeiro Reinado",Constituição de 1824 e Poder Moderador
+2025.1,14/11/2024,Unificado,Ciências Humanas,54,História,Brasil República,Ditadura militar e abertura,"oposição à ditadura, 1974–1980"
+2025.1,14/11/2024,Unificado,Ciências Humanas,55,Geografia,,,queda da mortalidade 1940–1980
+2025.1,14/11/2024,Unificado,Ciências Humanas,56,Geografia,,,modernidade: natureza × humano
+2025.1,14/11/2024,Unificado,Ciências Humanas,57,Geografia,,,desmatamento na Amazônia
+2025.1,14/11/2024,Unificado,Ciências Humanas,58,Geografia,,,desenvolvimento sustentável
+2025.1,14/11/2024,Unificado,Ciências Humanas,59,Geografia,,,urbanização brasileira
+2025.1,14/11/2024,Unificado,Ciências Humanas,60,Geografia,,,abertura econômica da China
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,1,Matemática,"Razão, proporção e grandezas",,cartas divididas igualmente entre menos jogadores
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,2,Matemática,Função afim e quadrática,,oferta e demanda: preço de equilíbrio
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,3,Matemática,Progressões e sequências,,contagem regressiva de 12 em 12 (PA)
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,4,Matemática,Lógica e conjuntos,,notas “pelo menos”: contagem por conjuntos
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,5,Matemática,Porcentagem e juros,,trabalhadores de duas cidades (porcentagem)
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,6,Matemática,Números inteiros e aritmética,,retirar múltiplos de 3 e de 5 (inclusão-exclusão)
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,7,Matemática,Porcentagem e juros,,juros compostos
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,8,Matemática,Trigonometria,,"cos x = −0,6: seno e tangente"
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,9,Matemática,Números inteiros e aritmética,,soma divisível por 6
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,10,Matemática,Estatística,,mediana e média de lista
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,11,Matemática,"Equações, inequações e sistemas",,problema do 1º grau (cartas por cor)
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,12,Matemática,Probabilidade,,probabilidade com combinações (músicas)
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,13,Matemática,Progressões e sequências,,PG e logaritmo: soma dos log
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,14,Matemática,Função afim e quadrática,,minimizar soma de quadrados das distâncias
+2025.2,jun/2025,Administração SP (meio de ano),Matemática,15,Matemática,Geometria plana,,semelhança num triângulo isósceles
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: título “As contradições filosóficas”
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,17,Língua Portuguesa,Interpretação de texto,,gênero do texto
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,18,Língua Portuguesa,Figuras de linguagem,,antítese
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,19,Língua Portuguesa,Semântica e vocabulário,,sentido de “achar” (julgar)
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,20,Língua Portuguesa,Conectivos e relações entre orações,,“Se … não forem” = “Sem que … sejam”
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,21,Língua Portuguesa,Formação de palavras,,prefixo + sufixo
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,22,Língua Portuguesa,Literatura,Machado de Assis,"Iaiá Garcia: Luís Garcia, homem livre e pobre"
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,23,Língua Portuguesa,Literatura,Machado de Assis,Iaiá Garcia: independência sem favor
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,24,Língua Portuguesa,Literatura,Machado de Assis,Iaiá Garcia: a “dor moral”
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,25,Língua Portuguesa,Literatura,Machado de Assis,Iaiá Garcia: narrador onisciente
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,26,Língua Portuguesa,Semântica e vocabulário,,sentido conotativo
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,27,Língua Portuguesa,Morfossintaxe,pronomes,pronome “lhe” com valor possessivo
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,28,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,Macunaíma: lenda + crônica
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,29,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,Macunaíma: primitivismo
+2025.2,jun/2025,Administração SP (meio de ano),Língua Portuguesa,30,Língua Portuguesa,Literatura,Modernismo: Mário e Oswald de Andrade,Macunaíma × projeto de José de Alencar
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,46,Atualidades,,,"“Doutrina Donroe”: Groenlândia, Canadá, Panamá"
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,47,Atualidades,,,20 anos do Bolsa Família
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,48,Atualidades,,,Sul Global
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,49,História,Antiguidade e Idade Média,"Roma, teocracias e mundo medieval",comércio afro-asiático nos séculos XI–XIV
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,50,História,Idade Moderna,América: conquista e sistema colonial,"mita, encomienda e escravidão"
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,51,História,Idade Moderna,Absolutismo e revoluções inglesas,Cromwell e o Protetorado
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,52,História,Revoluções e século XIX,"Iluminismo, liberalismo e independência dos EUA",Stuart Mill e a liberdade individual
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,53,História,Revoluções e século XIX,Revolução Francesa e Napoleão,Metternich e Napoleão
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,54,História,Século XX no mundo,"Entreguerras, fascismos e crise de 1929","crises de 1929, 1973 e 2008"
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,55,Geografia,,,fragmentação da produção
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,56,Geografia,,,clima e agricultura
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,57,Geografia,,,matriz energética 1970–2030
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,58,Geografia,,,segregação urbana
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,59,Geografia,,,mitigação do CO₂
+2025.2,jun/2025,Administração SP (meio de ano),Ciências Humanas,60,Atualidades,,,hard power e soft power
+2026.1,02/11/2025,Unificado,Matemática,1,Matemática,Números inteiros e aritmética,,posição numa fila contada dos dois lados
+2026.1,02/11/2025,Unificado,Matemática,2,Matemática,Progressões e sequências,,tabela 3×3 com PAs nas linhas e colunas
+2026.1,02/11/2025,Unificado,Matemática,3,Matemática,"Equações, inequações e sistemas",,dobrar quantias: razão inicial
+2026.1,02/11/2025,Unificado,Matemática,4,Matemática,Geometria plana,,razão entre áreas de triângulos
+2026.1,02/11/2025,Unificado,Matemática,5,Matemática,Geometria espacial,,copo cônico despejado em cilíndrico
+2026.1,02/11/2025,Unificado,Matemática,6,Matemática,"Equações, inequações e sistemas",,"médias de X, Y, Z e produtos notáveis"
+2026.1,02/11/2025,Unificado,Matemática,7,Matemática,Lógica e conjuntos,,torneio de tênis de mesa (dedução lógica)
+2026.1,02/11/2025,Unificado,Matemática,8,Matemática,Probabilidade,,playoff melhor de três
+2026.1,02/11/2025,Unificado,Matemática,9,Matemática,Porcentagem e juros,,ativo perde 50%: nova fração da carteira
+2026.1,02/11/2025,Unificado,Matemática,10,Matemática,Geometria espacial,,poliedro convexo: relação de Euler
+2026.1,02/11/2025,Unificado,Matemática,11,Matemática,Análise combinatória,,senhas sem repetição e não crescentes
+2026.1,02/11/2025,Unificado,Matemática,12,Matemática,Estatística,,média ponderada de avaliações
+2026.1,02/11/2025,Unificado,Matemática,13,Matemática,Exponencial e logaritmo,,decibéis: razão entre intensidades (log)
+2026.1,02/11/2025,Unificado,Matemática,14,Matemática,Probabilidade,,probabilidade com conjuntos (olimpíadas)
+2026.1,02/11/2025,Unificado,Matemática,15,Matemática,Trigonometria,,modelo periódico com cosseno (preço sazonal)
+2026.1,02/11/2025,Unificado,Língua Portuguesa,16,Língua Portuguesa,"Tirinha, cartum e charge",,tirinha: palavra que resume a situação
+2026.1,02/11/2025,Unificado,Língua Portuguesa,17,Língua Portuguesa,Interpretação de texto,,estratégia argumentativa
+2026.1,02/11/2025,Unificado,Língua Portuguesa,18,Língua Portuguesa,Semântica e vocabulário,,“realidade um tanto distópica”
+2026.1,02/11/2025,Unificado,Língua Portuguesa,19,Língua Portuguesa,Pontuação,,aspas para linguagem técnica
+2026.1,02/11/2025,Unificado,Língua Portuguesa,20,Língua Portuguesa,Morfossintaxe,sujeito,sujeito posposto
+2026.1,02/11/2025,Unificado,Língua Portuguesa,21,Língua Portuguesa,Morfossintaxe,vozes verbais,voz passiva → voz ativa
+2026.1,02/11/2025,Unificado,Língua Portuguesa,22,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento: cena cômica
+2026.1,02/11/2025,Unificado,Língua Portuguesa,23,Língua Portuguesa,Figuras de linguagem,,ironia
+2026.1,02/11/2025,Unificado,Língua Portuguesa,24,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento: homens livres pobres
+2026.1,02/11/2025,Unificado,Língua Portuguesa,25,Língua Portuguesa,Literatura,Romantismo,Memórias de um sargento: ordem e desordem
+2026.1,02/11/2025,Unificado,Língua Portuguesa,26,Língua Portuguesa,Conectivos e relações entre orações,,“mal caiu” = tempo
+2026.1,02/11/2025,Unificado,Língua Portuguesa,27,Língua Portuguesa,Formação de palavras,,parassíntese
+2026.1,02/11/2025,Unificado,Língua Portuguesa,28,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O cortiço: animalização
+2026.1,02/11/2025,Unificado,Língua Portuguesa,29,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O cortiço: determinismo
+2026.1,02/11/2025,Unificado,Língua Portuguesa,30,Língua Portuguesa,Literatura,"Realismo, Naturalismo e Pré-Modernismo",O cortiço: retórica do narrador naturalista
+2026.1,02/11/2025,Unificado,Ciências Humanas,46,Atualidades,,,desdolarização
+2026.1,02/11/2025,Unificado,Ciências Humanas,47,Atualidades,,,China e a Organização de Cooperação de Xangai
+2026.1,02/11/2025,Unificado,Ciências Humanas,48,Artes e cultura,,,Maxwell Alexandre e a categoria “pardo”
+2026.1,02/11/2025,Unificado,Ciências Humanas,49,História,Idade Moderna,América: conquista e sistema colonial,conquista como ocidentalização (Gruzinski)
+2026.1,02/11/2025,Unificado,Ciências Humanas,50,História,Brasil Colônia,"Sociedade colonial: indígenas, açúcar e escravidão",coroação de reis negros (irmandades)
+2026.1,02/11/2025,Unificado,Ciências Humanas,51,História,Revoluções e século XIX,Revolução Francesa e Napoleão,queda da Bastilha
+2026.1,02/11/2025,Unificado,Ciências Humanas,52,História,Brasil: período joanino e Império,Regência e Segundo Reinado,IHGB e a história nacional (1839)
+2026.1,02/11/2025,Unificado,Ciências Humanas,53,História,Brasil República,Ditadura militar e abertura,charge sobre Médici e a sucessão
+2026.1,02/11/2025,Unificado,Ciências Humanas,54,História,Século XX no mundo,Guerra Fria,Truman e a cooperação técnica (1949)
+2026.1,02/11/2025,Unificado,Ciências Humanas,55,Geografia,,,macrometrópole paulista
+2026.1,02/11/2025,Unificado,Ciências Humanas,56,Geografia,,,impactos do modelo extrai-produz-descarta
+2026.1,02/11/2025,Unificado,Ciências Humanas,57,Geografia,,,agricultura empresarial nos EUA
+2026.1,02/11/2025,Unificado,Ciências Humanas,58,Geografia,,,urbanização brasileira
+2026.1,02/11/2025,Unificado,Ciências Humanas,59,Geografia,,,escoamento da soja
+2026.1,02/11/2025,Unificado,Ciências Humanas,60,Geografia,,,relevo brasileiro
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,1,Matemática,Números inteiros e aritmética,,soma de 1 a 10 menos um número = quadrado perfeito
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,2,Matemática,Porcentagem e juros,,valor bruto para receber líquido após comissão de 20%
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,3,Matemática,Progressões e sequências,,soma alternada 1+2+3−4+… (PA)
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,4,Matemática,Porcentagem e juros,,−15% seguido de +20%
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,5,Matemática,Geometria plana,,roda-gigante: comprimento da circunferência e velocidade
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,6,Matemática,Trigonometria,,cosseno da diferença: A cos + B sen
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,7,Matemática,Porcentagem e juros,,misturas de castanhas (percentuais)
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,8,Matemática,Geometria plana,,arame de 12 cm: perímetros de figuras
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,9,Matemática,Geometria espacial,,cone planificado: desperdício de papel
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,10,Matemática,Progressões e sequências,,soma de PA (bloqueios de senha)
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,11,Matemática,Exponencial e logaritmo,,"0,9^n ≥ 0,01 com logaritmo"
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,12,Matemática,Estatística,,idade a partir de variações de médias
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,13,Matemática,Geometria analítica,,reta que divide um quadrado em áreas iguais
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,14,Matemática,Probabilidade,,permutações de JANEIRO com 5 letras fixas
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Matemática,15,Matemática,Probabilidade,,carteiras adjacentes numa sala 5×5
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,16,Língua Portuguesa,Semântica e vocabulário,,sentido conotativo de expressões
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,17,Língua Portuguesa,Figuras de linguagem,,antítese
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,18,Língua Portuguesa,Conectivos e relações entre orações,,valor de tempo em “desde que”
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,19,Língua Portuguesa,Pontuação,,dois-pontos
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,20,Língua Portuguesa,Formação de palavras,,prefixação + sufixação
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,21,Língua Portuguesa,Literatura,Machado de Assis,"Dom Casmurro, cap. II: relação com o passado"
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,22,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: os bustos antigos e a mão do autor
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,23,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: imagem do narrador
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,24,Língua Portuguesa,Literatura,Machado de Assis,Dom Casmurro: vergonha do narrador
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,25,Língua Portuguesa,Literatura,Modernismo: Clarice Lispector,A hora da estrela: lista de títulos
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,26,Língua Portuguesa,Figuras de linguagem,,metalinguagem
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,27,Língua Portuguesa,Literatura,Modernismo: Clarice Lispector,A hora da estrela: preparação como ascese
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,28,Língua Portuguesa,Formação de palavras,,derivação imprópria
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,29,Língua Portuguesa,Literatura,Romantismo,Bosi: nação e Romantismo
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Língua Portuguesa,30,Língua Portuguesa,"Tirinha, cartum e charge",,cartum: recursos de humor
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,46,Atualidades,,,guerra com o Irã e o Estreito de Ormuz
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,47,Atualidades,,,TSE e IA nas eleições de 2026
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,48,Atualidades,,,misoginia e violência de gênero
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,49,História,Antiguidade e Idade Média,"Roma, teocracias e mundo medieval","teocracia: Egito, Roma, Bizâncio, papado, Irã"
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,50,História,Brasil Colônia,União Ibérica,União Ibérica (1580–1640)
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,51,História,Idade Moderna,Absolutismo e revoluções inglesas,Jean Bodin e a soberania absoluta
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,52,História,Brasil: período joanino e Império,Regência e Segundo Reinado,parlamentarismo no Império e em 1961
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,53,História,Século XX no mundo,Oriente Médio: Israel e Palestina,"partilha da Palestina (ONU, 1947)"
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,54,História,Brasil República,Ditadura militar e abertura,abertura de Figueiredo (1979–1985)
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,55,Geografia,,,clima e agricultura
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,56,Geografia,,,cidades globais
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,57,Geografia,,,abertura econômica dos anos 1990
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,58,Geografia,,,balança comercial e parceiros
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,59,Geografia,,,Amazônia e rios voadores
+2026.2,24/05/2026,Vestibular FGV (meio de ano),Ciências Humanas,60,Geografia,,,soja no Centro-Oeste

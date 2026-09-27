@@ -1,6 +1,7 @@
 # Study-mkre
 
 Material de preparação para os vestibulares do Mackenzie e da FGV, a partir da análise de provas anteriores.
+Para quem vai prestar os dois, a seção [FGV × Mackenzie](#fgv--mackenzie) mostra o que cai nas duas provas.
 
 ## Mackenzie
 
@@ -79,3 +80,56 @@ em imagem e foi lida visualmente.
   Idade Média costumam abrir o bloco desde 2024.1.
 - **Próxima prova**: Vestibular FGV 2027.1 em 18/10/2026, com segundo dia em 19/10 para
   Direito SP e Economia (edital unificado 1º/2027).
+
+## FGV × Mackenzie
+
+`analise/mapa-fgv-mackenzie.html` — o que cai nas duas provas em Matemática, Português e
+História, a partir de 11 provas da FGV e 13 do Mackenzie (2020 a 2026), classificadas questão
+por questão com as mesmas categorias. Mostra o que as duas bancas cobram, o que é de uma só e
+uma lista de estudo em ordem de prioridade.
+Publicado também como página: https://claude.ai/artifact/1SfJqdmHCDbQpa8t4mcmzj
+
+`analise/mackenzie/classificacao-mackenzie.csv` — classificação das 349 questões do Mackenzie
+(Português Q1–Q10, Matemática Q30–Q39 e História Q47–Q53 de cada prova), no mesmo formato de
+`analise/fgv/classificacao-fgv.csv`.
+
+### Provas do Mackenzie analisadas
+
+| Edição | Data | Aplicação | Texto usado |
+|---|---|---|---|
+| 2022.2 | 21/06/2022 | meio de ano | caderno oficial |
+| 2023.1 | dez/2022 | manhã e tarde | resolução do Curso Objetivo |
+| 2023.2 | 15/06/2023 | meio de ano | resolução do Curso Objetivo |
+| 2024.1 | 28 e 29/11/2023 | dia 1 e dia 2 | resolução do Curso Objetivo |
+| 2024.2 | jun/2024 | meio de ano | resolução do Curso Objetivo |
+| 2025.1 | 27 e 28/11/2024 | dia 1 e dia 2 | resolução do Curso Objetivo |
+| 2025.2 | 11/06/2025 | meio de ano | caderno oficial |
+| 2026.1 | 26 e 27/11/2025 | Grupo 1 e Grupo 2 | caderno oficial |
+| 2026.2 | 15/07/2026 | meio de ano | caderno e gabarito oficiais |
+
+As duas aplicações de cada processo de novembro são provas diferentes e contam separado, o que
+dá 13 provas. Na prova de 2022.2, Português foi Q1–Q9 e Matemática Q31–Q39.
+
+### Como foi feito o cruzamento
+
+A FGV tem 15 questões de Matemática e 15 de Português; o Mackenzie tem 10 de cada. Por isso a
+comparação usa a presença: em quantas provas o assunto apareceu. Para assuntos amplos, “cai nas
+duas” quer dizer pelo menos 5 das 11 provas da FGV e 6 das 13 do Mackenzie; para escolas
+literárias e temas de História, pelo menos 3 provas em cada.
+
+### Principais achados
+
+- **Matemática**: é onde as provas mais se parecem. Onze assuntos caem nas duas, puxados por
+  trigonometria (9/11 na FGV, 12/13 no Mackenzie), progressões e as três geometrias. Só a FGV
+  cobra com frequência combinatória, estatística, números inteiros e lógica; matrizes,
+  polinômios e complexos só caíram no Mackenzie, e em nenhuma das 4 provas mais recentes.
+- **Português**: semântica e vocabulário, interpretação, conectivos e Modernismo caem nas duas.
+  *Macunaíma*, “No meio do caminho”, *O cortiço* e *O Ateneu* caíram nas duas. A FGV cobra
+  tirinha, figuras de linguagem e formação de palavras; o Mackenzie, funções da linguagem e
+  tipologia (12 de 13 provas) e escolas mais antigas.
+- **História**: Idade Moderna, Brasil República e século XX caem em quase toda prova das duas.
+  Oito temas aparecem em pelo menos 3 provas de cada, com destaque para Era Vargas (3/11 e
+  10/13), América colonial e ditadura militar (6/11 e 3/13). Escravidão e racismo aparecem em
+  8 provas da FGV e 7 do Mackenzie.
+- **Próximas provas**: FGV 2027.1 em 18/10/2026; Mackenzie 2027.1 (Higienópolis) em 25/11/2026
+  (Grupo 1) e 26/11/2026 (Grupo 2).

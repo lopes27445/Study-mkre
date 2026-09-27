@@ -1,0 +1,685 @@
+<title>Mapa FGV × Mackenzie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --laranja:#A8440F;
+  --laranja-soft:#FBEDE4;
+  --neutro-chip:#EDF0F5;
+  --fgv:#1B4AA0;
+  --mack:#C4501A;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --laranja:#EE9A66;
+    --laranja-soft:#35231A;
+    --neutro-chip:#212C42;
+    --fgv:#5A8AE0;
+    --mack:#D4703A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --laranja:#EE9A66;
+  --laranja-soft:#35231A;
+  --neutro-chip:#212C42;
+  --fgv:#5A8AE0;
+  --mack:#D4703A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:960px;margin:0 auto;padding:0 24px 96px}
+@media (max-width:480px){.wrap{padding:0 16px 72px}}
+a{color:var(--azul);text-underline-offset:2px}
+a:focus-visible,[tabindex]:focus-visible,button:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.f{color:var(--azul)}
+.m{color:var(--laranja)}
+
+/* ---------- Cabeçalho ---------- */
+.topo{padding:52px 0 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--grafite);
+  display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+}
+.eyebrow b{font-weight:600}
+h1{
+  font-family:var(--display);font-weight:700;font-size:clamp(34px,5.6vw,52px);
+  line-height:1.08;letter-spacing:-.02em;margin:16px 0 0;text-wrap:balance;
+}
+.dek{font-size:19px;color:var(--grafite);margin:14px 0 0;max-width:64ch;text-wrap:pretty}
+.fontes{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;
+  font-family:var(--mono);font-size:12px;color:var(--grafite);
+}
+.fontes b{
+  background:var(--surface);border:1px solid var(--linha);border-radius:3px;
+  padding:5px 9px;font-weight:500;display:inline-flex;align-items:center;gap:7px;
+}
+.fontes i{width:9px;height:9px;border-radius:2px;display:inline-block;flex:none}
+.proxima{
+  margin-top:26px;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;align-items:baseline;
+  padding:14px 18px;border:1px solid var(--linha-forte);border-radius:4px;background:var(--surface);
+}
+.proxima .quando{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+.proxima p{margin:0;font-size:15.5px;max-width:none}
+@media (max-width:620px){.proxima{grid-template-columns:1fr;gap:2px 0}.proxima p+.quando{margin-top:10px}}
+
+/* ---------- Seções ---------- */
+section{padding-top:56px}
+h2{
+  font-family:var(--display);font-weight:700;font-size:27px;letter-spacing:-.015em;
+  margin:0 0 6px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;text-wrap:balance;
+}
+h2 .pos{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--grafite);letter-spacing:.04em}
+h3{font-family:var(--display);font-weight:600;font-size:18.5px;margin:34px 0 10px;letter-spacing:-.01em}
+.sub{color:var(--grafite);margin:0 0 22px;max-width:68ch;text-wrap:pretty}
+p{max-width:68ch;text-wrap:pretty}
+
+/* ---------- Resposta curta ---------- */
+.resumo{
+  background:var(--surface);border:1px solid var(--linha);border-radius:6px;box-shadow:var(--shadow);
+  padding:24px 26px 20px;margin-top:22px;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 30px;
+}
+.rs-tit{font-family:var(--display);font-weight:600;font-size:17px;margin:0 0 2px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.rs-tit span{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--grafite);letter-spacing:.04em}
+.rs-lista{list-style:none;margin:8px 0 0;padding:0;counter-reset:rs}
+.rs-lista li{
+  display:grid;grid-template-columns:1.6rem minmax(0,1fr) auto;gap:2px 8px;align-items:baseline;
+  padding:7px 0;border-top:1px solid var(--linha);counter-increment:rs;font-size:15px;line-height:1.35;
+}
+.rs-lista li::before{content:counter(rs);font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);font-variant-numeric:tabular-nums}
+.rs-num{font-family:var(--mono);font-size:11.5px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums;display:flex;gap:7px}
+.rs-nota{font-size:13.5px;color:var(--grafite);margin:10px 0 0;line-height:1.5}
+.rs-leg{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:6px 18px;font-family:var(--mono);font-size:11.5px;color:var(--grafite);border-top:1px solid var(--linha);padding-top:12px}
+@media (max-width:820px){.resumo{grid-template-columns:1fr;padding:20px 16px 16px}}
+
+/* ---------- Tabela ---------- */
+.tabela-wrap{overflow-x:auto;margin-top:20px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th{
+  text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--grafite);padding:0 14px 9px 0;border-bottom:1px solid var(--linha-forte);
+}
+td{padding:11px 14px 11px 0;border-bottom:1px solid var(--linha);vertical-align:top}
+td:first-child{font-family:var(--mono);font-size:12.5px;color:var(--grafite);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+@media (max-width:620px){
+  .empilha table{min-width:0}
+  .empilha thead{display:none}
+  .empilha tr{display:block;padding:12px 0;border-bottom:1px solid var(--linha)}
+  .empilha tr:last-child{border-bottom:0}
+  .empilha td{display:block;border:0;padding:3px 0}
+  .empilha td:first-child{white-space:normal;color:var(--ink);font-weight:600}
+  .empilha td[data-rot]::before{content:attr(data-rot) " · ";font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .empilha td.f[data-rot]::before{color:var(--azul)}
+  .empilha td.m[data-rot]::before{color:var(--laranja)}
+}
+td.f,td.m{color:var(--ink)}
+th.f{color:var(--azul)}
+th.m{color:var(--laranja)}
+
+/* ---------- Faixa de destaque ---------- */
+.destaque{border-left:3px solid var(--linha-forte);background:var(--surface-2);padding:16px 20px;margin:26px 0 0;border-radius:0 4px 4px 0}
+.destaque p{margin:0;font-size:15.5px;max-width:none}
+.destaque p+p{margin-top:8px}
+
+/* ---------- Gráfico de barras pareadas ---------- */
+.cz{margin:24px 0 0;padding:20px 22px 14px;background:var(--surface);border:1px solid var(--linha);border-radius:6px}
+.cz figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:10px 20px;margin-bottom:10px}
+.cz-tit{font-family:var(--display);font-weight:600;font-size:16.5px;margin:0}
+.cz-sub{font-size:14px;color:var(--grafite);margin:2px 0 0;max-width:none}
+.cz-leg{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--mono);font-size:11.5px;color:var(--grafite);margin-top:8px}
+.cz-leg span{display:inline-flex;align-items:center;gap:6px}
+.cz-leg i{width:10px;height:10px;border-radius:2px;display:inline-block}
+.i-f{background:var(--fgv)}
+.i-m{background:var(--mack)}
+.ordem{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--grafite);letter-spacing:.04em}
+.ordem-bt{display:inline-flex;border:1px solid var(--linha-forte);border-radius:4px;overflow:hidden}
+.ordem button{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;padding:5px 10px;
+  background:var(--surface);color:var(--grafite);border:0;border-left:1px solid var(--linha-forte);cursor:pointer;
+}
+.ordem button:first-child{border-left:0}
+.ordem button:hover{background:var(--surface-2)}
+.ordem button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+.cz-escala,.cz-row{display:grid;grid-template-columns:minmax(0,15.5rem) minmax(0,1fr);gap:4px 14px;align-items:center}
+.cz-escala{font-family:var(--mono);font-size:10.5px;color:var(--grafite-soft);padding:0 0 6px;border-bottom:1px solid var(--linha)}
+.cz-eixo{position:relative;height:14px}
+.cz-eixo span{position:absolute;top:0;transform:translateX(-50%)}
+.cz-eixo span:first-child{transform:none}
+.cz-grupo{
+  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);
+  padding:14px 0 6px;border-bottom:1px solid var(--linha);display:flex;justify-content:space-between;gap:10px;
+}
+.cz-grupo span{font-weight:500;letter-spacing:.04em;text-transform:none;color:var(--grafite-soft)}
+.cz-row{padding:6px;margin:0 -6px;border-radius:3px;cursor:default}
+.cz-row:hover,.cz-row:focus-visible{background:var(--surface-2)}
+.cz-nome{font-size:14.5px;line-height:1.3}
+.cz-pares{
+  display:flex;flex-direction:column;gap:3px;min-width:0;
+  background-image:linear-gradient(90deg,transparent calc((100% - 3.8rem) * .5),var(--linha) calc((100% - 3.8rem) * .5),var(--linha) calc((100% - 3.8rem) * .5 + 1px),transparent calc((100% - 3.8rem) * .5 + 1px));
+}
+.cz-linha{display:flex;align-items:center;gap:7px;min-width:0}
+.cz-bar{height:10px;flex:none;width:calc((100% - 3.8rem) * var(--p));border-radius:0 3px 3px 0}
+.cz-linha.lf .cz-bar{background:var(--fgv)}
+.cz-linha.lm .cz-bar{background:var(--mack)}
+.cz-linha.zero .cz-bar{width:2px;border-radius:0;opacity:.55}
+.cz-val{font-family:var(--mono);font-size:11.5px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink);white-space:nowrap}
+.cz-rodape{font-size:13.5px;color:var(--grafite);margin:12px 0 2px;max-width:none}
+@media (max-width:620px){
+  .cz{padding:18px 16px 12px}
+  .cz-escala,.cz-row{grid-template-columns:minmax(0,1fr)}
+  .cz-escala>span:first-child{display:none}
+  .cz-nome{margin-bottom:2px}
+}
+#tip{
+  position:fixed;z-index:10;max-width:320px;pointer-events:none;
+  background:var(--ink);color:var(--paper);
+  font-size:13px;line-height:1.45;padding:8px 10px;border-radius:4px;box-shadow:var(--shadow);
+}
+
+/* ---------- Lista de temas ---------- */
+.temas{display:flex;flex-direction:column;margin-top:8px}
+.tema{
+  display:grid;grid-template-columns:104px 1fr;gap:4px 18px;align-items:baseline;
+  padding:15px 0;border-top:1px solid var(--linha);
+}
+.tema:last-child{border-bottom:1px solid var(--linha)}
+.tema .freq{font-family:var(--mono);font-size:12px;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.5;display:flex;flex-direction:column;grid-row:span 2}
+.tema .freq span{white-space:nowrap}
+.tema .nome{font-weight:600;font-size:16.5px;line-height:1.4}
+.tema .det{grid-column:2;margin:4px 0 0;font-size:14.5px;color:var(--grafite);line-height:1.55;max-width:66ch}
+.tema .det b{color:var(--ink);font-weight:600}
+@media (max-width:620px){
+  .tema{grid-template-columns:1fr}
+  .tema .freq{flex-direction:row;gap:12px;order:-1;grid-row:auto}
+  .tema .det{grid-column:1}
+}
+
+/* ---------- Duas colunas: só de uma prova ---------- */
+.lados{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 28px;margin-top:14px}
+.lado{border-top:2px solid var(--fgv);padding-top:10px}
+.lado.lm{border-top-color:var(--mack)}
+.lado-tit{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px}
+.lado ul{margin:0;padding:0;list-style:none}
+.lado li{padding:6px 0;border-bottom:1px solid var(--linha);font-size:15px;line-height:1.45;display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.lado li:last-child{border-bottom:0}
+.lado li small{font-family:var(--mono);font-size:11.5px;color:var(--grafite);white-space:nowrap;font-variant-numeric:tabular-nums}
+.lado p{font-size:14px;color:var(--grafite);margin:8px 0 0}
+@media (max-width:620px){.lados{grid-template-columns:1fr}}
+
+/* ---------- Checklist ---------- */
+.check-grupo{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--grafite);margin:26px 0 2px}
+.check{display:flex;flex-direction:column}
+.check-item{display:flex;gap:13px;align-items:flex-start;padding:11px 4px;border-bottom:1px solid var(--linha);cursor:pointer}
+.check-item:hover{background:var(--surface-2)}
+.check-item input{
+  appearance:none;-webkit-appearance:none;width:17px;height:17px;flex:none;margin-top:4px;
+  border:1.5px solid var(--linha-forte);border-radius:3px;background:var(--surface);cursor:pointer;position:relative;
+}
+.check-item input:checked{background:var(--ink);border-color:var(--ink)}
+.check-item input:checked::after{
+  content:"";position:absolute;left:5px;top:1.5px;width:4px;height:9px;
+  border:solid var(--surface);border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.check-item input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.check-item span{font-size:15.5px;line-height:1.5}
+.check-item input:checked + span{color:var(--grafite-soft);text-decoration:line-through}
+.check-meta{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);margin-top:12px}
+
+footer{
+  margin-top:64px;padding-top:22px;border-top:1px solid var(--linha);
+  font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft);line-height:1.7;
+}
+footer p{max-width:none;margin:0 0 10px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<div class="wrap">
+
+<header class="topo">
+  <div class="eyebrow"><b class="f">FGV</b> 11 provas <span>·</span> <b class="m">Mackenzie</b> 13 provas <span>·</span> 2020–2026</div>
+  <h1>O que cai na FGV e no Mackenzie</h1>
+  <p class="dek">Matemática, Português e História em 24 provas, classificadas questão por questão com as mesmas categorias. Primeiro o que as duas bancas cobram, depois o que é de uma só.</p>
+  <div class="fontes">
+    <b><i class="i-f"></i>FGV · 2021.1 a 2026.2 · 393 questões</b>
+    <b><i class="i-m"></i>Mackenzie · 2022.2 a 2026.2 · 349 questões</b>
+    <b>Provas oficiais e resoluções do Curso Objetivo</b>
+  </div>
+  <div class="proxima">
+    <span class="quando f">18 out 2026</span>
+    <p><strong>FGV 2027.1.</strong> Todas as escolas fazem prova em 18 de outubro; Direito SP e Economia têm um segundo dia em 19 de outubro.</p>
+    <span class="quando m">25 e 26 nov 2026</span>
+    <p><strong>Mackenzie 2027.1, Higienópolis.</strong> Grupo 1 em 25 de novembro e Grupo 2 em 26 de novembro, às 13h. Inscrições até 11 de novembro.</p>
+  </div>
+</header>
+
+<section>
+  <h2>A resposta curta</h2>
+  <p class="sub">Estes assuntos caíram em cerca de metade das provas ou mais, nas duas bancas. Estudando-os, você se prepara para as duas provas ao mesmo tempo. A ordem vai do que mais se repete nas duas para o que se repete menos.</p>
+  <div class="resumo"><div class="rs-col"><p class="rs-tit">Matemática <span>11 assuntos</span></p><ol class="rs-lista"><li><span>Trigonometria</span><span class="rs-num"><b class="f">9/11</b><b class="m">12/13</b></span></li><li><span>Progressões (PA e PG)</span><span class="rs-num"><b class="f">8/11</b><b class="m">11/13</b></span></li><li><span>Geometria plana</span><span class="rs-num"><b class="f">11/11</b><b class="m">7/13</b></span></li><li><span>Geometria espacial</span><span class="rs-num"><b class="f">8/11</b><b class="m">10/13</b></span></li><li><span>Geometria analítica</span><span class="rs-num"><b class="f">8/11</b><b class="m">10/13</b></span></li><li><span>Probabilidade</span><span class="rs-num"><b class="f">11/11</b><b class="m">6/13</b></span></li><li><span>Equações, inequações e sistemas</span><span class="rs-num"><b class="f">8/11</b><b class="m">8/13</b></span></li><li><span>Exponencial e logaritmo</span><span class="rs-num"><b class="f">6/11</b><b class="m">10/13</b></span></li><li><span>Porcentagem e juros</span><span class="rs-num"><b class="f">8/11</b><b class="m">6/13</b></span></li><li><span>Razão, proporção e grandezas</span><span class="rs-num"><b class="f">7/11</b><b class="m">7/13</b></span></li><li><span>Função afim e quadrática</span><span class="rs-num"><b class="f">5/11</b><b class="m">7/13</b></span></li></ol><p class="rs-nota">Probabilidade, porcentagem e função afim e quadrática entram por pouco no Mackenzie, com 6 ou 7 das 13 provas.</p></div><div class="rs-col"><p class="rs-tit">Português <span>7 assuntos</span></p><ol class="rs-lista"><li><span>Semântica e vocabulário</span><span class="rs-num"><b class="f">11/11</b><b class="m">12/13</b></span></li><li><span>Modernismo</span><span class="rs-num"><b class="f">9/11</b><b class="m">11/13</b></span></li><li><span>Interpretação de texto</span><span class="rs-num"><b class="f">6/11</b><b class="m">12/13</b></span></li><li><span>Conectivos e relações entre orações</span><span class="rs-num"><b class="f">11/11</b><b class="m">6/13</b></span></li><li><span>Romantismo</span><span class="rs-num"><b class="f">4/11</b><b class="m">3/13</b></span></li><li><span>Realismo e Naturalismo</span><span class="rs-num"><b class="f">3/11</b><b class="m">3/13</b></span></li><li><span>Literatura contemporânea</span><span class="rs-num"><b class="f">3/11</b><b class="m">5/13</b></span></li></ol><p class="rs-nota">Machado de Assis caiu em 7 provas da FGV e 2 do Mackenzie: quem estuda Machado para a FGV cobre o Mackenzie.</p></div><div class="rs-col"><p class="rs-tit">História <span>8 temas</span></p><ol class="rs-lista"><li><span>Era Vargas e populismo</span><span class="rs-num"><b class="f">3/11</b><b class="m">10/13</b></span></li><li><span>América: conquista, sistema colonial e tráfico</span><span class="rs-num"><b class="f">4/11</b><b class="m">8/13</b></span></li><li><span>Ditadura militar e abertura</span><span class="rs-num"><b class="f">6/11</b><b class="m">3/13</b></span></li><li><span>Regência e Segundo Reinado</span><span class="rs-num"><b class="f">5/11</b><b class="m">4/13</b></span></li><li><span>Guerra Fria</span><span class="rs-num"><b class="f">3/11</b><b class="m">6/13</b></span></li><li><span>Entreguerras, fascismos e crise de 1929</span><span class="rs-num"><b class="f">4/11</b><b class="m">4/13</b></span></li><li><span>Roma antiga</span><span class="rs-num"><b class="f">4/11</b><b class="m">4/13</b></span></li><li><span>Reformas religiosas e Igreja</span><span class="rs-num"><b class="f">3/11</b><b class="m">3/13</b></span></li></ol><p class="rs-nota">Épocas que caem nas duas: Idade Moderna, Brasil República, século XX e Antiguidade e Idade Média. Escravidão e racismo: 8 provas da FGV e 7 do Mackenzie.</p></div><div class="rs-leg"><span><b class="f">9/11</b> provas da FGV em que caiu</span><span><b class="m">12/13</b> provas do Mackenzie</span></div></div>
+</section>
+
+<section>
+  <h2>As duas provas lado a lado</h2>
+  <p class="sub">A FGV dá mais espaço a Matemática e a Português; o Mackenzie distribui 60 questões por oito matérias e dá uma questão a mais a História.</p>
+  <div class="tabela-wrap empilha">
+    <table>
+      <thead><tr><th>Matéria</th><th class="f">FGV</th><th class="m">Mackenzie</th></tr></thead>
+      <tbody>
+        <tr><td>Matemática</td><td class="f" data-rot="FGV">15 questões (Q1–Q15)</td><td class="m" data-rot="Mackenzie">10 questões (Q30–Q39)</td></tr>
+        <tr><td>Português</td><td class="f" data-rot="FGV">15 questões (Q16–Q30)</td><td class="m" data-rot="Mackenzie">10 questões (Q1–Q10)</td></tr>
+        <tr><td>História</td><td class="f" data-rot="FGV">6 questões (Q49–Q54), dentro de Ciências Humanas; eram 5 até 2022.2</td><td class="m" data-rot="Mackenzie">7 questões (Q47–Q53)</td></tr>
+        <tr><td>Prova toda</td><td class="f" data-rot="FGV">60 questões objetivas em 3h30: Matemática, Português, Inglês e Ciências Humanas. Redação e provas discursivas dependem do curso.</td><td class="m" data-rot="Mackenzie">60 questões e redação em 4 horas: Português, Inglês, Física, Química, Matemática, Biologia, História e Geografia.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="destaque">
+    <p><strong>Como comparar provas de tamanhos diferentes.</strong> A comparação usa a presença: em quantas provas o assunto apareceu, de 11 na FGV e de 13 no Mackenzie. Para os assuntos amplos (os de Matemática, as áreas de Português e as épocas de História), “nas duas” quer dizer pelo menos 5 das 11 provas da FGV e 6 das 13 do Mackenzie. Para os temas mais estreitos (escolas literárias e temas de História), pelo menos 3 provas em cada.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Matemática <span class="pos">FGV Q1–Q15 · Mackenzie Q30–Q39</span></h2>
+  <p class="sub">É a matéria em que as duas provas mais se parecem. Dos 19 assuntos, 11 caíram em cerca de metade das provas ou mais nas duas bancas. As duas usam problemas com contexto; o Mackenzie ainda traz algumas contas diretas, como equações exponenciais e logarítmicas.</p>
+  <figure class="cz" id="cz-mat">
+    <figcaption>
+      <div>
+        <p class="cz-tit">Matemática: presença de cada assunto nas provas</p>
+        <p class="cz-sub">Cada par de barras mostra em quantas provas o assunto caiu. Passe o mouse ou o foco numa linha para ver o número de questões.</p>
+        <div class="cz-leg"><span><i class="i-f"></i>FGV · de 11 provas</span><span><i class="i-m"></i>Mackenzie · de 13 provas</span></div>
+      </div>
+      <div class="ordem" role="group" aria-label="Ordenar o gráfico"><span>Ordem</span><div class="ordem-bt"><button type="button" id="cz-mat-duas" data-modo="duas" aria-pressed="true">Nas duas</button><button type="button" id="cz-mat-fgv" data-modo="fgv" aria-pressed="false">FGV</button><button type="button" id="cz-mat-mack" data-modo="mack" aria-pressed="false">Mackenzie</button></div></div>
+    </figcaption>
+    <div class="cz-escala" aria-hidden="true"><span>Presença nas provas</span><div class="cz-eixo"><span style="left:0">0%</span><span style="left:calc((100% - 3.8rem) * .5)">50%</span><span style="left:calc(100% - 3.8rem)">100%</span></div></div>
+    <div class="cz-corpo">
+      <div class="cz-grupo" data-g="duas">Cai nas duas<span>5+ provas da FGV e 6+ do Mackenzie</span></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="0" data-pf="0.8182" data-pm="0.9231" data-nf="9" data-nm="13" data-tip="Trigonometria · FGV: 9 questões em 9 de 11 provas (4 das 4 mais recentes) · Mackenzie: 13 questões em 12 de 13 provas (4 das 4 mais recentes)" aria-label="Trigonometria: FGV 9 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Trigonometria</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.818"></div><span class="cz-val">9/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="1" data-pf="0.7273" data-pm="0.8462" data-nf="11" data-nm="13" data-tip="Progressões (PA e PG) · FGV: 11 questões em 8 de 11 provas (4 das 4 mais recentes) · Mackenzie: 13 questões em 11 de 13 provas (3 das 4 mais recentes)" aria-label="Progressões (PA e PG): FGV 8 de 11 provas; Mackenzie 11 de 13 provas"><div class="cz-nome">Progressões (PA e PG)</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.846"></div><span class="cz-val">11/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="2" data-pf="1.0000" data-pm="0.5385" data-nf="19" data-nm="8" data-tip="Geometria plana · FGV: 19 questões em 11 de 11 provas (4 das 4 mais recentes) · Mackenzie: 8 questões em 7 de 13 provas (2 das 4 mais recentes)" aria-label="Geometria plana: FGV 11 de 11 provas; Mackenzie 7 de 13 provas"><div class="cz-nome">Geometria plana</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">11/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.538"></div><span class="cz-val">7/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="3" data-pf="0.7273" data-pm="0.7692" data-nf="11" data-nm="10" data-tip="Geometria espacial · FGV: 11 questões em 8 de 11 provas (3 das 4 mais recentes) · Mackenzie: 10 questões em 10 de 13 provas (4 das 4 mais recentes)" aria-label="Geometria espacial: FGV 8 de 11 provas; Mackenzie 10 de 13 provas"><div class="cz-nome">Geometria espacial</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.769"></div><span class="cz-val">10/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="4" data-pf="0.7273" data-pm="0.7692" data-nf="10" data-nm="10" data-tip="Geometria analítica · FGV: 10 questões em 8 de 11 provas (2 das 4 mais recentes) · Mackenzie: 10 questões em 10 de 13 provas (4 das 4 mais recentes)" aria-label="Geometria analítica: FGV 8 de 11 provas; Mackenzie 10 de 13 provas"><div class="cz-nome">Geometria analítica</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.769"></div><span class="cz-val">10/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="5" data-pf="1.0000" data-pm="0.4615" data-nf="16" data-nm="6" data-tip="Probabilidade · FGV: 16 questões em 11 de 11 provas (4 das 4 mais recentes) · Mackenzie: 6 questões em 6 de 13 provas (2 das 4 mais recentes)" aria-label="Probabilidade: FGV 11 de 11 provas; Mackenzie 6 de 13 provas"><div class="cz-nome">Probabilidade</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">11/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.462"></div><span class="cz-val">6/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="6" data-pf="0.7273" data-pm="0.6154" data-nf="12" data-nm="11" data-tip="Equações, inequações e sistemas · FGV: 12 questões em 8 de 11 provas (3 das 4 mais recentes) · Mackenzie: 11 questões em 8 de 13 provas (0 das 4 mais recentes)" aria-label="Equações, inequações e sistemas: FGV 8 de 11 provas; Mackenzie 8 de 13 provas"><div class="cz-nome">Equações, inequações e sistemas</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.615"></div><span class="cz-val">8/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="7" data-pf="0.5455" data-pm="0.7692" data-nf="8" data-nm="12" data-tip="Exponencial e logaritmo · FGV: 8 questões em 6 de 11 provas (2 das 4 mais recentes) · Mackenzie: 12 questões em 10 de 13 provas (3 das 4 mais recentes)" aria-label="Exponencial e logaritmo: FGV 6 de 11 provas; Mackenzie 10 de 13 provas"><div class="cz-nome">Exponencial e logaritmo</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.545"></div><span class="cz-val">6/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.769"></div><span class="cz-val">10/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="8" data-pf="0.7273" data-pm="0.4615" data-nf="15" data-nm="6" data-tip="Porcentagem e juros · FGV: 15 questões em 8 de 11 provas (4 das 4 mais recentes) · Mackenzie: 6 questões em 6 de 13 provas (2 das 4 mais recentes)" aria-label="Porcentagem e juros: FGV 8 de 11 provas; Mackenzie 6 de 13 provas"><div class="cz-nome">Porcentagem e juros</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.462"></div><span class="cz-val">6/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="9" data-pf="0.6364" data-pm="0.5385" data-nf="13" data-nm="10" data-tip="Razão, proporção e grandezas · FGV: 13 questões em 7 de 11 provas (2 das 4 mais recentes) · Mackenzie: 10 questões em 7 de 13 provas (2 das 4 mais recentes)" aria-label="Razão, proporção e grandezas: FGV 7 de 11 provas; Mackenzie 7 de 13 provas"><div class="cz-nome">Razão, proporção e grandezas</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.636"></div><span class="cz-val">7/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.538"></div><span class="cz-val">7/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="10" data-pf="0.4545" data-pm="0.5385" data-nf="6" data-nm="7" data-tip="Função afim e quadrática · FGV: 6 questões em 5 de 11 provas (1 das 4 mais recentes) · Mackenzie: 7 questões em 7 de 13 provas (4 das 4 mais recentes)" aria-label="Função afim e quadrática: FGV 5 de 11 provas; Mackenzie 7 de 13 provas"><div class="cz-nome">Função afim e quadrática</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.455"></div><span class="cz-val">5/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.538"></div><span class="cz-val">7/13</span></div></div></div>
+<div class="cz-grupo" data-g="fgv">Mais na FGV<span></span></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="11" data-pf="0.6364" data-pm="0.2308" data-nf="9" data-nm="3" data-tip="Análise combinatória · FGV: 9 questões em 7 de 11 provas (1 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (2 das 4 mais recentes)" aria-label="Análise combinatória: FGV 7 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Análise combinatória</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.636"></div><span class="cz-val">7/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="12" data-pf="0.6364" data-pm="0.2308" data-nf="8" data-nm="3" data-tip="Números inteiros e aritmética · FGV: 8 questões em 7 de 11 provas (4 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (0 das 4 mais recentes)" aria-label="Números inteiros e aritmética: FGV 7 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Números inteiros e aritmética</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.636"></div><span class="cz-val">7/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="13" data-pf="0.6364" data-pm="0.0769" data-nf="8" data-nm="1" data-tip="Estatística · FGV: 8 questões em 7 de 11 provas (3 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (1 das 4 mais recentes)" aria-label="Estatística: FGV 7 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Estatística</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.636"></div><span class="cz-val">7/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="14" data-pf="0.5455" data-pm="0.1538" data-nf="7" data-nm="2" data-tip="Lógica e conjuntos · FGV: 7 questões em 6 de 11 provas (2 das 4 mais recentes) · Mackenzie: 2 questões em 2 de 13 provas (0 das 4 mais recentes)" aria-label="Lógica e conjuntos: FGV 6 de 11 provas; Mackenzie 2 de 13 provas"><div class="cz-nome">Lógica e conjuntos</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.545"></div><span class="cz-val">6/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.154"></div><span class="cz-val">2/13</span></div></div></div>
+<div class="cz-grupo" data-g="menos">Menos frequentes<span>abaixo disso nas duas</span></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="15" data-pf="0.2727" data-pm="0.3077" data-nf="3" data-nm="5" data-tip="Funções: domínio, composta e outros · FGV: 3 questões em 3 de 11 provas (0 das 4 mais recentes) · Mackenzie: 5 questões em 4 de 13 provas (2 das 4 mais recentes)" aria-label="Funções: domínio, composta e outros: FGV 3 de 11 provas; Mackenzie 4 de 13 provas"><div class="cz-nome">Funções: domínio, composta e outros</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.308"></div><span class="cz-val">4/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="16" data-pf="0.0000" data-pm="0.3846" data-nf="0" data-nm="5" data-tip="Matrizes e determinantes · FGV: não caiu · Mackenzie: 5 questões em 5 de 13 provas (0 das 4 mais recentes)" aria-label="Matrizes e determinantes: FGV 0 de 11 provas; Mackenzie 5 de 13 provas"><div class="cz-nome">Matrizes e determinantes</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.385"></div><span class="cz-val">5/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="17" data-pf="0.0000" data-pm="0.2308" data-nf="0" data-nm="3" data-tip="Polinômios e equações algébricas · FGV: não caiu · Mackenzie: 3 questões em 3 de 13 provas (0 das 4 mais recentes)" aria-label="Polinômios e equações algébricas: FGV 0 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Polinômios e equações algébricas</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="18" data-pf="0.0000" data-pm="0.0769" data-nf="0" data-nm="1" data-tip="Números complexos · FGV: não caiu · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Números complexos: FGV 0 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Números complexos</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+    </div>
+    
+  </figure>
+  <div class="destaque">
+    <p><strong>Geometria e trigonometria são o maior bloco comum.</strong> Plana, espacial, analítica e trigonometria somam 49 das 165 questões da FGV (30%) e 41 das 129 do Mackenzie (32%). No Mackenzie, trigonometria foi o assunto mais frequente: 12 das 13 provas.</p>
+  </div>
+  <h3>Os assuntos que caem nas duas</h3>
+  <div class="temas">
+    <div class="tema"><div class="freq"><span class="f">FGV 9/11</span><span class="m">Mack 12/13</span></div><div class="nome">Trigonometria</div><p class="det">Nas duas, lei dos senos e dos cossenos e o ciclo trigonométrico. <b>FGV:</b> ciclo, radianos, relações entre seno, cosseno e tangente, identidades como o cosseno da diferença e modelos periódicos, como um preço sazonal (2026.1). <b>Mackenzie:</b> máximo e mínimo de funções com seno e cosseno em quatro provas até 2024.1; desde novembro de 2024, só triângulos, com lei dos cossenos em três provas e triângulos retângulos com 30°, 45° e 60° em outras três.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 8/11</span><span class="m">Mack 11/13</span></div><div class="nome">Progressões (PA e PG)</div><p class="det">Soma de PA cai nas duas, quase sempre com contexto: descida de skate e senhas na FGV, poltronas e auditório no Mackenzie. PG infinita também: soma de PGs infinitas na FGV (2025.1) e a bolinha que quica no Mackenzie (2026.1). <b>Mackenzie:</b> mistura PA e PG no mesmo problema (quatro provas). <b>FGV:</b> sequências definidas por uma regra, como cada termo ser o produto dos dois anteriores.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 11/11</span><span class="m">Mack 7/13</span></div><div class="nome">Geometria plana</div><p class="det"><b>FGV:</b> caiu em todas as provas, às vezes com duas ou três questões: áreas de figuras sobrepostas, semelhança, círculos. <b>Mackenzie:</b> menos questões, com Teorema de Tales (duas vezes) e semelhança. Hexágono regular caiu nas duas (FGV 2021.1; Mackenzie 2023.1 e 2025.2), assim como relações métricas (no triângulo retângulo na FGV, no círculo no Mackenzie).</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 8/11</span><span class="m">Mack 10/13</span></div><div class="nome">Geometria espacial</div><p class="det">Cilindro e cone dominam nas duas: volumes, áreas e planificação (FGV em 2025.1, 2026.1 e 2026.2; Mackenzie em 7 provas). <b>FGV:</b> também relação de Euler (duas vezes) e problemas com cubos. <b>Mackenzie:</b> esfera dentro de cilindro, cone inscrito e tronco de cone.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 8/11</span><span class="m">Mack 10/13</span></div><div class="nome">Geometria analítica</div><p class="det">Polígonos dados por coordenadas ou por retas caíram nas duas: área na FGV (2023.1, 2023.2 e 2024.2), área ou perímetro no Mackenzie (2024.1, 2024.2 e 2026.2). Fora isso, os estilos se separam. <b>FGV:</b> retas, distâncias, rotações e reflexões. <b>Mackenzie:</b> circunferência, em 6 das 10 questões (tangência, coroa circular, região entre reta e circunferência).</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 11/11</span><span class="m">Mack 6/13</span></div><div class="nome">Probabilidade</div><p class="det"><b>FGV:</b> caiu em todas as provas. <b>Mackenzie:</b> em quase metade, com os mesmos tipos. Probabilidade condicional com peças defeituosas apareceu nas duas (FGV 2023.2; Mackenzie 2023.1), e também problemas de pessoas ou objetos lado a lado.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 8/11</span><span class="m">Mack 8/13</span></div><div class="nome">Equações, inequações e sistemas</div><p class="det">Sistemas lineares com contexto (pizza, lanches, ingressos, pacotes) e equação do 2º grau caem nas duas. <b>Mackenzie:</b> equação modular duas vezes, em 2024. O tema não apareceu nas 4 provas mais recentes do Mackenzie.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 6/11</span><span class="m">Mack 10/13</span></div><div class="nome">Exponencial e logaritmo</div><p class="det">Nas duas, modelos de crescimento e decaimento resolvidos com logaritmo: resfriamento e decibéis na FGV, meia-vida do césio-137 e populações no Mackenzie. <b>Mackenzie:</b> também equações e inequações exponenciais e logarítmicas diretas, e mudança de base.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 8/11</span><span class="m">Mack 6/13</span></div><div class="nome">Porcentagem e juros</div><p class="det">Aumentos e descontos sucessivos, juros compostos e misturas com percentuais caíram nas duas. <b>FGV:</b> cobra mais, e com contexto de finanças: carteira de investimentos, comissão, imposto embutido na nota.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 7/11</span><span class="m">Mack 7/13</span></div><div class="nome">Razão, proporção e grandezas</div><p class="det">Regra de três composta caiu nas duas (FGV 2023.2 e 2025.1; Mackenzie 2023.1 e 2026.1), assim como velocidade média e divisão proporcional. Em 2026.2, o Mackenzie pediu a velocidade média de ida e volta, que é a média harmônica.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 5/11</span><span class="m">Mack 7/13</span></div><div class="nome">Função afim e quadrática</div><p class="det">Máximo e mínimo da quadrática pelo vértice é o ponto em comum: lucro máximo e altura de projétil no Mackenzie, menor distância e soma de quadrados na FGV. O Mackenzie cobrou função afim ou quadrática nas 4 provas mais recentes.</p></div>
+  </div>
+  <h3>O que é de uma prova só</h3>
+  <div class="lados"><div class="lado"><p class="lado-tit f">Mais na FGV</p><ul><li><span>Números inteiros e aritmética</span><small><span class="f">7/11</span> · <span class="m">3/13</span></small></li><li><span>Análise combinatória</span><small><span class="f">7/11</span> · <span class="m">3/13</span></small></li><li><span>Estatística</span><small><span class="f">7/11</span> · <span class="m">1/13</span></small></li><li><span>Lógica e conjuntos</span><small><span class="f">6/11</span> · <span class="m">2/13</span></small></li></ul><p>A FGV cobra contagem e estatística quase toda prova. No Mackenzie, a contagem apareceu como anagramas (MACKENZIE em 2023.2, GEEE@2026 em 2026.1).</p></div><div class="lado lm"><p class="lado-tit m">Mais no Mackenzie ou pouco nas duas</p><ul><li><span>Matrizes e determinantes</span><small><span class="f">0/11</span> · <span class="m">5/13</span></small></li><li><span>Polinômios e equações algébricas</span><small><span class="f">0/11</span> · <span class="m">3/13</span></small></li><li><span>Números complexos</span><small><span class="f">0/11</span> · <span class="m">1/13</span></small></li><li><span>Funções: domínio, composta e outros</span><small><span class="f">3/11</span> · <span class="m">4/13</span></small></li></ul><p>Matrizes, polinômios e complexos não caíram na FGV nem nas 4 provas mais recentes do Mackenzie. Em funções, o Mackenzie pede domínio, função composta e até uma noção de limite; a FGV, funções definidas por recorrência ou por partes.</p></div></div>
+</section>
+
+<section>
+  <h2>Português <span class="pos">FGV Q16–Q30 · Mackenzie Q1–Q10</span></h2>
+  <p class="sub">As duas provas começam com textos e questões de língua e terminam com literatura. O que muda é o foco. A FGV cobra gramática aplicada ao texto, figuras de linguagem e formação de palavras. O Mackenzie cobra interpretação e funções da linguagem, quase sempre a partir de um texto que fala da própria língua.</p>
+  <div class="tabela-wrap empilha">
+    <table>
+      <thead><tr><th>Parte</th><th class="f">FGV</th><th class="m">Mackenzie</th></tr></thead>
+      <tbody>
+        <tr><td>Abertura</td><td class="f" data-rot="FGV">Tirinha, cartum ou charge, em 10 das 11 provas</td><td class="m" data-rot="Mackenzie">Um a três textos para as questões 1 a 6. Em 9 das 13 provas, o tema é a própria língua: sentidos das palavras, língua falada, línguas indígenas, linguagem literária.</td></tr>
+        <tr><td>Língua</td><td class="f" data-rot="FGV">Texto jornalístico ou de opinião, com interpretação e gramática aplicada</td><td class="m" data-rot="Mackenzie">Q1–Q6: interpretação, funções da linguagem e tipologia, sinônimos, conectivos</td></tr>
+        <tr><td>Literatura</td><td class="f" data-rot="FGV">Quase metade do bloco (76 de 165 questões): dois ou três trechos longos, com três ou quatro questões sobre cada um</td><td class="m" data-rot="Mackenzie">Q7–Q10, quatro questões por prova (52 de 129): poemas curtos e perguntas sobre autores e escolas</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <figure class="cz" id="cz-lp">
+    <figcaption>
+      <div>
+        <p class="cz-tit">Português: áreas do bloco</p>
+        <p class="cz-sub">Presença de cada área nas provas. Literatura aparece nas duas em todas as provas.</p>
+        <div class="cz-leg"><span><i class="i-f"></i>FGV · de 11 provas</span><span><i class="i-m"></i>Mackenzie · de 13 provas</span></div>
+      </div>
+      <div class="ordem" role="group" aria-label="Ordenar o gráfico"><span>Ordem</span><div class="ordem-bt"><button type="button" id="cz-lp-duas" data-modo="duas" aria-pressed="true">Nas duas</button><button type="button" id="cz-lp-fgv" data-modo="fgv" aria-pressed="false">FGV</button><button type="button" id="cz-lp-mack" data-modo="mack" aria-pressed="false">Mackenzie</button></div></div>
+    </figcaption>
+    <div class="cz-escala" aria-hidden="true"><span>Presença nas provas</span><div class="cz-eixo"><span style="left:0">0%</span><span style="left:calc((100% - 3.8rem) * .5)">50%</span><span style="left:calc(100% - 3.8rem)">100%</span></div></div>
+    <div class="cz-corpo">
+      <div class="cz-grupo" data-g="duas">Cai nas duas<span>5+ provas da FGV e 6+ do Mackenzie</span></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="0" data-pf="1.0000" data-pm="1.0000" data-nf="76" data-nm="52" data-tip="Literatura · FGV: 76 questões em 11 de 11 provas (4 das 4 mais recentes) · Mackenzie: 52 questões em 13 de 13 provas (4 das 4 mais recentes)" aria-label="Literatura: FGV 11 de 11 provas; Mackenzie 13 de 13 provas"><div class="cz-nome">Literatura</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">11/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">13/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="1" data-pf="1.0000" data-pm="0.9231" data-nf="17" data-nm="17" data-tip="Semântica e vocabulário · FGV: 17 questões em 11 de 11 provas (4 das 4 mais recentes) · Mackenzie: 17 questões em 12 de 13 provas (4 das 4 mais recentes)" aria-label="Semântica e vocabulário: FGV 11 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Semântica e vocabulário</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">11/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="2" data-pf="0.5455" data-pm="0.9231" data-nf="7" data-nm="30" data-tip="Interpretação de texto · FGV: 7 questões em 6 de 11 provas (2 das 4 mais recentes) · Mackenzie: 30 questões em 12 de 13 provas (4 das 4 mais recentes)" aria-label="Interpretação de texto: FGV 6 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Interpretação de texto</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.545"></div><span class="cz-val">6/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="3" data-pf="1.0000" data-pm="0.4615" data-nf="11" data-nm="6" data-tip="Conectivos e relações entre orações · FGV: 11 questões em 11 de 11 provas (4 das 4 mais recentes) · Mackenzie: 6 questões em 6 de 13 provas (2 das 4 mais recentes)" aria-label="Conectivos e relações entre orações: FGV 11 de 11 provas; Mackenzie 6 de 13 provas"><div class="cz-nome">Conectivos e relações entre orações</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">11/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.462"></div><span class="cz-val">6/13</span></div></div></div>
+<div class="cz-grupo" data-g="fgv">Mais na FGV<span></span></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="4" data-pf="0.9091" data-pm="0.0769" data-nf="10" data-nm="1" data-tip="Tirinha, cartum e charge · FGV: 10 questões em 10 de 11 provas (4 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Tirinha, cartum e charge: FGV 10 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Tirinha, cartum e charge</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.909"></div><span class="cz-val">10/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="5" data-pf="0.7273" data-pm="0.2308" data-nf="14" data-nm="4" data-tip="Morfossintaxe · FGV: 14 questões em 8 de 11 provas (3 das 4 mais recentes) · Mackenzie: 4 questões em 3 de 13 provas (0 das 4 mais recentes)" aria-label="Morfossintaxe: FGV 8 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Morfossintaxe</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="6" data-pf="0.8182" data-pm="0.0000" data-nf="13" data-nm="0" data-tip="Figuras de linguagem · FGV: 13 questões em 9 de 11 provas (3 das 4 mais recentes) · Mackenzie: não caiu" aria-label="Figuras de linguagem: FGV 9 de 11 provas; Mackenzie 0 de 13 provas"><div class="cz-nome">Figuras de linguagem</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.818"></div><span class="cz-val">9/11</span></div><div class="cz-linha lm zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="7" data-pf="0.6364" data-pm="0.0000" data-nf="8" data-nm="0" data-tip="Formação de palavras · FGV: 8 questões em 7 de 11 provas (3 das 4 mais recentes) · Mackenzie: não caiu" aria-label="Formação de palavras: FGV 7 de 11 provas; Mackenzie 0 de 13 provas"><div class="cz-nome">Formação de palavras</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.636"></div><span class="cz-val">7/11</span></div><div class="cz-linha lm zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/13</span></div></div></div>
+<div class="cz-grupo" data-g="mack">Mais no Mackenzie<span></span></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="8" data-pf="0.0909" data-pm="0.9231" data-nf="1" data-nm="17" data-tip="Gêneros, tipologia e funções da linguagem · FGV: 1 questão em 1 de 11 prova (1 das 4 mais recentes) · Mackenzie: 17 questões em 12 de 13 provas (4 das 4 mais recentes)" aria-label="Gêneros, tipologia e funções da linguagem: FGV 1 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Gêneros, tipologia e funções da linguagem</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.091"></div><span class="cz-val">1/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-grupo" data-g="menos">Menos frequentes<span></span></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="9" data-pf="0.3636" data-pm="0.0769" data-nf="4" data-nm="1" data-tip="Norma-padrão e variação · FGV: 4 questões em 4 de 11 provas (0 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Norma-padrão e variação: FGV 4 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Norma-padrão e variação</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="10" data-pf="0.3636" data-pm="0.0769" data-nf="4" data-nm="1" data-tip="Pontuação · FGV: 4 questões em 4 de 11 provas (3 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Pontuação: FGV 4 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Pontuação</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+    </div>
+    
+  </figure>
+  <figure class="cz" id="cz-lit">
+    <figcaption>
+      <div>
+        <p class="cz-tit">Literatura: escolas e autores</p>
+        <p class="cz-sub">Presença de cada escola nas provas. Aqui, “nas duas” quer dizer pelo menos 3 provas em cada banca.</p>
+        <div class="cz-leg"><span><i class="i-f"></i>FGV · de 11 provas</span><span><i class="i-m"></i>Mackenzie · de 13 provas</span></div>
+      </div>
+      <div class="ordem" role="group" aria-label="Ordenar o gráfico"><span>Ordem</span><div class="ordem-bt"><button type="button" id="cz-lit-duas" data-modo="duas" aria-pressed="true">Nas duas</button><button type="button" id="cz-lit-fgv" data-modo="fgv" aria-pressed="false">FGV</button><button type="button" id="cz-lit-mack" data-modo="mack" aria-pressed="false">Mackenzie</button></div></div>
+    </figcaption>
+    <div class="cz-escala" aria-hidden="true"><span>Presença nas provas</span><div class="cz-eixo"><span style="left:0">0%</span><span style="left:calc((100% - 3.8rem) * .5)">50%</span><span style="left:calc(100% - 3.8rem)">100%</span></div></div>
+    <div class="cz-corpo">
+      <div class="cz-grupo" data-g="duas">Cai nas duas<span>3+ provas em cada</span></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="0" data-pf="0.8182" data-pm="0.8462" data-nf="24" data-nm="19" data-tip="Modernismo · FGV: 24 questões em 9 de 11 provas (3 das 4 mais recentes) · Mackenzie: 19 questões em 11 de 13 provas (3 das 4 mais recentes)" aria-label="Modernismo: FGV 9 de 11 provas; Mackenzie 11 de 13 provas"><div class="cz-nome">Modernismo</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.818"></div><span class="cz-val">9/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.846"></div><span class="cz-val">11/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="1" data-pf="0.2727" data-pm="0.3846" data-nf="7" data-nm="9" data-tip="Literatura contemporânea · FGV: 7 questões em 3 de 11 provas (0 das 4 mais recentes) · Mackenzie: 9 questões em 5 de 13 provas (2 das 4 mais recentes)" aria-label="Literatura contemporânea: FGV 3 de 11 provas; Mackenzie 5 de 13 provas"><div class="cz-nome">Literatura contemporânea</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.385"></div><span class="cz-val">5/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="2" data-pf="0.3636" data-pm="0.2308" data-nf="12" data-nm="5" data-tip="Romantismo · FGV: 12 questões em 4 de 11 provas (2 das 4 mais recentes) · Mackenzie: 5 questões em 3 de 13 provas (1 das 4 mais recentes)" aria-label="Romantismo: FGV 4 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Romantismo</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="3" data-pf="0.2727" data-pm="0.2308" data-nf="9" data-nm="4" data-tip="Realismo, Naturalismo e Pré-Modernismo · FGV: 9 questões em 3 de 11 provas (2 das 4 mais recentes) · Mackenzie: 4 questões em 3 de 13 provas (0 das 4 mais recentes)" aria-label="Realismo, Naturalismo e Pré-Modernismo: FGV 3 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Realismo, Naturalismo e Pré-Modernismo</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-grupo" data-g="fgv">Mais na FGV<span></span></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="4" data-pf="0.6364" data-pm="0.1538" data-nf="24" data-nm="2" data-tip="Machado de Assis · FGV: 24 questões em 7 de 11 provas (2 das 4 mais recentes) · Mackenzie: 2 questões em 2 de 13 provas (0 das 4 mais recentes)" aria-label="Machado de Assis: FGV 7 de 11 provas; Mackenzie 2 de 13 provas"><div class="cz-nome">Machado de Assis</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.636"></div><span class="cz-val">7/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.154"></div><span class="cz-val">2/13</span></div></div></div>
+<div class="cz-grupo" data-g="mack">Mais no Mackenzie<span></span></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="5" data-pf="0.0000" data-pm="0.3077" data-nf="0" data-nm="4" data-tip="Barroco, Arcadismo e literatura portuguesa · FGV: não caiu · Mackenzie: 4 questões em 4 de 13 provas (1 das 4 mais recentes)" aria-label="Barroco, Arcadismo e literatura portuguesa: FGV 0 de 11 provas; Mackenzie 4 de 13 provas"><div class="cz-nome">Barroco, Arcadismo e literatura portuguesa</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.308"></div><span class="cz-val">4/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="6" data-pf="0.0000" data-pm="0.2308" data-nf="0" data-nm="6" data-tip="Intertextualidade e gêneros literários · FGV: não caiu · Mackenzie: 6 questões em 3 de 13 provas (2 das 4 mais recentes)" aria-label="Intertextualidade e gêneros literários: FGV 0 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Intertextualidade e gêneros literários</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-grupo" data-g="menos">Menos frequentes<span></span></div>
+<div class="cz-row" tabindex="0" data-g="menos" data-i="7" data-pf="0.0000" data-pm="0.1538" data-nf="0" data-nm="3" data-tip="Parnasianismo e Simbolismo · FGV: não caiu · Mackenzie: 3 questões em 2 de 13 provas (1 das 4 mais recentes)" aria-label="Parnasianismo e Simbolismo: FGV 0 de 11 provas; Mackenzie 2 de 13 provas"><div class="cz-nome">Parnasianismo e Simbolismo</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.154"></div><span class="cz-val">2/13</span></div></div></div>
+    </div>
+    
+  </figure>
+  <div class="destaque">
+    <p><strong>Obras e autores que caíram nas duas.</strong> <em>Macunaíma</em> (FGV 2025.2; Mackenzie 2023.2 e 2024.1), “No meio do caminho”, de Drummond (FGV 2025.1; Mackenzie 2025.2), <em>O cortiço</em> (FGV 2026.1; Mackenzie 2023.1), <em>O Ateneu</em> (FGV 2025.1; Mackenzie 2025.1), o indianismo de José de Alencar (<em>O Guarani</em> na FGV em 2023.2; <em>Iracema</em> no Mackenzie em 2024.2), Clarice Lispector (FGV 2026.2; Mackenzie 2026.1) e Machado de Assis (7 provas da FGV, 2 do Mackenzie).</p>
+  </div>
+  <h3>O que cai nas duas</h3>
+  <div class="temas">
+    <div class="tema"><div class="freq"><span class="f">FGV 11/11</span><span class="m">Mack 12/13</span></div><div class="nome">Semântica e vocabulário</div><p class="det">O ponto mais estável das duas provas. Sinônimos no contexto (o Mackenzie teve uma questão só de sinônimos em 6 das 7 provas de 2022.2 a 2024.2), sentido conotativo e figurado e o valor de palavras como “apenas”, “tal”, “aí” e “de então”. <b>FGV:</b> também acepções de palavras menos comuns, como “reverbera”, “proselitismo” e “arrogam-se”.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 9/11</span><span class="m">Mack 11/13</span></div><div class="nome">Modernismo</div><p class="det">Mário e Oswald de Andrade caem nas duas. <em>Macunaíma</em> teve três questões na FGV (2025.2) e três no Mackenzie (2023.2 e 2024.1), e a Semana de 22 também caiu nas duas. “No meio do caminho”, de Drummond, apareceu nas duas (FGV 2025.1; Mackenzie 2025.2). <b>FGV:</b> lê mais João Cabral e Clarice Lispector. <b>Mackenzie:</b> pergunta mais sobre as fases do movimento e sobre poetas como Bandeira, Cecília Meireles e Murilo Mendes.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 6/11</span><span class="m">Mack 12/13</span></div><div class="nome">Interpretação de texto</div><p class="det"><b>Mackenzie:</b> é a maior parte das questões de língua (30 de 77): tese, inferência (“depreende-se”), afirmações I, II e III e comparação entre texto verbal e imagem. <b>FGV:</b> a leitura vem espalhada pelas questões de gramática e pela tirinha; as questões só de interpretação pedem tese e estratégia argumentativa.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 11/11</span><span class="m">Mack 6/13</span></div><div class="nome">Conectivos e relações entre orações</div><p class="det"><b>FGV:</b> uma questão por prova, sempre sobre o valor de uma conjunção ou de uma oração reduzida (concessão, tempo, condição, conclusão). <b>Mackenzie:</b> em quase metade das provas, com “contudo”, “com isso”, “conquanto” e “no entanto”.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 4/11</span><span class="m">Mack 3/13</span></div><div class="nome">Romantismo</div><p class="det">O indianismo de José de Alencar caiu nas duas: <em>O Guarani</em> na FGV (2023.2) e <em>Iracema</em> no Mackenzie (2024.2). <b>Mackenzie:</b> gosta da “Canção do exílio”, de Gonçalves Dias, lida diretamente (2023.1) ou como alvo de paródia e paráfrase (2025.1 e 2026.2), e de Álvares de Azevedo. <b>FGV:</b> <em>Memórias de um sargento de milícias</em> em duas provas.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 3/11</span><span class="m">Mack 3/13</span></div><div class="nome">Realismo, Naturalismo e Pré-Modernismo</div><p class="det"><em>O cortiço</em> e <em>O Ateneu</em> caíram nas duas. Na FGV, com três ou quatro questões sobre um trecho (2025.1 e 2026.1); no Mackenzie, com uma questão cada (2023.1 e 2025.1). Do Pré-Modernismo, <em>Os sertões</em> caiu na FGV e Lima Barreto no Mackenzie.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 3/11</span><span class="m">Mack 5/13</span></div><div class="nome">Literatura contemporânea</div><p class="det"><b>FGV:</b> prosa, com Rubem Fonseca, <em>Estorvo</em> de Chico Buarque e <em>Lavoura arcaica</em> de Raduan Nassar. <b>Mackenzie:</b> poesia e canção, com Mar Becker, Jarid Arraes, “Panis et Circenses”, cordel e Patativa do Assaré, além de Ariano Suassuna.</p></div>
+  </div>
+  <h3>O que é de uma prova só</h3>
+  <div class="lados"><div class="lado"><p class="lado-tit f">Mais na FGV</p><ul><li><span>Tirinha, cartum e charge</span><small><span class="f">10/11</span> · <span class="m">1/13</span></small></li><li><span>Morfossintaxe</span><small><span class="f">8/11</span> · <span class="m">3/13</span></small></li><li><span>Figuras de linguagem</span><small><span class="f">9/11</span> · <span class="m">0/13</span></small></li><li><span>Formação de palavras</span><small><span class="f">7/11</span> · <span class="m">0/13</span></small></li><li><span>Machado de Assis</span><small><span class="f">7/11</span> · <span class="m">2/13</span></small></li></ul><p>Na FGV, Machado vem em trechos longos, com três ou quatro questões seguidas sobre <em>Dom Casmurro</em>, <em>Memórias póstumas</em>, <em>Iaiá Garcia</em> ou um conto.</p></div><div class="lado lm"><p class="lado-tit m">Mais no Mackenzie</p><ul><li><span>Gêneros, tipologia e funções da linguagem</span><small><span class="f">1/11</span> · <span class="m">12/13</span></small></li><li><span>Barroco, Arcadismo e literatura portuguesa</span><small><span class="f">0/11</span> · <span class="m">4/13</span></small></li><li><span>Intertextualidade e gêneros literários</span><small><span class="f">0/11</span> · <span class="m">3/13</span></small></li><li><span>Parnasianismo e Simbolismo</span><small><span class="f">0/11</span> · <span class="m">2/13</span></small></li></ul><p>A questão de funções da linguagem ou de tipo de texto costuma ser a Q1 ou a Q2. As escolas mais antigas vêm em perguntas curtas: Arcadismo, Barroco, Cruz e Sousa, “Ismália”, Camões e Gil Vicente.</p></div></div>
+</section>
+
+<section>
+  <h2>História <span class="pos">FGV Q49–Q54 · Mackenzie Q47–Q53</span></h2>
+  <p class="sub">As duas bancas cobram as mesmas épocas: Idade Moderna, Brasil República e século XX caíram em quase todas as provas das duas, e a Antiguidade ou a Idade Média abre o bloco nas duas. Nos temas, a História se espalha mais: 8 temas caíram em pelo menos 3 provas de cada banca.</p>
+  <figure class="cz" id="cz-hper">
+    <figcaption>
+      <div>
+        <p class="cz-tit">História: épocas</p>
+        <p class="cz-sub">Presença de cada época nas provas.</p>
+        <div class="cz-leg"><span><i class="i-f"></i>FGV · de 11 provas</span><span><i class="i-m"></i>Mackenzie · de 13 provas</span></div>
+      </div>
+      <div class="ordem" role="group" aria-label="Ordenar o gráfico"><span>Ordem</span><div class="ordem-bt"><button type="button" id="cz-hper-duas" data-modo="duas" aria-pressed="true">Nas duas</button><button type="button" id="cz-hper-fgv" data-modo="fgv" aria-pressed="false">FGV</button><button type="button" id="cz-hper-mack" data-modo="mack" aria-pressed="false">Mackenzie</button></div></div>
+    </figcaption>
+    <div class="cz-escala" aria-hidden="true"><span>Presença nas provas</span><div class="cz-eixo"><span style="left:0">0%</span><span style="left:calc((100% - 3.8rem) * .5)">50%</span><span style="left:calc(100% - 3.8rem)">100%</span></div></div>
+    <div class="cz-corpo">
+      <div class="cz-grupo" data-g="duas">Cai nas duas<span>5+ provas da FGV e 6+ do Mackenzie</span></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="0" data-pf="0.9091" data-pm="0.9231" data-nf="14" data-nm="19" data-tip="Idade Moderna · FGV: 14 questões em 10 de 11 provas (4 das 4 mais recentes) · Mackenzie: 19 questões em 12 de 13 provas (4 das 4 mais recentes)" aria-label="Idade Moderna: FGV 10 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Idade Moderna</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.909"></div><span class="cz-val">10/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="1" data-pf="0.8182" data-pm="1.0000" data-nf="10" data-nm="22" data-tip="Brasil República · FGV: 10 questões em 9 de 11 provas (3 das 4 mais recentes) · Mackenzie: 22 questões em 13 de 13 provas (4 das 4 mais recentes)" aria-label="Brasil República: FGV 9 de 11 provas; Mackenzie 13 de 13 provas"><div class="cz-nome">Brasil República</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.818"></div><span class="cz-val">9/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:1.000"></div><span class="cz-val">13/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="2" data-pf="0.8182" data-pm="0.9231" data-nf="13" data-nm="17" data-tip="Século XX no mundo · FGV: 13 questões em 9 de 11 provas (4 das 4 mais recentes) · Mackenzie: 17 questões em 12 de 13 provas (3 das 4 mais recentes)" aria-label="Século XX no mundo: FGV 9 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Século XX no mundo</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.818"></div><span class="cz-val">9/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="3" data-pf="0.4545" data-pm="0.9231" data-nf="5" data-nm="18" data-tip="Antiguidade e Idade Média · FGV: 5 questões em 5 de 11 provas (3 das 4 mais recentes) · Mackenzie: 18 questões em 12 de 13 provas (4 das 4 mais recentes)" aria-label="Antiguidade e Idade Média: FGV 5 de 11 provas; Mackenzie 12 de 13 provas"><div class="cz-nome">Antiguidade e Idade Média</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.455"></div><span class="cz-val">5/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.923"></div><span class="cz-val">12/13</span></div></div></div>
+<div class="cz-grupo" data-g="fgv">Mais na FGV<span></span></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="4" data-pf="0.7273" data-pm="0.3846" data-nf="9" data-nm="5" data-tip="Brasil: período joanino e Império · FGV: 9 questões em 8 de 11 provas (3 das 4 mais recentes) · Mackenzie: 5 questões em 5 de 13 provas (2 das 4 mais recentes)" aria-label="Brasil: período joanino e Império: FGV 8 de 11 provas; Mackenzie 5 de 13 provas"><div class="cz-nome">Brasil: período joanino e Império</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.727"></div><span class="cz-val">8/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.385"></div><span class="cz-val">5/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="5" data-pf="0.5455" data-pm="0.2308" data-nf="6" data-nm="3" data-tip="Brasil Colônia · FGV: 6 questões em 6 de 11 provas (3 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (1 das 4 mais recentes)" aria-label="Brasil Colônia: FGV 6 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Brasil Colônia</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.545"></div><span class="cz-val">6/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-grupo" data-g="mack">Mais no Mackenzie<span></span></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="6" data-pf="0.3636" data-pm="0.4615" data-nf="6" data-nm="7" data-tip="Revoluções e século XIX · FGV: 6 questões em 4 de 11 provas (2 das 4 mais recentes) · Mackenzie: 7 questões em 6 de 13 provas (1 das 4 mais recentes)" aria-label="Revoluções e século XIX: FGV 4 de 11 provas; Mackenzie 6 de 13 provas"><div class="cz-nome">Revoluções e século XIX</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.462"></div><span class="cz-val">6/13</span></div></div></div>
+    </div>
+    
+  </figure>
+  <div class="destaque">
+    <p><strong>A ordem das questões ajuda a prever a prova.</strong> As duas bancas seguem uma ordem quase cronológica. Na FGV, desde 2024.1, a Q49 foi Antiguidade ou Idade Média em 5 das 6 provas. No Mackenzie, desde 2024.2, a Q47 foi Antiguidade ou Idade Média e a Q51 foi Brasil República em todas as 7 provas.</p>
+  </div>
+  <figure class="cz" id="cz-hfoco">
+    <figcaption>
+      <div>
+        <p class="cz-tit">História: temas</p>
+        <p class="cz-sub">Presença de cada tema nas provas. Aqui, “nas duas” quer dizer pelo menos 3 provas em cada banca.</p>
+        <div class="cz-leg"><span><i class="i-f"></i>FGV · de 11 provas</span><span><i class="i-m"></i>Mackenzie · de 13 provas</span></div>
+      </div>
+      <div class="ordem" role="group" aria-label="Ordenar o gráfico"><span>Ordem</span><div class="ordem-bt"><button type="button" id="cz-hfoco-duas" data-modo="duas" aria-pressed="true">Nas duas</button><button type="button" id="cz-hfoco-fgv" data-modo="fgv" aria-pressed="false">FGV</button><button type="button" id="cz-hfoco-mack" data-modo="mack" aria-pressed="false">Mackenzie</button></div></div>
+    </figcaption>
+    <div class="cz-escala" aria-hidden="true"><span>Presença nas provas</span><div class="cz-eixo"><span style="left:0">0%</span><span style="left:calc((100% - 3.8rem) * .5)">50%</span><span style="left:calc(100% - 3.8rem)">100%</span></div></div>
+    <div class="cz-corpo">
+      <div class="cz-grupo" data-g="duas">Cai nas duas<span>3+ provas em cada</span></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="0" data-pf="0.2727" data-pm="0.7692" data-nf="3" data-nm="12" data-tip="Era Vargas e populismo · FGV: 3 questões em 3 de 11 provas (0 das 4 mais recentes) · Mackenzie: 12 questões em 10 de 13 provas (3 das 4 mais recentes)" aria-label="Era Vargas e populismo: FGV 3 de 11 provas; Mackenzie 10 de 13 provas"><div class="cz-nome">Era Vargas e populismo</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.769"></div><span class="cz-val">10/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="1" data-pf="0.3636" data-pm="0.6154" data-nf="4" data-nm="10" data-tip="América: conquista, sistema colonial e tráfico · FGV: 4 questões em 4 de 11 provas (2 das 4 mais recentes) · Mackenzie: 10 questões em 8 de 13 provas (3 das 4 mais recentes)" aria-label="América: conquista, sistema colonial e tráfico: FGV 4 de 11 provas; Mackenzie 8 de 13 provas"><div class="cz-nome">América: conquista, sistema colonial e tráfico</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.615"></div><span class="cz-val">8/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="2" data-pf="0.5455" data-pm="0.2308" data-nf="6" data-nm="3" data-tip="Ditadura militar e abertura · FGV: 6 questões em 6 de 11 provas (3 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (1 das 4 mais recentes)" aria-label="Ditadura militar e abertura: FGV 6 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Ditadura militar e abertura</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.545"></div><span class="cz-val">6/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="3" data-pf="0.4545" data-pm="0.3077" data-nf="5" data-nm="4" data-tip="Regência e Segundo Reinado · FGV: 5 questões em 5 de 11 provas (2 das 4 mais recentes) · Mackenzie: 4 questões em 4 de 13 provas (2 das 4 mais recentes)" aria-label="Regência e Segundo Reinado: FGV 5 de 11 provas; Mackenzie 4 de 13 provas"><div class="cz-nome">Regência e Segundo Reinado</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.455"></div><span class="cz-val">5/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.308"></div><span class="cz-val">4/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="4" data-pf="0.2727" data-pm="0.4615" data-nf="3" data-nm="6" data-tip="Guerra Fria · FGV: 3 questões em 3 de 11 provas (1 das 4 mais recentes) · Mackenzie: 6 questões em 6 de 13 provas (1 das 4 mais recentes)" aria-label="Guerra Fria: FGV 3 de 11 provas; Mackenzie 6 de 13 provas"><div class="cz-nome">Guerra Fria</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.462"></div><span class="cz-val">6/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="5" data-pf="0.3636" data-pm="0.3077" data-nf="5" data-nm="5" data-tip="Entreguerras, fascismos e crise de 1929 · FGV: 5 questões em 4 de 11 provas (1 das 4 mais recentes) · Mackenzie: 5 questões em 4 de 13 provas (1 das 4 mais recentes)" aria-label="Entreguerras, fascismos e crise de 1929: FGV 4 de 11 provas; Mackenzie 4 de 13 provas"><div class="cz-nome">Entreguerras, fascismos e crise de 1929</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.308"></div><span class="cz-val">4/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="6" data-pf="0.3636" data-pm="0.3077" data-nf="4" data-nm="4" data-tip="Roma antiga · FGV: 4 questões em 4 de 11 provas (2 das 4 mais recentes) · Mackenzie: 4 questões em 4 de 13 provas (1 das 4 mais recentes)" aria-label="Roma antiga: FGV 4 de 11 provas; Mackenzie 4 de 13 provas"><div class="cz-nome">Roma antiga</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.308"></div><span class="cz-val">4/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="duas" data-i="7" data-pf="0.2727" data-pm="0.2308" data-nf="4" data-nm="3" data-tip="Reformas religiosas e Igreja · FGV: 4 questões em 3 de 11 provas (0 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (1 das 4 mais recentes)" aria-label="Reformas religiosas e Igreja: FGV 3 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Reformas religiosas e Igreja</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-grupo" data-g="fgv">Mais na FGV<span></span></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="8" data-pf="0.3636" data-pm="0.0769" data-nf="4" data-nm="1" data-tip="Independência e Primeiro Reinado · FGV: 4 questões em 4 de 11 provas (1 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Independência e Primeiro Reinado: FGV 4 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Independência e Primeiro Reinado</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.364"></div><span class="cz-val">4/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="9" data-pf="0.2727" data-pm="0.0769" data-nf="3" data-nm="1" data-tip="Iluminismo e independência dos EUA · FGV: 3 questões em 3 de 11 provas (1 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Iluminismo e independência dos EUA: FGV 3 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Iluminismo e independência dos EUA</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="10" data-pf="0.2727" data-pm="0.0769" data-nf="3" data-nm="1" data-tip="Revolução Francesa e Napoleão · FGV: 3 questões em 3 de 11 provas (2 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Revolução Francesa e Napoleão: FGV 3 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Revolução Francesa e Napoleão</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="fgv" data-i="11" data-pf="0.2727" data-pm="0.0769" data-nf="3" data-nm="1" data-tip="Sociedade colonial · FGV: 3 questões em 3 de 11 provas (2 das 4 mais recentes) · Mackenzie: 1 questão em 1 de 13 prova (0 das 4 mais recentes)" aria-label="Sociedade colonial: FGV 3 de 11 provas; Mackenzie 1 de 13 provas"><div class="cz-nome">Sociedade colonial</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.273"></div><span class="cz-val">3/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.077"></div><span class="cz-val">1/13</span></div></div></div>
+<div class="cz-grupo" data-g="mack">Mais no Mackenzie<span></span></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="12" data-pf="0.0909" data-pm="0.6154" data-nf="1" data-nm="9" data-tip="Idade Média · FGV: 1 questão em 1 de 11 prova (1 das 4 mais recentes) · Mackenzie: 9 questões em 8 de 13 provas (4 das 4 mais recentes)" aria-label="Idade Média: FGV 1 de 11 provas; Mackenzie 8 de 13 provas"><div class="cz-nome">Idade Média</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.091"></div><span class="cz-val">1/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.615"></div><span class="cz-val">8/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="13" data-pf="0.0909" data-pm="0.3846" data-nf="1" data-nm="6" data-tip="Primeira República · FGV: 1 questão em 1 de 11 prova (0 das 4 mais recentes) · Mackenzie: 6 questões em 5 de 13 provas (3 das 4 mais recentes)" aria-label="Primeira República: FGV 1 de 11 provas; Mackenzie 5 de 13 provas"><div class="cz-nome">Primeira República</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.091"></div><span class="cz-val">1/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.385"></div><span class="cz-val">5/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="14" data-pf="0.1818" data-pm="0.2308" data-nf="2" data-nm="3" data-tip="Renascimento e expansão marítima · FGV: 2 questões em 2 de 11 provas (1 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (2 das 4 mais recentes)" aria-label="Renascimento e expansão marítima: FGV 2 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Renascimento e expansão marítima</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.182"></div><span class="cz-val">2/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="15" data-pf="0.0909" data-pm="0.2308" data-nf="2" data-nm="3" data-tip="Descolonização, racismo e movimentos sociais · FGV: 2 questões em 1 de 11 prova (0 das 4 mais recentes) · Mackenzie: 3 questões em 3 de 13 provas (0 das 4 mais recentes)" aria-label="Descolonização, racismo e movimentos sociais: FGV 1 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Descolonização, racismo e movimentos sociais</div><div class="cz-pares"><div class="cz-linha lf"><div class="cz-bar" style="--p:0.091"></div><span class="cz-val">1/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+<div class="cz-row" tabindex="0" data-g="mack" data-i="16" data-pf="0.0000" data-pm="0.2308" data-nf="0" data-nm="3" data-tip="Grécia antiga · FGV: não caiu · Mackenzie: 3 questões em 3 de 13 provas (0 das 4 mais recentes)" aria-label="Grécia antiga: FGV 0 de 11 provas; Mackenzie 3 de 13 provas"><div class="cz-nome">Grécia antiga</div><div class="cz-pares"><div class="cz-linha lf zero"><div class="cz-bar" style="--p:0.000"></div><span class="cz-val">0/11</span></div><div class="cz-linha lm"><div class="cz-bar" style="--p:0.231"></div><span class="cz-val">3/13</span></div></div></div>
+    </div>
+    <p class="cz-rodape">Com uma ou duas provas em cada banca, e fora do gráfico: Absolutismo e revoluções inglesas, Revolução Industrial e imperialismo, Revoltas coloniais e Inconfidência, Oriente Médio: Israel e Palestina, Primeira Guerra Mundial, Independências na América Latina, Pré-história e Oriente antigo, Socialismo e movimento operário, União Ibérica, Administração colonial, Nova República, Revolução Russa, Segunda Guerra Mundial.</p>
+  </figure>
+  <h3>Os temas que caem nas duas</h3>
+  <div class="temas">
+    <div class="tema"><div class="freq"><span class="f">FGV 3/11</span><span class="m">Mack 10/13</span></div><div class="nome">Era Vargas e populismo</div><p class="det"><b>Mackenzie:</b> o tema mais cobrado, em 10 das 13 provas: Estado Novo (propaganda, repressão, queima das bandeiras estaduais), Constituição de 1934, Intentona Comunista, segundo governo Vargas e JK com o Plano de Metas (duas vezes). <b>FGV:</b> populismo, Integralismo e uma charge de Belmonte de 1934.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 4/11</span><span class="m">Mack 8/13</span></div><div class="nome">América: conquista, sistema colonial e tráfico</div><p class="det">A conquista do México caiu nas duas: epidemias e ocidentalização na FGV; Tenochtitlán, Malinche e as alianças de Cortés com povos locais no Mackenzie. Também nas duas: escravidão nas Américas e o sistema colonial. <b>Mackenzie:</b> ainda Incas, mineração na América espanhola, colônias de exploração e de povoamento e o tráfico visto da África (duas vezes).</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 6/11</span><span class="m">Mack 3/13</span></div><div class="nome">Ditadura militar e abertura</div><p class="det"><b>FGV:</b> o tema que mais se repete, quase sempre sobre a abertura: Anistia, Riocentro, oposição de 1974 a 1980, governo Figueiredo. <b>Mackenzie:</b> AI-2 e bipartidarismo, tortura e Anistia numa charge, direitos humanos e a visita de Carter (1978). Nas duas, uma questão ligou o golpe no Brasil às ditaduras do Cone Sul e ao apoio dos EUA (FGV 2024.2; Mackenzie 2023.2).</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 5/11</span><span class="m">Mack 4/13</span></div><div class="nome">Regência e Segundo Reinado</div><p class="det">O parlamentarismo do Segundo Reinado caiu nas duas (FGV 2026.2; Mackenzie 2026.1, o “parlamentarismo às avessas”). <b>Mackenzie:</b> Ato Adicional de 1834 e a descentralização da Regência (duas vezes) e o fim do tráfico, de 1831 a 1853. <b>FGV:</b> Revolta dos Malês, capoeira, IHGB e crise da monarquia.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 3/11</span><span class="m">Mack 6/13</span></div><div class="nome">Guerra Fria</div><p class="det">As ditaduras da América do Sul com apoio dos EUA caíram nas duas. <b>Mackenzie:</b> crise dos mísseis, macartismo, Vietnã, Perestroika e guerrilhas latino-americanas. <b>FGV:</b> 1968 e a contracultura, e a política de Truman para o Terceiro Mundo.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 4/11</span><span class="m">Mack 4/13</span></div><div class="nome">Entreguerras, fascismos e crise de 1929</div><p class="det">New Deal caiu nas duas (FGV 2023.2; Mackenzie 2023.1). <b>Mackenzie:</b> fascismo italiano duas vezes, Guerra Civil Espanhola e o apaziguamento de Chamberlain. <b>FGV:</b> República de Weimar, Revolução Alemã, salazarismo e a comparação entre as crises de 1929, 1973 e 2008.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 4/11</span><span class="m">Mack 4/13</span></div><div class="nome">Roma antiga</div><p class="det">Nas duas, a primeira questão de História costuma ser Antiguidade ou Idade Média. <b>FGV:</b> cristianismo, fim do Império, mulheres no mundo romano e teocracia. <b>Mackenzie:</b> Pax Romana, Guerras Púnicas, Júlio César e invasões bárbaras.</p></div>
+<div class="tema"><div class="freq"><span class="f">FGV 3/11</span><span class="m">Mack 3/13</span></div><div class="nome">Reformas religiosas e Igreja</div><p class="det">Reforma Protestante, Contrarreforma e Concílio de Trento caíram nas duas. <b>Mackenzie:</b> Erasmo e o humanismo como antecedentes da Reforma. <b>FGV:</b> jesuítas na América e as tensões religiosas na Inglaterra de Maria I.</p></div>
+  </div>
+  <div class="destaque">
+    <p><strong>Escravidão e racismo atravessam as duas provas.</strong> Foram 8 questões em 8 das 11 provas da FGV e 9 questões em 7 das 13 do Mackenzie. Na FGV: capoeira, Revolta dos Malês, irmandades negras, engenhos, escravidão nas Américas, mita e encomienda, Apartheid e a “Resposta Histórica” do Vasco em 1924. No Mackenzie: tráfico atlântico (três vezes), fim do tráfico para o Brasil (1831–1853), Revolução Haitiana, “O fardo do homem branco”, independência do Congo, Martin Luther King e “Strange Fruit”. Estude a escravidão como um eixo que liga Colônia, Império e o mundo atlântico.</p>
+  </div>
+  <h3>O que é de uma prova só</h3>
+  <div class="lados"><div class="lado"><p class="lado-tit f">Mais na FGV</p><ul><li><span>Independência e Primeiro Reinado</span><small><span class="f">4/11</span> · <span class="m">1/13</span></small></li><li><span>Iluminismo e independência dos EUA</span><small><span class="f">3/11</span> · <span class="m">1/13</span></small></li><li><span>Revolução Francesa e Napoleão</span><small><span class="f">3/11</span> · <span class="m">1/13</span></small></li><li><span>Sociedade colonial</span><small><span class="f">3/11</span> · <span class="m">1/13</span></small></li><li><span>Oriente Médio: Israel e Palestina</span><small><span class="f">2/11</span> · <span class="m">0/13</span></small></li></ul><p>O Oriente Médio entrou com duas questões na FGV: a criação de Israel (2025.1) e a partilha da Palestina (2026.2).</p></div><div class="lado lm"><p class="lado-tit m">Mais no Mackenzie</p><ul><li><span>Idade Média</span><small><span class="f">1/11</span> · <span class="m">8/13</span></small></li><li><span>Primeira República</span><small><span class="f">1/11</span> · <span class="m">5/13</span></small></li><li><span>Renascimento e expansão marítima</span><small><span class="f">2/11</span> · <span class="m">3/13</span></small></li><li><span>Descolonização, racismo e movimentos sociais</span><small><span class="f">1/11</span> · <span class="m">3/13</span></small></li><li><span>Grécia antiga</span><small><span class="f">0/11</span> · <span class="m">3/13</span></small></li></ul><p>A Idade Média caiu em 8 das 13 provas do Mackenzie, inclusive nas 4 mais recentes: feudalismo e vassalagem, as três ordens, Peste Negra, Cruzadas, Bizâncio.</p></div></div>
+</section>
+
+<section>
+  <h2>Por onde começar</h2>
+  <p class="sub">Primeiro o que cai nas duas provas, na ordem de prioridade; depois o que é de uma banca só. Marque o que já fechou; a página guarda suas marcações neste navegador.</p>
+  <div id="lista"></div>
+  <p class="check-meta" id="progresso">0 de 31 concluídos</p>
+</section>
+
+<footer>
+  <p>FGV: provas objetivas do Vestibular FGV-SP de 11 edições, de 2021.1 (22/11/2020) a 2026.2 (24/05/2026), com Matemática Q1–Q15, Língua Portuguesa Q16–Q30 e a parte de História de Ciências Humanas. Mackenzie: 13 provas de Higienópolis, de 2022.2 (21/06/2022) a 2026.2 (15/07/2026), com as duas aplicações de cada processo de novembro (manhã e tarde em 2023.1; dia 1 e dia 2 em 2024.1 e 2025.1; Grupos 1 e 2 em 2026.1). Na prova de 2022.2, Português foi Q1–Q9 e Matemática Q31–Q39.</p>
+  <p>Cada questão foi classificada por um assunto principal, com as mesmas categorias nas duas provas; as classificações completas estão em analise/fgv/classificacao-fgv.csv e analise/mackenzie/classificacao-mackenzie.csv. Uma presença como “9/11” indica em quantas provas o assunto apareceu. Trate a lista como ordem de prioridade, não como garantia de que o assunto vai cair.</p>
+  <p>Fontes: <a href="https://vestibular.fgv.br/provas-gabaritos">provas e gabaritos da FGV</a> · <a href="https://www.curso-objetivo.br/vestibular/resolucao-comentada/mackenzie.aspx">resoluções comentadas do Mackenzie (Curso Objetivo)</a> · provas oficiais do Mackenzie de <a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/2-processos-seletivos/upm/VESTIBULAR_REGULAR/2026/2026_1/Prova_26.11.2025_-_Higien%C3%B3polis_-_2026_1__semestre.pdf">26/11/2025</a>, <a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/2-processos-seletivos/upm/VESTIBULAR_REGULAR/2026/2026_1/Prova_27.11.2025_-_Higien%C3%B3polis_-_2026_1__semestre.pdf">27/11/2025</a> e <a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/2-processos-seletivos/upm/VESTIBULAR_REGULAR/2026/2026_2/Prova_15.07.2026_-_2026_2__semestre.pdf">15/07/2026</a> (<a href="https://www.mackenzie.br/fileadmin/ARQUIVOS/Public/2-processos-seletivos/upm/VESTIBULAR_REGULAR/2026/2026_2/Gabarito_15.07.2026_-_2026_2__semestre.pdf">gabarito</a>) · <a href="https://www.mackenzie.br/processos-seletivos/vestibular-graduacao/sao-paulo-higienopolis">vestibular Mackenzie Higienópolis</a> · <a href="https://vestibular.fgv.br/sites/default/files/2026-07/materiais/edital-unificado_01-2027_4.pdf">Edital FGV 1º/2027</a>.</p>
+</footer>
+
+</div>
+
+<div id="tip" role="tooltip" hidden></div>
+
+<script>
+var grupos = [{"titulo": "Nas duas provas", "itens": [{"id": "mat-tri", "texto": "Trigonometria: ciclo, equações, lei dos senos e dos cossenos, máximo e mínimo de funções com seno e cosseno"}, {"id": "mat-prog", "texto": "Progressões: termo geral e soma de PA e PG, PG infinita, problemas que misturam as duas"}, {"id": "lp-sem", "texto": "Semântica: sinônimos no contexto, sentido conotativo e o valor de palavras como “apenas” e “tal”"}, {"id": "lp-mod", "texto": "Modernismo: Semana de 22, Macunaíma, Oswald, Drummond (“No meio do caminho”), Bandeira e Cecília Meireles"}, {"id": "his-rep", "texto": "Brasil República: Era Vargas (1934, Estado Novo, 1951–1954), JK e ditadura militar até a abertura"}, {"id": "mat-gpl", "texto": "Geometria plana: semelhança, Tales, relações métricas, áreas com círculos e hexágono regular"}, {"id": "mat-gan", "texto": "Geometria analítica: retas, distância, área por coordenadas, circunferência e tangência"}, {"id": "mat-ges", "texto": "Geometria espacial: cilindro e cone (área, volume e planificação), cubos e prismas"}, {"id": "his-amer", "texto": "América colonial: conquista do México e do Peru, sistema colonial e tráfico atlântico"}, {"id": "lp-int", "texto": "Interpretação: tese, inferência, afirmações I, II e III, comparação entre texto e imagem"}, {"id": "mat-prob", "texto": "Probabilidade: condicional e total, eventos independentes, pessoas lado a lado"}, {"id": "mat-eq", "texto": "Equações e sistemas com contexto; equação do 2º grau com soma e produto das raízes"}, {"id": "mat-exp", "texto": "Exponencial e logaritmo: propriedades, equações, crescimento e meia-vida"}, {"id": "his-xx", "texto": "Século XX: entreguerras, fascismos e crise de 1929; Guerra Fria"}, {"id": "lp-con", "texto": "Conectivos: “contudo”, “no entanto”, “com isso”, “conquanto”, orações reduzidas"}, {"id": "mat-porc", "texto": "Porcentagem e juros: aumentos e descontos sucessivos, juros compostos e misturas"}, {"id": "mat-raz", "texto": "Razão e proporção: regra de três composta, velocidade média, divisão proporcional"}, {"id": "his-imp", "texto": "Império: Regência, Ato Adicional de 1834 e parlamentarismo do Segundo Reinado"}, {"id": "his-ant", "texto": "Roma e Idade Média: Pax Romana, crise do Império, feudalismo e Igreja"}, {"id": "mat-faq", "texto": "Função afim e quadrática: vértice da parábola (máximo e mínimo) e modelos lineares"}, {"id": "his-mod", "texto": "Idade Moderna na Europa: Renascimento, Reforma e Contrarreforma, absolutismo"}, {"id": "his-esc", "texto": "Escravidão e racismo como eixo: tráfico, abolição, Haiti, Estados Unidos, África"}, {"id": "lp-lit19", "texto": "Romantismo e Realismo: indianismo de Alencar, “Canção do exílio”, O cortiço, O Ateneu e Machado de Assis"}]}, {"titulo": "Depois, o que é mais da FGV", "itens": [{"id": "f-mat", "texto": "Análise combinatória, estatística (médias), números inteiros e lógica"}, {"id": "f-lp", "texto": "Tirinha e cartum, figuras de linguagem, formação de palavras e morfossintaxe"}, {"id": "f-mach", "texto": "Machado de Assis em trechos longos: Dom Casmurro, Memórias póstumas, contos"}, {"id": "f-his", "texto": "Independência e Primeiro Reinado, Revolução Francesa, Iluminismo, sociedade colonial e Oriente Médio"}]}, {"titulo": "Depois, o que é mais do Mackenzie", "itens": [{"id": "m-gen", "texto": "Funções da linguagem, tipologia e gêneros textuais"}, {"id": "m-lit", "texto": "Escolas literárias: Barroco, Arcadismo, Parnasianismo, Simbolismo, Camões e Gil Vicente; paródia e paráfrase"}, {"id": "m-his", "texto": "Idade Média, Grécia antiga e Primeira República (coronelismo, café com leite, imigração)"}, {"id": "m-mat", "texto": "Matrizes, determinantes, polinômios e números complexos (não caíram nas 4 provas mais recentes)"}]}];
+
+var lista = document.getElementById("lista");
+var progresso = document.getElementById("progresso");
+var KEY = "fgv-mack-v1";
+var estado = {};
+var total = 0;
+
+try {
+  var salvo = localStorage.getItem(KEY);
+  if (salvo) { estado = JSON.parse(salvo) || {}; }
+} catch (e) { estado = {}; }
+
+function atualizar() {
+  var feitos = 0;
+  for (var k in estado) { if (estado[k]) { feitos++; } }
+  progresso.textContent = feitos + " de " + total + " concluídos";
+  try { localStorage.setItem(KEY, JSON.stringify(estado)); } catch (e) {}
+}
+
+grupos.forEach(function (g) {
+  var tit = document.createElement("p");
+  tit.className = "check-grupo";
+  tit.textContent = g.titulo;
+  lista.appendChild(tit);
+  var box = document.createElement("div");
+  box.className = "check";
+  g.itens.forEach(function (item) {
+    total++;
+    var label = document.createElement("label");
+    label.className = "check-item";
+    var input = document.createElement("input");
+    input.type = "checkbox";
+    input.id = "item-" + item.id;
+    input.checked = !!estado[item.id];
+    var texto = document.createElement("span");
+    texto.textContent = item.texto;
+    input.addEventListener("change", function () {
+      if (input.checked) { estado[item.id] = true; } else { delete estado[item.id]; }
+      atualizar();
+    });
+    label.appendChild(input);
+    label.appendChild(texto);
+    box.appendChild(label);
+  });
+  lista.appendChild(box);
+});
+atualizar();
+
+/* Ordenação dos gráficos: grupos (padrão), só FGV ou só Mackenzie */
+function ordenar(fig, modo) {
+  var corpo = fig.querySelector(".cz-corpo");
+  var linhas = Array.prototype.slice.call(corpo.querySelectorAll(".cz-row"));
+  var cabecas = Array.prototype.slice.call(corpo.querySelectorAll(".cz-grupo"));
+  if (modo === "duas") {
+    cabecas.forEach(function (c) {
+      c.hidden = false;
+      corpo.appendChild(c);
+      linhas.filter(function (l) { return l.getAttribute("data-g") === c.getAttribute("data-g"); })
+        .sort(function (a, b) { return a.getAttribute("data-i") - b.getAttribute("data-i"); })
+        .forEach(function (l) { corpo.appendChild(l); });
+    });
+  } else {
+    var p = modo === "fgv" ? "data-pf" : "data-pm";
+    var n = modo === "fgv" ? "data-nf" : "data-nm";
+    cabecas.forEach(function (c) { c.hidden = true; });
+    linhas.sort(function (a, b) {
+      return (b.getAttribute(p) - a.getAttribute(p)) || (b.getAttribute(n) - a.getAttribute(n)) || (a.getAttribute("data-i") - b.getAttribute("data-i"));
+    }).forEach(function (l) { corpo.appendChild(l); });
+  }
+  Array.prototype.forEach.call(fig.querySelectorAll(".ordem button"), function (b) {
+    b.setAttribute("aria-pressed", b.getAttribute("data-modo") === modo ? "true" : "false");
+  });
+}
+Array.prototype.forEach.call(document.querySelectorAll(".cz"), function (fig) {
+  Array.prototype.forEach.call(fig.querySelectorAll(".ordem button"), function (b) {
+    b.addEventListener("click", function () { ordenar(fig, b.getAttribute("data-modo")); });
+  });
+});
+
+/* Dica flutuante nas linhas dos gráficos */
+var tip = document.getElementById("tip");
+function posicionar(x, y) {
+  var w = tip.offsetWidth, h = tip.offsetHeight;
+  var left = Math.min(x + 14, window.innerWidth - w - 8);
+  var top = y + 16;
+  if (top + h > window.innerHeight - 8) { top = y - h - 12; }
+  tip.style.left = Math.max(8, left) + "px";
+  tip.style.top = Math.max(8, top) + "px";
+}
+function mostrar(el, x, y) {
+  tip.textContent = el.getAttribute("data-tip");
+  tip.hidden = false;
+  posicionar(x, y);
+}
+function esconder() { tip.hidden = true; }
+Array.prototype.forEach.call(document.querySelectorAll(".cz-row[data-tip]"), function (el) {
+  el.addEventListener("pointermove", function (ev) {
+    if (ev.pointerType === "touch") { return; }
+    mostrar(el, ev.clientX, ev.clientY);
+  });
+  el.addEventListener("pointerleave", esconder);
+  el.addEventListener("focus", function () {
+    var r = el.getBoundingClientRect();
+    mostrar(el, r.left + r.width * 0.35, r.bottom - 6);
+  });
+  el.addEventListener("blur", esconder);
+});
+window.addEventListener("scroll", esconder, { passive: true });
+</script>

@@ -29,3 +29,20 @@ novas provas forem incluídas.
 - **Português**: divisão interna fixa — seis questões de interpretação de texto e
   quatro de literatura. Modernismo é o assunto literário mais cobrado.
 - **Geografia**: cartografia e geopolítica atual concentram mais da metade do bloco.
+
+## Outros materiais
+
+`claude-code/claude-vs-claude-code.pdf` — guia prático de 10 páginas sobre as principais
+diferenças entre o Claude do chat e o Claude Code, por que o Claude Code rende mais para
+quem trabalha com TI e as vantagens dos plugins. Conteúdo conferido na documentação
+oficial (code.claude.com e claude.com) em outubro de 2026.
+
+O PDF é gerado a partir de `claude-code/fonte/documento.html` com o Chromium do
+Playwright:
+
+```bash
+cd claude-code/fonte
+NODE_PATH="$(npm root -g)" node gerar-pdf.cjs
+```
+
+As fontes IBM Plex ficam em `claude-code/fonte/fonts/` (SIL Open Font License).

@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Claude × Claude Code — Guia prático</title>
+<meta name="description" content="As principais diferenças entre o Claude do chat e o Claude Code, por que o Claude Code rende mais para quem trabalha com TI e as vantagens dos plugins.">
+<style>
+@font-face{font-family:"Plex Sans";src:url("fonts/IBMPlexSans-Regular.woff2") format("woff2");font-weight:400;font-style:normal}
+@font-face{font-family:"Plex Sans";src:url("fonts/IBMPlexSans-Italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Plex Sans";src:url("fonts/IBMPlexSans-SemiBold.woff2") format("woff2");font-weight:600;font-style:normal}
+@font-face{font-family:"Plex Sans";src:url("fonts/IBMPlexSans-Bold.woff2") format("woff2");font-weight:700;font-style:normal}
+@font-face{font-family:"Plex Mono";src:url("fonts/IBMPlexMono-Regular.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Plex Mono";src:url("fonts/IBMPlexMono-Medium.woff2") format("woff2");font-weight:500}
+@font-face{font-family:"Plex Mono";src:url("fonts/IBMPlexMono-SemiBold.woff2") format("woff2");font-weight:600}
+@font-face{font-family:"Plex Serif";src:url("fonts/IBMPlexSerif-Italic.woff2") format("woff2");font-weight:400;font-style:italic}
+@font-face{font-family:"Plex Serif";src:url("fonts/IBMPlexSerif-MediumItalic.woff2") format("woff2");font-weight:500;font-style:italic}
+
+:root{
+  --ink:#1c1b19; --ink-2:#3a3732; --muted:#6a655d; --faint:#8c867c;
+  --line:#e3ddd2; --line-2:#d3ccbf;
+  --tint:#f6f2ec; --tint-2:#fbf9f5;
+  --accent:#b1492a; --accent-2:#d9774f; --accent-soft:#f7e6dd; --accent-bright:#e8916b;
+  --slate:#4a5b6e; --slate-soft:#e7ecf1;
+  --code-bg:#1b1a18; --code-ink:#ece7df; --code-dim:#958e83;
+  --ok:#2e7a4d; --ok-soft:#e0efe5; --no:#a8402f; --no-soft:#f6e0db; --mid:#9a6a10; --mid-soft:#f5ead2;
+}
+
+@page{
+  size:A4; margin:16mm 17mm 17mm 17mm;
+  @bottom-left{content:"Claude × Claude Code · Guia prático";font-family:"Plex Sans";font-size:7.5pt;color:#8c867c}
+  @bottom-right{content:counter(page);font-family:"Plex Mono";font-size:7.5pt;color:#8c867c}
+}
+@page :first{margin:0; @bottom-left{content:none} @bottom-right{content:none}}
+
+*{box-sizing:border-box}
+html{font-size:9.5pt}
+body{margin:0;font-family:"Plex Sans",sans-serif;color:var(--ink);line-height:1.5;font-kerning:normal;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:optimizeLegibility}
+p{margin:0 0 2.6mm}
+strong{font-weight:600}
+em{font-style:italic}
+code,.mono{font-family:"Plex Mono",monospace}
+code{font-size:.9em;background:var(--tint);border:1px solid var(--line);border-radius:.9mm;padding:0 .8mm;white-space:nowrap}
+a{color:inherit;text-decoration:none}
+.new-page{break-before:page}
+.avoid{break-inside:avoid}
+
+/* ---------- CAPA ---------- */
+.cover{position:relative;width:210mm;height:297mm;overflow:hidden;background:#181715;color:#f3efe8;
+  padding:20mm 19mm 16mm;display:flex;flex-direction:column;justify-content:space-between;break-after:page}
+.cover-loop{position:absolute;right:12mm;top:15mm;width:72mm;height:72mm}
+.cover .eyebrow{font-family:"Plex Mono";font-size:8pt;letter-spacing:.16em;text-transform:uppercase;color:#e8916b}
+.cover-title{font-size:50pt;line-height:1;font-weight:600;letter-spacing:-.025em;margin:9mm 0 6mm}
+.cover-title .x{color:#e8916b;font-weight:400}
+.cover-sub{font-family:"Plex Serif";font-style:italic;font-weight:400;font-size:19pt;line-height:1.25;color:#efe9df;margin:0 0 5mm}
+.cover-lede{font-size:11pt;line-height:1.55;color:#bdb5a9;max-width:136mm;margin:0}
+.terminal{background:#0e0d0c;border:1px solid #2f2c28;border-radius:3mm;overflow:hidden;
+  box-shadow:0 0 0 1px rgba(255,255,255,.02)}
+.term-bar{display:flex;align-items:center;gap:1.6mm;padding:2.6mm 3.5mm;background:#1f1d1a;border-bottom:1px solid #2f2c28}
+.term-bar i{width:2.4mm;height:2.4mm;border-radius:50%;background:#4a4540;display:block}
+.term-bar i:nth-child(1){background:#d9644f}.term-bar i:nth-child(2){background:#d8a54a}.term-bar i:nth-child(3){background:#5fa463}
+.term-bar span{margin-left:3mm;font-family:"Plex Mono";font-size:7.5pt;color:#958e83}
+.term-body{padding:4.6mm 5.2mm 5mm;font-family:"Plex Mono";font-size:8.6pt;line-height:1.8;color:#e9e4dc}
+.t-path{color:#7fa7c9}.t-dollar{color:#958e83}
+.t-prompt{margin:1.6mm 0 2.2mm;padding:2mm 3mm;border-left:2px solid #e8916b;background:#1a1816;color:#f3efe8}
+.t-prompt b{color:#e8916b;font-weight:600;margin-right:1.6mm}
+.t-step{display:flex;align-items:baseline;gap:2mm}
+.t-step .dot{width:1.7mm;height:1.7mm;border-radius:50%;background:#e8916b;flex:none;transform:translateY(-.3mm)}
+.t-step .dot.ok{background:#6fbf73}
+.t-step .lead{flex:1;border-bottom:1px dotted #3b3732;transform:translateY(-1mm);min-width:6mm}
+.t-step .res{color:#a59e93}
+.t-step .g{color:#7cc480}.t-step .r{color:#e0806b}
+.t-final{margin-top:2.2mm;color:#f3efe8}
+.t-final b{color:#7cc480;font-weight:500}
+.t-caption{font-family:"Plex Sans";font-size:7pt;color:#7d776d;text-align:right;margin-top:1.6mm;letter-spacing:.02em}
+.cover-toc{display:grid;grid-template-columns:repeat(3,1fr);gap:6mm}
+.cover-toc div{border-top:1px solid #3a3631;padding-top:3mm;font-size:10pt;line-height:1.35;color:#e6e0d6}
+.cover-toc .n{display:block;font-family:"Plex Mono";font-size:8pt;color:#e8916b;margin-bottom:1mm;letter-spacing:.08em}
+.cover-foot{margin-top:10mm;font-size:7.8pt;color:#857f75;display:flex;justify-content:space-between}
+
+/* ---------- TIPOGRAFIA DAS SEÇÕES ---------- */
+.eyebrow{font-family:"Plex Mono";font-size:7.8pt;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.part-head{border-top:2.5px solid var(--ink);padding-top:4.5mm;margin-bottom:6mm}
+.part-head h1{font-size:25pt;line-height:1.08;font-weight:600;letter-spacing:-.02em;margin:2mm 0 3mm}
+.lede{font-size:11pt;line-height:1.5;color:var(--ink-2);max-width:158mm;margin:0}
+h2{font-size:15pt;line-height:1.2;font-weight:600;letter-spacing:-.01em;margin:7mm 0 2.4mm;break-after:avoid}
+h2 + .lede{margin-bottom:4mm}
+h3{font-size:10.6pt;line-height:1.3;font-weight:600;margin:0 0 1.4mm;break-after:avoid}
+.statement{font-family:"Plex Serif";font-style:italic;font-weight:500;font-size:19.5pt;line-height:1.28;letter-spacing:-.005em;margin:3mm 0 7mm;color:var(--ink)}
+.statement .a{color:var(--accent)}
+.statement .s{color:var(--slate)}
+.cols-2{display:grid;grid-template-columns:1fr 1fr;gap:7mm}
+.small{font-size:8.4pt;color:var(--muted)}
+.figure{margin:4.5mm 0 1mm;break-inside:avoid}
+.figure svg{display:block;width:100%;height:auto}
+.fig-cap{font-size:8pt;color:var(--muted);margin-top:1.5mm}
+.quote{border-left:3px solid var(--accent);background:var(--tint-2);padding:3.5mm 5mm;margin:5mm 0 0;break-inside:avoid}
+.quote p{font-family:"Plex Serif";font-style:italic;font-size:11.5pt;line-height:1.45;margin:0 0 1.5mm;color:var(--ink)}
+.quote .src{font-size:8pt;color:var(--muted)}
+
+/* ---------- TABELA COMPARATIVA ---------- */
+table{border-collapse:collapse;width:100%}
+.compare{font-size:8.6pt;line-height:1.4}
+.compare thead th{text-align:left;font-weight:600;font-size:9.2pt;padding:0 3mm 2.4mm;vertical-align:bottom}
+.compare thead th .tag{display:inline-block;font-family:"Plex Mono";font-size:7pt;letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-bottom:1mm}
+.compare thead th.chat{color:var(--slate);border-bottom:2.5px solid var(--slate)}
+.compare thead th.code{color:var(--accent);border-bottom:2.5px solid var(--accent);background:var(--accent-soft)}
+.compare thead th.asp{border-bottom:2.5px solid var(--ink);width:24%}
+.compare tbody td{padding:1.75mm 3mm;border-bottom:1px solid var(--line);vertical-align:top}
+.compare tbody td:first-child{font-weight:600;color:var(--ink)}
+.compare tbody td.chat{color:var(--ink-2);width:33%}
+.compare tbody td.code{background:#fcf4ef;color:var(--ink)}
+.compare tbody tr{break-inside:avoid}
+.compare code{background:#fff}
+
+/* ---------- CALLOUTS / NOTAS ---------- */
+.note{display:flex;gap:3.5mm;align-items:flex-start;background:var(--tint);border-radius:2.5mm;padding:3mm 4.5mm;margin-top:4mm;break-inside:avoid;font-size:9.2pt}
+.note .ico{flex:none;width:6mm;height:6mm;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;font-size:9pt;
+  display:flex;align-items:center;justify-content:center;margin-top:.3mm}
+.note p{margin:0}
+
+/* ---------- DOIS MUNDOS ---------- */
+.worlds{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:5mm}
+.world{border:1px solid var(--line);border-radius:3mm;padding:4.5mm 5mm 4mm;break-inside:avoid;display:flex;flex-direction:column}
+.world.chat{border-top:3px solid var(--slate)}
+.world.code{border-top:3px solid var(--accent);background:#fffcfa}
+.world .tag{font-family:"Plex Mono";font-size:7.3pt;letter-spacing:.12em;text-transform:uppercase;font-weight:500}
+.world.chat .tag{color:var(--slate)} .world.code .tag{color:var(--accent)}
+.world h3{font-size:12pt;margin:1mm 0 3mm}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{counter-increment:s;position:relative;padding-left:8mm;margin-bottom:2mm;font-size:8.9pt;line-height:1.43}
+.steps li::before{content:counter(s);position:absolute;left:0;top:.1mm;width:5mm;height:5mm;border-radius:50%;font-family:"Plex Mono";
+  font-size:7.4pt;font-weight:600;display:flex;align-items:center;justify-content:center}
+.world.chat .steps li::before{background:var(--slate-soft);color:var(--slate)}
+.world.code .steps li::before{background:var(--accent-soft);color:var(--accent)}
+.world .result{margin-top:auto;padding-top:3mm;border-top:1px dashed var(--line-2);font-weight:600;font-size:9.2pt}
+.world.chat .result{color:var(--slate)} .world.code .result{color:var(--accent)}
+.cmd{font-family:"Plex Mono";font-size:8pt;background:var(--code-bg);color:var(--code-ink);border-radius:2mm;padding:2.6mm 3.2mm;margin:0 0 3.4mm;line-height:1.5}
+.cmd .p{color:var(--accent-bright)}
+.cmd .c{color:var(--code-dim)}
+.verdict{margin-top:5mm;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:3mm;overflow:hidden;break-inside:avoid}
+.verdict div{padding:3.2mm 5mm;font-size:9.8pt;line-height:1.42}
+.verdict .l{background:var(--slate-soft);color:#2d3a48}
+.verdict .r{background:var(--accent-soft);color:#5a2412}
+.verdict b{display:block;font-family:"Plex Mono";font-size:7.3pt;letter-spacing:.12em;text-transform:uppercase;margin-bottom:1mm;font-weight:600}
+.prompts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.4mm 3mm;margin-top:3mm}
+.prompts div{font-family:"Plex Serif";font-style:italic;font-size:9.1pt;line-height:1.38;padding:2.3mm 3.2mm;background:var(--tint-2);border:1px solid var(--line);border-radius:2mm;break-inside:avoid}
+
+/* ---------- CARDS ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.card{border:1px solid var(--line);border-radius:3mm;padding:3.6mm 4.4mm 3.4mm;break-inside:avoid;background:#fff}
+.card .num{font-family:"Plex Mono";font-size:7.6pt;font-weight:600;color:var(--accent);letter-spacing:.06em;display:block;margin-bottom:1mm}
+.card p{font-size:9pt;line-height:1.5;color:var(--ink-2);margin:0 0 1.6mm}
+.card p:last-child{margin-bottom:0}
+.card.hl{background:var(--accent-soft);border-color:#efc9b8}
+.snip{font-family:"Plex Mono";font-size:7.4pt;line-height:1.55;background:var(--code-bg);color:var(--code-ink);border-radius:1.8mm;padding:2.3mm 3mm;margin-top:2mm;white-space:pre-wrap;word-break:break-word}
+.snip .p{color:var(--accent-bright)} .snip .c{color:var(--code-dim)} .snip .k{color:#9cc3e0} .snip .s{color:#b9d98c}
+
+/* ---------- SEGURANÇA ---------- */
+.modes{font-size:8.9pt;line-height:1.42;margin-top:3mm}
+.modes th{text-align:left;font-size:7.4pt;font-family:"Plex Mono";letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500;
+  padding:0 3mm 1.8mm;border-bottom:1.5px solid var(--ink)}
+.modes td{padding:2.2mm 3mm;border-bottom:1px solid var(--line);vertical-align:top}
+.modes td:first-child{white-space:nowrap}
+.mode-pill{display:inline-block;font-family:"Plex Mono";font-size:8pt;font-weight:600;padding:.5mm 2.2mm;border-radius:10mm;background:var(--tint);border:1px solid var(--line-2)}
+.mode-pill.auto{background:var(--accent-soft);border-color:#efc9b8;color:var(--accent)}
+.layers{display:grid;grid-template-columns:1fr 1fr;gap:3.6mm;margin-top:4.5mm}
+.layer{border:1px solid var(--line);border-radius:3mm;padding:3.5mm 4.4mm;break-inside:avoid}
+.layer p{font-size:8.9pt;line-height:1.48;color:var(--ink-2);margin:0 0 1.4mm}
+.layer p:last-child{margin:0}
+.chatbox{margin-top:5mm;border:1.5px solid var(--slate);border-radius:3mm;padding:3.6mm 5mm 3.4mm;break-inside:avoid;background:#fbfcfd}
+.chatbox h3{color:var(--slate);font-size:11pt;margin-bottom:1.6mm}
+.chatbox ul{margin:0;padding-left:4.5mm;columns:2;column-gap:8mm;font-size:8.9pt;line-height:1.42}
+.chatbox li{margin-bottom:.8mm;break-inside:avoid}
+.rule{font-family:"Plex Serif";font-style:italic;font-size:10.5pt;line-height:1.4;padding-top:2.4mm;border-top:1px solid var(--line);margin:2.2mm 0 0}
+.rule b{font-family:"Plex Sans";font-style:normal;color:var(--accent);font-weight:600}
+
+/* ---------- PLUGINS ---------- */
+.analogy{display:grid;grid-template-columns:44mm 1fr;border-top:1.5px solid var(--ink);margin-top:4mm}
+.analogy > div{padding:2.6mm 3mm;border-bottom:1px solid var(--line);font-size:9pt;line-height:1.45}
+.analogy .k{font-weight:600}
+.analogy .k small{display:block;font-weight:400;font-family:"Plex Mono";font-size:7.6pt;color:var(--accent);margin-top:.6mm}
+.anatomy{display:grid;grid-template-columns:70mm 1fr;margin-top:3mm;border-radius:3mm;overflow:hidden;border:1px solid var(--line);break-inside:avoid}
+.anatomy .t{background:var(--code-bg);color:var(--code-ink);font-family:"Plex Mono";font-size:7.9pt;padding:0 2mm 0 4.5mm;display:flex;align-items:center;white-space:pre}
+.anatomy .t.first{padding-top:3mm}.anatomy .t.last{padding-bottom:3mm}
+.anatomy .t .d{color:#7fa7c9}.anatomy .t .g{color:#6e685f}
+.anatomy .x{padding:1.9mm 4.5mm 1.9mm 5mm;font-size:8.6pt;line-height:1.38;color:var(--ink-2);border-bottom:1px dashed var(--line);display:flex;align-items:center}
+.anatomy .x.first{padding-top:3mm}.anatomy .x.last{padding-bottom:3mm;border-bottom:none}
+.anatomy .x span b{color:var(--ink);font-weight:600}
+.support{font-size:8.9pt;margin-top:3mm}
+.support th{text-align:left;font-weight:600;padding:0 3mm 2mm;font-size:9pt}
+.support th.chat{color:var(--slate);border-bottom:2.5px solid var(--slate)}
+.support th.code{color:var(--accent);border-bottom:2.5px solid var(--accent);background:var(--accent-soft)}
+.support th.asp{border-bottom:2.5px solid var(--ink)}
+.support td{padding:1.55mm 3mm;border-bottom:1px solid var(--line);vertical-align:middle}
+.support td.code{background:#fcf4ef}
+.support td:first-child{font-weight:600;width:29%}
+.support th.chat,.support td:nth-child(2){width:43%}
+.st{display:inline-flex;align-items:center;gap:1.8mm}
+.ic{width:4.2mm;height:4.2mm;flex:none;display:block}
+.warn{display:flex;gap:4mm;margin-top:5mm;padding:4mm 5mm;border-radius:3mm;background:#fff7ec;border:1px solid #f0d9b5;break-inside:avoid}
+.warn .ico{flex:none;width:7mm;height:7mm}
+.warn p{margin:0;font-size:9pt;line-height:1.5;color:#4a3a22}
+.warn b{color:#7a4a08}
+.picks{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-top:3mm}
+.pick h3{font-size:9.6pt;font-family:"Plex Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2mm}
+.pick ul{list-style:none;margin:0;padding:0}
+.pick li{padding:1.7mm 0;border-bottom:1px solid var(--line);font-size:8.9pt;line-height:1.4;break-inside:avoid}
+.pick li b{font-weight:600}
+.lsp{margin-top:4mm;padding:3.6mm 4.5mm;background:var(--tint);border-radius:3mm;break-inside:avoid}
+.lsp h3{font-size:9.6pt;font-family:"Plex Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2mm}
+.chips{display:flex;flex-wrap:wrap;gap:1.6mm}
+.chip{font-family:"Plex Mono";font-size:7.8pt;background:#fff;border:1px solid var(--line-2);border-radius:10mm;padding:.6mm 2.4mm;white-space:nowrap}
+.chip span{color:var(--muted);font-family:"Plex Sans";margin-left:1mm}
+
+.manage{margin-top:4mm;break-inside:avoid}
+.manage h3,.pick h3{font-size:9.6pt;font-family:"Plex Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:2mm}
+.manage .term{font-size:7.9pt;line-height:1.75;padding:3mm 4mm;white-space:pre;margin:0}
+
+/* ---------- COMO COMEÇAR ---------- */
+.start{counter-reset:st;margin-top:3mm}
+.start-step{display:grid;grid-template-columns:9mm 1fr;gap:3mm;padding:2.8mm 0;border-bottom:1px solid var(--line);break-inside:avoid}
+.start-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:7mm}
+.start-step .n{width:7.5mm;height:7.5mm;border-radius:50%;background:var(--ink);color:#fff;font-family:"Plex Mono";font-weight:600;font-size:9pt;display:flex;align-items:center;justify-content:center}
+.start-step h3{margin-bottom:1mm}
+.start-step p{margin:0 0 1.4mm;font-size:9pt;color:var(--ink-2)}
+.term{font-family:"Plex Mono";font-size:8pt;line-height:1.6;background:var(--code-bg);color:var(--code-ink);border-radius:2mm;padding:2.4mm 3.4mm;margin:1mm 0 1.4mm}
+.term .c{color:var(--code-dim)} .term .p{color:var(--accent-bright)}
+.cheat{display:grid;grid-template-columns:1fr 1fr;gap:0 7mm;margin-top:3mm;break-inside:avoid}
+.cheat div{display:flex;gap:3mm;padding:1.45mm 0;border-bottom:1px solid var(--line);font-size:8.7pt;align-items:baseline}
+.cheat code{flex:none;min-width:31mm;background:none;border:none;padding:0;font-weight:600;color:var(--accent);font-size:8.3pt}
+.closing{margin-top:6mm;background:#181715;color:#f3efe8;border-radius:3mm;padding:5.5mm 7mm;break-inside:avoid;position:relative;overflow:hidden}
+.closing p{font-family:"Plex Serif";font-style:italic;font-size:14pt;line-height:1.36;margin:0}
+.closing p .a{color:#e8916b}
+.sources{margin-top:4.5mm;font-size:7.4pt;line-height:1.45;color:var(--muted);break-inside:avoid}
+.sources b{color:var(--ink-2)}
+</style>
+</head>
+<body>
+
+<!-- =============================== CAPA =============================== -->
+<section class="cover">
+  <svg class="cover-loop" viewBox="0 0 400 400" aria-hidden="true">
+    <circle cx="200" cy="200" r="196" fill="none" stroke="#e8916b" stroke-opacity=".09" stroke-width="1.5"/>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="#e8916b" stroke-opacity=".45" stroke-width="2.4" stroke-dasharray="3 9" stroke-linecap="round"/>
+    <circle cx="200" cy="200" r="104" fill="none" stroke="#e8916b" stroke-opacity=".09" stroke-width="1.5"/>
+    <g fill="none" stroke="#e8916b" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-7 -9 L6 0 L-7 9" transform="translate(329.9 125) rotate(60)"/>
+      <path d="M-7 -9 L6 0 L-7 9" transform="translate(200 350) rotate(180)"/>
+      <path d="M-7 -9 L6 0 L-7 9" transform="translate(70.1 125) rotate(300)"/>
+    </g>
+    <g fill="#181715" stroke="#e8916b" stroke-width="3"><circle cx="200" cy="50" r="12"/><circle cx="329.9" cy="275" r="12"/><circle cx="70.1" cy="275" r="12"/></g>
+    <g fill="#e8916b"><circle cx="200" cy="50" r="5"/><circle cx="329.9" cy="275" r="5"/><circle cx="70.1" cy="275" r="5"/></g>
+    <g font-family="Plex Mono" font-size="15" font-weight="500" fill="#e8916b" letter-spacing="1.5" text-anchor="middle">
+      <text x="200" y="94">CONTEXTO</text>
+      <text x="286" y="262">AÇÃO</text>
+      <text x="127" y="262">VERIFICAÇÃO</text>
+    </g>
+    <g font-family="Plex Serif" font-style="italic" font-size="24" fill="#efe9df" fill-opacity=".85" text-anchor="middle">
+      <text x="200" y="192">o ciclo</text>
+      <text x="200" y="221">agêntico</text>
+    </g>
+  </svg>
+
+  <div class="cover-head">
+  <div class="eyebrow">Guia prático · Para quem trabalha com TI</div>
+  <div class="cover-title">Claude <span class="x">×</span><br>Claude Code</div>
+  <p class="cover-sub">Mesma inteligência.<br>Outro nível de trabalho.</p>
+  <p class="cover-lede">As principais diferenças entre o Claude do chat e o Claude Code, por que o Claude Code rende muito mais no dia a dia de TI — e como os plugins multiplicam esse ganho.</p>
+  </div>
+
+  <div class="cover-term">
+  <div class="terminal">
+    <div class="term-bar"><i></i><i></i><i></i><span>~/projetos/api-pedidos — claude</span></div>
+    <div class="term-body">
+      <div><span class="t-path">~/projetos/api-pedidos</span> <span class="t-dollar">$</span> claude</div>
+      <div class="t-prompt"><b>&gt;</b>A API está retornando erro 500 desde o último deploy. Investigue e corrija.</div>
+      <div class="t-step"><i class="dot"></i><span>Lendo logs/app.log</span><i class="lead"></i><span class="res">KeyError: 'DB_URL' · 37 ocorrências</span></div>
+      <div class="t-step"><i class="dot"></i><span>git diff v2.3.0..HEAD</span><i class="lead"></i><span class="res">variável renomeada para DATABASE_URL</span></div>
+      <div class="t-step"><i class="dot"></i><span>Editando config/settings.py</span><i class="lead"></i><span class="res"><span class="g">+2</span> <span class="r">-1</span></span></div>
+      <div class="t-step"><i class="dot ok"></i><span>pytest</span><i class="lead"></i><span class="res g">148 passed</span></div>
+      <div class="t-step"><i class="dot"></i><span>git commit</span><i class="lead"></i><span class="res">fix(config): usa DATABASE_URL na carga da config</span></div>
+      <div class="t-final"><b>Pronto.</b> O deploy renomeou a variável só no código. Quer que eu abra o pull request?</div>
+    </div>
+  </div>
+  <div class="t-caption">Sessão ilustrativa do Claude Code no terminal</div>
+  </div>
+
+  <div class="cover-bottom">
+  <div class="cover-toc">
+    <div><span class="n">01</span>As principais diferenças</div>
+    <div><span class="n">02</span>Por que o Claude Code rende mais</div>
+    <div><span class="n">03</span>Plugins e suas vantagens</div>
+  </div>
+  <div class="cover-foot"><span>Outubro de 2026</span><span>Baseado na documentação oficial: code.claude.com e claude.com</span></div>
+  </div>
+</section>
+
+<!-- =============================== ABERTURA =============================== -->
+<section>
+  <div class="eyebrow">Antes de tudo</div>
+  <p class="statement">O chat <span class="s">conversa</span> sobre o seu trabalho.<br>O Claude Code <span class="a">faz</span> o trabalho — no seu ambiente, com a sua permissão.</p>
+
+  <h2 style="margin-top:0">Mesmo cérebro, mãos diferentes</h2>
+  <div class="cols-2">
+    <p>Os dois usam os mesmos modelos Claude. A diferença não está na inteligência, e sim no <strong>alcance</strong> dela. No chat, o Claude responde com texto — e, quando executa código, faz isso num contêiner isolado na nuvem, separado dos seus sistemas. Quem abre os arquivos, copia, cola, executa e testa é você.</p>
+    <p>O Claude Code coloca o mesmo modelo dentro do que a documentação chama de <em>harness</em> agêntico: ferramentas para ler e editar arquivos, pesquisar o código, rodar comandos no terminal, usar o git e consultar a web. Com elas, ele trabalha em ciclo até a tarefa ficar pronta — e você acompanha e aprova.</p>
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 640 214" role="img" aria-label="No chat, você faz a ponte entre o ambiente e a IA. No Claude Code, a IA acessa o ambiente direto e você supervisiona.">
+      <defs>
+        <marker id="a1" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4a5b6e"/></marker>
+        <marker id="a2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b1492a"/></marker>
+      </defs>
+      <rect x="0" y="0" width="308" height="214" rx="10" fill="#f6f8fa"/>
+      <rect x="332" y="0" width="308" height="214" rx="10" fill="#fdf5f0"/>
+      <g font-family="Plex Mono" font-size="9.5" font-weight="600" letter-spacing="1.4">
+        <text x="16" y="24" fill="#4a5b6e">NO CHAT</text>
+        <text x="348" y="24" fill="#b1492a">NO CLAUDE CODE</text>
+      </g>
+      <!-- painel chat -->
+      <g font-family="Plex Sans" text-anchor="middle">
+        <rect x="14" y="66" width="80" height="66" rx="7" fill="#fff" stroke="#c9d1da"/>
+        <text x="54" y="94" font-size="11.5" font-weight="600" fill="#1c1b19">Seu</text>
+        <text x="54" y="108" font-size="11.5" font-weight="600" fill="#1c1b19">ambiente</text>
+        <text x="54" y="122" font-size="8" fill="#6a655d">código · logs · git</text>
+        <rect x="114" y="62" width="80" height="74" rx="7" fill="#f7e6dd" stroke="#b1492a" stroke-width="1.3"/>
+        <text x="154" y="92" font-size="12.5" font-weight="700" fill="#b1492a">Você</text>
+        <text x="154" y="106" font-size="8" fill="#5a2412">copia, cola,</text>
+        <text x="154" y="117" font-size="8" fill="#5a2412">aplica e testa</text>
+        <rect x="214" y="66" width="80" height="66" rx="7" fill="#e7ecf1" stroke="#4a5b6e"/>
+        <text x="254" y="97" font-size="11.5" font-weight="600" fill="#1c1b19">Claude</text>
+        <text x="254" y="111" font-size="9" fill="#4a5b6e">(chat)</text>
+      </g>
+      <g stroke="#4a5b6e" stroke-width="1.4" fill="none">
+        <line x1="96" y1="88" x2="111" y2="88" marker-end="url(#a1)"/>
+        <line x1="111" y1="110" x2="96" y2="110" marker-end="url(#a1)"/>
+        <line x1="196" y1="88" x2="211" y2="88" marker-end="url(#a1)"/>
+        <line x1="211" y1="110" x2="196" y2="110" marker-end="url(#a1)"/>
+      </g>
+      <g font-family="Plex Sans" font-size="9.2" fill="#2d3a48" text-anchor="middle">
+        <text x="154" y="174">Você é a ponte: leva o contexto até a IA</text>
+        <text x="154" y="188">e traz cada resposta de volta, à mão.</text>
+      </g>
+      <!-- painel code -->
+      <g font-family="Plex Sans" text-anchor="middle">
+        <rect x="446" y="36" width="80" height="46" rx="7" fill="#fff" stroke="#d3ccbf"/>
+        <text x="486" y="56" font-size="12" font-weight="700" fill="#1c1b19">Você</text>
+        <text x="486" y="70" font-size="8" fill="#6a655d">objetivo e aprovação</text>
+        <rect x="346" y="106" width="110" height="58" rx="7" fill="#f7e6dd" stroke="#b1492a" stroke-width="1.3"/>
+        <text x="401" y="130" font-size="12" font-weight="700" fill="#b1492a">Claude Code</text>
+        <text x="401" y="145" font-size="8" fill="#5a2412">lê · edita · roda · testa</text>
+        <rect x="516" y="106" width="110" height="58" rx="7" fill="#fff" stroke="#d3ccbf"/>
+        <text x="571" y="130" font-size="11.5" font-weight="600" fill="#1c1b19">Seu ambiente</text>
+        <text x="571" y="145" font-size="8" fill="#6a655d">código · terminal · git</text>
+      </g>
+      <g stroke="#b1492a" stroke-width="1.4" fill="none">
+        <line x1="458" y1="125" x2="513" y2="125" marker-end="url(#a2)"/>
+        <line x1="513" y1="145" x2="458" y2="145" marker-end="url(#a2)"/>
+      </g>
+      <path d="M486 84 L486 118" stroke="#8c867c" stroke-width="1.1" stroke-dasharray="3 3" fill="none"/>
+      <circle cx="486" cy="120" r="2.4" fill="#8c867c"/>
+      <text x="492" y="101" font-family="Plex Sans" font-size="8" fill="#6a655d">supervisiona</text>
+      <g font-family="Plex Sans" font-size="9.2" fill="#5a2412" text-anchor="middle">
+        <text x="486" y="188">Ele acessa o ambiente direto, com permissão.</text>
+        <text x="486" y="202">Você define o objetivo e aprova as ações.</text>
+      </g>
+    </svg>
+  </div>
+
+  <h2>O ciclo que faz a diferença</h2>
+  <p>Quando você passa uma tarefa, o Claude Code trabalha em três fases que se repetem: <strong>coletar contexto</strong>, <strong>agir</strong> e <strong>verificar o resultado</strong>. Cada ação gera informação nova, que decide o próximo passo — ele encadeia dezenas de ações e se corrige pelo caminho.</p>
+  <div class="figure">
+    <svg viewBox="0 0 640 150" role="img" aria-label="Ciclo agêntico: seu pedido, coletar contexto, agir, verificar, repetir até concluir.">
+      <defs>
+        <marker id="a3" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6a655d"/></marker>
+        <marker id="a4" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b1492a"/></marker>
+      </defs>
+      <g font-family="Plex Sans">
+        <rect x="0" y="34" width="82" height="40" rx="20" fill="#f6f2ec" stroke="#d3ccbf"/>
+        <text x="41" y="58" font-size="10.5" font-weight="600" text-anchor="middle" fill="#1c1b19">Seu pedido</text>
+
+        <rect x="106" y="22" width="134" height="64" rx="8" fill="#fff" stroke="#b1492a" stroke-width="1.2"/>
+        <circle cx="122" cy="40" r="8" fill="#b1492a"/><text x="122" y="43.5" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">1</text>
+        <text x="135" y="44" font-size="11" font-weight="600" fill="#1c1b19">Coletar contexto</text>
+        <text x="116" y="62" font-size="8.4" fill="#6a655d">lê arquivos, logs</text>
+        <text x="116" y="74" font-size="8.4" fill="#6a655d">e o histórico do git</text>
+
+        <rect x="262" y="22" width="134" height="64" rx="8" fill="#fff" stroke="#b1492a" stroke-width="1.2"/>
+        <circle cx="278" cy="40" r="8" fill="#b1492a"/><text x="278" y="43.5" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">2</text>
+        <text x="291" y="44" font-size="11" font-weight="600" fill="#1c1b19">Agir</text>
+        <text x="272" y="62" font-size="8.4" fill="#6a655d">edita o código e</text>
+        <text x="272" y="74" font-size="8.4" fill="#6a655d">roda comandos</text>
+
+        <rect x="418" y="22" width="134" height="64" rx="8" fill="#fff" stroke="#b1492a" stroke-width="1.2"/>
+        <circle cx="434" cy="40" r="8" fill="#b1492a"/><text x="434" y="43.5" font-size="9.5" font-weight="700" fill="#fff" text-anchor="middle">3</text>
+        <text x="447" y="44" font-size="11" font-weight="600" fill="#1c1b19">Verificar</text>
+        <text x="428" y="62" font-size="8.4" fill="#6a655d">roda testes e build,</text>
+        <text x="428" y="74" font-size="8.4" fill="#6a655d">lê os erros</text>
+
+        <rect x="574" y="34" width="66" height="40" rx="20" fill="#e0efe5" stroke="#2e7a4d"/>
+        <text x="607" y="58" font-size="10.5" font-weight="600" text-anchor="middle" fill="#2e7a4d">Pronto</text>
+      </g>
+      <g stroke="#6a655d" stroke-width="1.3" fill="none">
+        <line x1="84" y1="54" x2="103" y2="54" marker-end="url(#a3)"/>
+        <line x1="242" y1="54" x2="259" y2="54" marker-end="url(#a3)"/>
+        <line x1="398" y1="54" x2="415" y2="54" marker-end="url(#a3)"/>
+        <line x1="554" y1="54" x2="571" y2="54" marker-end="url(#a3)"/>
+      </g>
+      <path d="M485 88 L485 108 Q485 118 475 118 L183 118 Q173 118 173 108 L173 91" stroke="#b1492a" stroke-width="1.4" fill="none" stroke-dasharray="4 3" marker-end="url(#a4)"/>
+      <text x="329" y="134" font-family="Plex Sans" font-size="9.2" fill="#b1492a" text-anchor="middle" font-weight="600">corrige e repete até a tarefa fechar</text>
+      <text x="329" y="147" font-family="Plex Sans" font-size="8.2" fill="#6a655d" text-anchor="middle">você pode interromper e redirecionar a qualquer momento</text>
+    </svg>
+  </div>
+
+  <div class="quote">
+    <p>“Embora seja excelente em código, ele ajuda em qualquer coisa que se faça pela linha de comando: escrever documentação, rodar builds, pesquisar arquivos, investigar assuntos e muito mais.”</p>
+    <div class="src">Documentação oficial do Claude Code — “How Claude Code works” (tradução livre)</div>
+  </div>
+</section>
+
+<!-- =============================== PARTE 1 =============================== -->
+<section class="new-page">
+  <div class="part-head">
+    <span class="eyebrow">Parte 1</span>
+    <h1>As principais diferenças</h1>
+    <p class="lede">Lado a lado, o que muda quando o Claude sai da janela de conversa e passa a trabalhar dentro do seu ambiente.</p>
+  </div>
+
+  <table class="compare">
+    <thead>
+      <tr>
+        <th class="asp">Aspecto</th>
+        <th class="chat"><span class="tag">Chat</span><br>Claude (claude.ai)</th>
+        <th class="code"><span class="tag">Agente</span><br>Claude Code</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Onde você usa</td><td class="chat">Navegador, app desktop e celular</td><td class="code">Terminal, VS Code e Cursor, JetBrains, aba <strong>Code</strong> do app desktop, navegador (claude.ai/code), Slack e pipelines de CI/CD</td></tr>
+      <tr><td>O que ele enxerga</td><td class="chat">Só o que você cola ou anexa na conversa</td><td class="code">O projeto inteiro: abre, pesquisa e relaciona os arquivos sozinho</td></tr>
+      <tr><td>Onde as coisas rodam</td><td class="chat">Num contêiner isolado na nuvem, sem acesso às suas máquinas</td><td class="code">No seu ambiente — seu terminal, suas ferramentas, seu git — ou em VMs na nuvem, se você preferir</td></tr>
+      <tr><td>Como as mudanças chegam</td><td class="chat">Ele escreve o código; você copia e aplica</td><td class="code">Ele edita os arquivos direto, vários de uma vez, e mostra o diff para você revisar</td></tr>
+      <tr><td>Validação</td><td class="chat">Você executa e traz o erro de volta para a conversa</td><td class="code">Ele roda testes e build, lê a saída e corrige até passar</td></tr>
+      <tr><td>Git</td><td class="chat">Fica por sua conta</td><td class="code">Cria branch, faz commit com mensagem descritiva e abre pull request</td></tr>
+      <tr><td>Memória</td><td class="chat">Projetos e memória entre conversas</td><td class="code"><code>CLAUDE.md</code> versionado no repositório + memória automática por projeto</td></tr>
+      <tr><td>Integrações</td><td class="chat">Conectores remotos (MCP)</td><td class="code">MCP local e remoto: bancos de dados, Jira, Slack, ferramentas internas</td></tr>
+      <tr><td>Automação</td><td class="chat">Uso dentro do app; não entra em scripts nem pipelines</td><td class="code">Modo não interativo (<code>claude -p</code>), pipes, hooks, GitHub Actions, GitLab CI/CD e rotinas agendadas</td></tr>
+      <tr><td>Desfazer</td><td class="chat">Não se aplica: ele não altera seus arquivos</td><td class="code">Checkpoints: toda edição de arquivo pode ser revertida (<code>Esc</code> duas vezes)</td></tr>
+      <tr><td>Controle</td><td class="chat">Isolado: não toca nos seus sistemas</td><td class="code">Modos de permissão, regras allow/ask/deny por comando, sandbox e políticas da empresa</td></tr>
+      <tr><td>Plugins</td><td class="chat">Carrega só parte: skills, comandos e conectores remotos</td><td class="code">Carrega tudo: skills, subagentes, hooks, MCP local, LSP, executáveis…</td></tr>
+      <tr><td>Planos</td><td class="chat">Free, Pro, Max, Team e Enterprise</td><td class="code">Incluído no Pro, Max, Team e Enterprise (não está no Free)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <div class="ico">i</div>
+    <p><strong>Mesma conta, sem assinatura extra.</strong> Quem assina o Pro ou o Max já tem o Claude Code incluído: basta instalar e entrar com a mesma conta. No app desktop do Claude, ele já vem pronto na aba <strong>Code</strong>, sem instalar nada no terminal.</p>
+  </div>
+
+  <!-- DOIS MUNDOS -->
+  </section>
+
+<section class="new-page">
+  <div class="eyebrow">Parte 1 · Na prática</div>
+  <h2 style="margin-top:1.6mm">O mesmo problema, dois mundos</h2>
+  <p class="lede">Situação clássica: depois do último deploy, a API começou a responder erro 500. Veja como a investigação acontece em cada ferramenta.</p>
+
+  <div class="worlds">
+    <div class="world chat">
+      <span class="tag">No chat</span>
+      <h3>Você é o intermediário</h3>
+      <ol class="steps">
+        <li>Você descreve o problema e cola o trecho de log que parece relevante.</li>
+        <li>O Claude levanta hipóteses e pede mais dados: a configuração, a versão, o código da rota.</li>
+        <li>Você abre os arquivos, copia e cola na conversa — torcendo para não ter esquecido nenhum.</li>
+        <li>Recebe uma correção e aplica à mão, arquivo por arquivo.</li>
+        <li>Roda os testes. Algo quebra. Copia o erro e volta ao passo 2.</li>
+      </ol>
+      <div class="result">Cada volta do ciclo passa por você: olhos, mãos e Ctrl+C / Ctrl+V.</div>
+    </div>
+    <div class="world code">
+      <span class="tag">No Claude Code</span>
+      <h3>Você é o revisor</h3>
+      <div class="cmd"><span class="p">$</span> claude "A API retorna 500 desde o último deploy. Investigue e corrija."</div>
+      <ol class="steps">
+        <li>Lê os logs e o <code>git diff</code> do deploy para ver exatamente o que mudou.</li>
+        <li>Rastreia a causa pelo código — por exemplo, uma variável de ambiente renomeada no código, mas não na configuração.</li>
+        <li>Propõe a correção e mostra o diff; você aprova.</li>
+        <li>Roda os testes e confirma que passam.</li>
+        <li>Faz o commit com mensagem descritiva e, se você pedir, abre o pull request.</li>
+      </ol>
+      <div class="result">Você define o objetivo e aprova as ações. O trabalho braçal fica com ele.</div>
+    </div>
+  </div>
+
+  <div class="verdict">
+    <div class="l"><b>Resposta do chat</b>Uma hipótese bem fundamentada — que você ainda precisa aplicar e testar.</div>
+    <div class="r"><b>Resposta do Claude Code</b>Uma correção já aplicada e testada no seu ambiente real.</div>
+  </div>
+
+  <h2>Pedidos que funcionam muito bem no Claude Code</h2>
+  <div class="prompts">
+    <div>“Escreva testes para o módulo de autenticação, rode e corrija as falhas.”</div>
+    <div>“Analise os logs do nginx da última hora e me diga de onde vêm os erros 502.”</div>
+    <div>“Este script de backup em PowerShell parou de funcionar ontem. Descubra o porquê.”</div>
+    <div>“Atualize as dependências, rode a suíte de testes e me mostre o que quebrou.”</div>
+    <div>“Explique a arquitetura deste repositório como se eu tivesse acabado de entrar no time.”</div>
+    <div>“Crie um Dockerfile e um docker-compose para este serviço e valide o build.”</div>
+  </div>
+
+  <div class="chatbox">
+    <h3>E quando o chat ainda é a melhor escolha?</h3>
+    <ul>
+      <li>Perguntas rápidas e conceituais (“RAID 5 ou 10?”)</li>
+      <li>Escrever e revisar textos, e-mails e propostas</li>
+      <li>Analisar um PDF ou uma planilha avulsa</li>
+      <li>Pesquisa e brainstorming</li>
+    </ul>
+    <p class="rule"><b>Regra prática:</b> se a resposta vai virar arquivo, comando ou commit, é trabalho para o Claude Code.</p>
+  </div>
+</section>
+
+<!-- =============================== PARTE 2 =============================== -->
+<section class="new-page">
+  <div class="part-head">
+    <span class="eyebrow">Parte 2</span>
+    <h1>Por que o Claude Code rende mais</h1>
+    <p class="lede">Dez argumentos práticos para quem trabalha com TI — do fim do copiar-e-colar à automação no CI.</p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <span class="num">01</span>
+      <h3>Fim do copiar-e-colar</h3>
+      <p>No chat, o Claude só enxerga o que você cola. Aqui ele lê o projeto, roda os comandos e lê a saída sozinho. O tempo gasto transportando contexto vira tempo de decisão.</p>
+    </div>
+    <div class="card">
+      <span class="num">02</span>
+      <h3>Ele confere o próprio trabalho</h3>
+      <p>Roda os testes, lê o erro, corrige e roda de novo até a tarefa fechar. A resposta deixa de ser um palpite e vira um resultado testado.</p>
+    </div>
+    <div class="card">
+      <span class="num">03</span>
+      <h3>Contexto real, não fragmentos</h3>
+      <p>Entende como os arquivos se conectam e edita vários de uma vez. Com um plugin de LSP, vê erros de tipo logo após editar e navega por definições, como a sua IDE.</p>
+    </div>
+    <div class="card">
+      <span class="num">04</span>
+      <h3>Fala a língua do terminal</h3>
+      <p>Segue a filosofia Unix: entra em pipes, scripts, cron e CI.</p>
+      <div class="snip"><span class="p">$</span> tail -200 app.log |
+    claude -p <span class="s">"aponte anomalias nestes logs"</span>
+<span class="p">$</span> git diff main --name-only |
+    claude -p <span class="s">"procure falhas de segurança"</span></div>
+    </div>
+    <div class="card">
+      <span class="num">05</span>
+      <h3>Vai muito além de programar</h3>
+      <p>Se dá para fazer pela linha de comando, ele também faz: scripts Bash e PowerShell, análise de logs, Docker, configurações, documentação, migrações, auditoria de dependências.</p>
+    </div>
+    <div class="card">
+      <span class="num">06</span>
+      <h3>Memória de projeto versionada</h3>
+      <p>O <code>CLAUDE.md</code> guarda padrões, comandos de build e regras do tipo “nunca faça X”. É lido em toda sessão e vai para o git: o time inteiro compartilha o mesmo contexto.</p>
+    </div>
+    <div class="card">
+      <span class="num">07</span>
+      <h3>Conecta com as suas ferramentas</h3>
+      <p>Via MCP, o padrão aberto de integração, consulta o banco de dados, atualiza tickets no Jira, lê o Google Drive e o Slack ou usa a ferramenta interna da empresa.</p>
+    </div>
+    <div class="card">
+      <span class="num">08</span>
+      <h3>Automação de verdade</h3>
+      <p><strong>Hooks</strong> garantem ações em todo evento (formatar após editar, bloquear comandos perigosos). No CI, revisa PRs via GitHub Actions ou GitLab. <strong>Rotinas</strong> agendadas rodam até com o PC desligado.</p>
+    </div>
+    <div class="card">
+      <span class="num">09</span>
+      <h3>Trabalho em paralelo</h3>
+      <p>Subagentes pesquisam em contexto isolado e devolvem só o resumo. Rode várias sessões ao mesmo tempo, comece uma tarefa no celular e continue no terminal depois.</p>
+    </div>
+    <div class="card hl">
+      <span class="num">10</span>
+      <h3>Sem custo extra</h3>
+      <p>Incluído nos planos Pro, Max, Team e Enterprise. Quem já assina o Pro (US$ 20/mês, ou US$ 17/mês no anual) já tem — no app desktop, é só abrir a aba <strong>Code</strong>.</p>
+    </div>
+  </div>
+
+  <!-- SEGURANÇA -->
+  </section>
+
+<section class="new-page">
+  <div class="eyebrow">Parte 2 · Segurança</div>
+  <h2 style="margin-top:1.6mm">“Deixar uma IA rodar comandos na minha máquina?”</h2>
+  <p class="lede">É a primeira pergunta de qualquer profissional de TI — e a resposta está no desenho da ferramenta. Você escolhe quanta autonomia dar, e as regras são aplicadas pelo próprio Claude Code, não pelo modelo: não dependem da “boa vontade” da IA.</p>
+
+  <table class="modes">
+    <thead><tr><th>Modo</th><th>O que roda sem perguntar</th><th>Quando usar</th></tr></thead>
+    <tbody>
+      <tr><td><span class="mode-pill">Manual</span></td><td>Só leituras. Ele pede permissão antes de editar arquivos, rodar comandos ou acessar a rede</td><td>Trabalho sensível, código desconhecido</td></tr>
+      <tr><td><span class="mode-pill">Accept edits</span></td><td>Leituras, edições e comandos simples de arquivos (<code>mkdir</code>, <code>mv</code>, <code>cp</code>)</td><td>Iterar em código que você está revisando</td></tr>
+      <tr><td><span class="mode-pill">Plan</span></td><td>Só explora e propõe um plano; não edita seus arquivos até você aprovar</td><td>Entender o problema antes de mexer</td></tr>
+      <tr><td><span class="mode-pill auto">Auto</span></td><td>Tudo, com um classificador — um segundo modelo — revisando as ações em segundo plano e bloqueando as arriscadas</td><td>Tarefas longas, sem aprovar cada passo</td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:2mm"><code>Shift+Tab</code> alterna entre os modos. Nas versões recentes, as sessões no terminal começam no Auto; quem prefere aprovar tudo usa o Manual. Para CI existe o <code>dontAsk</code> (só roda o que estiver pré-aprovado); o <code>bypassPermissions</code>, que pula as checagens, é só para contêineres e VMs isolados.</p>
+
+  <div class="layers">
+    <div class="layer">
+      <h3>Regras allow / ask / deny</h3>
+      <p>Por ferramenta e por comando, versionadas em <code>.claude/settings.json</code>. Regras de <em>deny</em> valem em todos os modos.</p>
+      <div class="snip">{
+  <span class="k">"permissions"</span>: {
+    <span class="k">"allow"</span>: [<span class="s">"Bash(npm run *)"</span>,
+              <span class="s">"Bash(git commit *)"</span>],
+    <span class="k">"deny"</span>:  [<span class="s">"Bash(git push *)"</span>,
+              <span class="s">"Read(./.env)"</span>]
+  }
+}</div>
+    </div>
+    <div class="layer">
+      <h3>Sandbox no sistema operacional</h3>
+      <p>Restringe o acesso dos comandos de shell a arquivos e à rede no nível do SO — e continua valendo mesmo que uma injeção de prompt engane o modelo.</p>
+      <h3 style="margin-top:2.6mm">Checkpoints</h3>
+      <p>Antes de editar um arquivo, ele salva o estado anterior; <code>Esc</code> duas vezes volta atrás. Ações em sistemas remotos (bancos, APIs, deploys) não têm checkpoint: essas você controla pelas permissões.</p>
+    </div>
+    <div class="layer">
+      <h3>Travas que nenhum modo ignora</h3>
+      <p>Remoções com <code>rm</code>/<code>rmdir</code> em caminhos críticos e ações cobertas por uma regra de <em>ask</em> nunca são aprovadas automaticamente — em nenhum modo, nem no <code>bypassPermissions</code>.</p>
+    </div>
+    <div class="layer">
+      <h3>Limites ditos na conversa</h3>
+      <p>Se você disser “não faça push” ou “espere minha revisão antes do deploy”, o classificador do modo Auto bloqueia as ações correspondentes até você liberar.</p>
+    </div>
+    <div class="layer">
+      <h3>Políticas da empresa</h3>
+      <p>Configurações gerenciadas (<em>managed settings</em>) que o usuário não sobrescreve: desativar modos, liberar ou bloquear marketplaces de plugins e forçar a instalação dos aprovados.</p>
+    </div>
+    <div class="layer">
+      <h3>Histórico auditável</h3>
+      <p>Cada mensagem, ação e resultado fica salvo localmente em texto puro (JSONL, em <code>~/.claude/projects/</code>): dá para auditar, retomar e bifurcar sessões.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== PARTE 3 =============================== -->
+<section class="new-page">
+  <div class="part-head">
+    <span class="eyebrow">Parte 3</span>
+    <h1>Plugins: o gerenciador de pacotes</h1>
+    <p class="lede">Um plugin é uma pasta de componentes — skills, subagentes, hooks, servidores MCP e outros — que o Claude Code instala e carrega como uma unidade. Para quem é de TI, a analogia é imediata: é o <strong>apt</strong>, o <strong>npm</strong> ou o <strong>brew</strong> das capacidades do Claude.</p>
+  </div>
+
+  <div class="analogy">
+    <div class="k">Marketplace<small>≈ repositório de pacotes</small></div>
+    <div>Um catálogo — um arquivo <code>marketplace.json</code> num repositório git — que lista os plugins e de onde baixar cada um. O oficial da Anthropic já vem configurado.</div>
+    <div class="k">Plugin<small>≈ pacote</small></div>
+    <div>Uma pasta com manifesto (<code>.claude-plugin/plugin.json</code>): nome, versão, descrição e os componentes.</div>
+    <div class="k">/plugin install<small>≈ apt install</small></div>
+    <div>Instala com um comando, como <code>/plugin install commit-commands@claude-plugins-official</code>, e recebe atualizações do marketplace.</div>
+    <div class="k">Escopos<small>≈ global × por projeto</small></div>
+    <div><strong>User:</strong> em todos os seus projetos. <strong>Project:</strong> para todo mundo que trabalha no repositório. <strong>Local:</strong> só para você, só naquele repositório.</div>
+  </div>
+
+  <h2>Anatomia de um plugin</h2>
+  <div class="anatomy">
+    <div class="t first"><span class="d">meu-plugin/</span></div>
+    <div class="x first"><span>A pasta inteira é instalada, atualizada e carregada como uma unidade.</span></div>
+    <div class="t"><span class="g">├── </span><span class="d">.claude-plugin/</span>plugin.json</div>
+    <div class="x"><span><b>Manifesto</b> — nome, versão e descrição do plugin.</span></div>
+    <div class="t"><span class="g">├── </span><span class="d">skills/review/</span>SKILL.md</div>
+    <div class="x"><span><b>Skill</b> — instruções que o Claude carrega quando são relevantes; aqui, vira o comando <code>/meu-plugin:review</code>.</span></div>
+    <div class="t"><span class="g">├── </span><span class="d">agents/</span>security-reviewer.md</div>
+    <div class="x"><span><b>Subagente</b> — especialista com contexto próprio, para quem o Claude delega tarefas.</span></div>
+    <div class="t"><span class="g">├── </span><span class="d">hooks/</span>hooks.json</div>
+    <div class="x"><span><b>Hooks</b> — ações garantidas em eventos: rodar o linter após cada edição, bloquear arquivos protegidos.</span></div>
+    <div class="t"><span class="g">├── </span>.mcp.json</div>
+    <div class="x"><span><b>Servidores MCP</b> — ferramentas de sistemas externos: banco de dados, Jira, Slack.</span></div>
+    <div class="t"><span class="g">├── </span>.lsp.json</div>
+    <div class="x"><span><b>Servidores LSP</b> — erros de tipo e navegação por símbolo, como na IDE.</span></div>
+    <div class="t"><span class="g">├── </span><span class="d">monitors/</span>monitors.json</div>
+    <div class="x"><span><b>Monitors</b> — comandos em segundo plano (como <code>tail -F error.log</code>) que avisam o Claude.</span></div>
+    <div class="t last"><span class="g">└── </span><span class="d">bin/</span></div>
+    <div class="x last"><span><b>Executáveis</b> — scripts no <code>PATH</code> enquanto o plugin está ativo, como o CLI interno da empresa.</span></div>
+  </div>
+  <p class="small" style="margin-top:2mm">Nenhum componente é obrigatório: cada plugin usa só o que precisa. Também pode trazer estilos de resposta (<em>output styles</em>), temas de cores e configurações padrão.</p>
+
+  <!-- VANTAGENS -->
+  </section>
+
+<section class="new-page">
+  <div class="eyebrow">Parte 3 · Vantagens</div>
+  <h2 style="margin-top:1.6mm">As vantagens dos plugins</h2>
+  <p class="lede">O que transforma peças soltas em algo instalável, versionado e compartilhável.</p>
+
+  <div class="cards" style="margin-top:4mm">
+    <div class="card">
+      <span class="num">01</span>
+      <h3>Setup completo em um comando</h3>
+      <p>Em vez de configurar skills, hooks e integrações um a um, você instala um pacote pronto e testado — que se atualiza sozinho pelo marketplace oficial.</p>
+    </div>
+    <div class="card">
+      <span class="num">02</span>
+      <h3>O time inteiro no mesmo padrão</h3>
+      <p>No escopo de projeto, o plugin fica no <code>.claude/settings.json</code> do repositório: cada pessoa instala uma vez e o time inteiro trabalha com o mesmo fluxo, hooks e integrações.</p>
+    </div>
+    <div class="card">
+      <span class="num">03</span>
+      <h3>Modular e transparente</h3>
+      <p>Desative sem desinstalar, veja o que está parado e, antes de instalar, quantos tokens o plugin adiciona a cada mensagem. Comandos em namespace evitam conflitos.</p>
+    </div>
+    <div class="card">
+      <span class="num">04</span>
+      <h3>Reaproveitamento entre projetos</h3>
+      <p>Empacote o setup de um repositório e leve para os outros — ou publique no marketplace da empresa, em qualquer repositório git (GitHub, GitLab, servidor interno).</p>
+    </div>
+    <div class="card">
+      <span class="num">05</span>
+      <h3>Governança corporativa</h3>
+      <p>Por configurações gerenciadas, a empresa libera ou bloqueia marketplaces e força a instalação dos plugins aprovados.</p>
+    </div>
+    <div class="card">
+      <span class="num">06</span>
+      <h3>Ecossistema em crescimento</h3>
+      <p>Marketplace oficial (Anthropic e parceiros como GitHub, Atlassian, Slack, Figma, Vercel e Supabase), marketplace da comunidade e de terceiros.</p>
+    </div>
+  </div>
+
+  <h2>O mesmo plugin rende mais no Claude Code</h2>
+  <p style="margin-bottom:0">O formato de plugin também funciona no chat do claude.ai — mas lá só uma parte dos componentes é carregada:</p>
+  <table class="support">
+    <thead><tr><th class="asp">Componente</th><th class="chat">Chat (claude.ai)</th><th class="code">Claude Code</th></tr></thead>
+    <tbody>
+      <tr><td>Skills</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>Comandos</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.2" fill="#fff" stroke="#9a6a10" stroke-width="1.6"/><path d="M8 0.8 A7.2 7.2 0 0 1 8 15.2 Z" fill="#9a6a10"/></svg>Vira skill; o Claude aplica quando faz sentido</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>Subagentes</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#a8402f"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>Ignorados</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>Hooks</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#a8402f"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>Ignorados</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>Servidor MCP remoto</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7.2" fill="#fff" stroke="#9a6a10" stroke-width="1.6"/><path d="M8 0.8 A7.2 7.2 0 0 1 8 15.2 Z" fill="#9a6a10"/></svg>Pela aba Conectores, depois de conectar</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>Servidor MCP local</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#a8402f"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>Ignorado</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>Executáveis (<code>bin/</code>)</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#a8402f"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>O plugin nem instala</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+      <tr><td>LSP, estilos e temas</td>
+        <td><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#a8402f"/><path d="M5.3 5.3l5.4 5.4M10.7 5.3l-5.4 5.4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>Ignorados</span></td>
+        <td class="code"><span class="st"><svg class="ic" viewBox="0 0 16 16"><circle cx="8" cy="8" r="8" fill="#2e7a4d"/><path d="M4.6 8.3l2.2 2.2 4.6-4.8" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Carrega</span></td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:1.6mm">Fonte: tabela de compatibilidade de plugins da documentação oficial (claude.com/docs/plugins/platform-support).</p>
+
+  <!-- POR ONDE COMEÇAR -->
+  </section>
+
+<section class="new-page">
+  <div class="eyebrow">Parte 3 · Na prática</div>
+  <h2 style="margin-top:1.6mm">Por onde começar: plugins que valem a instalação</h2>
+  <p class="lede">Seleção do marketplace oficial. Os de fluxo têm o selo “Anthropic verified”.</p>
+
+  <div class="picks">
+    <div class="pick">
+      <h3>Fluxo de trabalho</h3>
+      <ul>
+        <li><b>Commit Commands</b> — commit, push e criação de pull request</li>
+        <li><b>Code Review</b> — revisão com agentes especializados e filtro por nível de confiança</li>
+        <li><b>PR Review Toolkit</b> — revisa comentários, testes, tratamento de erros, tipos e qualidade</li>
+        <li><b>Feature Dev</b> — desenvolve features com agentes de exploração, design e revisão</li>
+        <li><b>Security Guidance</b> — hook que alerta sobre injeção de comandos, XSS e padrões inseguros</li>
+        <li><b>Code Simplifier</b> — simplifica e refina o código alterado recentemente</li>
+        <li><b>CLAUDE.md Management</b> — audita o CLAUDE.md e registra aprendizados</li>
+        <li><b>Claude Code Setup</b> — analisa o projeto e recomenda automações sob medida</li>
+      </ul>
+    </div>
+    <div class="pick">
+      <h3>Integrações</h3>
+      <ul>
+        <li><b>GitHub</b> — servidor MCP oficial para gerenciar repositórios</li>
+        <li><b>Atlassian</b> — Jira e Confluence: issues, documentação e sprints</li>
+        <li><b>Slack</b> — servidor MCP oficial do Slack</li>
+        <li><b>Playwright</b> — automação de navegador e testes end-to-end (Microsoft)</li>
+        <li><b>Context7</b> — documentação atualizada de bibliotecas, consultada na hora</li>
+        <li><b>Supabase</b> — banco, autenticação e storage; roda SQL</li>
+        <li><b>Chrome DevTools</b> — controla e inspeciona um Chrome em execução</li>
+        <li><b>Figma</b> — lê arquivos de design e traduz componentes em código</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="lsp">
+    <h3>Inteligência de código (LSP)</h3>
+    <div class="chips">
+      <span class="chip">pyright-lsp<span>Python</span></span>
+      <span class="chip">typescript-lsp<span>TS/JS</span></span>
+      <span class="chip">jdtls-lsp<span>Java</span></span>
+      <span class="chip">csharp-lsp<span>C#</span></span>
+      <span class="chip">gopls-lsp<span>Go</span></span>
+      <span class="chip">rust-analyzer-lsp<span>Rust</span></span>
+      <span class="chip">php-lsp<span>PHP</span></span>
+      <span class="chip">clangd-lsp<span>C/C++</span></span>
+      <span class="chip">kotlin-lsp<span>Kotlin</span></span>
+      <span class="chip">ruby-lsp<span>Ruby</span></span>
+      <span class="chip">swift-lsp<span>Swift</span></span>
+      <span class="chip">lua-lsp<span>Lua</span></span>
+    </div>
+    <p class="small" style="margin:2.4mm 0 0">Cada um precisa do language server instalado na máquina — por exemplo, <code>npm install -g typescript-language-server typescript</code> para TypeScript.</p>
+  </div>
+
+  <div class="manage">
+    <h3>Instalar e gerenciar</h3>
+    <div class="term"><span class="p">&gt;</span> /plugin                                         <span class="c"># painel: Discover, Installed, Marketplaces</span>
+<span class="p">&gt;</span> /plugin install commit-commands@claude-plugins-official
+<span class="p">&gt;</span> /plugin marketplace add sua-empresa/plugins     <span class="c"># marketplace do time (repo git)</span>
+<span class="p">$</span> claude plugin list                              <span class="c"># no shell: instalados e escopos</span>
+<span class="p">$</span> claude plugin disable nome@marketplace          <span class="c"># desliga sem desinstalar</span></div>
+  </div>
+
+  <div class="warn">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5 1.8 20.5h20.4z" fill="#d9a03a"/><path d="M12 9v5.2" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.3" fill="#fff"/></svg>
+    <p><b>Plugin é código.</b> Ele roda com os seus privilégios de usuário. Antes de instalar, o painel mostra tudo o que ele adiciona (comandos, agentes, hooks, servidores MCP e LSP). Os marketplaces oficiais são da Anthropic; marketplaces de terceiros não passam pela revisão dela — instale só de fontes em que você confia.</p>
+  </div>
+</section>
+
+<!-- =============================== MÃOS À OBRA =============================== -->
+<section class="new-page">
+  <div class="part-head">
+    <span class="eyebrow">Mãos à obra</span>
+    <h1>Como começar em 10 minutos</h1>
+    <p class="lede">Da instalação ao primeiro plugin, sem pagar nada além do Pro ou do Max.</p>
+  </div>
+
+  <div class="start">
+    <div class="start-step"><div class="n">1</div><div>
+      <h3>Instale</h3>
+      <div class="term"><span class="c"># macOS, Linux e WSL</span>
+<br><span class="p">$</span> curl -fsSL https://claude.ai/install.sh | bash
+<br><span class="c"># Windows (PowerShell)</span>
+<br><span class="p">PS&gt;</span> irm https://claude.ai/install.ps1 | iex</div>
+      <p class="small" style="margin:0">Alternativas: <code>brew install --cask claude-code</code> ou <code>winget install Anthropic.ClaudeCode</code>.</p>
+    </div></div>
+    <div class="start-grid">
+      <div class="start-step"><div class="n">2</div><div>
+        <h3>Abra um projeto e inicie</h3>
+        <p>Entre na pasta do projeto, rode <code>claude</code> e faça login com a mesma conta do Claude (Pro ou superior).</p>
+      </div></div>
+      <div class="start-step"><div class="n">3</div><div>
+        <h3>Gere a memória do projeto</h3>
+        <p>Rode <code>/init</code>: ele analisa o repositório e cria um <code>CLAUDE.md</code> inicial, que você ajusta com os padrões do time.</p>
+      </div></div>
+      <div class="start-step"><div class="n">4</div><div>
+        <h3>Peça algo real</h3>
+        <p>“Explique a arquitetura deste projeto” ou “escreva testes para o módulo X, rode e corrija as falhas”.</p>
+      </div></div>
+      <div class="start-step"><div class="n">5</div><div>
+        <h3>Instale os primeiros plugins</h3>
+        <p><code>/plugin</code> → aba <strong>Discover</strong> → <code>commit-commands</code> e o LSP da sua linguagem.</p>
+      </div></div>
+    </div>
+  </div>
+  <p class="small" style="margin-top:2.4mm">Prefere interface gráfica? Aba <strong>Code</strong> do app desktop, extensões para VS Code e JetBrains, ou claude.ai/code.</p>
+
+  <h2>Cola rápida</h2>
+  <div class="cheat">
+    <div><code>Shift+Tab</code><span>alterna os modos de permissão</span></div>
+    <div><code>/plugin</code><span>instala e gerencia plugins</span></div>
+    <div><code>Esc</code><span>interrompe o que ele está fazendo</span></div>
+    <div><code>/mcp</code><span>mostra as integrações conectadas</span></div>
+    <div><code>Esc Esc</code><span>volta a um checkpoint anterior</span></div>
+    <div><code>/model</code><span>troca o modelo</span></div>
+    <div><code>/init</code><span>gera o CLAUDE.md do projeto</span></div>
+    <div><code>/context</code><span>mostra o que ocupa o contexto</span></div>
+    <div><code>claude --continue</code><span>retoma a última sessão</span></div>
+    <div><code>/compact</code><span>resume uma conversa longa</span></div>
+    <div><code>claude -p "…"</code><span>modo não interativo, para scripts</span></div>
+    <div><code>/doctor</code><span>diagnostica a instalação</span></div>
+  </div>
+
+  <div class="closing">
+    <p>O chat é um consultor brilhante ao telefone. O Claude Code é <span class="a">esse mesmo consultor sentado ao seu lado</span>, com acesso ao terminal — e você decide até onde ele pode ir.</p>
+  </div>
+
+  <div class="sources">
+    <b>Fontes</b> (consultadas em outubro de 2026): code.claude.com/docs — Overview, How Claude Code works, Extend Claude Code, Permissions, Permission modes, Plugins, Install plugins, Plugin components, Anthropic’s marketplaces, Code intelligence; claude.com/docs/plugins/platform-support; claude.com/pricing; claude.com/marketplace/plugins; support.claude.com (“Create and edit files with Claude”). Recursos, planos e preços mudam com frequência — confira sempre a documentação oficial.
+  </div>
+</section>
+
+</body>
+</html>

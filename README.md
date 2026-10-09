@@ -1,6 +1,6 @@
 # Study-mkre
 
-Material de preparação para o vestibular do Mackenzie, a partir da análise de provas anteriores.
+Material de preparação para os vestibulares do Mackenzie e da FGV, a partir da análise de provas anteriores.
 
 ## Análise de conteúdo
 
@@ -29,3 +29,28 @@ novas provas forem incluídas.
 - **Português**: divisão interna fixa — seis questões de interpretação de texto e
   quatro de literatura. Modernismo é o assunto literário mais cobrado.
 - **Geografia**: cartografia e geopolítica atual concentram mais da metade do bloco.
+
+## Formulário FGV
+
+`fgv/formulario-fgv.pdf` — PDF de 34 páginas com as fórmulas que mais caem no vestibular da
+FGV, organizadas em 35 temas (20 de Matemática, 8 de Física e 7 de Química), cada um com
+exercícios de cinco alternativas e resolução comentada (52 no total). Os exercícios são
+inéditos, no estilo da banca, e todas as respostas foram conferidas numericamente.
+
+- **Prioridade dos temas de Matemática**: definida pela classificação das 15 questões de
+  Matemática da prova objetiva do Vestibular Unificado FGV 2026.1 (turno 2) e das 15 da
+  prova da FGV-SP 2019. Alta = 2 ou mais questões; média = 1; complementar = não caiu.
+- **Física e Química**: para Ciências Econômicas na FGV-SP, cuja prova objetiva inclui
+  essas matérias. São temas clássicos de vestibular, sem análise de provas.
+- **Mais cobrados**: probabilidade, estatística, geometria analítica e geometria espacial
+  (3 questões cada nas duas provas), seguidos de porcentagem, juros, PA/PG, função
+  quadrática, trigonometria e problemas de razão e proporção.
+
+O PDF é gerado a partir de `fgv/fonte/formulario.html` (fórmulas em LaTeX, renderizadas com
+KaTeX e impressas pelo Chromium):
+
+```sh
+cd fgv/fonte
+npm install
+npm run build   # requer Python 3 com pypdf
+```

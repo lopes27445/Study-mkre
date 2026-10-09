@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<title>Formulário FGV</title>
-<meta name="description" content="As fórmulas que mais caem no vestibular da FGV, em ordem de importância, cada uma explicada e com questões reais da FGV resolvidas.">
+<title>Guia FGV Administração</title>
+<meta name="description" content="Geografia, Atualidades e História para a prova de Administração da FGV: os temas que mais caem, em ordem de importância, explicados e com questões reais resolvidas. Inclui Matemática.">
 <link rel="stylesheet" href="node_modules/katex/dist/katex.min.css">
 <link rel="stylesheet" href="node_modules/@fontsource/source-sans-3/400.css">
 <link rel="stylesheet" href="node_modules/@fontsource/source-sans-3/400-italic.css">
@@ -36,7 +36,7 @@
 @page{
   size:A4;
   margin:16mm 15mm 17mm 15mm;
-  @bottom-left{content:"Formulário FGV · fórmulas em ordem de importância";font:500 7pt var(--mono);color:#828B9E;letter-spacing:.02em}
+  @bottom-left{content:"Guia FGV Administração · temas em ordem de importância";font:500 7pt var(--mono);color:#828B9E;letter-spacing:.02em}
   @bottom-right{content:counter(page) " / " counter(pages);font:600 7.5pt var(--mono);color:#5A6478}
 }
 @page :first{
@@ -146,6 +146,10 @@ table.dados{border-collapse:collapse;margin:1mm 0 1.4mm;font-size:9.4pt}
 .ans{margin:1.6mm 0 0 !important;font-weight:600}
 .chip{display:inline-block;background:var(--verde-soft);color:var(--verde);font:600 8.5pt/1 var(--mono);padding:1mm 1.8mm;border-radius:1mm;margin-right:1.5mm;vertical-align:.5pt}
 .trap{color:var(--vermelho)}
+.ex.flow{break-inside:auto;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.ex.flow .ex-body > *,.ex.flow .alts li,.ex.flow .sol{break-inside:avoid}
+.ex.flow .exl,.ex.flow .exl + p{break-after:avoid}
+.ex.flow .alts{break-before:avoid}
 
 /* ---------- Consulta rápida ---------- */
 .quick{break-before:page}
@@ -156,51 +160,94 @@ table.dados{border-collapse:collapse;margin:1mm 0 1.4mm;font-size:9.4pt}
 .qlist li:last-child{border-bottom:0}
 .qlist span:first-child{color:var(--grafite)}
 .closing{margin-top:5mm;font-size:8.8pt;color:var(--grafite)}
+.qh{font:600 8pt var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--azul);margin:4mm 0 2mm;break-after:avoid}
+.qlist span + span{text-align:right}
+.qlist.tl li{justify-content:flex-start;padding:.38mm 0}
+.qlist.pairs li{display:block;padding:.7mm 0}
+.qlist.pairs span{display:block;text-align:left}
+.qlist.pairs span:first-child{color:var(--ink);font-weight:600}
+.qlist.pairs span + span{color:var(--grafite)}
+.qlist.tl span:first-child{font:600 8.2pt var(--mono);color:var(--azul);min-width:19mm;flex:none}
+.qlist.tl span + span{text-align:left}
+.qlist.tips span:first-child{color:var(--ink)}
+.qlist.tips b{color:var(--azul)}
 </style>
 </head>
 <body>
 
 <!-- ======================= CAPA ======================= -->
 <section class="cover">
-  <p class="eyebrow">Material de estudo · Vestibular FGV</p>
-  <h1>Formulário FGV</h1>
-  <p class="lead">As fórmulas que mais caem na FGV, em ordem de importância. Cada fórmula vem explicada, e cada tema traz questões reais de provas da FGV resolvidas passo a passo.</p>
+  <p class="eyebrow">Material de estudo · Vestibular FGV · Administração</p>
+  <h1>Guia FGV Administração</h1>
+  <p class="lead">Geografia, Atualidades e História: os temas que mais caem na prova de Administração da FGV, em ordem de importância. Cada tema vem explicado e traz questões reais da FGV resolvidas. No fim, a Matemática da prova.</p>
   <div class="rule"></div>
   <div class="stats">
-    <div class="stat"><div class="v">315 questões</div><div class="l">de provas da FGV (2020 a 2026) classificadas por tema para montar o ranking</div></div>
-    <div class="stat"><div class="v">42 temas</div><div class="l">em ordem de importância: 18 de Matemática, 13 de Física e 11 de Química</div></div>
-    <div class="stat"><div class="v">68 questões</div><div class="l">reais da FGV como exercício, com gabarito oficial e resolução comentada</div></div>
+    <div class="stat"><div class="v">105 questões</div><div class="l">de Ciências Humanas de 7 provas de Administração (2022 a 2026) classificadas por tema</div></div>
+    <div class="stat"><div class="v">21 temas</div><div class="l">de Humanas em ordem de importância: 12 de Geografia e Atualidades e 9 de História</div></div>
+    <div class="stat"><div class="v">65 questões</div><div class="l">reais da FGV como exercício (33 de Humanas e 32 de Matemática), com gabarito oficial</div></div>
   </div>
   <div class="cover-grid">
     <div class="box">
-      <p class="bh">Para quem é cada parte</p>
-      <p><b>Matemática: todas as carreiras.</b> Está na prova objetiva comum e é prova discursiva em Administração, Economia, Relações Internacionais, Matemática Aplicada e Ciência de Dados (varia por campus).</p>
-      <p><b>Física e Química:</b> para Ciências Econômicas na FGV‑SP, cuja prova objetiva inclui também Biologia, Física e Química.</p>
-      <p style="color:var(--grafite);margin:0">Confira sempre o edital do seu processo seletivo.</p>
+      <p class="bh">O que cai na prova de Administração</p>
+      <p><b>Ciências Humanas:</b> nas 7 provas analisadas, foram 15 questões objetivas por prova, misturando Geografia, Atualidades e História. Geografia e Atualidades responderam por mais da metade (58 de 105).</p>
+      <p><b>Matemática:</b> também está na prova de Administração e fica na Parte 3 deste guia.</p>
+      <p style="color:var(--grafite);margin:0">Física, Química e Biologia não aparecem nas provas de Administração analisadas. Confira sempre o edital do seu processo seletivo.</p>
     </div>
     <div class="box">
       <p class="bh">Como usar</p>
       <ol>
         <li>Estude na ordem: o tema nº 1 é o que mais caiu. A barra no sumário mostra quanto cada um pesa.</li>
-        <li>Leia o “o que é” do tema e a explicação de cada fórmula antes de decorar.</li>
-        <li>Resolva as questões da FGV cobrindo a resolução; confira o gabarito oficial depois.</li>
-        <li>Na véspera, revise só a <b>Consulta rápida</b> da última página.</li>
+        <li>Leia o “o que é” e os cartões de conceitos de cada tema: são o conteúdo que as questões cobram.</li>
+        <li>Resolva as questões da FGV cobrindo a resolução. O texto em vermelho mostra as pegadinhas das alternativas erradas.</li>
+        <li>Na véspera, revise a <b>Consulta rápida</b> no fim do guia.</li>
       </ol>
     </div>
   </div>
   <div class="box method">
     <p class="bh">Como a importância foi medida</p>
-    <p style="margin:0">Classificamos por tema as <b>165 questões objetivas de Matemática</b> de 9 provas da FGV (Vestibular Unificado 2026.1 e 2024, FGV 2026.2 e provas da FGV‑SP de Administração e Economia de 2020 a 2024.2) e as <b>75 de Física e 75 de Química</b> das 5 provas de Economia (FGV‑SP 2020, 2022, 2023 e 2024 e Unificado 2026.1). Os temas aparecem do mais cobrado para o menos cobrado; questões que misturam dois temas contam para os dois. Todos os exercícios são questões reais, transcritas das provas, com o gabarito oficial. As resoluções são deste material. Provas e gabaritos foram consultados no arquivo de resoluções comentadas do Curso Objetivo.</p>
+    <p style="margin:0">Classificamos por tema principal as <b>105 questões objetivas de Ciências Humanas</b> de 7 provas de Administração da FGV: Vestibular Unificado 2026.1 e 2024, Vestibular FGV 2026.2 e FGV‑SP 2024.2, 2023.2, 2023 e 2022. A única questão que mistura dois temas (parlamentarismo no Império e na República) conta para os dois. O ranking de Matemática usa as <b>165 questões objetivas</b> de 9 provas da FGV (2020 a 2026). Todos os exercícios são questões reais, transcritas das provas, com o gabarito oficial. As explicações e resoluções são deste material. Provas e gabaritos foram consultados no arquivo de resoluções comentadas do Curso Objetivo.</p>
   </div>
-  <div class="foot"><span>Formulário FGV</span><span>Outubro de 2026</span></div>
+  <div class="foot"><span>Guia FGV Administração</span><span>Outubro de 2026</span></div>
 </section>
 
 <!-- ======================= SUMÁRIO ======================= -->
 <section class="toc-page">
   <h1>Sumário em ordem de importância</h1>
-  <p class="sub">A barra mostra em quantas questões o tema caiu nas provas analisadas (escala própria de cada matéria). O número de cada tema é a sua posição no ranking.</p>
+  <p class="sub">A barra mostra em quantas questões o tema caiu e em quantas das provas analisadas ele apareceu (escala própria de cada matéria). O número de cada tema é a sua posição no ranking.</p>
 
-  <p class="toc-h">Parte 1 · Matemática <span>— 165 questões de 9 provas</span></p>
+  <p class="toc-h">Parte 1 · Geografia e Atualidades <span>— 58 das 105 questões de Humanas</span></p>
+  <table class="toc">
+    <tr><th>Nº</th><th>Tema</th><th>Questões</th><th class="pgh">Pág.</th></tr>
+    <tr><td class="n">1</td><td class="t">Geopolítica e conflitos atuais</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">9 <small>em 7 provas</small></span></div></td><td class="pg" data-pg="g01">00</td></tr>
+    <tr><td class="n">2</td><td class="t">Economia brasileira e mundial</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">9 <small>em 7 provas</small></span></div></td><td class="pg" data-pg="g02">00</td></tr>
+    <tr><td class="n">3</td><td class="t">Meio ambiente, clima e biomas</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">9 <small>em 7 provas</small></span></div></td><td class="pg" data-pg="g03">00</td></tr>
+    <tr><td class="n">4</td><td class="t">Globalização e cidades globais</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6 <small>em 5 provas</small></span></div></td><td class="pg" data-pg="g04">00</td></tr>
+    <tr><td class="n">5</td><td class="t">Agropecuária e agronegócio</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:56%"></div><span class="barv">5 <small>em 4 provas</small></span></div></td><td class="pg" data-pg="g05">00</td></tr>
+    <tr><td class="n">6</td><td class="t">Tecnologia, redes e sociedade digital</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:44%"></div><span class="barv">4 <small>em 4 provas</small></span></div></td><td class="pg" data-pg="g06">00</td></tr>
+    <tr><td class="n">7</td><td class="t">Transportes e logística</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:44%"></div><span class="barv">4 <small>em 3 provas</small></span></div></td><td class="pg" data-pg="g07">00</td></tr>
+    <tr><td class="n">8</td><td class="t">Energia</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">3 <small>em 3 provas</small></span></div></td><td class="pg" data-pg="g08">00</td></tr>
+    <tr><td class="n">9</td><td class="t">Indústria e reestruturação produtiva</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">3 <small>em 3 provas</small></span></div></td><td class="pg" data-pg="g09">00</td></tr>
+    <tr><td class="n">10</td><td class="t">Urbanização</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">3 <small>em 2 provas</small></span></div></td><td class="pg" data-pg="g10">00</td></tr>
+    <tr><td class="n">11</td><td class="t">População e demografia</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:22%"></div><span class="barv">2 <small>em 1 prova</small></span></div></td><td class="pg" data-pg="g11">00</td></tr>
+    <tr><td class="n">12</td><td class="t">Relevo e estrutura geológica do Brasil</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:11%"></div><span class="barv">1 <small>em 1 prova</small></span></div></td><td class="pg" data-pg="g12">00</td></tr>
+  </table>
+
+  <p class="toc-h">Parte 2 · História <span>— 47 das 105 questões de Humanas</span></p>
+  <table class="toc">
+    <tr><th>Nº</th><th>Tema</th><th>Questões</th><th class="pgh">Pág.</th></tr>
+    <tr><td class="n">1</td><td class="t">Século XX: guerras, totalitarismos e Guerra Fria</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">9 <small>em 7 provas</small></span></div></td><td class="pg" data-pg="h01">00</td></tr>
+    <tr><td class="n">2</td><td class="t">Brasil Império (1808–1889)</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:78%"></div><span class="barv">7 <small>em 6 provas</small></span></div></td><td class="pg" data-pg="h02">00</td></tr>
+    <tr><td class="n">3</td><td class="t">Sociedade, cultura e direitos</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:78%"></div><span class="barv">7 <small>em 5 provas</small></span></div></td><td class="pg" data-pg="h03">00</td></tr>
+    <tr><td class="n">4</td><td class="t">Idade Moderna: Reformas, Absolutismo e Liberalismo</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6 <small>em 5 provas</small></span></div></td><td class="pg" data-pg="h04">00</td></tr>
+    <tr><td class="n">5</td><td class="t">Brasil e América coloniais</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6 <small>em 4 provas</small></span></div></td><td class="pg" data-pg="h05">00</td></tr>
+    <tr><td class="n">6</td><td class="t">Ditadura militar e redemocratização</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:56%"></div><span class="barv">5 <small>em 5 provas</small></span></div></td><td class="pg" data-pg="h06">00</td></tr>
+    <tr><td class="n">7</td><td class="t">Brasil República (1889–1964)</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">3 <small>em 3 provas</small></span></div></td><td class="pg" data-pg="h07">00</td></tr>
+    <tr><td class="n">8</td><td class="t">Antiguidade e Idade Média</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">3 <small>em 3 provas</small></span></div></td><td class="pg" data-pg="h08">00</td></tr>
+    <tr><td class="n">9</td><td class="t">Revoluções e imperialismo (séculos XVIII–XIX)</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:22%"></div><span class="barv">2 <small>em 2 provas</small></span></div></td><td class="pg" data-pg="h09">00</td></tr>
+  </table>
+  <p class="legend">Geografia, Atualidades e História dividem as mesmas 15 questões de Ciências Humanas em cada prova. A questão do parlamentarismo conta para o Império e para a República.</p>
+
+  <p class="toc-h toc-break">Parte 3 · Matemática <span>— 165 questões de 9 provas</span></p>
   <table class="toc">
     <tr><th>Nº</th><th>Tema</th><th>Questões</th><th class="pgh">Pág.</th></tr>
     <tr><td class="n">1</td><td class="t">Problemas aritméticos: razão, proporção, regra de três e MMC</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">27</span></div></td><td class="pg" data-pg="m01">00</td></tr>
@@ -221,41 +268,7 @@ table.dados{border-collapse:collapse;margin:1mm 0 1.4mm;font-size:9.4pt}
     <tr><td class="n">16</td><td class="t">Matemática financeira: juros</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:7%"></div><span class="barv">2</span></div></td><td class="pg" data-pg="m16">00</td></tr>
     <tr><td class="n">17</td><td class="t">Produtos notáveis e fatoração</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:7%"></div><span class="barv">2</span></div></td><td class="pg" data-pg="m17">00</td></tr>
     <tr><td class="n">18</td><td class="t">Números complexos</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:7%"></div><span class="barv">2</span></div></td><td class="pg" data-pg="m18">00</td></tr>
+    <tr><td class="n">★</td><td class="t"><b>Consulta rápida</b>: linha do tempo, conceitos e tabelas para a véspera</td><td></td><td class="pg" data-pg="cr">00</td></tr>
   </table>
   <p class="legend">Questões que misturam dois temas contam para os dois. Juros aparece pouco sozinho, mas porcentagem e PG, que ele usa, estão no topo.</p>
-
-  <p class="toc-h toc-break">Parte 2 · Física <span>— 75 questões de 5 provas de Economia</span></p>
-  <table class="toc">
-    <tr><th>Nº</th><th>Tema</th><th>Questões</th><th class="pgh">Pág.</th></tr>
-    <tr><td class="n">1</td><td class="t">Óptica</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">9</span></div></td><td class="pg" data-pg="f01">00</td></tr>
-    <tr><td class="n">2</td><td class="t">Termologia e termodinâmica</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">9</span></div></td><td class="pg" data-pg="f02">00</td></tr>
-    <tr><td class="n">3</td><td class="t">Ondas</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:89%"></div><span class="barv">8</span></div></td><td class="pg" data-pg="f03">00</td></tr>
-    <tr><td class="n">4</td><td class="t">Quantidade de movimento e colisões</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6</span></div></td><td class="pg" data-pg="f04">00</td></tr>
-    <tr><td class="n">5</td><td class="t">Eletrostática</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6</span></div></td><td class="pg" data-pg="f05">00</td></tr>
-    <tr><td class="n">6</td><td class="t">Hidrostática</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6</span></div></td><td class="pg" data-pg="f06">00</td></tr>
-    <tr><td class="n">7</td><td class="t">Física moderna</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">6</span></div></td><td class="pg" data-pg="f07">00</td></tr>
-    <tr><td class="n">8</td><td class="t">Eletromagnetismo</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:56%"></div><span class="barv">5</span></div></td><td class="pg" data-pg="f08">00</td></tr>
-    <tr><td class="n">9</td><td class="t">Trabalho, energia e potência</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:56%"></div><span class="barv">5</span></div></td><td class="pg" data-pg="f09">00</td></tr>
-    <tr><td class="n">10</td><td class="t">Eletrodinâmica: circuitos</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:44%"></div><span class="barv">4</span></div></td><td class="pg" data-pg="f10">00</td></tr>
-    <tr><td class="n">11</td><td class="t">Cinemática</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:44%"></div><span class="barv">4</span></div></td><td class="pg" data-pg="f11">00</td></tr>
-    <tr><td class="n">12</td><td class="t">Dinâmica e estática</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:44%"></div><span class="barv">4</span></div></td><td class="pg" data-pg="f12">00</td></tr>
-    <tr><td class="n">13</td><td class="t">Gravitação</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">3</span></div></td><td class="pg" data-pg="f13">00</td></tr>
-  </table>
-
-  <p class="toc-h">Parte 3 · Química <span>— 75 questões de 5 provas de Economia</span></p>
-  <table class="toc">
-    <tr><th>Nº</th><th>Tema</th><th>Questões</th><th class="pgh">Pág.</th></tr>
-    <tr><td class="n">1</td><td class="t">Química orgânica</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:100%"></div><span class="barv">15</span></div></td><td class="pg" data-pg="q01">00</td></tr>
-    <tr><td class="n">2</td><td class="t">Estequiometria e mol</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:67%"></div><span class="barv">10</span></div></td><td class="pg" data-pg="q02">00</td></tr>
-    <tr><td class="n">3</td><td class="t">Oxirredução e eletroquímica</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:60%"></div><span class="barv">9</span></div></td><td class="pg" data-pg="q03">00</td></tr>
-    <tr><td class="n">4</td><td class="t">Radioatividade</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:47%"></div><span class="barv">7</span></div></td><td class="pg" data-pg="q04">00</td></tr>
-    <tr><td class="n">5</td><td class="t">Atomística e tabela periódica</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:47%"></div><span class="barv">7</span></div></td><td class="pg" data-pg="q05">00</td></tr>
-    <tr><td class="n">6</td><td class="t">Funções inorgânicas e reações</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:47%"></div><span class="barv">7</span></div></td><td class="pg" data-pg="q06">00</td></tr>
-    <tr><td class="n">7</td><td class="t">Equilíbrio químico, cinética e pH</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:33%"></div><span class="barv">5</span></div></td><td class="pg" data-pg="q07">00</td></tr>
-    <tr><td class="n">8</td><td class="t">Termoquímica</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:27%"></div><span class="barv">4</span></div></td><td class="pg" data-pg="q08">00</td></tr>
-    <tr><td class="n">9</td><td class="t">Ligações químicas e propriedades</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:27%"></div><span class="barv">4</span></div></td><td class="pg" data-pg="q09">00</td></tr>
-    <tr><td class="n">10</td><td class="t">Substâncias, misturas e separação</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:27%"></div><span class="barv">4</span></div></td><td class="pg" data-pg="q10">00</td></tr>
-    <tr><td class="n">11</td><td class="t">Soluções e concentração</td><td class="barcell"><div class="barwrap"><div class="bar" style="width:20%"></div><span class="barv">3</span></div></td><td class="pg" data-pg="q11">00</td></tr>
-    <tr><td class="n">★</td><td class="t"><b>Consulta rápida</b>: tabelas, valores e constantes para a véspera</td><td></td><td class="pg" data-pg="cr">00</td></tr>
-  </table>
 </section>

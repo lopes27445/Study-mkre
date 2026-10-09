@@ -54,9 +54,9 @@ def corrigir(caminho):
         visitar(raiz.get_object().get("/First"))
     escritor.add_metadata(
         {
-            "/Title": "Formulário FGV",
-            "/Subject": "As fórmulas que mais caem no vestibular da FGV, com exercícios resolvidos",
-            "/Keywords": "FGV, vestibular, fórmulas, matemática, física, química",
+            "/Title": "Guia FGV Administração",
+            "/Subject": "Geografia, Atualidades e História que mais caem na prova de Administração da FGV, com questões reais resolvidas e Matemática",
+            "/Keywords": "FGV, vestibular, administração, geografia, atualidades, história, matemática",
         }
     )
     escritor.page_mode = "/UseOutlines"

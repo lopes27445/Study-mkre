@@ -30,24 +30,29 @@ novas provas forem incluídas.
   quatro de literatura. Modernismo é o assunto literário mais cobrado.
 - **Geografia**: cartografia e geopolítica atual concentram mais da metade do bloco.
 
-## Formulário FGV
+## Guia FGV Administração
 
-`fgv/formulario-fgv.pdf` — PDF de 53 páginas com as fórmulas que mais caem no vestibular da
-FGV, **em ordem de importância**: 18 temas de Matemática, 13 de Física e 11 de Química. Cada
-tema traz uma explicação do que é, cada fórmula vem com o significado de cada letra e de quando
-usar, e os exercícios são **68 questões reais da FGV**, com gabarito oficial e resolução comentada.
+`fgv/guia-fgv-administracao.pdf` — PDF de 56 páginas para a prova de **Administração** da FGV,
+focado em **Geografia, Atualidades e História**, com os temas **em ordem de importância**:
+12 de Geografia e Atualidades, 9 de História e, no fim, 18 de Matemática. Cada tema traz uma
+explicação do que é e cartões com os conceitos, datas e termos que a prova cobra. Os
+exercícios são **65 questões reais da FGV** (33 de Humanas e 32 de Matemática), com gabarito
+oficial e resolução comentada que aponta as pegadinhas das alternativas erradas.
 
-- **Como o ranking foi feito**: classificamos por tema as 165 questões objetivas de Matemática
-  de 9 provas (Vestibular Unificado 2026.1 e 2024, FGV 2026.2 e FGV‑SP de 2020 a 2024.2) e as
-  75 de Física e 75 de Química das 5 provas de Economia (FGV‑SP 2020, 2022, 2023, 2024 e
-  Unificado 2026.1). Questões que misturam dois temas contam para os dois.
-- **Mais cobrados em Matemática**: problemas aritméticos (razão, proporção, regra de três, MMC)
-  com 27 questões, geometria plana (19), probabilidade (17), geometria analítica (14) e
-  geometria espacial (13).
-- **Mais cobrados em Física**: óptica e termologia (9 cada), ondas (8). **Em Química**:
-  orgânica (15), estequiometria (10), oxirredução e eletroquímica (9).
-- **Questões**: transcritas das provas; os gabaritos foram conferidos com os oficiais. Provas e
-  gabaritos consultados no arquivo de resoluções comentadas do Curso Objetivo.
+- **Como o ranking foi feito**: classificamos por tema principal as 105 questões objetivas de
+  Ciências Humanas de 7 provas de Administração (Vestibular Unificado 2026.1 e 2024, Vestibular
+  FGV 2026.2 e FGV‑SP 2024.2, 2023.2, 2023 e 2022): 58 de Geografia e Atualidades e 47 de
+  História. O ranking de Matemática usa as 165 questões objetivas de 9 provas (2020 a 2026).
+- **Mais cobrados em Geografia e Atualidades**: geopolítica e conflitos atuais, economia
+  brasileira e mundial e meio ambiente (9 questões cada, presentes nas 7 provas), seguidos de
+  globalização e cidades globais (6) e agronegócio (5).
+- **Mais cobrados em História**: século XX (guerras, fascismos e Guerra Fria, 9), Brasil
+  Império (7), sociedade, cultura e direitos (7), Idade Moderna (6) e Brasil colonial (6).
+- **Consulta rápida**: linhas do tempo do Brasil e do mundo, pares de conceitos que a FGV troca
+  nas alternativas, economia em uma linha e tabelas de Matemática.
+- **Questões**: transcritas das provas e conferidas palavra por palavra; os gabaritos são os
+  oficiais. Provas e gabaritos consultados no arquivo de resoluções comentadas do Curso Objetivo.
+  Física e Química, da versão anterior, foram retiradas porque não caem na prova de Administração.
 
 O PDF é gerado a partir de `fgv/fonte/partes/*.html` (fórmulas em LaTeX, renderizadas com
 KaTeX e impressas pelo Chromium). O sumário é paginado automaticamente:

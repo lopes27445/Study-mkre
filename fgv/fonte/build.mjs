@@ -1,4 +1,4 @@
-// Gera ../formulario-fgv.pdf a partir de partes/*.html.
+// Gera ../guia-fgv-administracao.pdf a partir de partes/*.html.
 //
 // 1. Renderiza as fórmulas LaTeX — \( ... \) inline e \[ ... \] em destaque — com KaTeX.
 //    (Não usamos $ como delimitador porque o texto tem muitos "R$".)
@@ -24,7 +24,7 @@ const readSource = () =>
     ? fs.readFileSync(path.resolve(dir, process.env.SRC), 'utf8')
     : fs.readdirSync(partsDir).filter((f) => f.endsWith('.html')).sort()
         .map((f) => fs.readFileSync(path.join(partsDir, f), 'utf8')).join('\n');
-const outPath = path.resolve(dir, process.env.OUT ?? '../formulario-fgv.pdf');
+const outPath = path.resolve(dir, process.env.OUT ?? '../guia-fgv-administracao.pdf');
 const buildDir = path.join(dir, '.build');
 fs.mkdirSync(buildDir, { recursive: true });
 
@@ -83,7 +83,8 @@ function locate(pdf, list) {
   const pages = {};
   let i = 0;
   for (const { id, title, probe } of list) {
-    while (i < outline.length && outline[i][0] !== title) i++;
+    const bare = (t) => t.replace(/\s+/g, '');
+    while (i < outline.length && bare(outline[i][0]) !== bare(title)) i++;
     if (i === outline.length) throw new Error(`Título não encontrado nos marcadores: ${title}`);
     const p = outline[i][1];
     const found = [p, p + 1].find((n) => texts[n - 1]?.includes(simplify(probe)));
@@ -100,7 +101,7 @@ const chromiumPath =
 const browser = await chromium.launch(chromiumPath ? { executablePath: chromiumPath } : {});
 
 async function print(html, pdfPath) {
-  const htmlPath = path.join(buildDir, 'formulario.render.html');
+  const htmlPath = path.join(buildDir, 'guia.render.html');
   fs.writeFileSync(htmlPath, html);
   const page = await browser.newPage();
   await page.goto('file://' + htmlPath, { waitUntil: 'networkidle' });

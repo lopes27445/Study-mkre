@@ -1,0 +1,848 @@
+
+<!-- ======================= PARTE 1 · MATEMÁTICA ======================= -->
+<section class="part">
+  <p class="eyebrow">Parte 1 · 165 questões de 9 provas</p>
+  <h1>Matemática</h1>
+  <p>Os temas estão do mais cobrado (nº 1) para o menos cobrado. Na FGV, a Matemática é contextualizada (dinheiro, empresas, jogos, dados) e mistura assuntos, por isso entender o que cada fórmula significa vale mais do que decorá-la.</p>
+</section>
+
+<!-- m01 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m01">
+      <span class="tnum">1</span>
+      <div><h2>Problemas aritméticos: razão, proporção, regra de três e MMC</h2>
+      <p class="seen">Caiu em <b>27</b> das 165 questões · presente nas <b>9</b> provas analisadas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> são os problemas de “pensar com números”: repartir valores, comparar grandezas, montar uma equação a partir do texto, descobrir quando dois ciclos voltam a coincidir. É o tema campeão da FGV porque quase toda questão contextualizada (máquinas, filas, calendários, dinheiro) começa aqui.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Razão e proporção</p>\[\frac{a}{b}=\frac{c}{d}\iff a\cdot d=b\cdot c\]<p class="fe"><b>O que é:</b> razão é a divisão entre duas grandezas (“3 de cada 5”). Proporção é a igualdade de duas razões; resolve-se pelo produto cruzado.</p></div>
+      <div class="f"><p class="fl">Grandezas diretamente proporcionais</p>\[y=k\cdot x\]<p class="fe"><b>O que é:</b> quando uma dobra, a outra dobra (litros produzidos e tempo de trabalho). \(k\) é a constante de proporcionalidade.</p></div>
+      <div class="f"><p class="fl">Grandezas inversamente proporcionais</p>\[x\cdot y=k\]<p class="fe"><b>O que é:</b> quando uma dobra, a outra cai pela metade (número de máquinas e tempo para fazer o mesmo serviço).</p></div>
+      <div class="f"><p class="fl">Divisão proporcional</p>\[\text{parte}_i=T\cdot\frac{p_i}{p_1+p_2+\cdots+p_n}\]<p class="fe"><b>O que é:</b> reparte um total \(T\) de acordo com pesos \(p_i\) (ex.: lucro dividido conforme o capital investido).</p></div>
+      <div class="f wide"><p class="fl">Regra de três composta</p>\[x=x_0\cdot\frac{\text{novo}}{\text{antigo}}\cdot\frac{\text{novo}}{\text{antigo}}\cdots\]<p class="fe"><b>O que é:</b> \(x_0\) é o valor conhecido da grandeza pedida. Para cada outra grandeza, multiplique por novo/antigo se ela for diretamente proporcional à pedida, ou por antigo/novo se for inversamente proporcional.</p></div>
+      <div class="f"><p class="fl">MMC (mínimo múltiplo comum)</p>\[\text{mmc}(a,b)=\frac{a\cdot b}{\text{mdc}(a,b)}\]<p class="fe"><b>Quando usar:</b> em ciclos que voltam a coincidir (semáforos, ônibus, remédios). Na fatoração, pegue cada primo com o <i>maior</i> expoente.</p></div>
+      <div class="f"><p class="fl">MDC (máximo divisor comum)</p>\[\text{mdc}(a,b)\cdot\text{mmc}(a,b)=a\cdot b\]<p class="fe"><b>Quando usar:</b> para dividir tudo em partes iguais do maior tamanho possível (cortar tábuas, montar kits). Na fatoração, primos comuns com o <i>menor</i> expoente.</p></div>
+      <div class="f"><p class="fl">Fila: posição pela frente e por trás</p>\[\text{total}=p_{\text{frente}}+p_{\text{trás}}-1\]<p class="fe"><b>Por quê:</b> a própria pessoa é contada nas duas posições, então desconta-se 1.</p></div>
+      <div class="f"><p class="fl">Quantidade de inteiros de a até b</p>\[b-a+1\]<p class="fe"><b>O que é:</b> conta os dois extremos. Ex.: de 15 a 40 há 26 números; \(n\) postes em linha formam \(n-1\) vãos.</p></div>
+      <div class="f wide"><p class="fl">Critérios de divisibilidade</p><p class="ft">Por <b>2</b>: termina em algarismo par · por <b>3</b>: soma dos algarismos é múltiplo de 3 · por <b>4</b>: os dois últimos algarismos formam múltiplo de 4 · por <b>5</b>: termina em 0 ou 5 · por <b>6</b>: por 2 e por 3 · por <b>9</b>: soma dos algarismos é múltiplo de 9 · por <b>10</b>: termina em 0 · por <b>12</b>: por 3 e por 4.</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Como pensar</span>Na regra de três composta, compare cada grandeza só com a pedida, fixando as outras. Pergunte: “se esta aumenta, a pedida aumenta?” Se sim, é direta; se não, inversa.</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023.2 · Administração · Questão 6</span><span class="oficial">questão real</span></p>
+      <p>Sabendo que 3 máquinas idênticas fazem 120 litros de sorvete em 6 horas, o tempo (em horas) que 2 máquinas levam para fabricar 160 litros de sorvete é</p>
+      <ol class="alts"><li>11</li><li>9</li><li>10</li><li>12</li><li>8</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>A grandeza pedida é o tempo. Mais litros exigem mais horas (direta); mais máquinas exigem menos horas (inversa):</p>
+      \[x=6\cdot\frac{160}{120}\cdot\frac{3}{2}=6\cdot\frac{4}{3}\cdot\frac{3}{2}=12\ \text{horas}\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 12</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 1</span><span class="oficial">questão real</span></p>
+      <p>Em uma longa fila de pessoas, Filomena é a 537.ª pessoa da fila. Contando-se as pessoas do final para o início, Filomena é a 388.ª.</p>
+      <p>O número de pessoas nessa fila é:</p>
+      <ol class="alts"><li>922;</li><li>923;</li><li>924;</li><li>925;</li><li>926.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Há 536 pessoas à frente de Filomena e 387 atrás dela. Total: \(536+1+387=924\), que é o mesmo que \(537+388-1\).</p>
+      <p class="trap">Somar 537 + 388 = 925 (alternativa d) conta Filomena duas vezes.</p>
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 924</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 3</span><span class="oficial">questão real</span></p>
+      <p>Luana e Vitória são duas amigas muito generosas. Cada uma delas tem uma certa quantia em reais e Luana tem uma quantia maior do que a de Vitória.</p>
+      <p>Por generosidade, Luana dá a Vitória um valor em reais de modo a dobrar a quantia que Vitória tinha. A reação de Vitória, também por generosidade, foi a de dar a Luana uma quantia de modo a dobrar aquela com que Luana tinha ficado.</p>
+      <p>No final, as duas terminaram com quantias iguais!</p>
+      <p>A razão entre as quantias iniciais de Luana e de Vitória é:</p>
+      <ol class="alts"><li>5/3;</li><li>5/2;</li><li>4/3;</li><li>4/2;</li><li>3/2.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Sejam \(L\) e \(V\) as quantias iniciais. Para dobrar a de Vitória, Luana dá \(V\): fica com \(L-V\), e Vitória com \(2V\). Para dobrar a de Luana, Vitória dá \(L-V\): Luana fica com \(2(L-V)\), e Vitória com \(2V-(L-V)=3V-L\).</p>
+      \[2L-2V=3V-L\ \Rightarrow\ 3L=5V\ \Rightarrow\ \frac{L}{V}=\frac{5}{3}\]
+      <p class="ans"><span class="chip">A</span>Gabarito oficial: a) 5/3</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023 · Administração e Economia · Questão 14</span><span class="oficial">questão real</span></p>
+      <p>Em certa rua, há dois semáforos, um no início e outro no final da rua. O semáforo do início, a cada ciclo de 120 segundos, fica verde nos primeiros 110 segundos e vermelho nos 10 segundos seguintes. O semáforo do final, a cada ciclo de 180 segundos, fica verde nos primeiros 160 segundos e vermelho nos 20 segundos seguintes. Ambos ficaram verdes ao mesmo tempo, exatamente ao meio-dia.</p>
+      <p>Por quanto tempo, no período de 24 horas até o meio-dia do dia seguinte, os semáforos estarão simultaneamente vermelhos?</p>
+      <ol class="alts c3"><li>30 minutos</li><li>40 minutos</li><li>1 hora</li><li>70 minutos</li><li>1 hora e meia</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>\(\text{mmc}(120,180)=360\) s: a cada 6 minutos o padrão se repete. Em \([0,360)\), o 1º semáforo fica vermelho em \([110,120)\), \([230,240)\) e \([350,360)\); o 2º, em \([160,180)\) e \([340,360)\). Coincidem só em \([350,360)\): 10 s por ciclo.</p>
+      \[24\ \text{h}=86\,400\ \text{s}=240\ \text{ciclos}\ \Rightarrow\ 240\cdot10\ \text{s}=2\,400\ \text{s}=40\ \text{min}\]
+      <p class="ans"><span class="chip">B</span>Gabarito oficial: b) 40 minutos</p>
+    </div>
+  </div>
+</section>
+
+<!-- m02 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m02">
+      <span class="tnum">2</span>
+      <div><h2>Geometria plana</h2>
+      <p class="seen">Caiu em <b>19</b> das 165 questões · presente em <b>8</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> estuda figuras no plano: triângulos, quadriláteros, círculos e polígonos. Na FGV cai sobretudo cálculo de áreas, semelhança de triângulos e teorema de Pitágoras, muitas vezes em situações do dia a dia (pizzas, arames, terrenos).</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Área do triângulo</p>\[A=\frac{b\cdot h}{2}\qquad A=\frac{a\,b\,\sen\theta}{2}\]<p class="fe"><b>O que significa:</b> \(b\) é a base e \(h\) a altura perpendicular a ela. A segunda forma usa dois lados \(a\), \(b\) e o ângulo \(\theta\) entre eles.</p></div>
+      <div class="f"><p class="fl">Triângulo equilátero</p>\[A=\frac{\ell^2\sqrt3}{4}\qquad h=\frac{\ell\sqrt3}{2}\]<p class="fe"><b>O que significa:</b> \(\ell\) é o lado; os três lados são iguais e os ângulos medem 60°.</p></div>
+      <div class="f"><p class="fl">Trapézio, losango e paralelogramo</p>\[A_{\text{trap}}=\frac{(B+b)\,h}{2}\quad A_{\text{los}}=\frac{D\cdot d}{2}\quad A_{\text{par}}=b\cdot h\]<p class="fe"><b>O que significa:</b> \(B\) e \(b\) são as bases paralelas do trapézio; \(D\) e \(d\), as diagonais do losango. Losango também é paralelogramo: lado × altura.</p></div>
+      <div class="f"><p class="fl">Círculo e setor</p>\[A=\pi r^2\qquad C=2\pi r\qquad A_{\text{setor}}=\frac{\alpha}{360^\circ}\pi r^2\]<p class="fe"><b>O que significa:</b> \(r\) é o raio; \(C\), o comprimento da circunferência (o “perímetro”); o setor é uma fatia de ângulo \(\alpha\).</p></div>
+      <div class="f"><p class="fl">Teorema de Pitágoras</p>\[a^2=b^2+c^2\]<p class="fe"><b>O que significa:</b> só vale no triângulo retângulo. \(a\) é a hipotenusa (oposta ao ângulo de 90°); \(b\) e \(c\) são os catetos.</p></div>
+      <div class="f"><p class="fl">Relações métricas no triângulo retângulo</p>\[h^2=m\,n\qquad a\,h=b\,c\]<p class="fe"><b>O que significa:</b> \(h\) é a altura relativa à hipotenusa \(a\); \(m\) e \(n\) são as projeções dos catetos sobre ela. \(ah=bc\) é a área calculada de dois jeitos.</p></div>
+      <div class="f"><p class="fl">Semelhança</p>\[\frac{\text{lados}}{\text{lados}}=k\ \Rightarrow\ \frac{\text{áreas}}{\text{áreas}}=k^2\]<p class="fe"><b>O que é:</b> figuras semelhantes têm a mesma forma (ângulos iguais) e lados proporcionais na razão \(k\); as áreas ficam multiplicadas por \(k^2\).</p></div>
+      <div class="f"><p class="fl">Polígonos de n lados</p>\[S_i=(n-2)\cdot180^\circ\qquad d=\frac{n(n-3)}{2}\]<p class="fe"><b>O que significa:</b> \(S_i\) é a soma dos ângulos internos e \(d\), o número de diagonais. No polígono regular, cada ângulo interno vale \(S_i/n\).</p></div>
+      <div class="f wide"><p class="fl">Fórmula de Heron</p>\[A=\sqrt{p\,(p-a)(p-b)(p-c)},\qquad p=\frac{a+b+c}{2}\]<p class="fe"><b>Quando usar:</b> para achar a área de um triângulo quando você só conhece os três lados \(a\), \(b\), \(c\); \(p\) é o semiperímetro.</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Dica</span>Triângulos com a mesma altura têm áreas proporcionais às bases. Isso resolve muitas questões de “razão entre áreas” sem calcular área nenhuma, como a primeira questão abaixo.</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 4</span><span class="oficial">questão real</span></p>
+      <p>Considere um triângulo ABC e seja M o ponto médio do lado BC. Sejam, ainda, N e P pontos sobre o lado AC tais que os comprimentos dos segmentos AN, NP e PC sejam iguais.</p>
+      <p>A razão entre as áreas dos triângulos MNP e ABC é:</p>
+      <ol class="alts"><li>1/12;</li><li>1/9;</li><li>1/8;</li><li>1/6;</li><li>1/4.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>AMC e ABC têm o vértice A em comum e bases MC e BC na mesma reta: mesma altura. Como \(MC=BC/2\), \(A_{AMC}=A_{ABC}/2\). MNP e AMC têm o vértice M em comum e bases NP e AC na mesma reta: \(NP=AC/3\), então \(A_{MNP}=A_{AMC}/3\).</p>
+      \[\frac{A_{MNP}}{A_{ABC}}=\frac13\cdot\frac12=\frac16\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 1/6</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023.2 · Administração · Questão 8</span><span class="oficial">questão real</span></p>
+      <p>Considere um losango ABCD e o ponto P pé da perpendicular traçada de B sobre o lado AD. Sabe-se que AP = 3 e PD = 4.</p>
+      <p>A área desse losango é</p>
+      <ol class="alts"><li>6</li><li>12</li><li>\(6\sqrt3\)</li><li>\(7\sqrt7\)</li><li>\(14\sqrt{10}\)</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>O losango tem os quatro lados iguais: \(AD=3+4=7\), logo \(AB=7\). No triângulo retângulo ABP:</p>
+      \[BP^2=7^2-3^2=40\ \Rightarrow\ BP=2\sqrt{10}\qquad A=AD\cdot BP=7\cdot2\sqrt{10}=14\sqrt{10}\]
+      <p class="ans"><span class="chip">E</span>Gabarito oficial: e) \(14\sqrt{10}\)</p>
+    </div>
+  </div>
+</section>
+
+<!-- m03 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m03">
+      <span class="tnum">3</span>
+      <div><h2>Probabilidade e conjuntos</h2>
+      <p class="seen">Caiu em <b>17</b> das 165 questões · presente em <b>8</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> probabilidade mede a chance de algo acontecer, de 0 (impossível) a 1 (certo). A FGV adora situações em etapas (jogos, sorteios sem reposição, “melhor de 3”) e contagens com diagrama de Venn.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Definição</p>\[P(A)=\frac{n(A)}{n(\Omega)}\]<p class="fe"><b>O que significa:</b> casos favoráveis sobre casos possíveis, quando todos são igualmente prováveis. \(\Omega\) (ômega) é o espaço amostral: todos os resultados possíveis.</p></div>
+      <div class="f"><p class="fl">Complementar</p>\[P(\bar A)=1-P(A)\]<p class="fe"><b>O que é:</b> a chance de A não acontecer. Atalho para “pelo menos um”: \(1-P(\text{nenhum})\).</p></div>
+      <div class="f"><p class="fl">União (“A ou B”)</p>\[P(A\cup B)=P(A)+P(B)-P(A\cap B)\]<p class="fe"><b>Por quê:</b> soma as duas chances e desconta a interseção, que foi contada duas vezes.</p></div>
+      <div class="f"><p class="fl">Interseção (“A e B”)</p>\[P(A\cap B)=P(A)\cdot P(B\mid A)\]<p class="fe"><b>O que é:</b> etapas em sequência se multiplicam. Se os eventos são independentes (um não altera o outro), fica \(P(A)\cdot P(B)\).</p></div>
+      <div class="f"><p class="fl">Probabilidade condicional</p>\[P(A\mid B)=\frac{P(A\cap B)}{P(B)}\]<p class="fe"><b>O que é:</b> a chance de A sabendo que B aconteceu; o espaço amostral “encolhe” para B.</p></div>
+      <div class="f"><p class="fl">Binomial (k sucessos em n tentativas)</p>\[P=\binom nk\,p^k\,(1-p)^{n-k}\]<p class="fe"><b>O que significa:</b> \(p\) é a chance de sucesso em cada tentativa independente; \(\binom nk\) conta em quais tentativas os sucessos acontecem.</p></div>
+      <div class="f"><p class="fl">Conjuntos: união de dois</p>\[n(A\cup B)=n(A)+n(B)-n(A\cap B)\]<p class="fe"><b>O que significa:</b> \(n(\cdot)\) é o número de elementos. Mesma lógica da probabilidade da união.</p></div>
+      <div class="f"><p class="fl">Nenhum dos conjuntos</p>\[n(\text{nenhum})=n(U)-n(A\cup B\cup C)\]<p class="fe"><b>O que significa:</b> \(U\) é o total (o universo); tira-se quem está em pelo menos um conjunto.</p></div>
+      <div class="f wide"><p class="fl">Conjuntos: união de três</p>\[n(A\cup B\cup C)=n(A)+n(B)+n(C)-n(A\cap B)-n(A\cap C)-n(B\cap C)+n(A\cap B\cap C)\]<p class="fe"><b>Como usar:</b> preencha o diagrama de Venn de dentro para fora: primeiro a interseção dos três, depois as duplas e por último as regiões “só”.</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Como pensar</span>“E” multiplica; “ou” (de casos que não acontecem juntos) soma. Em etapas encadeadas, desenhe a árvore de possibilidades e some os ramos favoráveis.</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 8</span><span class="oficial">questão real</span></p>
+      <p>Dois times de basquete, A e B, vão disputar um “playoff melhor de 3”, isto é, eles vão jogar no máximo três partidas e o primeiro que ganhar duas partidas ganha o playoff. No jogo de basquete, não há empate.</p>
+      <p>A primeira partida será disputada na quadra do time A e as outras duas partidas serão disputadas na quadra do time B.</p>
+      <p>Quando joga em casa, isto é, na sua quadra, a probabilidade de o time A vencer é 3/5. Quando joga na casa do adversário, a probabilidade de o time A vencer é 1/3. Os resultados das partidas são independentes.</p>
+      <p>A probabilidade de o time A ganhar o playoff é:</p>
+      <ol class="alts"><li>17/45;</li><li>16/45;</li><li>15/45;</li><li>14/45;</li><li>13/45.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>A ganha o playoff em três sequências (1ª partida em casa, as outras fora):</p>
+      \[\underbrace{\tfrac35\cdot\tfrac13}_{\text{VV}}+\underbrace{\tfrac35\cdot\tfrac23\cdot\tfrac13}_{\text{VDV}}+\underbrace{\tfrac25\cdot\tfrac13\cdot\tfrac13}_{\text{DVV}}=\frac{9}{45}+\frac{6}{45}+\frac{2}{45}=\frac{17}{45}\]
+      <p class="ans"><span class="chip">A</span>Gabarito oficial: a) 17/45</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 14</span><span class="oficial">questão real</span></p>
+      <p>Em uma escola com 150 alunos, alguns se prepararam para as olimpíadas internas de Matemática, Física ou Astronomia. A pesquisa de envolvimento revelou os seguintes dados:</p>
+      <ul class="lista">
+        <li>35 alunos se preparam apenas para a olimpíada de Matemática;</li>
+        <li>60 alunos se preparam para a olimpíada de Física;</li>
+        <li>50 alunos se preparam para a olimpíada de Astronomia;</li>
+        <li>25 alunos se preparam tanto para a olimpíada de Física como para a olimpíada de Astronomia</li>
+        <li>Nenhum aluno se prepara para as três olimpíadas.</li>
+      </ul>
+      <p>Um aluno da escola será sorteado ao acaso para participar de um congresso científico. A probabilidade de que ele não se prepare para nenhuma das três olimpíadas é:</p>
+      <ol class="alts"><li>12%;</li><li>14%;</li><li>15%;</li><li>20%;</li><li>25%.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Quem se prepara para Física ou Astronomia: \(60+50-25=85\). Quem também estuda Matemática já está dentro desses 85; fora deles, só os 35 que estudam apenas Matemática. Alguma olimpíada: \(85+35=120\). Nenhuma: \(150-120=30\).</p>
+      \[P=\frac{30}{150}=\frac15=20\%\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 20%</p>
+    </div>
+  </div>
+</section>
+
+<!-- m04 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m04">
+      <span class="tnum">4</span>
+      <div><h2>Geometria analítica</h2>
+      <p class="seen">Caiu em <b>14</b> das 165 questões · presente em <b>7</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> geometria feita com coordenadas. Pontos viram pares \((x,y)\); retas e circunferências viram equações. Na FGV caem muito área de triângulo dado por coordenadas ou por retas, distâncias e retas que dividem regiões.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Distância entre dois pontos</p>\[d_{AB}=\sqrt{(x_B-x_A)^2+(y_B-y_A)^2}\]<p class="fe"><b>O que é:</b> o comprimento do segmento AB; é o teorema de Pitágoras no plano cartesiano.</p></div>
+      <div class="f"><p class="fl">Ponto médio</p>\[M=\Big(\frac{x_A+x_B}{2},\ \frac{y_A+y_B}{2}\Big)\]<p class="fe"><b>O que é:</b> o ponto no meio do segmento: média das coordenadas.</p></div>
+      <div class="f"><p class="fl">Coeficiente angular</p>\[m=\frac{y_B-y_A}{x_B-x_A}=\tg\alpha\]<p class="fe"><b>O que é:</b> a inclinação da reta: quanto \(y\) varia quando \(x\) aumenta 1. \(\alpha\) é o ângulo com o eixo \(x\).</p></div>
+      <div class="f"><p class="fl">Equação da reta</p>\[y-y_0=m\,(x-x_0)\qquad y=mx+n\]<p class="fe"><b>O que significa:</b> reta de inclinação \(m\) passando por \((x_0,y_0)\). Na forma reduzida, \(n\) é onde ela corta o eixo \(y\).</p></div>
+      <div class="f"><p class="fl">Paralelas e perpendiculares</p>\[m_1=m_2\qquad m_1\cdot m_2=-1\]<p class="fe"><b>O que significa:</b> paralelas têm a mesma inclinação; perpendiculares têm inclinações “inversas e opostas”.</p></div>
+      <div class="f"><p class="fl">Distância de ponto a reta</p>\[d=\frac{|a x_0+b y_0+c|}{\sqrt{a^2+b^2}}\]<p class="fe"><b>O que significa:</b> menor distância do ponto \((x_0,y_0)\) à reta \(ax+by+c=0\).</p></div>
+      <div class="f"><p class="fl">Área do triângulo por coordenadas</p>\[A=\frac{|D|}{2},\quad D=\begin{vmatrix}x_A&y_A&1\\x_B&y_B&1\\x_C&y_C&1\end{vmatrix}\]<p class="fe"><b>Quando usar:</b> com os três vértices conhecidos. Se \(D=0\), os pontos estão alinhados.</p></div>
+      <div class="f"><p class="fl">Circunferência</p>\[(x-a)^2+(y-b)^2=r^2\]<p class="fe"><b>O que significa:</b> todos os pontos a distância \(r\) do centro \((a,b)\).</p></div>
+      <div class="f wide"><p class="fl">Forma geral da circunferência</p>\[x^2+y^2+Dx+Ey+F=0\ \Rightarrow\ \text{centro}\Big(-\frac D2,\,-\frac E2\Big),\quad r=\sqrt{\Big(\frac D2\Big)^2+\Big(\frac E2\Big)^2-F}\]<p class="fe"><b>Como usar:</b> para achar centro e raio a partir da equação expandida (ou complete quadrados). Reta × circunferência: se a distância do centro à reta é menor que \(r\), a reta é secante; igual, tangente; maior, exterior.</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Dica</span>Os vértices de um triângulo formado por três retas são as interseções delas duas a duas: resolva cada sistema. Se um lado é horizontal ou vertical, use base × altura ÷ 2 direto.</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023 · Administração e Economia · Questão 2</span><span class="oficial">questão real</span></p>
+      <p>No plano cartesiano, a área do triângulo delimitado pelas retas \(5x-3y+1=0\), \(y-2=0\) e \(5x+y-27=0\) é</p>
+      <ol class="alts"><li>27</li><li>15</li><li>12</li><li>10</li><li>8</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>\(y=2\) em \(5x-3y+1=0\): \(x=1\), P(1, 2). \(y=2\) em \(5x+y-27=0\): \(x=5\), Q(5, 2). As duas oblíquas: subtraindo uma da outra, \(4y-28=0\), \(y=7\) e \(x=4\), R(4, 7).</p>
+      \[\text{base }PQ=4\ (\text{horizontal}),\ \text{altura}=7-2=5\ \Rightarrow\ A=\frac{4\cdot5}{2}=10\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 10</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular FGV 2026.2 · Questão 13</span><span class="oficial">questão real</span></p>
+      <p>A reta de equação \(y=ax+1\) divide a região quadrangular definida por \(0\le x\le4\) e \(0\le y\le4\) em duas regiões de mesma área.</p>
+      <p>O valor de \(a\) é</p>
+      <ol class="alts"><li>1/4.</li><li>1/3.</li><li>1/2.</li><li>3/4.</li><li>3/2.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>A reta passa por (0, 1) e, em \(x=4\), vale \(4a+1\). A região abaixo dela é um trapézio de bases 1 e \(4a+1\) e altura 4, que deve ter metade da área do quadrado (16):</p>
+      \[\frac{(1+4a+1)\cdot4}{2}=8\ \Rightarrow\ 4+8a=8\ \Rightarrow\ a=\frac12\]
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 1/2</p>
+    </div>
+  </div>
+</section>
+
+<!-- m05 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m05">
+      <span class="tnum">5</span>
+      <div><h2>Geometria espacial e poliedros</h2>
+      <p class="seen">Caiu em <b>13</b> das 165 questões · presente em <b>8</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> estuda sólidos (caixas, cilindros, cones, esferas) e poliedros. Na FGV caem volumes e capacidades (copos, reservatórios, embalagens), semelhança de sólidos e a relação de Euler.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Prisma e cilindro</p>\[V=A_b\cdot h\qquad V_{\text{cil}}=\pi r^2h\]<p class="fe"><b>O que significa:</b> volume = área da base \(A_b\) × altura \(h\). No cilindro a base é um círculo de raio \(r\).</p></div>
+      <div class="f"><p class="fl">Pirâmide e cone</p>\[V=\frac13\,A_b\cdot h\qquad V_{\text{cone}}=\frac13\pi r^2h\]<p class="fe"><b>O que significa:</b> um terço do prisma (ou do cilindro) de mesma base e mesma altura.</p></div>
+      <div class="f"><p class="fl">Paralelepípedo e cubo</p>\[V=a\,b\,c\quad D=\sqrt{a^2+b^2+c^2}\quad V_{\text{cubo}}=a^3\]<p class="fe"><b>O que significa:</b> \(a\), \(b\), \(c\) são as três arestas; \(D\) é a diagonal que atravessa a caixa.</p></div>
+      <div class="f"><p class="fl">Cone: geratriz e área lateral</p>\[g^2=r^2+h^2\qquad A_\ell=\pi r g\]<p class="fe"><b>O que significa:</b> a geratriz \(g\) é a “lateral inclinada” do cone, hipotenusa do triângulo de catetos \(r\) e \(h\).</p></div>
+      <div class="f"><p class="fl">Esfera</p>\[V=\frac43\pi r^3\qquad A=4\pi r^2\]<p class="fe"><b>O que significa:</b> \(r\) é o raio; \(A\) é a área da superfície.</p></div>
+      <div class="f"><p class="fl">Semelhança de sólidos</p>\[k=\frac{h}{H}\ \Rightarrow\ \frac{\text{áreas}}{\text{áreas}}=k^2,\ \ \frac{\text{volumes}}{\text{volumes}}=k^3\]<p class="fe"><b>Quando usar:</b> líquido até uma fração da altura num cone ou pirâmide forma um sólido semelhante ao recipiente.</p></div>
+      <div class="f"><p class="fl">Relação de Euler</p>\[V-A+F=2\]<p class="fe"><b>O que significa:</b> vértices − arestas + faces = 2 em todo poliedro convexo.</p></div>
+      <div class="f"><p class="fl">Contagem de arestas</p>\[2A=\sum(\text{lados das faces})=\sum(\text{arestas por vértice})\]<p class="fe"><b>Por quê:</b> cada aresta é lado de 2 faces e liga 2 vértices.</p></div>
+      <div class="f wide"><p class="fl">Conversões de volume</p>\[1\ \text{m}^3=1000\ \text{L}\qquad1\ \text{dm}^3=1\ \text{L}\qquad1\ \text{cm}^3=1\ \text{mL}\]</div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 5</span><span class="oficial">questão real</span></p>
+      <p>Dois copos, um cilíndrico e um cônico, ambos circulares e retos, têm o mesmo raio da base, R, e a mesma altura, H. Enche-se o copo cônico com água até 1/3 da altura. Com o copo cilíndrico inicialmente vazio, despeja-se toda a água do copo cônico para o cilíndrico.</p>
+      <p>A altura da água no copo cilíndrico é:</p>
+      <ol class="alts"><li>H/6;</li><li>H/9;</li><li>H/27;</li><li>H/81;</li><li>H/243.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>A água no cone forma um cone semelhante ao copo com \(k=\frac13\) (o copo cônico tem o vértice para baixo). Volume de água: \(\big(\frac13\big)^3\) do volume do cone:</p>
+      \[V_{\text{água}}=\frac1{27}\cdot\frac13\pi R^2H=\frac{\pi R^2H}{81}\ \Rightarrow\ \pi R^2x=\frac{\pi R^2H}{81}\ \Rightarrow\ x=\frac{H}{81}\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) H/81</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 10</span><span class="oficial">questão real</span></p>
+      <p>Considere um poliedro convexo no qual, em cada vértice, incidem quatro arestas e todas as suas faces são ou triangulares ou quadradas. Sabendo que são duas faces quadradas, o número de faces triangulares é:</p>
+      <ol class="alts"><li>6;</li><li>8;</li><li>10;</li><li>12;</li><li>14.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Pelos vértices: \(4V=2A\Rightarrow V=A/2\). Pelas faces (\(t\) triângulos e 2 quadrados): \(2A=3t+8\). Euler com \(F=t+2\):</p>
+      \[\frac A2-A+t+2=2\ \Rightarrow\ A=2t\ \Rightarrow\ 4t=3t+8\ \Rightarrow\ t=8\]
+      <p class="ans"><span class="chip">B</span>Gabarito oficial: b) 8</p>
+    </div>
+  </div>
+</section>
+
+<!-- m06 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m06">
+      <span class="tnum">6</span>
+      <div><h2>Estatística: médias e dispersão</h2>
+      <p class="seen">Caiu em <b>11</b> das 165 questões · presente em <b>7</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> resume um conjunto de dados com poucos números: um “centro” (média, mediana, moda) e o quanto os dados se espalham (variância, desvio padrão). A FGV gosta de média ponderada e de problemas em que alguém entra ou sai de um grupo.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Média aritmética</p>\[\bar x=\frac{x_1+x_2+\cdots+x_n}{n}\]<p class="fe"><b>Truque:</b> trabalhe com a soma: soma = média × quantidade.</p></div>
+      <div class="f"><p class="fl">Média ponderada</p>\[\bar x=\frac{p_1x_1+p_2x_2+\cdots+p_nx_n}{p_1+p_2+\cdots+p_n}\]<p class="fe"><b>O que significa:</b> cada valor \(x_i\) pesa \(p_i\) (quantidade de pessoas, créditos, avaliações).</p></div>
+      <div class="f"><p class="fl">Mediana</p><p class="ft">Ordene os dados. Com \(n\) ímpar, é o termo central, na posição \(\frac{n+1}{2}\). Com \(n\) par, é a média dos termos das posições \(\frac n2\) e \(\frac n2+1\).</p><p class="fe"><b>O que é:</b> o valor que divide os dados ao meio; não é afetada por valores extremos.</p></div>
+      <div class="f"><p class="fl">Moda</p><p class="ft">O valor que mais se repete. Pode haver mais de uma moda ou nenhuma.</p></div>
+      <div class="f"><p class="fl">Variância e desvio padrão</p>\[\sigma^2=\frac{\sum(x_i-\bar x)^2}{n}\qquad\sigma=\sqrt{\sigma^2}\]<p class="fe"><b>O que é:</b> a média dos quadrados dos desvios em relação à média. O desvio padrão \(\sigma\) volta à unidade original dos dados.</p></div>
+      <div class="f"><p class="fl">Atalho e transformação</p>\[\sigma^2=\overline{x^2}-\bar x^{\,2}\qquad y=ax+b\Rightarrow\sigma_y=|a|\,\sigma_x\]<p class="fe"><b>O que significa:</b> variância = média dos quadrados − quadrado da média. Somar \(b\) a todos os dados não muda a dispersão.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 12</span><span class="oficial">questão real</span></p>
+      <p>Clara é uma criadora de conteúdo e publicou seu novo vídeo em três plataformas diferentes. Para saber a avaliação geral de seu trabalho, ela coletou os seguintes dados:</p>
+      <ul class="lista">
+        <li>na Plataforma A, ela recebeu 200 avaliações com uma média de 4,5 estrelas;</li>
+        <li>na Plataforma B, ela recebeu 300 avaliações com uma média de 4,0 estrelas;</li>
+        <li>na Plataforma C, ela recebeu 500 avaliações com uma média de 4,8 estrelas.</li>
+      </ul>
+      <p>Considerando as três plataformas, o número médio de estrelas que o vídeo de Clara recebeu é:</p>
+      <ol class="alts"><li>4,0;</li><li>4,2;</li><li>4,5;</li><li>4,6;</li><li>4,8.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      \[\bar x=\frac{200\cdot4{,}5+300\cdot4{,}0+500\cdot4{,}8}{200+300+500}=\frac{900+1200+2400}{1000}=4{,}5\]
+      <p class="trap">A média simples das três médias, (4,5 + 4,0 + 4,8)/3 ≈ 4,43, ignora quantas avaliações cada plataforma teve.</p>
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 4,5</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular FGV 2026.2 · Questão 12</span><span class="oficial">questão real</span></p>
+      <p>Um grupo de alunos vai competir com um grupo de professores em um concurso de perguntas e respostas. São 11 pessoas ao todo. Rubens, um ex-aluno da escola, chega de última hora e também vai participar.</p>
+      <p>Se Rubens fizer parte do grupo de alunos, a média de idade do grupo vai aumentar de 14 para 16 anos e, se ele fizer parte do grupo de professores, a média de idade do grupo vai diminuir de 52 para 48 anos.</p>
+      <p>A idade de Rubens, em anos, é</p>
+      <ol class="alts"><li>22.</li><li>24.</li><li>28.</li><li>30.</li><li>32.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Sejam \(x\) alunos e \(y\) professores (\(x+y=11\)) e \(R\) a idade de Rubens. Somas: alunos \(14x\), professores \(52y\).</p>
+      \[\frac{14x+R}{x+1}=16\Rightarrow R=2x+16\qquad\frac{52y+R}{y+1}=48\Rightarrow R=48-4y\]
+      <p>Com \(y=11-x\): \(2x+16=4+4x\Rightarrow x=6\), \(y=5\) e \(R=28\).</p>
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 28</p>
+    </div>
+  </div>
+</section>
+
+<!-- m07 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m07">
+      <span class="tnum">7</span>
+      <div><h2>Exponencial e logaritmo</h2>
+      <p class="seen">Caiu em <b>11</b> das 165 questões · presente em <b>7</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> a exponencial descreve o que cresce ou diminui sempre na mesma proporção (juros, populações, resfriamento, meia-vida). O logaritmo é a operação inversa: descobre o expoente. Escalas como decibéis, pH e Richter são logarítmicas.</p>
+    <div class="fgrid">
+      <div class="f wide"><p class="fl">Propriedades das potências</p>\[a^m\cdot a^n=a^{m+n}\qquad\frac{a^m}{a^n}=a^{m-n}\qquad(a^m)^n=a^{mn}\qquad a^{-n}=\frac1{a^n}\qquad a^{\frac mn}=\sqrt[n]{a^m}\]</div>
+      <div class="f"><p class="fl">Definição de logaritmo</p>\[\log_b a=x\iff b^x=a\]<p class="fe"><b>O que é:</b> “a que expoente devo elevar \(b\) para obter \(a\)?”. Exige \(a>0\), \(b>0\) e \(b\neq1\). Sem base escrita, a base é 10.</p></div>
+      <div class="f"><p class="fl">Consequências da definição</p>\[\log_b1=0\qquad\log_bb=1\qquad b^{\log_ba}=a\]</div>
+      <div class="f"><p class="fl">Produto e quociente</p>\[\log(ab)=\log a+\log b\qquad\log\frac ab=\log a-\log b\]<p class="fe"><b>O que significa:</b> o log transforma multiplicação em soma e divisão em subtração.</p></div>
+      <div class="f"><p class="fl">Potência e mudança de base</p>\[\log a^n=n\log a\qquad\log_ba=\frac{\log_ca}{\log_cb}\]<p class="fe"><b>Quando usar:</b> para “derrubar” um expoente desconhecido (achar o tempo \(t\)).</p></div>
+      <div class="f wide"><p class="fl">Crescimento e decaimento</p>\[N(t)=N_0\,(1+i)^t\qquad N(t)=N_0\Big(\frac12\Big)^{t/T}\]<p class="fe"><b>O que significa:</b> \(N_0\) é o valor inicial; \(i\), a taxa por período; \(T\), o tempo para cair à metade (meia-vida). Se algo “cai pela metade a cada 4 minutos”, é a segunda fórmula com \(T=4\).</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Pegadinha</span>Teste sempre a condição de existência (logaritmando positivo). Valores úteis: \(\log2\approx0{,}301\), \(\log3\approx0{,}477\), \(\log5=1-\log2\approx0{,}699\).</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 13</span><span class="oficial">questão real</span></p>
+      <p>A intensidade sonora é medida em decibéis (dB). A fórmula para calcular o nível de intensidade sonora em decibéis (L) é dada por \(L=10\cdot\log_{10}\big(\frac{I}{I_0}\big)\), onde I é a intensidade da fonte sonora em Watts por metro quadrado (W/m²) e I<sub>0</sub> é a intensidade de referência que corresponde ao limiar da audição humana.</p>
+      <p>Um show de rock produz um som com nível de L<sub>R</sub> = 120 dB perto das caixas de som. Um bate-papo em uma sala tem um nível sonoro de L<sub>B</sub> = 60 dB.</p>
+      <p>Com base na fórmula, a razão entre a intensidade sonora I<sub>R</sub> do show de rock em W/m² e a intensidade sonora I<sub>B</sub>, também em W/m², do bate-papo é:</p>
+      <ol class="alts"><li>10²;</li><li>10³;</li><li>10⁴;</li><li>10⁵;</li><li>10⁶.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      \[120=10\log\frac{I_R}{I_0}\Rightarrow\frac{I_R}{I_0}=10^{12}\qquad60=10\log\frac{I_B}{I_0}\Rightarrow\frac{I_B}{I_0}=10^{6}\qquad\frac{I_R}{I_B}=\frac{10^{12}}{10^6}=10^6\]
+      <p class="trap">“120 é o dobro de 60” não quer dizer o dobro de intensidade: cada +10 dB multiplica a intensidade por 10.</p>
+      <p class="ans"><span class="chip">E</span>Gabarito oficial: e) 10⁶</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023.2 · Administração · Questão 1</span><span class="oficial">questão real</span></p>
+      <p>Uma xícara de chá a 92°C é colocada em uma sala cuja temperatura se mantém constante e igual a 28°C. Suponha que a diferença entre a temperatura do chá e a temperatura da sala caia para a metade a cada 4 minutos.</p>
+      <p>Após 12 minutos da xícara de chá ter sido colocada na sala, a temperatura do chá em graus Celsius é</p>
+      <ol class="alts"><li>32</li><li>46</li><li>36</li><li>42</li><li>30</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>A diferença começa em \(92-28=64\) °C e cai pela metade a cada 4 min. Em 12 min são 3 “meias-vidas”:</p>
+      \[D=64\cdot\Big(\frac12\Big)^{12/4}=\frac{64}{8}=8\ ^\circ\text{C}\ \Rightarrow\ T=28+8=36\ ^\circ\text{C}\]
+      <p class="trap">Quem divide a temperatura do chá (e não a diferença) chega a valores abaixo da sala, o que é impossível.</p>
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 36</p>
+    </div>
+  </div>
+</section>
+
+<!-- m08 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m08">
+      <span class="tnum">8</span>
+      <div><h2>Porcentagem</h2>
+      <p class="seen">Caiu em <b>11</b> das 165 questões · presente em <b>6</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> uma razão com denominador 100. Na FGV quase toda questão de porcentagem é sobre variações (aumentos, descontos, carteiras de investimento, comissões) e se resolve multiplicando fatores, nunca somando taxas.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">p% de x</p>\[\frac{p}{100}\cdot x\]<p class="fe"><b>Exemplo:</b> 20% de 150 = 0,2 · 150 = 30.</p></div>
+      <div class="f"><p class="fl">Variação percentual</p>\[\Delta\%=\frac{V_f-V_i}{V_i}\]<p class="fe"><b>O que significa:</b> quanto mudou em relação ao valor <i>inicial</i> \(V_i\); \(V_f\) é o valor final.</p></div>
+      <div class="f"><p class="fl">Aumento e desconto de taxa i</p>\[V_f=V_i\,(1+i)\qquad V_f=V_i\,(1-i)\]<p class="fe"><b>O que significa:</b> \((1+i)\) e \((1-i)\) são os <i>fatores</i>. Ex.: +20% → ×1,20; −15% → ×0,85.</p></div>
+      <div class="f"><p class="fl">Variações sucessivas</p>\[V_f=V_i\,(1+i_1)(1+i_2)\cdots(1+i_n)\]<p class="fe"><b>O que significa:</b> cada variação incide sobre o valor já alterado: multiplique os fatores.</p></div>
+      <div class="f"><p class="fl">Valor “de dentro” (comissão, imposto)</p>\[\text{total}=\frac{\text{parte}}{1-i}\]<p class="fe"><b>Quando usar:</b> se alguém fica com 80% do total (20% de comissão sobre o total), o total é o valor líquido ÷ 0,8.</p></div>
+      <div class="f"><p class="fl">Taxa real (descontar a inflação)</p>\[1+i_{\text{ap}}=(1+i_{\text{real}})(1+i_{\text{inf}})\]<p class="fe"><b>O que significa:</b> \(i_{\text{ap}}\) é a taxa aparente (nominal); \(i_{\text{inf}}\), a inflação. Divida os fatores; não subtraia as taxas.</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Pegadinha</span>Aumento de 20% seguido de desconto de 20% não volta ao valor original: \(1{,}2\times0{,}8=0{,}96\), ou seja, queda de 4%.</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 9</span><span class="oficial">questão real</span></p>
+      <p>Há um mês, Igor investiu seu dinheiro em uma carteira de investimentos composta por 80% em um único ativo de alto risco e 20% em ativos conservadores.</p>
+      <p>Agora, após um mês, os ativos conservadores mantiveram seus valores (sem ganhos nem perdas) e o ativo de alto risco perdeu 50% do seu valor.</p>
+      <p>Sem realizar novos aportes ou resgates nesse período, a fração da carteira de Igor que está alocada no ativo de alto risco é:</p>
+      <ol class="alts"><li>1/2;</li><li>2/3;</li><li>3/5;</li><li>3/4;</li><li>1/3.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Imagine uma carteira de 100: 80 no ativo de risco e 20 nos conservadores. O ativo de risco perde metade: 40. Total agora: \(40+20=60\).</p>
+      \[\frac{40}{60}=\frac23\]
+      <p class="trap">1/2 (alternativa a) esquece que o total da carteira também diminuiu.</p>
+      <p class="ans"><span class="chip">B</span>Gabarito oficial: b) 2/3</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular FGV 2026.2 · Questão 4</span><span class="oficial">questão real</span></p>
+      <p>No mês de janeiro de 2026, as vendas da loja de Marta diminuíram 15% em relação às vendas de dezembro de 2025. Em fevereiro de 2026, as vendas aumentaram 20% em relação às vendas de janeiro de 2026.</p>
+      <p>Em relação às vendas de dezembro de 2025, as vendas de fevereiro de 2026 da loja de Marta</p>
+      <ol class="alts c2"><li>diminuíram 5%.</li><li>aumentaram 5%.</li><li>diminuíram 2%.</li><li>aumentaram 2%.</li><li>ficaram iguais.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      \[0{,}85\times1{,}20=1{,}02\ \Rightarrow\ \text{aumento de }2\%\]
+      <p class="trap">Somar −15% + 20% = +5% (alternativa b) é o erro clássico.</p>
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) aumentaram 2%.</p>
+    </div>
+  </div>
+</section>
+
+<!-- m09 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m09">
+      <span class="tnum">9</span>
+      <div><h2>Progressões: PA e PG</h2>
+      <p class="seen">Caiu em <b>9</b> das 165 questões · presente em <b>7</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> sequências com regra fixa. Na <b>PA</b> (progressão aritmética), soma-se sempre a mesma razão \(r\); na <b>PG</b> (progressão geométrica), multiplica-se sempre pela mesma razão \(q\). Juros simples formam uma PA; juros compostos, uma PG.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">PA · termo geral</p>\[a_n=a_1+(n-1)\,r\]<p class="fe"><b>O que significa:</b> o \(n\)-ésimo termo é o primeiro mais \(n-1\) “passos” de tamanho \(r\).</p></div>
+      <div class="f"><p class="fl">PG · termo geral</p>\[a_n=a_1\cdot q^{\,n-1}\]<p class="fe"><b>O que significa:</b> o primeiro termo multiplicado \(n-1\) vezes pela razão \(q\).</p></div>
+      <div class="f"><p class="fl">PA · soma dos n primeiros termos</p>\[S_n=\frac{(a_1+a_n)\,n}{2}\]<p class="fe"><b>O que significa:</b> número de termos × média do primeiro com o último. A média de todos os termos é \(\frac{a_1+a_n}{2}\).</p></div>
+      <div class="f"><p class="fl">PG · soma dos n primeiros termos</p>\[S_n=\frac{a_1\,(q^n-1)}{q-1}\]<p class="fe"><b>Quando usar:</b> depósitos periódicos com juros compostos são somas de PG.</p></div>
+      <div class="f"><p class="fl">Termo do meio</p>\[\text{PA: }b=\frac{a+c}{2}\qquad\text{PG: }b^2=a\cdot c\]<p class="fe"><b>O que significa:</b> em três termos seguidos \(a, b, c\), o do meio é a média aritmética (PA) ou geométrica (PG) dos vizinhos.</p></div>
+      <div class="f"><p class="fl">PG · soma infinita</p>\[S_\infty=\frac{a_1}{1-q}\quad(|q|<1)\]<p class="fe"><b>Quando usar:</b> quando os termos encolhem sem parar e se pede “a soma total”.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023 · Administração e Economia · Questão 3</span><span class="oficial">questão real</span></p>
+      <p>O primeiro termo de uma progressão aritmética é a<sub>1</sub> = 1, e a média dos 2021 primeiros termos é 102. A razão desta progressão aritmética é</p>
+      <ol class="alts"><li>0,10</li><li>0,15</li><li>0,20</li><li>0,25</li><li>0,30</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Numa PA, a média dos termos é a média do primeiro com o último:</p>
+      \[\frac{a_1+a_{2021}}{2}=102\Rightarrow a_{2021}=203\qquad203=1+2020\,r\Rightarrow r=\frac{202}{2020}=0{,}10\]
+      <p class="ans"><span class="chip">A</span>Gabarito oficial: a) 0,10</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 2</span><span class="oficial">questão real</span></p>
+      <p>Na tabela 3x3 a seguir, A, B, C, D e X são números tais que os elementos de cada linha e de cada coluna formam progressões aritméticas:</p>
+      <table class="dados"><tr><td>A</td><td>12</td><td>16</td></tr><tr><td>18</td><td>B</td><td>C</td></tr><tr><td>D</td><td>X</td><td>32</td></tr></table>
+      <p>O valor de X é:</p>
+      <ol class="alts"><li>29;</li><li>30;</li><li>31;</li><li>32;</li><li>33.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Em três termos seguidos de uma PA, o do meio é a média dos outros dois.</p>
+      \[\text{linha 1: }12=\frac{A+16}{2}\Rightarrow A=8\qquad\text{coluna 1: }18=\frac{8+D}{2}\Rightarrow D=28\qquad\text{linha 3: }X=\frac{28+32}{2}=30\]
+      <p class="ans"><span class="chip">B</span>Gabarito oficial: b) 30</p>
+    </div>
+  </div>
+</section>
+
+<!-- m10 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m10">
+      <span class="tnum">10</span>
+      <div><h2>Trigonometria</h2>
+      <p class="seen">Caiu em <b>9</b> das 165 questões · presente em <b>6</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> relaciona ângulos e medidas de lados (seno, cosseno, tangente) e descreve fenômenos que se repetem em ciclos. Na FGV aparecem funções periódicas que modelam preços, temperaturas e casos de doenças, além de seno e cosseno em diferentes quadrantes.</p>
+    <div class="fgrid">
+      <div class="f wide"><p class="fl">No triângulo retângulo</p>\[\sen\theta=\frac{\text{cateto oposto}}{\text{hipotenusa}}\qquad\cos\theta=\frac{\text{cateto adjacente}}{\text{hipotenusa}}\qquad\tg\theta=\frac{\text{cateto oposto}}{\text{cateto adjacente}}\]</div>
+      <div class="f"><p class="fl">Ângulos notáveis</p>
+        <table class="mini">
+          <tr><th></th><th>30°</th><th>45°</th><th>60°</th></tr>
+          <tr><td>sen</td><td>\(\dfrac12\)</td><td>\(\dfrac{\sqrt2}2\)</td><td>\(\dfrac{\sqrt3}2\)</td></tr>
+          <tr><td>cos</td><td>\(\dfrac{\sqrt3}2\)</td><td>\(\dfrac{\sqrt2}2\)</td><td>\(\dfrac12\)</td></tr>
+          <tr><td>tg</td><td>\(\dfrac{\sqrt3}3\)</td><td>\(1\)</td><td>\(\sqrt3\)</td></tr>
+        </table></div>
+      <div class="f"><p class="fl">Relação fundamental</p>\[\sen^2x+\cos^2x=1\qquad\tg x=\frac{\sen x}{\cos x}\]<p class="fe"><b>Quando usar:</b> sabendo o seno, ache o cosseno (e vice-versa); o sinal vem do quadrante.</p></div>
+      <div class="f"><p class="fl">Sinais por quadrante</p><p class="ft">1º quadrante: tudo positivo · 2º: só o <b>seno</b> positivo · 3º: só a <b>tangente</b> positiva · 4º: só o <b>cosseno</b> positivo.</p></div>
+      <div class="f"><p class="fl">Radianos</p>\[\pi\ \text{rad}=180^\circ\]<p class="fe"><b>Exemplo:</b> \(\frac\pi3=60^\circ\), \(\frac\pi2=90^\circ\), \(2\pi=360^\circ\) (uma volta).</p></div>
+      <div class="f"><p class="fl">Lei dos senos</p>\[\frac{a}{\sen A}=\frac{b}{\sen B}=\frac{c}{\sen C}=2R\]<p class="fe"><b>O que significa:</b> em qualquer triângulo, cada lado sobre o seno do ângulo oposto é constante; \(R\) é o raio da circunferência circunscrita.</p></div>
+      <div class="f"><p class="fl">Lei dos cossenos</p>\[a^2=b^2+c^2-2bc\cos A\]<p class="fe"><b>Quando usar:</b> com dois lados e o ângulo entre eles, para achar o terceiro lado. É um “Pitágoras corrigido”.</p></div>
+      <div class="f wide"><p class="fl">Função periódica</p>\[f(t)=D+A\cos(Bt+C):\quad\text{amplitude }|A|,\quad\text{período }\frac{2\pi}{|B|},\quad\text{máx}=D+|A|,\quad\text{mín}=D-|A|\]<p class="fe"><b>O que significa:</b> \(D\) é o valor médio, em torno do qual a função oscila; \(|A|\) é quanto ela sobe e desce; o período é o tempo de um ciclo completo.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 15</span><span class="oficial">questão real</span></p>
+      <p>O gerente de um supermercado observou que o preço por quilo de uma fruta sazonal segue ciclos anuais. Os dados mostram preço máximo de R$ 15,00 em janeiro e mínimo de R$ 5,00 em julho.</p>
+      <p>O modelo \(P(t)=A\cdot\cos\big(\frac{2\cdot\pi\cdot t}{12}\big)+B\), onde t é o mês (sendo t = 0 para janeiro), foi ajustado para os dados. Com as constantes A e B do modelo ajustado, o preço do quilograma da fruta no mês de março é:</p>
+      <ol class="alts"><li>12,5;</li><li>11,5;</li><li>10,5;</li><li>9,5;</li><li>8,5.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Janeiro (\(t=0\)): \(A\cos0+B=A+B=15\). Julho (\(t=6\)): \(A\cos\pi+B=-A+B=5\). Logo \(B=10\) e \(A=5\). Março é \(t=2\):</p>
+      \[P(2)=5\cos\frac{\pi}{3}+10=5\cdot\frac12+10=12{,}5\]
+      <p class="ans"><span class="chip">A</span>Gabarito oficial: a) 12,5</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023.2 · Administração · Questão 9</span><span class="oficial">questão real</span></p>
+      <p>Sabe-se que a pertence ao 2.º quadrante e que \(\sen(a)=\frac12\) e que b pertence ao 4.º quadrante e que \(\cos(b)=\frac13\).</p>
+      <p>O valor de cos(a) + sen(b) é</p>
+      <ol class="alts c3"><li>\(\frac56\)</li><li>\(-\frac{\sqrt3}{2}+\frac{2\sqrt2}{3}\)</li><li>\(\frac{\sqrt3}{2}+\frac{2\sqrt2}{3}\)</li><li>\(-\frac{\sqrt3}{2}-\frac{2\sqrt2}{3}\)</li><li>\(\frac{\sqrt3}{2}-\frac{2\sqrt2}{3}\)</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>\(\cos^2a=1-\frac14=\frac34\); no 2º quadrante o cosseno é negativo: \(\cos a=-\frac{\sqrt3}2\). \(\sen^2b=1-\frac19=\frac89\); no 4º quadrante o seno é negativo: \(\sen b=-\frac{2\sqrt2}3\).</p>
+      \[\cos a+\sen b=-\frac{\sqrt3}{2}-\frac{2\sqrt2}{3}\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d)</p>
+    </div>
+  </div>
+</section>
+
+<!-- m11 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m11">
+      <span class="tnum">11</span>
+      <div><h2>Análise combinatória</h2>
+      <p class="seen">Caiu em <b>8</b> das 165 questões · presente em <b>6</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> técnicas para contar possibilidades sem listar uma a uma: senhas, anagramas, comissões, filas. Também é a base para calcular probabilidades (casos favoráveis e possíveis).</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Princípio fundamental da contagem</p>\[n_1\cdot n_2\cdots n_k\]<p class="fe"><b>O que significa:</b> se uma escolha é feita em etapas, multiplique o número de opções de cada etapa.</p></div>
+      <div class="f"><p class="fl">Permutação simples</p>\[P_n=n!\]<p class="fe"><b>O que é:</b> maneiras de ordenar \(n\) elementos distintos. \(n!=n\cdot(n-1)\cdots2\cdot1\).</p></div>
+      <div class="f"><p class="fl">Arranjo (a ordem importa)</p>\[A_{n,p}=\frac{n!}{(n-p)!}\]<p class="fe"><b>Quando usar:</b> escolher e ordenar \(p\) de \(n\) elementos (pódio, senha com dígitos distintos).</p></div>
+      <div class="f"><p class="fl">Combinação (a ordem não importa)</p>\[C_{n,p}=\binom np=\frac{n!}{p!\,(n-p)!}\]<p class="fe"><b>Quando usar:</b> escolher grupos (comissões, times, conjuntos de números).</p></div>
+      <div class="f"><p class="fl">Permutação com repetição</p>\[P_n^{a,b,\dots}=\frac{n!}{a!\,b!\cdots}\]<p class="fe"><b>O que significa:</b> anagramas com letras repetidas \(a\), \(b\)… vezes. Ex.: COMUM → \(5!/2!=60\).</p></div>
+      <div class="f"><p class="fl">Permutação circular</p>\[PC_n=(n-1)!\]<p class="fe"><b>Quando usar:</b> pessoas em volta de uma mesa redonda, em que girar todos não muda a disposição.</p></div>
+      <div class="f wide"><p class="fl">Contagem pelo complementar</p>\[(\text{casos com a restrição})=(\text{total})-(\text{casos sem a restrição})\]<p class="fe"><b>Como usar:</b> “pelo menos um”, “não juntos”, “não crescente”: costuma ser mais fácil contar o contrário e subtrair do total.</p></div>
+    </div>
+  </div>
+  <div class="note"><span class="nl">Como decidir</span>Troque a ordem de dois elementos escolhidos. Se o resultado muda (senha, fila, anagrama), use o princípio multiplicativo ou arranjo; se não muda (comissão, grupo), use combinação.</div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023 · Administração e Economia · Questão 13</span><span class="oficial">questão real</span></p>
+      <p>O número de anagramas da palavra COMUM nos quais as duas letras M não aparecem juntas é</p>
+      <ol class="alts"><li>18</li><li>24</li><li>36</li><li>48</li><li>60</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Total, com o M repetido: \(\frac{5!}{2!}=60\). Com os dois M juntos (o bloco “MM” conta como uma letra): \(4!=24\). Separados, pelo complementar:</p>
+      \[60-24=36\]
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 36</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 11</span><span class="oficial">questão real</span></p>
+      <p>Certo banco exige uma senha de quatro dígitos numéricos, de 0 a 9, no acesso de seu aplicativo. Os dígitos não podem ser repetidos e não podem formar uma sequência crescente. O número de senhas válidas é:</p>
+      <ol class="alts"><li>4180;</li><li>4200;</li><li>4500;</li><li>4750;</li><li>4830.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Senhas com 4 dígitos distintos: \(10\cdot9\cdot8\cdot7=5040\). Para cada grupo de 4 dígitos, só uma das ordens é crescente, então as crescentes são \(\binom{10}{4}=210\).</p>
+      \[5040-210=4830\]
+      <p class="ans"><span class="chip">E</span>Gabarito oficial: e) 4830</p>
+    </div>
+  </div>
+</section>
+
+<!-- m12 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m12">
+      <span class="tnum">12</span>
+      <div><h2>Função quadrática</h2>
+      <p class="seen">Caiu em <b>6</b> das 165 questões · presente em <b>4</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> função do tipo \(f(x)=ax^2+bx+c\), cujo gráfico é uma parábola. Serve para achar raízes (onde a função zera) e valores máximos ou mínimos, como lucro máximo ou área máxima.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Lei e discriminante</p>\[f(x)=ax^2+bx+c\qquad\Delta=b^2-4ac\]<p class="fe"><b>O que significa:</b> \(\Delta>0\): duas raízes reais; \(\Delta=0\): uma (dupla); \(\Delta<0\): nenhuma raiz real.</p></div>
+      <div class="f"><p class="fl">Fórmula de Bhaskara</p>\[x=\frac{-b\pm\sqrt{\Delta}}{2a}\]<p class="fe"><b>O que é:</b> as raízes (zeros) da função, onde a parábola corta o eixo \(x\).</p></div>
+      <div class="f"><p class="fl">Soma e produto das raízes</p>\[x_1+x_2=-\frac ba\qquad x_1\cdot x_2=\frac ca\]<p class="fe"><b>Quando usar:</b> quando a questão pede a soma ou o produto das raízes, sem precisar calculá-las.</p></div>
+      <div class="f"><p class="fl">Vértice</p>\[x_v=-\frac{b}{2a}=\frac{x_1+x_2}{2}\qquad y_v=-\frac{\Delta}{4a}\]<p class="fe"><b>O que é:</b> o ponto de máximo (se \(a<0\)) ou de mínimo (se \(a>0\)). Fica no meio das raízes.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2024.2 · Administração · Questão 9</span><span class="oficial">questão real</span></p>
+      <p>Sobre uma função quadrática f(x), sabe-se que:</p>
+      <p>1) O coeficiente do termo de maior grau é 2.<br>2) 3 é raiz de f(x) – 1 = 0.<br>3) 4 é raiz de f(x – 3) = 0.</p>
+      <p>A soma dos zeros (raízes) da função f(x) é</p>
+      <ol class="alts"><li>3</li><li>4</li><li>\(\frac{11}{4}\)</li><li>\(\frac{15}{4}\)</li><li>\(\frac34\)</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>\(f(x)=2x^2+bx+c\). “3 é raiz de \(f(x)-1=0\)” significa \(f(3)=1\): \(18+3b+c=1\). “4 é raiz de \(f(x-3)=0\)” significa \(f(1)=0\): \(2+b+c=0\). Subtraindo: \(16+2b=1\Rightarrow b=-\frac{15}{2}\).</p>
+      \[x_1+x_2=-\frac ba=\frac{15/2}{2}=\frac{15}{4}\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 15/4</p>
+    </div>
+  </div>
+</section>
+
+<!-- m13 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m13">
+      <span class="tnum">13</span>
+      <div><h2>Função afim, funções e módulo</h2>
+      <p class="seen">Caiu em <b>5</b> das 165 questões · presente em <b>4</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> a função afim \(f(x)=ax+b\) descreve o que varia sempre no mesmo ritmo (gráfico em reta): tarifas, depreciação, conversão de escalas, tendências. Aqui entram também propriedades gerais de funções e o módulo.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Lei da função afim</p>\[f(x)=ax+b\]<p class="fe"><b>O que significa:</b> \(a\) é a taxa de variação (quanto \(f\) muda quando \(x\) aumenta 1); \(b=f(0)\) é o valor inicial.</p></div>
+      <div class="f"><p class="fl">Taxa de variação e raiz</p>\[a=\frac{y_2-y_1}{x_2-x_1}\qquad x_{\text{raiz}}=-\frac ba\]<p class="fe"><b>Quando usar:</b> com dois pontos, ache \(a\); a raiz é onde a reta cruza o eixo \(x\) (“quando a taxa chega a zero”).</p></div>
+      <div class="f"><p class="fl">Custo, receita e lucro</p>\[C=C_F+c_v\,q\qquad R=p\,q\qquad L=R-C\]<p class="fe"><b>O que significa:</b> \(C_F\) é o custo fixo; \(c_v\), o custo por unidade; \(p\), o preço; \(q\), a quantidade. Lucro zero: \(q=C_F/(p-c_v)\).</p></div>
+      <div class="f"><p class="fl">Módulo</p>\[|x|=\begin{cases}\ \ x,&x\ge0\\-x,&x<0\end{cases}\qquad|x|<a\iff-a<x<a\]<p class="fe"><b>O que é:</b> a distância de \(x\) até o zero; nunca é negativo. \(|x-a|\) é a distância entre \(x\) e \(a\).</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2024 · 1ª fase · Questão 5</span><span class="oficial">questão real</span></p>
+      <p>O IBGE faz estimativas da taxa anual de crescimento populacional utilizando os dados de cada censo realizado no Brasil. O gráfico abaixo mostra como a taxa de crescimento populacional está decrescendo com o tempo. No eixo horizontal, temos o tempo em anos desde 1960, ou seja, x = 0 corresponde ao ano de 1960 e o x = 62 corresponde a 2022 (62 anos depois de 1960). O eixo vertical representa a taxa anual percentual de crescimento populacional. Os pontos marcados no gráfico são as taxas estimadas em cada censo. A reta tracejada passa pelo primeiro ponto (0, 3) e o último ponto (62, 0,52) do gráfico. Esta reta tem equação y = – 0,04x + 3.</p>
+      <p class="fonte">(O gráfico do enunciado original foi omitido; a equação da reta, que é o que a questão usa, está no texto.)</p>
+      <p>Usando esta reta para prever a evolução da taxa de crescimento populacional, o ano em que a população do Brasil não crescerá (taxa de crescimento igual a zero) será o ano de:</p>
+      <ol class="alts"><li>2045</li><li>2030</li><li>2040</li><li>2035</li><li>2050</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      \[-0{,}04x+3=0\ \Rightarrow\ x=\frac{3}{0{,}04}=75\ \text{anos após 1960}\ \Rightarrow\ 1960+75=2035\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 2035</p>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2024.2 · Administração · Questão 7</span><span class="oficial">questão real</span></p>
+      <p>Durante uma viagem aos Estados Unidos, Paula frequentemente consultava a previsão do tempo local para verificar a temperatura do dia. As temperaturas eram fornecidas em graus Fahrenheit (F) e eram sempre superiores a 35° F. Paula precisava convertê-las para graus Celsius (C) e estava ciente da fórmula de conversão padrão \(C=(F-32)\cdot\frac59\). No entanto, para fazer a conversão com facilidade e rapidez, ela criou uma fórmula aproximada \(C_{\text{aprox}}=\frac{F-32}{2}\). Qual é a magnitude do erro da fórmula aproximada em relação à temperatura correta, expressa como um percentual da temperatura correta?</p>
+      <ol class="alts"><li>5%</li><li>10%</li><li>7%</li><li>13%</li><li>9%</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      \[\frac{C_{\text{aprox}}}{C}=\frac{(F-32)/2}{(F-32)\cdot5/9}=\frac{9}{10}=0{,}9\]
+      <p>A fórmula aproximada dá sempre 90% do valor correto: o erro é de 10%.</p>
+      <p class="ans"><span class="chip">B</span>Gabarito oficial: b) 10%</p>
+    </div>
+  </div>
+</section>
+
+<!-- m14 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m14">
+      <span class="tnum">14</span>
+      <div><h2>Polinômios e equações algébricas</h2>
+      <p class="seen">Caiu em <b>4</b> das 165 questões · presente em <b>2</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> expressões como \(ax^3+bx^2+cx+d\). As questões pedem raízes, restos de divisão ou coeficientes, quase sempre usando as relações de Girard (que ligam as raízes aos coeficientes) e o teorema do resto.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Teorema do resto</p>\[\text{resto de }P(x)\div(x-a)=P(a)\]<p class="fe"><b>Consequência:</b> \(a\) é raiz \(\iff P(a)=0\iff(x-a)\) divide \(P(x)\).</p></div>
+      <div class="f"><p class="fl">Valores especiais</p>\[P(1)=\text{soma dos coeficientes}\qquad P(0)=\text{termo independente}\]</div>
+      <div class="f wide"><p class="fl">Relações de Girard (grau 3: ax³ + bx² + cx + d)</p>\[x_1+x_2+x_3=-\frac ba\qquad x_1x_2+x_1x_3+x_2x_3=\frac ca\qquad x_1x_2x_3=-\frac da\]<p class="fe"><b>O que significa:</b> soma, soma dos produtos dois a dois e produto das raízes saem direto dos coeficientes. No grau 2: soma \(-b/a\) e produto \(c/a\).</p></div>
+      <div class="f wide"><p class="fl">Raízes</p><p class="ft">Um polinômio de grau \(n\) tem exatamente \(n\) raízes complexas (contando repetições). Se os coeficientes são reais, as raízes não reais vêm em pares conjugados \(a\pm bi\).</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2022 · Economia · Questão 4</span><span class="oficial">questão real</span></p>
+      <p>Considere o polinômio \(P(x)=x^3-10x^2+14x+d\), em que d é uma constante real. Se a soma de duas das raízes desse polinômio é igual a 8, o valor da constante d é</p>
+      <ol class="alts"><li>– 4.</li><li>–2.</li><li>2.</li><li>4.</li><li>6.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Girard: a soma das três raízes é \(-\frac{-10}{1}=10\). Se duas somam 8, a terceira é 2. Então \(P(2)=0\):</p>
+      \[8-40+28+d=0\ \Rightarrow\ d=4\]
+      <p class="ans"><span class="chip">D</span>Gabarito oficial: d) 4.</p>
+    </div>
+  </div>
+</section>
+
+<!-- m15 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m15">
+      <span class="tnum">15</span>
+      <div><h2>Matrizes, determinantes e sistemas</h2>
+      <p class="seen">Caiu em <b>4</b> das 165 questões · presente em <b>2</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> matrizes são tabelas de números; o determinante é um número associado a uma matriz quadrada que diz, entre outras coisas, se um sistema linear tem solução única.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Determinante 2×2</p>\[\begin{vmatrix}a&b\\c&d\end{vmatrix}=ad-bc\]<p class="fe"><b>Como fazer:</b> diagonal principal menos diagonal secundária.</p></div>
+      <div class="f"><p class="fl">Regra de Sarrus (3×3)</p><p class="ft">Repita as duas primeiras colunas à direita. Some os produtos das três diagonais descendentes e subtraia os produtos das três diagonais ascendentes.</p></div>
+      <div class="f"><p class="fl">Propriedades do determinante</p>\[\det(AB)=\det A\cdot\det B\qquad\det(kA)=k^n\det A\]<p class="fe"><b>O que significa:</b> \(n\) é a ordem da matriz: multiplicar a matriz toda por \(k\) multiplica o determinante por \(k^n\). Fila nula ou filas proporcionais dão determinante 0.</p></div>
+      <div class="f"><p class="fl">Classificação de sistemas</p>\[D\neq0\Rightarrow\text{SPD}\qquad D=0\Rightarrow\text{SPI ou SI}\]<p class="fe"><b>O que significa:</b> SPD = uma única solução; SPI = infinitas; SI = nenhuma. Sistema <i>homogêneo</i> (termos independentes nulos) tem solução não trivial \(\iff D=0\).</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2022 · Economia · Questão 9</span><span class="oficial">questão real</span></p>
+      <p>Considere o seguinte sistema linear em que α e β são números reais:</p>
+      <div class="eq">\(\begin{cases}x+y+\alpha z=0\\x-y+\beta z=0\\\beta x+\alpha y+z=0\end{cases}\)</div>
+      <p>As soluções não triviais desse sistema serão aquelas tais que</p>
+      <ol class="alts"><li>α + β = 0.</li><li>α – β = 0.</li><li>α² + β² = 2.</li><li>α² – β² = 2.</li><li>α – β = 2.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Sistema homogêneo tem solução não trivial quando o determinante dos coeficientes é zero. Por Sarrus:</p>
+      \[D=\begin{vmatrix}1&1&\alpha\\1&-1&\beta\\\beta&\alpha&1\end{vmatrix}=(-1+\beta^2+\alpha^2)-(-\alpha\beta+\alpha\beta+1)=\alpha^2+\beta^2-2=0\]
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) α² + β² = 2.</p>
+    </div>
+  </div>
+</section>
+
+<!-- m16 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m16">
+      <span class="tnum">16</span>
+      <div><h2>Matemática financeira: juros</h2>
+      <p class="seen">Caiu em <b>2</b> das 165 questões · presente em <b>2</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> o “aluguel” do dinheiro no tempo. Nos juros simples, os juros incidem só sobre o capital inicial; nos compostos, incidem também sobre os juros acumulados (é uma PG). Aparece pouco sozinho, mas usa porcentagem e PG, que estão no topo do ranking.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Juros simples</p>\[J=C\cdot i\cdot t\qquad M=C\,(1+i\,t)\]<p class="fe"><b>O que significa:</b> \(C\) é o capital, \(i\) a taxa por período, \(t\) o número de períodos e \(M\) o montante (capital + juros).</p></div>
+      <div class="f"><p class="fl">Juros compostos</p>\[M=C\,(1+i)^t\]<p class="fe"><b>O que significa:</b> a cada período o valor é multiplicado por \((1+i)\). Taxa e tempo sempre na mesma unidade.</p></div>
+      <div class="f"><p class="fl">Valor presente</p>\[VP=\frac{VF}{(1+i)^n}\]<p class="fe"><b>Quando usar:</b> para comparar pagamentos em datas diferentes, traga todos para a mesma data.</p></div>
+      <div class="f"><p class="fl">Tempo de aplicação</p>\[t=\frac{\log(M/C)}{\log(1+i)}\]<p class="fe"><b>Quando usar:</b> quando se pede “em quanto tempo o capital dobra/triplica”.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2023.2 · Administração · Questão 3</span><span class="oficial">questão real</span></p>
+      <p>Isabel comprou uma televisão que custava R$ 2.500,00 à vista. Ela pagou R$ 500,00 no ato da compra e R$ 2.200,00 um mês depois, quitando a compra. A taxa de juros mensais cobrada pelo vendedor foi de</p>
+      <ol class="alts"><li>14%</li><li>6%</li><li>10%</li><li>12%</li><li>8%</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>Depois da entrada, a dívida é \(2500-500=2000\). Um mês depois ela vale 2200:</p>
+      \[2000\,(1+i)=2200\ \Rightarrow\ 1+i=1{,}1\ \Rightarrow\ i=10\%\]
+      <p class="trap">Calcular sobre o preço total, 2200/2500, ignora que os juros só incidem sobre o que ficou devendo.</p>
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 10%</p>
+    </div>
+  </div>
+</section>
+
+<!-- m17 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m17">
+      <span class="tnum">17</span>
+      <div><h2>Produtos notáveis e fatoração</h2>
+      <p class="seen">Caiu em <b>2</b> das 165 questões · presente em <b>2</b> das 9 provas</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> multiplicações que aparecem tanto que vale saber o resultado de cor. Servem para simplificar expressões e para ligar dados como “soma” e “soma dos quadrados”.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Quadrado da soma e da diferença</p>\[(a\pm b)^2=a^2\pm2ab+b^2\]</div>
+      <div class="f"><p class="fl">Produto da soma pela diferença</p>\[(a+b)(a-b)=a^2-b^2\]</div>
+      <div class="f"><p class="fl">Soma e diferença de cubos</p>\[a^3\pm b^3=(a\pm b)(a^2\mp ab+b^2)\]</div>
+      <div class="f"><p class="fl">Quadrado de três termos</p>\[(a+b+c)^2=a^2+b^2+c^2+2(ab+ac+bc)\]<p class="fe"><b>Quando usar:</b> liga a soma, a soma dos quadrados e a soma dos produtos dois a dois.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>Vestibular Unificado FGV 2026.1 · Questão 6</span><span class="oficial">questão real</span></p>
+      <p>Os números reais X, Y e Z têm média aritmética igual a 2. Além disso, os números X², Y² e Z² têm média aritmética igual a 6.</p>
+      <p>A média aritmética dos números XY, XZ e YZ é:</p>
+      <ol class="alts"><li>1;</li><li>2;</li><li>3;</li><li>4;</li><li>5.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      <p>\(X+Y+Z=6\) e \(X^2+Y^2+Z^2=18\). Pelo quadrado de três termos:</p>
+      \[36=18+2\,(XY+XZ+YZ)\ \Rightarrow\ XY+XZ+YZ=9\ \Rightarrow\ \text{média}=\frac93=3\]
+      <p class="ans"><span class="chip">C</span>Gabarito oficial: c) 3</p>
+    </div>
+  </div>
+</section>
+
+<!-- m18 -->
+<section class="topic">
+  <div class="topic-top">
+    <div class="topic-head" data-toc="m18">
+      <span class="tnum">18</span>
+      <div><h2>Números complexos</h2>
+      <p class="seen">Caiu em <b>2</b> das 165 questões · presente em <b>2</b> das 9 provas (ambas de Economia)</p></div>
+    </div>
+    <p class="intro"><b>O que é:</b> números da forma \(z=a+bi\), em que \(i^2=-1\). Cada complexo é um ponto \((a,b)\) do plano (o “afixo”): \(a\) no eixo real e \(b\) no eixo imaginário.</p>
+    <div class="fgrid">
+      <div class="f"><p class="fl">Forma algébrica e conjugado</p>\[z=a+bi\qquad\bar z=a-bi\qquad z+\bar z=2a\]<p class="fe"><b>O que significa:</b> \(a\) é a parte real e \(b\) a imaginária; o conjugado troca o sinal da parte imaginária.</p></div>
+      <div class="f"><p class="fl">Potências de i e módulo</p>\[i^2=-1,\ i^3=-i,\ i^4=1\qquad|z|=\sqrt{a^2+b^2}\]<p class="fe"><b>O que significa:</b> as potências de \(i\) se repetem de 4 em 4; o módulo é a distância do afixo à origem.</p></div>
+      <div class="f wide"><p class="fl">Forma trigonométrica e De Moivre</p>\[z=\rho\,(\cos\theta+i\sen\theta)\qquad z^n=\rho^n\,(\cos n\theta+i\sen n\theta)\]<p class="fe"><b>O que significa:</b> \(\rho=|z|\) e \(\theta\) é o ângulo com o eixo real. Para elevar a \(n\), eleve o módulo e multiplique o ângulo.</p></div>
+    </div>
+  </div>
+  <div class="ex">
+    <div class="ex-body">
+      <p class="exl"><span>FGV‑SP 2022 · Economia · Questão 2</span><span class="oficial">questão real</span></p>
+      <p>Considere um número complexo z = a + bi e seu conjugado \(\bar z\). Ao desenharmos, no plano complexo, todos os afixos dos complexos z, tais que \(z+\bar z=2\pi^2\), obteremos</p>
+      <ol class="alts c1"><li>uma reta vertical paralela ao eixo imaginário.</li><li>uma reta horizontal paralela ao eixo real.</li><li>um quadrado, em que um de seus vértices é (π, – π).</li><li>uma circunferência de raio π e todos os pontos do seu interior.</li><li>apenas os pontos de uma circunferência de raio 2π.</li></ol>
+    </div>
+    <div class="sol">
+      <p class="soll">Resolução</p>
+      \[z+\bar z=(a+bi)+(a-bi)=2a=2\pi^2\ \Rightarrow\ a=\pi^2\]
+      <p>A parte real é fixa e \(b\) pode ser qualquer real: os afixos \((\pi^2,b)\) formam uma reta vertical.</p>
+      <p class="ans"><span class="chip">A</span>Gabarito oficial: a)</p>
+    </div>
+  </div>
+</section>

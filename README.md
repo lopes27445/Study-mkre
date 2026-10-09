@@ -32,22 +32,25 @@ novas provas forem incluídas.
 
 ## Formulário FGV
 
-`fgv/formulario-fgv.pdf` — PDF de 34 páginas com as fórmulas que mais caem no vestibular da
-FGV, organizadas em 35 temas (20 de Matemática, 8 de Física e 7 de Química), cada um com
-exercícios de cinco alternativas e resolução comentada (52 no total). Os exercícios são
-inéditos, no estilo da banca, e todas as respostas foram conferidas numericamente.
+`fgv/formulario-fgv.pdf` — PDF de 53 páginas com as fórmulas que mais caem no vestibular da
+FGV, **em ordem de importância**: 18 temas de Matemática, 13 de Física e 11 de Química. Cada
+tema traz uma explicação do que é, cada fórmula vem com o significado de cada letra e de quando
+usar, e os exercícios são **68 questões reais da FGV**, com gabarito oficial e resolução comentada.
 
-- **Prioridade dos temas de Matemática**: definida pela classificação das 15 questões de
-  Matemática da prova objetiva do Vestibular Unificado FGV 2026.1 (turno 2) e das 15 da
-  prova da FGV-SP 2019. Alta = 2 ou mais questões; média = 1; complementar = não caiu.
-- **Física e Química**: para Ciências Econômicas na FGV-SP, cuja prova objetiva inclui
-  essas matérias. São temas clássicos de vestibular, sem análise de provas.
-- **Mais cobrados**: probabilidade, estatística, geometria analítica e geometria espacial
-  (3 questões cada nas duas provas), seguidos de porcentagem, juros, PA/PG, função
-  quadrática, trigonometria e problemas de razão e proporção.
+- **Como o ranking foi feito**: classificamos por tema as 165 questões objetivas de Matemática
+  de 9 provas (Vestibular Unificado 2026.1 e 2024, FGV 2026.2 e FGV‑SP de 2020 a 2024.2) e as
+  75 de Física e 75 de Química das 5 provas de Economia (FGV‑SP 2020, 2022, 2023, 2024 e
+  Unificado 2026.1). Questões que misturam dois temas contam para os dois.
+- **Mais cobrados em Matemática**: problemas aritméticos (razão, proporção, regra de três, MMC)
+  com 27 questões, geometria plana (19), probabilidade (17), geometria analítica (14) e
+  geometria espacial (13).
+- **Mais cobrados em Física**: óptica e termologia (9 cada), ondas (8). **Em Química**:
+  orgânica (15), estequiometria (10), oxirredução e eletroquímica (9).
+- **Questões**: transcritas das provas; os gabaritos foram conferidos com os oficiais. Provas e
+  gabaritos consultados no arquivo de resoluções comentadas do Curso Objetivo.
 
-O PDF é gerado a partir de `fgv/fonte/formulario.html` (fórmulas em LaTeX, renderizadas com
-KaTeX e impressas pelo Chromium):
+O PDF é gerado a partir de `fgv/fonte/partes/*.html` (fórmulas em LaTeX, renderizadas com
+KaTeX e impressas pelo Chromium). O sumário é paginado automaticamente:
 
 ```sh
 cd fgv/fonte

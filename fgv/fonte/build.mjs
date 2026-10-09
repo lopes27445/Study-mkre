@@ -1,4 +1,4 @@
-// Gera ../formulario-fgv.pdf a partir de formulario.html.
+// Gera ../formulario-fgv.pdf a partir de partes/*.html.
 //
 // 1. Renderiza as fórmulas LaTeX — \( ... \) inline e \[ ... \] em destaque — com KaTeX.
 //    (Não usamos $ como delimitador porque o texto tem muitos "R$".)
@@ -16,7 +16,14 @@ import katex from 'katex';
 import { chromium } from 'playwright-core';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
-const srcPath = path.resolve(dir, process.env.SRC ?? 'formulario.html');
+// O fonte fica dividido em partes/*.html (início, Matemática, Física, Química, fim),
+// concatenadas em ordem alfabética. SRC permite usar um único arquivo.
+const partsDir = path.join(dir, 'partes');
+const readSource = () =>
+  process.env.SRC
+    ? fs.readFileSync(path.resolve(dir, process.env.SRC), 'utf8')
+    : fs.readdirSync(partsDir).filter((f) => f.endsWith('.html')).sort()
+        .map((f) => fs.readFileSync(path.join(partsDir, f), 'utf8')).join('\n');
 const outPath = path.resolve(dir, process.env.OUT ?? '../formulario-fgv.pdf');
 const buildDir = path.join(dir, '.build');
 fs.mkdirSync(buildDir, { recursive: true });
@@ -34,19 +41,21 @@ function renderMath(html) {
     .replace(/\\\(([\s\S]+?)\\\)/g, (_, tex) => render(tex, false));
 }
 
-// Cada tópico tem <div class="topic-head" data-toc="tNN"> ... <h1|h2>Título</h1|h2>,
-// e o sumário tem <td class="pg" data-pg="tNN"> para receber a página.
+// Cada tópico tem <div class="topic-head" data-toc="m01"> ... <h1|h2>Título</h1|h2>,
+// e o sumário tem <td class="pg" data-pg="m01"> para receber a página.
 function topics(html) {
-  const re = /data-toc="(t\d+)">\s*<span class="tnum">([^<]+)<\/span>[\s\S]*?<h[12][^>]*>([\s\S]*?)<\/h[12]>/g;
-  return [...html.matchAll(re)].map(([, id, num, h]) => {
+  const re = /data-toc="([a-z]+\d*)">\s*<span class="tnum">[^<]+<\/span>[\s\S]*?<h[12][^>]*>([\s\S]*?)<\/h[12]>/g;
+  return [...html.matchAll(re)].map(([, id, h]) => {
     const title = h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
-    // O pdftotext nem sempre extrai o título inteiro numa linha, mas "NN Primeira-palavra" vem junto.
-    return { id, title, probe: `${num} ${title.split(' ')[0]}` };
+    // A palavra mais longa do título confirma, no texto extraído, em que página ele caiu
+    // (o pdftotext às vezes quebra e reordena as linhas de um título).
+    const probe = title.split(/[^\p{L}]+/u).reduce((a, w) => (w.length > a.length ? w : a), '');
+    return { id, title, probe };
   });
 }
 
 function withPages(html, pages) {
-  return html.replace(/<td class="pg" data-pg="(t\d+)">[^<]*<\/td>/g, (m, id) => {
+  return html.replace(/<td class="pg" data-pg="([a-z]+\d*)">[^<]*<\/td>/g, (m, id) => {
     if (!(id in pages)) throw new Error(`Página não encontrada para ${id}`);
     return `<td class="pg" data-pg="${id}">${pages[id]}</td>`;
   });
@@ -55,9 +64,14 @@ function withPages(html, pages) {
 const marcadores = (acao, pdf) =>
   execFileSync('python3', [path.join(dir, 'marcadores.py'), acao, pdf], { encoding: 'utf8' });
 
+// Comparação sem acentos nem espaços: a fonte dos títulos às vezes sai do pdftotext com o
+// acento como caractere separado (ex.: "A´nalise").
+const simplify = (t) =>
+  t.normalize('NFD').replace(/[\p{M}\u00B4\u0060\u02C6\u02DC\u00A8\s]/gu, '').toLowerCase();
+
 function pageTexts(pdf) {
   const text = execFileSync('pdftotext', ['-enc', 'UTF-8', pdf, '-'], { encoding: 'utf8' });
-  return text.split('\f').map((t) => t.normalize('NFC').replace(/\s+/g, ' '));
+  return text.split('\f').map(simplify);
 }
 
 // Os títulos dos tópicos aparecem nos marcadores na ordem do documento, depois do sumário.
@@ -72,7 +86,7 @@ function locate(pdf, list) {
     while (i < outline.length && outline[i][0] !== title) i++;
     if (i === outline.length) throw new Error(`Título não encontrado nos marcadores: ${title}`);
     const p = outline[i][1];
-    const found = [p, p + 1].find((n) => texts[n - 1]?.includes(probe));
+    const found = [p, p + 1].find((n) => texts[n - 1]?.includes(simplify(probe)));
     if (!found) throw new Error(`Título não encontrado no texto das páginas ${p}–${p + 1}: ${title}`);
     pages[id] = found;
   }
@@ -102,7 +116,7 @@ async function print(html, pdfPath) {
 }
 
 // Fontes e KaTeX vêm de node_modules; o HTML final fica em .build/, então ajustamos os caminhos.
-let source = fs.readFileSync(srcPath, 'utf8').replaceAll('href="node_modules/', 'href="../node_modules/');
+let source = readSource().replaceAll('href="node_modules/', 'href="../node_modules/');
 source = renderMath(source);
 const list = topics(source);
 

@@ -1,12 +1,12 @@
-// Gera ../guia-fgv-administracao.pdf a partir de partes/*.html.
+// Gera um guia em PDF a partir de uma pasta de partes HTML (concatenadas em ordem alfabética).
 //
 // 1. Renderiza as fórmulas LaTeX — \( ... \) inline e \[ ... \] em destaque — com KaTeX.
 //    (Não usamos $ como delimitador porque o texto tem muitos "R$".)
 // 2. Imprime o HTML com o Chromium do Playwright, gerando marcadores a partir dos títulos.
 // 3. Lê nos marcadores a página de cada tópico, preenche o sumário e imprime de novo.
 //
-// Uso: npm install && npm run build   (requer Python 3 com pypdf, para marcadores.py)
-// Variáveis opcionais: CHROMIUM_PATH (executável do Chromium), SRC e OUT.
+// Uso: node build.mjs PASTA_DAS_PARTES SAIDA.pdf   (ou npm run fgv / npm run mackenzie)
+// Requer Python 3 com pypdf, para marcadores.py. Variável opcional: CHROMIUM_PATH.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,15 +16,16 @@ import katex from 'katex';
 import { chromium } from 'playwright-core';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
-// O fonte fica dividido em partes/*.html (início, Matemática, Física, Química, fim),
-// concatenadas em ordem alfabética. SRC permite usar um único arquivo.
-const partsDir = path.join(dir, 'partes');
+const [partsArg, outArg] = process.argv.slice(2);
+if (!partsArg || !outArg) {
+  console.error('uso: node build.mjs PASTA_DAS_PARTES SAIDA.pdf');
+  process.exit(2);
+}
+const partsDir = path.resolve(partsArg);
+const outPath = path.resolve(outArg);
 const readSource = () =>
-  process.env.SRC
-    ? fs.readFileSync(path.resolve(dir, process.env.SRC), 'utf8')
-    : fs.readdirSync(partsDir).filter((f) => f.endsWith('.html')).sort()
-        .map((f) => fs.readFileSync(path.join(partsDir, f), 'utf8')).join('\n');
-const outPath = path.resolve(dir, process.env.OUT ?? '../guia-fgv-administracao.pdf');
+  fs.readdirSync(partsDir).filter((f) => f.endsWith('.html')).sort()
+    .map((f) => fs.readFileSync(path.join(partsDir, f), 'utf8')).join('\n');
 const buildDir = path.join(dir, '.build');
 fs.mkdirSync(buildDir, { recursive: true });
 
@@ -61,8 +62,8 @@ function withPages(html, pages) {
   });
 }
 
-const marcadores = (acao, pdf) =>
-  execFileSync('python3', [path.join(dir, 'marcadores.py'), acao, pdf], { encoding: 'utf8' });
+const marcadores = (acao, pdf, ...extra) =>
+  execFileSync('python3', [path.join(dir, 'marcadores.py'), acao, pdf, ...extra], { encoding: 'utf8' });
 
 // Comparação sem acentos nem espaços: a fonte dos títulos às vezes sai do pdftotext com o
 // acento como caractere separado (ex.: "A´nalise").
@@ -116,8 +117,13 @@ async function print(html, pdfPath) {
   await page.close();
 }
 
-// Fontes e KaTeX vêm de node_modules; o HTML final fica em .build/, então ajustamos os caminhos.
-let source = readSource().replaceAll('href="node_modules/', 'href="../node_modules/');
+// estilo.css (que importa fontes e KaTeX de node_modules) fica nesta pasta e o HTML final em
+// .build/, então ajustamos o caminho.
+let source = readSource().replaceAll('href="estilo.css"', 'href="../estilo.css"');
+const meta = (re) => (source.match(re)?.[1] ?? '').trim();
+const titulo = meta(/<title>([^<]*)<\/title>/);
+const assunto = meta(/<meta name="description" content="([^"]*)">/);
+const palavras = meta(/<meta name="keywords" content="([^"]*)">/);
 source = renderMath(source);
 const list = topics(source);
 
@@ -137,6 +143,6 @@ if (wrong.length) {
   console.error('Sumário divergente para:', wrong.map((t) => t.id));
   process.exit(1);
 }
-marcadores('corrigir', outPath);
+marcadores('corrigir', outPath, titulo, assunto, palavras);
 console.log(`OK: ${outPath} (${list.length} tópicos)`);
 console.log(list.map(({ id }) => `${id}:${pages[id]}`).join(' '));

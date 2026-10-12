@@ -1,6 +1,6 @@
 # Study-mkre
 
-Material de preparação para os vestibulares do Mackenzie e da FGV, a partir da análise de provas anteriores.
+Material de preparação para os vestibulares do Mackenzie e da FGV (curso de Administração), a partir da análise de provas anteriores.
 
 ## Análise de conteúdo
 
@@ -54,11 +54,40 @@ oficial e resolução comentada que aponta as pegadinhas das alternativas errada
   oficiais. Provas e gabaritos consultados no arquivo de resoluções comentadas do Curso Objetivo.
   Física e Química, da versão anterior, foram retiradas porque não caem na prova de Administração.
 
-O PDF é gerado a partir de `fgv/fonte/partes/*.html` (fórmulas em LaTeX, renderizadas com
-KaTeX e impressas pelo Chromium). O sumário é paginado automaticamente:
+## Guia Mackenzie Administração
+
+`mackenzie/guia-mackenzie-administracao.pdf` — PDF de 39 páginas com **Geografia e História**
+para o vestibular do Mackenzie, com os temas **em ordem de importância**: 11 de Geografia e 12
+de História. Cada tema traz uma explicação do que é e cartões com os conceitos, datas e termos
+que a prova cobra. Os exercícios são **36 questões reais do Mackenzie** (17 de Geografia e 19 de
+História), com gabarito oficial e resolução comentada que aponta as pegadinhas.
+
+- **Como o ranking foi feito**: classificamos por tema principal as 140 questões objetivas de
+  História (Q47–Q53) e Geografia (Q54–Q60) de 10 provas: 1º semestre de 2023, 2024, 2025 e 2026
+  (dois dias de prova em cada) e 2º semestre de 2023 e 2024. Empates são desfeitos pelo número de
+  provas em que o tema apareceu e, depois, pelas questões de 2025 e 2026.
+- **Mais cobrados em Geografia**: geopolítica e atualidades (14 questões, em 8 provas),
+  cartografia com contas de escala e fuso (12, em 8 provas), população (9) e biomas (8).
+- **Mais cobrados em História**: Idade Média (8, em 7 provas), América e Brasil coloniais (8),
+  Brasil de 1945 a 1985 (7), guerras mundiais e fascismos (7), revoluções e ideologias (7) e
+  Era Vargas (6, em 6 provas).
+- **Consulta rápida**: tabelas de escala e de fusos, massas de ar, linhas do tempo do Brasil e
+  do mundo e pares de conceitos que o Mackenzie troca nas alternativas.
+- **Questões**: transcritas das provas e conferidas palavra por palavra; as imagens viraram uma
+  descrição entre colchetes. Os gabaritos são os oficiais do Mackenzie. Provas e gabaritos
+  consultados no arquivo de resoluções comentadas do Curso Objetivo.
+
+## Como gerar os PDFs
+
+Os dois guias são montados por `gerador-pdf/` a partir das partes HTML de cada um
+(`fgv/partes/*.html` e `mackenzie/partes/*.html`, concatenadas em ordem alfabética), com o estilo
+comum de `gerador-pdf/estilo.css`. As fórmulas em LaTeX são renderizadas com KaTeX, o Chromium
+imprime o PDF e o sumário é paginado automaticamente:
 
 ```sh
-cd fgv/fonte
+cd gerador-pdf
 npm install
-npm run build   # requer Python 3 com pypdf
+npm run fgv         # gera fgv/guia-fgv-administracao.pdf
+npm run mackenzie   # gera mackenzie/guia-mackenzie-administracao.pdf
+# requer Python 3 com pypdf
 ```

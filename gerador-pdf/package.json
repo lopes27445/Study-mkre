@@ -1,0 +1,17 @@
+{
+  "name": "gerador-pdf",
+  "private": true,
+  "type": "module",
+  "description": "Gera os guias em PDF a partir das partes HTML de cada vestibular",
+  "scripts": {
+    "fgv": "node build.mjs ../fgv/partes ../fgv/guia-fgv-administracao.pdf",
+    "mackenzie": "node build.mjs ../mackenzie/partes ../mackenzie/guia-mackenzie-administracao.pdf"
+  },
+  "dependencies": {
+    "@fontsource/bitter": "5.1.0",
+    "@fontsource/ibm-plex-mono": "5.1.0",
+    "@fontsource/source-sans-3": "5.1.0",
+    "katex": "0.16.11",
+    "playwright-core": "1.56.1"
+  }
+}

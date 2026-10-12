@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Lê e corrige os marcadores (outline) do PDF gerado pelo Chromium.
 
-uso: marcadores.py ler ARQUIVO.pdf       imprime JSON [[título, página], ...]
-     marcadores.py corrigir ARQUIVO.pdf  reescreve o arquivo com títulos limpos e metadados
+uso: marcadores.py ler ARQUIVO.pdf
+         imprime JSON [[título, página], ...]
+     marcadores.py corrigir ARQUIVO.pdf TÍTULO ASSUNTO PALAVRAS-CHAVE
+         reescreve o arquivo com títulos limpos e metadados
 
 O Chromium às vezes repete o texto de um título no marcador ("ProbabilidadeProbabilidade")
 quando o bloco foi empurrado para a página seguinte; aqui isso é desfeito.
@@ -37,7 +39,7 @@ def ler(caminho):
     print(json.dumps(saida, ensure_ascii=False))
 
 
-def corrigir(caminho):
+def corrigir(caminho, titulo, assunto, palavras):
     escritor = PdfWriter(clone_from=caminho)
     raiz = escritor._root_object.get("/Outlines")
 
@@ -52,18 +54,12 @@ def corrigir(caminho):
 
     if raiz is not None:
         visitar(raiz.get_object().get("/First"))
-    escritor.add_metadata(
-        {
-            "/Title": "Guia FGV Administração",
-            "/Subject": "Geografia, Atualidades e História que mais caem na prova de Administração da FGV, com questões reais resolvidas e Matemática",
-            "/Keywords": "FGV, vestibular, administração, geografia, atualidades, história, matemática",
-        }
-    )
+    escritor.add_metadata({"/Title": titulo, "/Subject": assunto, "/Keywords": palavras})
     escritor.page_mode = "/UseOutlines"
     with open(caminho, "wb") as arquivo:
         escritor.write(arquivo)
 
 
 if __name__ == "__main__":
-    acao, arquivo = sys.argv[1], sys.argv[2]
-    {"ler": ler, "corrigir": corrigir}[acao](arquivo)
+    acao, *args = sys.argv[1:]
+    {"ler": ler, "corrigir": corrigir}[acao](*args)

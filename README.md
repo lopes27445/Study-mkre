@@ -14,6 +14,11 @@ Publicado também como página: https://claude.ai/artifact/WDXbAaVTZZLggkZzVVv4r
 Versão para imprimir ou ler no celular: `manual/manual-portugues-fgv.pdf` (A4, 21 páginas,
 com as respostas dos treinos visíveis). O plano de estudo cobre os 6 dias até a prova (18/10).
 
+`manual/revisao-portugues-fgv.pdf` — revisão expressa para quem já tem base (7 páginas): plano
+de 6 dias, uma folha por slide com o essencial, a pegadinha do tema e um teste-relâmpago, e
+gabarito no final. Cada item aponta o tópico do manual completo para consulta. Fonte em
+`manual/revisao-portugues-fgv.html`.
+
 ## Análise de conteúdo
 
 `analise/mapa-mackenzie.html` — análise comparativa das duas últimas provas, com os

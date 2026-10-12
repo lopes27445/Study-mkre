@@ -1,0 +1,546 @@
+<title>Revisão de Português FGV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+/* Layout: folhas de revisão, uma por slide do roteiro (2 → 7), feitas para A4.
+   Mesma paleta e fontes do manual completo. */
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --vermelho-soft:#FBEAE7;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --marca:#FADDA8;
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523;--surface:#161F31;--surface-2:#1D283D;--ink:#E3E8F2;--grafite:#A3AEC4;--grafite-soft:#7E8AA2;
+    --linha:#2A3549;--linha-forte:#3B4863;--azul:#8FB3EE;--azul-soft:#1C2A46;--vermelho:#EE8478;--vermelho-soft:#33201E;
+    --ocre:#DDB667;--ocre-soft:#2C2618;--marca:#5A4520;color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523;--surface:#161F31;--surface-2:#1D283D;--ink:#E3E8F2;--grafite:#A3AEC4;--grafite-soft:#7E8AA2;
+  --linha:#2A3549;--linha-forte:#3B4863;--azul:#8FB3EE;--azul-soft:#1C2A46;--vermelho:#EE8478;--vermelho-soft:#33201E;
+  --ocre:#DDB667;--ocre-soft:#2C2618;--marca:#5A4520;color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:36px 72px}
+a{color:var(--azul)}
+p{margin:0 0 8px}
+ul{margin:0 0 8px;padding-left:18px}
+li{margin-bottom:2px}
+li::marker{color:var(--grafite-soft)}
+strong{font-weight:700}
+
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--azul);margin:0}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,40px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 0;text-wrap:balance}
+.dek{font-size:16.5px;color:var(--grafite);margin:10px 0 0;max-width:64ch}
+.topo{padding-bottom:20px;border-bottom:2px solid var(--ink)}
+
+.folha{padding-top:34px}
+.folha-cab{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--linha-forte);padding-bottom:6px;margin-bottom:12px}
+h2{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.2;letter-spacing:-.015em;margin:0;text-wrap:balance}
+h2 .n{font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--azul);margin-right:8px;letter-spacing:.06em}
+h2 .mt{background:linear-gradient(transparent 58%, var(--marca) 58%, var(--marca) 92%, transparent 92%);padding-inline:2px}
+.slide{font-family:var(--mono);font-size:11px;color:var(--grafite-soft);letter-spacing:.08em;text-transform:uppercase}
+h3{font-family:var(--display);font-weight:600;font-size:15.5px;margin:0 0 4px;line-height:1.3}
+h3 .ref{font-family:var(--mono);font-size:10.5px;font-weight:500;color:var(--grafite-soft);margin-left:6px}
+
+.comando{background:var(--azul-soft);border:1.5px solid var(--azul);border-radius:3px;padding:8px 12px;margin-bottom:14px}
+.comando b{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--azul)}
+.comando span{font-weight:600;font-size:15.5px}
+
+.grade{display:grid;grid-template-columns:1fr 1fr;gap:14px 22px}
+.grade > div{min-width:0}
+.cheia{grid-column:1 / -1}
+
+.tabela{overflow-x:auto;border:1px solid var(--linha);border-radius:3px;background:var(--surface);margin-bottom:6px}
+table{border-collapse:collapse;width:100%;font-size:14px;line-height:1.4}
+th,td{text-align:left;vertical-align:top;padding:5px 9px;border-bottom:1px solid var(--linha)}
+tr:last-child td{border-bottom:0}
+th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--grafite);background:var(--surface-2)}
+td:first-child{font-weight:600}
+td em{color:var(--grafite)}
+
+.pegadinha{background:var(--vermelho-soft);border-radius:3px;padding:8px 12px;margin-top:12px;font-size:14.5px}
+.pegadinha b{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--vermelho);display:block}
+
+.teste{margin-top:12px;border-top:1px dashed var(--linha-forte);padding-top:8px}
+.teste h3{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--grafite)}
+.teste ol{margin:0;padding-left:20px;font-size:14.5px}
+
+.quadros{width:15px;height:15px;border:1.5px solid var(--linha-forte);border-radius:2px;display:inline-block;vertical-align:-2px;margin-right:6px}
+.lista-check{list-style:none;padding:0;margin:0;columns:2;column-gap:24px}
+.lista-check li{break-inside:avoid;margin-bottom:6px;font-size:14.5px}
+.lista-check em{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--azul)}
+
+.gabarito{padding-top:34px}
+.gab{columns:2;column-gap:24px;font-size:13.5px}
+.gab div{break-inside:avoid;margin-bottom:8px}
+.gab b{font-family:var(--mono);font-size:11px;color:var(--azul)}
+.gab p{margin:0 0 2px}
+
+footer{margin-top:28px;padding-top:10px;border-top:1px solid var(--linha);font-size:12.5px;color:var(--grafite)}
+
+@media (max-width:640px){
+  .wrap{padding-inline:16px}
+  .grade{grid-template-columns:1fr}
+  .lista-check,.gab{columns:1}
+}
+
+@media print{
+  :root,:root:not([data-theme="light"]),:root[data-theme="dark"]{
+    --paper:#FFFFFF;--surface:#FFFFFF;--surface-2:#EDF0F5;--ink:#131E36;--grafite:#4A5468;--grafite-soft:#6E778A;
+    --linha:#D9DEE8;--linha-forte:#BAC2D2;--azul:#1B4AA0;--azul-soft:#E7EDF9;--vermelho:#AC2A1F;--vermelho-soft:#FBEAE7;
+    --ocre:#84600F;--ocre-soft:#F8F0DC;--marca:#FADDA8;color-scheme:light;
+  }
+  @page{size:A4;margin:12mm 12mm 14mm}
+  body{font-size:11px;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:none;padding:0}
+  h1{font-size:28px}
+  .dek{font-size:12.5px}
+  .topo{padding-bottom:12px}
+  .folha,.gabarito{break-before:page;padding-top:0}
+  .folha.junto{break-before:auto;padding-top:22px}
+  h2{font-size:19px}
+  h3{font-size:12px}
+  .comando span{font-size:12.5px}
+  .comando{padding:6px 10px;margin-bottom:10px}
+  .grade{grid-template-columns:1fr 1fr;gap:10px 18px}
+  table{font-size:10.5px}
+  th,td{padding:3px 6px}
+  th{font-size:8.5px}
+  .tabela{overflow:visible}
+  .pegadinha,.teste ol,.lista-check li{font-size:11px}
+  .gab{font-size:10.5px}
+  .lista-check,.gab{columns:2}
+  tr,.pegadinha,.comando,.grade > div{break-inside:avoid}
+  h2,h3,.folha-cab{break-after:avoid}
+  a{color:inherit;text-decoration:none}
+}
+</style>
+
+<main class="wrap">
+
+<header class="topo">
+  <p class="eyebrow">Língua Portuguesa · FGV 2027.1 · prova em 18/10</p>
+  <h1>Revisão expressa de Português</h1>
+  <p class="dek">Para quem já tem base. Uma folha por slide do roteiro de @crisoliveira.tudodetexto, na mesma ordem e com o mesmo comando. Cada folha traz o essencial, a pegadinha do tema e um teste-relâmpago; o gabarito está na última página. Errou? A referência <span style="font-family:var(--mono);font-size:.85em">→ 1.2</span> indica o tópico do manual completo.</p>
+</header>
+
+<section class="folha junto">
+  <div class="folha-cab"><h2><span class="n">PLANO</span><span class="mt">Os 6 dias de revisão</span></h2><span class="slide">cerca de 1h30 por dia</span></div>
+  <div class="tabela">
+    <table>
+      <thead><tr><th>Dia</th><th>Revise</th><th>Pratique</th></tr></thead>
+      <tbody>
+        <tr><td>Seg 12/10</td><td>Folha 1 · Interpretação + Folha 6 (pegadinhas)</td><td>Questões de interpretação de uma prova anterior da FGV</td></tr>
+        <tr><td>Ter 13/10</td><td>Folha 2 · Gêneros textuais</td><td>As 5 perguntas aplicadas aos textos da prova anterior</td></tr>
+        <tr><td>Qua 14/10</td><td>Folha 3 · Gramática no contexto</td><td>Questões de gramática de provas anteriores</td></tr>
+        <tr><td>Qui 15/10</td><td>Folha 4 · Poemas e escolas</td><td>Questões de literatura de provas anteriores</td></tr>
+        <tr><td>Sex 16/10</td><td>Folha 5 · só os itens em que errar</td><td>Uma prova anterior completa, cronometrada, corrigida com a ficha da Folha 6</td></tr>
+        <tr><td>Sáb 17/10</td><td>Todos os testes-relâmpago + caderno de erros</td><td>Nada novo. Separe documento e caneta, durma cedo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.93em;color:var(--grafite)"><strong style="color:var(--ink)">Rotina:</strong> 20 min na folha do dia (leia, cubra e diga em voz alta) e o teste-relâmpago · 50 min de questões · 20 min de correção. Só abra o manual completo no tópico do que errou.</p>
+</section>
+
+<!-- FOLHA 1 -->
+<section class="folha">
+  <div class="folha-cab"><h2><span class="n">FOLHA 1</span><span class="mt">Interpretação de texto</span></h2><span class="slide">slide 2/8</span></div>
+  <div class="comando"><b>Comando</b><span>Localize a informação no texto e observe a função que ela desempenha.</span></div>
+  <div class="grade">
+    <div>
+      <h3>Níveis de sentido <span class="ref">→ 1.1</span></h3>
+      <ul>
+        <li><strong>Afirmado:</strong> está escrito.</li>
+        <li><strong>Pressuposto:</strong> garantido por uma palavra (<em>parar de, voltar a, ainda, já</em>).</li>
+        <li><strong>Subentendido:</strong> insinuado; depende do contexto.</li>
+        <li><strong>Extrapolado:</strong> o texto não autoriza. É a base das erradas.</li>
+      </ul>
+      <h3>Experiência e perspectiva <span class="ref">→ 1.3 · 1.4</span></h3>
+      <ul>
+        <li>Mudança de voz, de tempo (“antes… hoje”) ou de opinião. Marcas: <em>mas, só depois, até que</em>, troca de pessoa, aspas.</li>
+        <li>Pergunte: o que mudou na percepção, e que experiência causou isso?</li>
+      </ul>
+      <h3>Valor semântico <span class="ref">→ 1.5</span></h3>
+      <ul>
+        <li>Sinônimo vale só se funcionar <strong>na frase</strong>.</li>
+        <li>Modalizadores: <em>pode ≠ deve; talvez ≠ certamente</em>.</li>
+        <li>Diminutivo: afeto, desprezo ou tamanho.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Figuras de linguagem <span class="ref">→ 1.2</span></h3>
+      <div class="tabela">
+        <table>
+          <tbody>
+            <tr><td>Comparação</td><td>com conectivo: <em>como, tal qual</em></td></tr>
+            <tr><td>Metáfora</td><td>sem conectivo: “olhos eram faróis”</td></tr>
+            <tr><td>Antítese</td><td>opostos <strong>lado a lado</strong>: luz × noite</td></tr>
+            <tr><td>Paradoxo</td><td>opostos <strong>fundidos</strong>: “dor que desatina sem doer”</td></tr>
+            <tr><td>Metonímia</td><td>“li Machado” (autor pela obra)</td></tr>
+            <tr><td>Hipérbole</td><td>exagero: “chorei rios”</td></tr>
+            <tr><td>Ironia</td><td>diz o contrário; só o contexto revela</td></tr>
+            <tr><td>Eufemismo</td><td>suaviza: “ele nos deixou”</td></tr>
+            <tr><td>Prosopopeia</td><td>ação humana a ser inanimado</td></tr>
+            <tr><td>Sinestesia</td><td>mistura sentidos: “voz áspera”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.93em">Sempre diga o <strong>efeito</strong>, não só o nome.</p>
+    </div>
+    <div>
+      <h3>Sinais gráficos <span class="ref">→ 1.6</span></h3>
+      <ul>
+        <li><strong>Aspas:</strong> citação, ironia, distanciamento, destaque.</li>
+        <li><strong>Parênteses:</strong> informação acessória, comentário.</li>
+        <li><strong>Travessão:</strong> fala; isola comentário com ênfase.</li>
+        <li><strong>Dois-pontos:</strong> explicação, enumeração, citação, conclusão.</li>
+        <li><strong>Reticências:</strong> hesitação, suspense, ironia.</li>
+        <li><strong>Interrogação retórica:</strong> resposta implícita; é argumento.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Circunstâncias <span class="ref">→ 1.7</span></h3>
+      <ul>
+        <li><strong>Causa:</strong> porque, já que, visto que, como (no início)</li>
+        <li><strong>Consequência:</strong> tão/tanto… que, de modo que</li>
+        <li><strong>Concessão:</strong> embora, ainda que, apesar de</li>
+        <li><strong>Condição:</strong> se, caso, desde que</li>
+        <li><strong>Finalidade:</strong> para (que), a fim de</li>
+        <li><strong>Conformidade:</strong> conforme, segundo, como</li>
+        <li><strong>Proporção:</strong> à medida que, quanto mais… mais</li>
+      </ul>
+      <h3>Não verbal <span class="ref">→ 1.8</span></h3>
+      <p>Imagem → texto → relação (completa, exemplifica, contradiz) → crítica ou humor. Infográfico: título, legenda, escala, fonte.</p>
+    </div>
+  </div>
+  <div class="pegadinha"><b>Pegadinha</b>Atribuir ao objeto uma mudança que aconteceu no olhar de quem fala; e o “como”, que pode ser causal, conformativo ou comparativo.</div>
+  <div class="teste">
+    <h3>Teste-relâmpago</h3>
+    <ol>
+      <li>O que está pressuposto em “Ela voltou a estudar”?</li>
+      <li>“Era um silêncio ensurdecedor”: antítese ou paradoxo?</li>
+      <li>Qual o valor de “como” em “Como estava cansado, dormiu cedo”?</li>
+      <li>Função das aspas em: O ministro chamou o corte de “ajuste”.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOLHA 2 -->
+<section class="folha">
+  <div class="folha-cab"><h2><span class="n">FOLHA 2</span><span class="mt">Gêneros textuais</span></h2><span class="slide">slide 3/8</span></div>
+  <div class="comando"><b>Comando</b><span>Não basta reconhecer o nome do gênero. É preciso compreender sua finalidade social, estrutura e forma de organização.</span></div>
+  <div class="tabela">
+    <table>
+      <thead><tr><th>Gênero</th><th>Finalidade</th><th>Estrutura</th><th>Marcas</th></tr></thead>
+      <tbody>
+        <tr><td>Artigo de opinião</td><td>Convencer</td><td>Tese → argumentos → conclusão</td><td>Assinado, modalizadores, conectivos argumentativos</td></tr>
+        <tr><td>Resenha</td><td>Apresentar e avaliar uma obra</td><td>Obra → resumo → avaliação</td><td>Descrição + adjetivos de valor</td></tr>
+        <tr><td>Divulgação científica</td><td>Explicar ciência ao leigo</td><td>Fenômeno → explicação → especialistas</td><td>Analogias, termos explicados, citações</td></tr>
+        <tr><td>Crônica</td><td>Refletir sobre o cotidiano</td><td>Episódio banal → reflexão</td><td>1ª pessoa, tom de conversa, humor ou lirismo</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:.93em"><strong>5 perguntas:</strong> quem escreve · para quem · para quê · onde circula · como se organiza. <strong>Tipo ≠ gênero:</strong> tipo é a sequência (narrar, argumentar…); gênero é o texto social.</p>
+  <div class="grade" style="margin-top:6px">
+    <div>
+      <h3>Argumentação <span class="ref">→ 2.2 · 2.5</span></h3>
+      <ul>
+        <li><strong>Tese</strong> = o que defende · <strong>argumento</strong> = por quê · <strong>ponto de vista</strong> = posição.</li>
+        <li>Tipos: autoridade, dados, exemplo, causa e consequência, comparação, contra-argumentação (“É verdade que…; no entanto…”).</li>
+        <li>Verbo introdutor revela a posição: <em>afirma</em> (neutro), <em>admite</em> (concessão), <em>alerta</em> (risco), <em>alega</em> (distanciamento, dúvida).</li>
+        <li>Expressão figurada e analogia: leia pelo contexto <span class="ref" style="font-family:var(--mono);font-size:.8em;color:var(--grafite-soft)">→ 2.6</span>.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pronomes na norma-padrão <span class="ref">→ 2.7</span></h3>
+      <ul>
+        <li><strong>Este</strong> anuncia ou é o mais próximo; <strong>esse</strong> retoma; <strong>aquele</strong> é o mais distante.</li>
+        <li><strong>Onde</strong> só para lugar: “a época <em>em que</em>”.</li>
+        <li><strong>Cujo</strong> sem artigo: “cujo livro”, nunca “cujo o”.</li>
+        <li>Preposição antes do relativo: “o filme <em>a que</em> assisti”.</li>
+        <li><strong>O/a</strong> = objeto direto; <strong>lhe</strong> = objeto indireto.</li>
+        <li>Não começar frase com oblíquo; <em>não, que, quem</em> atraem o pronome.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="pegadinha"><b>Pegadinha</b>Alternativa que apresenta um exemplo ou argumento secundário como se fosse a tese; ou que atribui ao autor a opinião do especialista citado.</div>
+  <div class="teste">
+    <h3>Teste-relâmpago</h3>
+    <ol>
+      <li>Qual a finalidade social da resenha, e o que a diferencia de uma sinopse?</li>
+      <li>“O pesquisador alega que…”: o que o verbo sugere?</li>
+      <li>Corrija: “Foi uma época onde tudo mudou.”</li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOLHA 3 -->
+<section class="folha">
+  <div class="folha-cab"><h2><span class="n">FOLHA 3</span><span class="mt">Gramática no contexto</span></h2><span class="slide">slide 4/8</span></div>
+  <div class="comando"><b>Comando</b><span>Antes de escolher uma alternativa, pergunte: que sentido essa palavra ou expressão produz no texto?</span></div>
+  <div class="grade">
+    <div>
+      <h3>Coesão e conjunções <span class="ref">→ 3.1 · 3.2</span></h3>
+      <ul>
+        <li>Referente: troque o pronome pelo candidato e confira sentido e concordância.</li>
+        <li><strong>Adversativa</strong> (mas, porém, contudo, no entanto): vale a ideia depois dela.</li>
+        <li><strong>Concessiva</strong> (embora, ainda que, apesar de): admite o obstáculo; verbo no subjuntivo.</li>
+        <li>“Estudou, mas não passou” = “Embora tenha estudado, não passou”.</li>
+        <li>Conclusiva: logo, portanto, pois (depois do verbo). Explicativa: pois (antes do verbo), porque.</li>
+      </ul>
+      <h3>Vozes verbais <span class="ref">→ 3.3</span></h3>
+      <ul>
+        <li>Passiva analítica: <em>ser</em> + particípio, no mesmo tempo: elaborou → foi elaborada; elaborará → será elaborada.</li>
+        <li>Passiva sintética: VTD + se, verbo concorda: “Vendem-se casas”.</li>
+        <li>Índice de indeterminação: VTI/VI + se, singular: “Precisa-se de vendedores”.</li>
+        <li>Efeito: destaca o paciente e pode omitir o agente.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Discurso direto → indireto <span class="ref">→ 3.4</span></h3>
+      <div class="tabela">
+        <table>
+          <tbody>
+            <tr><td>eu · meu</td><td>ele · seu, dele</td></tr>
+            <tr><td>volto (presente)</td><td>voltava</td></tr>
+            <tr><td>voltei</td><td>tinha voltado</td></tr>
+            <tr><td>voltarei</td><td>voltaria</td></tr>
+            <tr><td>volte (imperativo)</td><td>que voltasse</td></tr>
+            <tr><td>hoje · amanhã</td><td>naquele dia · no dia seguinte</td></tr>
+            <tr><td>aqui · este</td><td>ali · aquele</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.93em"><strong>Indireto livre:</strong> voz da personagem misturada à do narrador, sem verbo de dizer.</p>
+    </div>
+    <div>
+      <h3>Vírgula <span class="ref">→ 3.5</span></h3>
+      <ul>
+        <li><strong>Nunca</strong> entre sujeito e verbo, nem entre verbo e complemento.</li>
+        <li>Isola aposto, vocativo, adjunto adverbial deslocado, conjunção deslocada, intercaladas.</li>
+        <li>Marca verbo omitido: “Eu prefiro Machado; ela, Clarice”.</li>
+        <li>“Os alunos <strong>que</strong> estudaram passaram” = só alguns (restritiva). “Os alunos<strong>, que</strong> estudaram<strong>,</strong> passaram” = todos (explicativa).</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Informal → norma-padrão <span class="ref">→ 3.6</span></h3>
+      <div class="tabela">
+        <table>
+          <tbody>
+            <tr><td>Tem muitos inscritos</td><td>Há muitos inscritos</td></tr>
+            <tr><td>Me avisa</td><td>Avise-me</td></tr>
+            <tr><td>Vi ele</td><td>Eu o vi</td></tr>
+            <tr><td>Assisti o filme</td><td>Assisti ao filme</td></tr>
+            <tr><td>Fazem dois anos</td><td>Faz dois anos</td></tr>
+            <tr><td>Aluga-se salas</td><td>Alugam-se salas</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:.93em">A prova avalia <strong>adequação</strong> ao contexto, não “erro”.</p>
+    </div>
+  </div>
+  <div class="pegadinha"><b>Pegadinha</b>Reescrita gramaticalmente correta que muda o sentido (troca de conectivo, vírgula que vira restritiva em explicativa), ou que mantém o sentido mas quebra a norma.</div>
+  <div class="teste">
+    <h3>Teste-relâmpago</h3>
+    <ol>
+      <li>Reescreva com “embora”: “Treinou muito, mas perdeu.”</li>
+      <li>Passe para a passiva: “A banca anulará a questão.”</li>
+      <li>“Precisa-se de vendedores” × “Vendem-se casas”: qual está na voz passiva?</li>
+      <li>Passe para o indireto: — Eu faço isso hoje — disse ele.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOLHA 4 -->
+<section class="folha">
+  <div class="folha-cab"><h2><span class="n">FOLHA 4</span><span class="mt">Poemas e escolas literárias</span></h2><span class="slide">slide 5/8</span></div>
+  <div class="comando"><b>Comando</b><span>Literatura não é apenas decorar características: é interpretar como elas aparecem na obra.</span></div>
+  <div class="grade">
+    <div>
+      <h3>Análise do poema <span class="ref">→ 4.1 a 4.5</span></h3>
+      <ul>
+        <li><strong>Fazer poético:</strong> romântico = sentimento; parnasiano = ourives, forma; simbolista = sugestão, música; modernista = liberdade, cotidiano; João Cabral = construção racional.</li>
+        <li><strong>Repetições:</strong> anáfora (início de versos), refrão, paralelismo, gradação, polissíndeto; efeito de ênfase, ritmo, acúmulo.</li>
+        <li><strong>Antecedente:</strong> ponha o verso na ordem direta e ache o termo que o relativo retoma (“palmeiras, / Onde canta o Sabiá”).</li>
+        <li><strong>Construção:</strong> hipérbato (ordem inversa), enjambement (frase atravessa o verso), elipse (“Nossa vida mais amores”).</li>
+        <li><strong>Palavras:</strong> campo semântico, aliteração (“Vozes veladas, veludosas vozes”), registro elevado × coloquial.</li>
+        <li><strong>Métrica:</strong> 5 = redondilha menor, 7 = maior, 10 = decassílabo, 12 = alexandrino.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Leitura em 5 passos</h3>
+      <ul>
+        <li>Do que fala? Quem é o eu lírico?</li>
+        <li>Como fala? Repetição, pontuação, quebras.</li>
+        <li>Ordem direta e antecedentes.</li>
+        <li>Que efeito tem cada recurso?</li>
+        <li>Só então: qual escola, e <strong>qual verso comprova</strong>?</li>
+      </ul>
+    </div>
+    <div class="cheia">
+      <h3>Escolas <span class="ref">→ 4.6</span></h3>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>Escola</th><th>Reconheça por</th><th>Autores</th></tr></thead>
+          <tbody>
+            <tr><td>Barroco</td><td>fé × prazer, antíteses, paradoxos, efemeridade</td><td>Gregório de Matos, Vieira</td></tr>
+            <tr><td>Arcadismo</td><td>natureza idealizada, pastoralismo, <em>carpe diem</em></td><td>Gonzaga, Cláudio Manuel da Costa</td></tr>
+            <tr><td>Romantismo</td><td>subjetividade, idealização, nacionalismo · 1ª indianista · 2ª mal do século · 3ª social</td><td>G. Dias, Álvares de Azevedo, Castro Alves, Alencar</td></tr>
+            <tr><td>Realismo / Naturalismo</td><td>objetividade, crítica social, psicologia · determinismo, zoomorfização</td><td>Machado de Assis · Aluísio Azevedo</td></tr>
+            <tr><td>Parnasianismo</td><td>arte pela arte, soneto, vocabulário raro</td><td>Bilac, Raimundo Correia</td></tr>
+            <tr><td>Simbolismo</td><td>musicalidade, sugestão, sinestesia, misticismo</td><td>Cruz e Sousa, Alphonsus de Guimaraens</td></tr>
+            <tr><td>Pré-Modernismo</td><td>denúncia da realidade brasileira</td><td>Euclides da Cunha, Lima Barreto, Augusto dos Anjos</td></tr>
+            <tr><td>Modernismo 1ª fase</td><td>ruptura, verso livre, humor, coloquialidade</td><td>Mário e Oswald de Andrade, Bandeira</td></tr>
+            <tr><td>Modernismo 2ª fase</td><td>poesia reflexiva e social; romance de 30</td><td>Drummond, Cecília, Graciliano, Rachel de Queiroz</td></tr>
+            <tr><td>Geração de 45</td><td>rigor formal, experimentação, introspecção</td><td>João Cabral, Guimarães Rosa, Clarice</td></tr>
+            <tr><td>Contemporânea</td><td>concretismo, poesia marginal, vozes plurais</td><td>Gullar, Leminski, Adélia Prado, Conceição Evaristo</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="pegadinha"><b>Pegadinha</b>Alternativa com a característica certa da escola, mas que não aparece no poema dado. Só marque o que você consegue apontar num verso.</div>
+  <div class="teste">
+    <h3>Teste-relâmpago</h3>
+    <ol>
+      <li>Ordem direta: “Ouviram do Ipiranga as margens plácidas / De um povo heroico o brado retumbante”.</li>
+      <li>Arte pela arte, soneto e vocabulário raro: que escola?</li>
+      <li>Que efeito tem a aliteração em “Vozes veladas, veludosas vozes”, e de que escola é?</li>
+      <li>Mal do século, tédio e morte: que geração, e qual autor?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- FOLHA 5 -->
+<section class="folha">
+  <div class="folha-cab"><h2><span class="n">FOLHA 5</span><span class="mt">O que revisar na reta final</span></h2><span class="slide">slide 6/8</span></div>
+  <div class="comando"><b>Comando</b><span>A prova exige leitura atenta, não apenas memorização de regras.</span></div>
+  <p style="font-size:.93em">Marque o item quando acertar as questões dele numa prova anterior. Os que ficarem em branco são a sua revisão de sexta.</p>
+  <ul class="lista-check">
+    <li><span class="quadros"></span>Interpretação de textos literários e não literários <em>Folhas 1 e 4</em></li>
+    <li><span class="quadros"></span>Tese, argumento e ponto de vista <em>Folha 2</em></li>
+    <li><span class="quadros"></span>Figuras de linguagem <em>Folha 1</em></li>
+    <li><span class="quadros"></span>Pronomes e relações de sentido <em>Folhas 2 e 3</em></li>
+    <li><span class="quadros"></span>Vozes ativa e passiva <em>Folha 3</em></li>
+    <li><span class="quadros"></span>Pontuação <em>Folhas 1 e 3</em></li>
+    <li><span class="quadros"></span>Linguagem verbal e não verbal <em>Folha 1</em></li>
+    <li><span class="quadros"></span>Gêneros textuais <em>Folha 2</em></li>
+    <li><span class="quadros"></span>Escolas literárias <em>Folha 4</em></li>
+    <li><span class="quadros"></span>Provas anteriores (uma completa até sexta) <em>Folha 6</em></li>
+  </ul>
+</section>
+
+<!-- FOLHA 6 -->
+<section class="folha junto">
+  <div class="folha-cab"><h2><span class="n">FOLHA 6</span><span class="mt">Como estudar melhor</span></h2><span class="slide">slide 7/8</span></div>
+  <div class="comando"><b>Comando</b><span>Na FGV, conhecer a regra é importante. Entender o texto é indispensável.</span></div>
+  <div class="grade">
+    <div>
+      <h3>Ficha da prova anterior <span class="ref">→ 6.1</span></h3>
+      <ul>
+        <li><strong>Textos:</strong> quantos, que gêneros, há não verbal, dialogam entre si?</li>
+        <li><strong>Comandos:</strong> “infere-se”, “depreende-se”, “mantém o sentido”; correta ou incorreta; I, II e III?</li>
+        <li><strong>Alterações sutis:</strong> que palavra tornou a alternativa errada?</li>
+        <li><strong>Gramática + texto:</strong> pedia classificação ou efeito de sentido?</li>
+        <li><strong>Eliminação:</strong> que pista derrubou cada errada?</li>
+      </ul>
+      <h3>Estratégias <span class="ref">→ 6.3</span></h3>
+      <ul>
+        <li>Circule INCORRETA, EXCETO, NÃO.</li>
+        <li>Uma parte falsa derruba a alternativa inteira.</li>
+        <li>Volte ao texto em cada alternativa.</li>
+        <li>Desconfie de <em>sempre, nunca, todos, apenas</em>.</li>
+        <li>Compare as parecidas: a diferença é a questão.</li>
+        <li>Reescrita: sentido igual <strong>e</strong> frase correta.</li>
+        <li>I, II e III: julgue primeiro a que você domina.</li>
+        <li>Entre duas, fique com a que você aponta no texto.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>As 10 alterações sutis <span class="ref">→ 6.2</span></h3>
+      <div class="tabela">
+        <table>
+          <tbody>
+            <tr><td>Extrapolação</td><td>“indica” → “prova”</td></tr>
+            <tr><td>Generalização</td><td>“muitos” → “todos”</td></tr>
+            <tr><td>Grau de certeza</td><td>“pode reduzir” → “reduz”</td></tr>
+            <tr><td>Causa invertida</td><td>consequência vira causa</td></tr>
+            <tr><td>Contradição</td><td>diz o oposto do texto</td></tr>
+            <tr><td>Redução</td><td>parte apresentada como todo</td></tr>
+            <tr><td>Troca de voz</td><td>opinião do citado vira do autor</td></tr>
+            <tr><td>Troca de conectivo</td><td>“mas” → “portanto”</td></tr>
+            <tr><td>Sinônimo fora de contexto</td><td>vale no dicionário, não na frase</td></tr>
+            <tr><td>Mudança de tempo</td><td>“deixou de” → “nunca”</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="teste">
+    <h3>Teste-relâmpago</h3>
+    <ol>
+      <li>Texto: “pode reduzir”. Alternativa: “reduz”. Que alteração é essa?</li>
+      <li>Texto: “muitos jovens”. Alternativa: “os jovens”. Que alteração é essa?</li>
+      <li>O que você circula primeiro no enunciado?</li>
+    </ol>
+  </div>
+</section>
+
+<!-- GABARITO -->
+<section class="gabarito">
+  <div class="folha-cab"><h2><span class="n">GABARITO</span><span class="mt">Testes-relâmpago</span></h2></div>
+  <div class="gab">
+    <div><b>FOLHA 1</b>
+      <p>1. Que ela já estudou antes e tinha parado.</p>
+      <p>2. Paradoxo: silêncio e barulho fundidos no mesmo ser.</p>
+      <p>3. Causa (“como” no início = porque).</p>
+      <p>4. Distanciamento ou ironia: o autor não assume o termo do ministro.</p>
+    </div>
+    <div><b>FOLHA 2</b>
+      <p>1. Apresentar e avaliar uma obra. A sinopse só resume; a resenha avalia.</p>
+      <p>2. Distanciamento: o autor não assume a afirmação e pode sugerir dúvida.</p>
+      <p>3. “Foi uma época em que tudo mudou.”</p>
+    </div>
+    <div><b>FOLHA 3</b>
+      <p>1. “Embora tenha treinado muito, perdeu.”</p>
+      <p>2. “A questão será anulada pela banca.”</p>
+      <p>3. “Vendem-se casas” (VTD + se, verbo concorda). O outro é índice de indeterminação do sujeito.</p>
+      <p>4. Ele disse que fazia (ou faria) aquilo naquele dia.</p>
+    </div>
+    <div><b>FOLHA 4</b>
+      <p>1. “As margens plácidas do Ipiranga ouviram o brado retumbante de um povo heroico.”</p>
+      <p>2. Parnasianismo.</p>
+      <p>3. O som repetido de /v/ sugere a vibração das cordas do violão: musicalidade e sugestão do Simbolismo (Cruz e Sousa).</p>
+      <p>4. Segunda geração romântica (ultrarromantismo), Álvares de Azevedo.</p>
+    </div>
+    <div><b>FOLHA 6</b>
+      <p>1. Grau de certeza: possibilidade virou certeza.</p>
+      <p>2. Generalização.</p>
+      <p>3. INCORRETA, EXCETO ou NÃO: saber se pede a certa ou a errada.</p>
+    </div>
+  </div>
+  <footer>Ordem e comandos: carrossel “Vai fazer a FGV 2027.1?”, de @crisoliveira.tudodetexto (slides 2 a 7). As referências → indicam os tópicos do manual completo (manual-portugues-fgv.pdf). Versos citados em domínio público.</footer>
+</section>
+
+</main>

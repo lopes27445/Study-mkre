@@ -1,0 +1,1265 @@
+<title>Manual de Português FGV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+
+<style>
+/* Layout: coluna única de leitura com a barra de módulos fixa no topo.
+   Cada módulo corresponde a um slide do roteiro, na mesma ordem (2 → 7).
+   Paleta e fontes iguais às do mapa do Mackenzie, para o repositório ter uma só cara. */
+:root{
+  --paper:#F5F7FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F5;
+  --ink:#131E36;
+  --grafite:#5A6478;
+  --grafite-soft:#828B9E;
+  --linha:#D9DEE8;
+  --linha-forte:#BAC2D2;
+  --azul:#1B4AA0;
+  --azul-soft:#E7EDF9;
+  --vermelho:#AC2A1F;
+  --ocre:#84600F;
+  --ocre-soft:#F8F0DC;
+  --marca:#FADDA8;
+  --verde:#24704A;
+  --verde-soft:#E2F2E8;
+  --shadow:0 1px 2px rgba(19,30,54,.06), 0 8px 24px -16px rgba(19,30,54,.28);
+  --display:"Bitter", Georgia, "Times New Roman", serif;
+  --body:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1523;
+    --surface:#161F31;
+    --surface-2:#1D283D;
+    --ink:#E3E8F2;
+    --grafite:#A3AEC4;
+    --grafite-soft:#7E8AA2;
+    --linha:#2A3549;
+    --linha-forte:#3B4863;
+    --azul:#8FB3EE;
+    --azul-soft:#1C2A46;
+    --vermelho:#EE8478;
+    --ocre:#DDB667;
+    --ocre-soft:#2C2618;
+    --marca:#5A4520;
+    --verde:#7FCBA2;
+    --verde-soft:#17322A;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1523;
+  --surface:#161F31;
+  --surface-2:#1D283D;
+  --ink:#E3E8F2;
+  --grafite:#A3AEC4;
+  --grafite-soft:#7E8AA2;
+  --linha:#2A3549;
+  --linha-forte:#3B4863;
+  --azul:#8FB3EE;
+  --azul-soft:#1C2A46;
+  --vermelho:#EE8478;
+  --ocre:#DDB667;
+  --ocre-soft:#2C2618;
+  --marca:#5A4520;
+  --verde:#7FCBA2;
+  --verde-soft:#17322A;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 28px -18px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:16.5px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--azul);text-underline-offset:2px}
+a:focus-visible,summary:focus-visible,input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+strong{font-weight:700}
+
+/* ---------- Barra de módulos ---------- */
+.barra{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:10;
+  background:var(--paper);border-bottom:1px solid var(--linha);
+}
+.barra-in{
+  max-width:1100px;margin:0 auto;padding-inline:20px;
+  display:flex;align-items:center;gap:14px;
+}
+.barra-nome{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink);text-decoration:none;flex:none;padding-block:12px;
+}
+.chips{
+  list-style:none;margin:0;padding:8px 0;display:flex;gap:6px;
+  overflow-x:auto;scrollbar-width:none;min-width:0;
+}
+.chips::-webkit-scrollbar{display:none}
+.chips a{
+  display:flex;align-items:center;gap:7px;white-space:nowrap;
+  font-size:13.5px;font-weight:600;color:var(--grafite);text-decoration:none;
+  padding:5px 10px;border:1px solid var(--linha);border-radius:3px;background:var(--surface);
+}
+.chips a:hover{color:var(--ink);border-color:var(--linha-forte)}
+.chips b{font-family:var(--mono);font-size:11.5px;color:var(--azul)}
+.chips .cnt{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--grafite-soft);font-variant-numeric:tabular-nums}
+.chips a.feito{border-color:var(--verde);color:var(--ink)}
+.chips a.feito .cnt{color:var(--verde)}
+.barra-prog{height:3px;background:var(--surface-2)}
+.barra-prog i{display:block;height:100%;width:0;background:var(--verde);transition:width .3s}
+
+.wrap{max-width:760px;margin:0 auto;padding-inline:20px;padding-block:0 96px}
+
+/* ---------- Cabeçalho ---------- */
+.topo{padding-block:46px 30px;border-bottom:2px solid var(--ink)}
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--azul);margin:0;
+}
+h1{
+  font-family:var(--display);font-weight:700;font-size:clamp(32px,6vw,48px);
+  line-height:1.1;letter-spacing:-.02em;margin:14px 0 0;text-wrap:balance;
+}
+.dek{font-size:18.5px;color:var(--grafite);margin:14px 0 0;max-width:62ch;text-wrap:pretty}
+.progresso{margin-top:26px;display:grid;gap:8px}
+.progresso-linha{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;color:var(--grafite)}
+.progresso-linha b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.trilho{height:8px;border-radius:4px;background:var(--surface-2);border:1px solid var(--linha);overflow:hidden}
+.trilho i{display:block;height:100%;width:0;background:var(--verde);transition:width .3s}
+
+/* ---------- Seções e módulos ---------- */
+section{padding-top:52px;scroll-margin-top:64px}
+.modulo{border-top:1px solid var(--linha-forte);margin-top:44px}
+.mod-eyebrow{
+  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--azul);margin:0 0 10px;
+}
+.mod-eyebrow span{color:var(--grafite-soft);font-weight:500}
+h2{
+  font-family:var(--display);font-weight:700;font-size:clamp(25px,4.4vw,31px);
+  line-height:1.2;letter-spacing:-.015em;margin:0 0 14px;text-wrap:balance;
+}
+h2 .marca-texto{
+  background:linear-gradient(transparent 58%, var(--marca) 58%, var(--marca) 92%, transparent 92%);
+  padding-inline:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;
+}
+h3{
+  font-family:var(--display);font-weight:600;font-size:19px;line-height:1.3;
+  margin:0 0 8px;letter-spacing:-.01em;text-wrap:balance;
+}
+h3 .tn{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--azul);margin-right:6px}
+h4{font-size:15px;font-weight:700;margin:18px 0 4px}
+p{margin:0 0 12px;max-width:68ch;text-wrap:pretty}
+.abre{font-size:17.5px;color:var(--grafite)}
+ul,ol{padding-left:22px;margin:0 0 12px}
+li{margin-bottom:4px}
+li::marker{color:var(--grafite-soft)}
+.mod-corpo{display:flex;flex-direction:column;gap:34px;margin-top:28px}
+.topico{scroll-margin-top:70px}
+.pergunta-guia{
+  font-style:italic;color:var(--grafite);border-left:2px solid var(--linha-forte);
+  padding-left:12px;margin-top:4px;
+}
+.pergunta-guia b{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--grafite-soft);display:block}
+
+/* Comando do slide: o objeto que importa em cada módulo */
+.comando{
+  background:var(--azul-soft);border:1.5px solid var(--azul);border-radius:3px;
+  padding:14px 18px 15px;margin-top:20px;
+}
+.comando-rot{
+  display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--azul);margin-bottom:4px;
+}
+.comando p{margin:0;font-size:18px;font-weight:600;line-height:1.45;max-width:none}
+
+/* Tabelas */
+.tabela{overflow-x:auto;margin:8px 0 12px;border:1px solid var(--linha);border-radius:4px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.45}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--linha)}
+tr:last-child td{border-bottom:0}
+th{
+  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--grafite);background:var(--surface-2);white-space:nowrap;
+}
+td:first-child{font-weight:600}
+.tabela.larga table{min-width:640px}
+.tabela.media table{min-width:520px}
+td em{color:var(--grafite)}
+.tag{
+  display:inline-block;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.04em;
+  color:var(--grafite);background:var(--surface-2);border-radius:3px;padding:1px 6px;white-space:nowrap;
+}
+
+/* Verso / texto-base */
+.verso{
+  font-family:var(--display);font-weight:500;font-size:16.5px;line-height:1.55;
+  margin:8px 0 12px;padding:2px 0 2px 16px;border-left:2px solid var(--ocre);
+}
+.verso cite{display:block;font-family:var(--mono);font-size:11.5px;font-style:normal;color:var(--grafite);margin-top:6px}
+.texto-base{
+  background:var(--surface);border:1px solid var(--linha);border-radius:4px;box-shadow:var(--shadow);
+  padding:18px 20px;margin:4px 0 18px;
+}
+.texto-base .rot{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--grafite);display:block;margin-bottom:8px}
+.texto-base p{margin:0 0 6px}
+.texto-base .verso{border-left:0;padding-left:0;margin:0}
+
+/* Passos do comando: sequência real */
+.passos{list-style:none;padding:0;margin:4px 0 0;counter-reset:p;display:flex;flex-direction:column;gap:10px}
+.passos li{counter-increment:p;display:grid;grid-template-columns:30px 1fr;gap:10px;margin:0}
+.passos li::before{
+  content:counter(p);font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--azul);
+  width:26px;height:26px;border:1.5px solid var(--azul);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin-top:1px;
+}
+.passos li > div{min-width:0}
+
+/* Treino */
+.questoes{padding-left:22px;display:flex;flex-direction:column;gap:12px}
+.questoes > li{margin:0}
+.questoes > li > p{margin-bottom:6px}
+details{border:1px solid var(--linha);border-radius:3px;background:var(--surface)}
+summary{
+  cursor:pointer;padding:6px 12px;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--azul);
+  list-style:none;
+}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+ ";font-weight:600}
+details[open] summary::before{content:"− "}
+details > div{padding:2px 12px 10px;font-size:15.5px}
+details > div p{margin:0 0 6px}
+
+/* Checklist de domínio */
+.check{border-top:2px solid var(--ink);padding-top:16px}
+.check-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.check-top h3{margin:0}
+.check-cnt{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--grafite);font-variant-numeric:tabular-nums}
+.check-cnt.feito{color:var(--verde)}
+.check-nota{font-size:14.5px;color:var(--grafite);margin:4px 0 10px}
+.itens{list-style:none;padding:0;margin:0;display:flex;flex-direction:column}
+.itens li{margin:0;border-bottom:1px solid var(--linha)}
+.itens li:first-child{border-top:1px solid var(--linha)}
+.itens label{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start;padding:10px 4px;cursor:pointer}
+.itens input{width:19px;height:19px;margin:2px 0 0;accent-color:var(--verde);cursor:pointer}
+.itens li.ok{background:var(--verde-soft)}
+.itens li.ok span{color:var(--grafite)}
+.itens a{font-family:var(--mono);font-size:12px;white-space:nowrap}
+
+/* Plano */
+.nota{
+  background:var(--ocre-soft);border-radius:4px;padding:14px 18px;margin-top:18px;font-size:15.5px;
+}
+.nota p:last-child{margin-bottom:0}
+.nota b.rot{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ocre);display:block;margin-bottom:4px}
+
+footer{margin-top:64px;padding-top:18px;border-top:1px solid var(--linha);font-size:14px;color:var(--grafite)}
+footer p{max-width:none}
+.salvo{font-family:var(--mono);font-size:11.5px;color:var(--grafite-soft)}
+
+@media (max-width:520px){
+  body{font-size:16px}
+  .barra-in{padding-inline:16px;gap:10px}
+  .barra-nome{display:none}
+  .wrap{padding-inline:16px}
+  .comando p{font-size:17px}
+  .texto-base{padding:16px}
+  th,td{padding:8px 10px}
+}
+</style>
+
+<nav class="barra" aria-label="Módulos do manual">
+  <div class="barra-in">
+    <a class="barra-nome" href="#inicio">Manual FGV</a>
+    <ol class="chips">
+      <li><a href="#m1" data-chip="m1"><b>1</b>Interpretação<span class="cnt" data-cnt="m1">0/8</span></a></li>
+      <li><a href="#m2" data-chip="m2"><b>2</b>Gêneros<span class="cnt" data-cnt="m2">0/6</span></a></li>
+      <li><a href="#m3" data-chip="m3"><b>3</b>Gramática<span class="cnt" data-cnt="m3">0/7</span></a></li>
+      <li><a href="#m4" data-chip="m4"><b>4</b>Poemas<span class="cnt" data-cnt="m4">0/7</span></a></li>
+      <li><a href="#m5" data-chip="m5"><b>5</b>Reta final<span class="cnt" data-cnt="m5">0/10</span></a></li>
+      <li><a href="#m6" data-chip="m6"><b>6</b>Método<span class="cnt" data-cnt="m6">0/5</span></a></li>
+    </ol>
+  </div>
+  <div class="barra-prog" aria-hidden="true"><i id="barraFill"></i></div>
+</nav>
+
+<main class="wrap">
+
+<header class="topo" id="inicio">
+  <p class="eyebrow">Língua Portuguesa · FGV 2027.1</p>
+  <h1>Manual de Português para a FGV</h1>
+  <p class="dek">Seis módulos na mesma ordem do roteiro de @crisoliveira.tudodetexto, do slide 2 ao 7. A dica de cada slide virou o comando do módulo: é ele que você aplica nos exemplos, nos treinos e nas provas anteriores.</p>
+  <div class="progresso">
+    <div class="progresso-linha"><span><b id="totalFeito">0</b> de <b id="totalItens">43</b> itens dominados</span><span class="salvo" id="salvoStatus">Progresso guardado neste navegador</span></div>
+    <div class="trilho" aria-hidden="true"><i id="trilhoFill"></i></div>
+  </div>
+</header>
+
+<!-- ================= COMO USAR ================= -->
+<section id="uso">
+  <h2>Como usar este manual</h2>
+  <ol class="passos">
+    <li><div><strong>Siga a ordem dos módulos.</strong> Cada um corresponde a um slide: 1 Interpretação, 2 Gêneros, 3 Gramática no contexto, 4 Poemas e escolas, 5 Reta final, 6 Como estudar melhor.</div></li>
+    <li><div><strong>Em cada módulo, faça três coisas:</strong> estude os tópicos na ordem em que o slide os lista, aplique o comando no treino e só então marque o checklist. Marque um item quando conseguir explicá-lo sem consultar.</div></li>
+    <li><div><strong>Provas anteriores entram desde a primeira semana.</strong> É o comando do Módulo 6. Leia a <a href="#t6-1">ficha de análise</a> antes de começar e use-a em toda questão que resolver.</div></li>
+  </ol>
+
+  <h3 style="margin-top:30px">Plano de 6 semanas</h3>
+  <p>Ajuste à data da sua prova. Com menos de seis semanas, junte as semanas 2 e 3 e reduza a semana 6.</p>
+  <div class="tabela media">
+    <table>
+      <thead><tr><th>Semana</th><th>Módulo</th><th>Prática</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td><a href="#m1">1 · Interpretação de texto</a></td><td>Treino do módulo + questões de interpretação de uma prova anterior. Comece o caderno de erros.</td></tr>
+        <tr><td>2</td><td><a href="#m2">2 · Gêneros textuais</a></td><td>Treino + um texto real por dia (artigo de opinião, resenha, divulgação científica, crônica), aplicando as 5 perguntas.</td></tr>
+        <tr><td>3</td><td><a href="#m3">3 · Gramática no contexto</a></td><td>Treino + questões de gramática de provas anteriores, sempre perguntando que sentido o termo produz.</td></tr>
+        <tr><td>4</td><td><a href="#m4">4 · Poemas e escolas literárias</a></td><td>Treino + fichas de autores (dois por escola, clássicos e contemporâneos).</td></tr>
+        <tr><td>5</td><td><a href="#m5">5 · Reta final</a></td><td>Revisão dos 10 itens + duas provas anteriores completas, cronometradas, com a ficha.</td></tr>
+        <tr><td>6</td><td><a href="#m6">6 · Como estudar melhor</a></td><td>Duas ou três provas anteriores cronometradas e o caderno de erros. Na véspera, só revisão leve.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Rotina diária sugerida (1h30):</strong> 20 min de teoria do módulo, 40 min de questões, 20 min corrigindo com a ficha de análise e 10 min no caderno de erros.</p>
+
+  <div class="nota">
+    <b class="rot">Estudando também para o Mackenzie?</b>
+    <p>Os módulos 1 a 4 cobrem quase tudo o que o <a href="https://claude.ai/code/artifact/18c16328-493f-4a92-b5c8-d71f0e6dc63c">mapa do Mackenzie</a> aponta em Português. Acrescente <strong>funções da linguagem</strong>, o tema mais recorrente lá, e dê peso extra a Modernismo, Cecília Meireles e Clarice Lispector.</p>
+  </div>
+</section>
+
+<!-- ================= MÓDULO 1 ================= -->
+<section class="modulo" id="m1">
+  <p class="mod-eyebrow">Módulo 1 <span>· slide 2/8</span></p>
+  <h2><span class="marca-texto">Interpretação de texto</span></h2>
+  <p class="abre">A prova de Língua Portuguesa da FGV exige leitura atenta de textos verbais e não verbais. Os tópicos abaixo seguem a ordem do slide.</p>
+  <div class="comando">
+    <span class="comando-rot">Comando do slide 2</span>
+    <p>Localize a informação no texto e observe a função que ela desempenha.</p>
+  </div>
+
+  <div class="mod-corpo">
+
+    <article class="topico" id="t1-1">
+      <h3><span class="tn">1.1</span>Construção de sentidos</h3>
+      <p>O sentido nasce da relação entre as partes: a palavra na frase, a frase no parágrafo, o parágrafo no texto. Uma frase isolada pode querer dizer uma coisa e, no texto, outra. Por isso, separe quatro níveis:</p>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Nível</th><th>O que é</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Afirmado</td><td>O que o texto diz com todas as letras.</td><td>“O candidato chegou atrasado.”</td></tr>
+            <tr><td>Pressuposto</td><td>Informação garantida por uma palavra da frase (<em>parar de, ainda, já, voltar a, também</em>).</td><td>“Ele <em>parou de</em> fumar” pressupõe que ele fumava.</td></tr>
+            <tr><td>Subentendido</td><td>Insinuação que depende do contexto; o falante pode negar que quis dizer.</td><td>“Está frio aqui” pode ser um pedido para fechar a janela.</td></tr>
+            <tr><td>Extrapolado</td><td>O que o texto <strong>não</strong> autoriza. É a base da maioria das alternativas erradas.</td><td>“Ele parou de fumar” não permite concluir que ele está doente.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="topico" id="t1-2">
+      <h3><span class="tn">1.2</span>Figuras de linguagem</h3>
+      <p>O slide cita metáfora, comparação, paradoxo e antítese. São as quatro que mais se confundem entre si:</p>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Figura</th><th>Como reconhecer</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Comparação</td><td>Aproxima dois termos <strong>com</strong> conectivo: <em>como, tal qual, feito, assim como, parecer</em>.</td><td>“Seus olhos brilhavam como faróis.”</td></tr>
+            <tr><td>Metáfora</td><td>Aproxima dois termos <strong>sem</strong> conectivo; um assume o sentido do outro.</td><td>“Seus olhos eram faróis.”</td></tr>
+            <tr><td>Antítese</td><td>Põe ideias opostas lado a lado. Elas continuam separadas, em contraste.</td><td>“Nasce o Sol, e não dura mais que um dia, / Depois da Luz se segue a noite escura” (Gregório de Matos)</td></tr>
+            <tr><td>Paradoxo</td><td>Funde ideias opostas no mesmo ser, ao mesmo tempo. A contradição é aparente e revela uma verdade.</td><td>“Amor é fogo que arde sem se ver” · “É dor que desatina sem doer” (Camões)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Antítese ou paradoxo?</strong> Na antítese, luz e noite são duas coisas diferentes em oposição. No paradoxo, a mesma dor “dói” e “não dói”.</p>
+      <h4>Outras que também aparecem</h4>
+      <ul>
+        <li><strong>Metonímia:</strong> troca por proximidade de sentido. “Li Machado” (o autor pela obra).</li>
+        <li><strong>Hipérbole:</strong> exagero expressivo. “Chorei rios.”</li>
+        <li><strong>Ironia:</strong> diz o contrário do que pensa; só o contexto revela.</li>
+        <li><strong>Eufemismo:</strong> suaviza uma ideia dura. “Ele nos deixou” (morreu).</li>
+        <li><strong>Personificação (prosopopeia):</strong> atribui ações humanas a seres inanimados.</li>
+        <li><strong>Sinestesia:</strong> mistura sentidos. “Voz áspera”, “cheiro doce”.</li>
+        <li><strong>Gradação:</strong> sequência que aumenta ou diminui de intensidade.</li>
+      </ul>
+      <p class="pergunta-guia"><b>Aplique o comando</b>Não pare no nome da figura. Pergunte que efeito ela produz ali: intensificar, criticar, suavizar, aproximar ideias distantes, revelar uma contradição.</p>
+    </article>
+
+    <article class="topico" id="t1-3">
+      <h3><span class="tn">1.3</span>Mudança de perspectiva</h3>
+      <p>Observe quando o ponto de vista muda ao longo do texto. A mudança pode ser:</p>
+      <ul>
+        <li><strong>de voz:</strong> o narrador cede lugar a uma personagem, ou o autor passa a citar um especialista;</li>
+        <li><strong>de tempo:</strong> “antes eu pensava… hoje percebo”;</li>
+        <li><strong>de opinião:</strong> o enunciador começa com uma visão e a revisa.</li>
+      </ul>
+      <p>As marcas mais comuns são conectivos de virada (<em>mas, no entanto, só depois, até que</em>), expressões de tempo, mudança de pessoa do discurso (eu, nós, eles) e aspas que introduzem a voz de outro.</p>
+      <p>Lembre também o <strong>foco narrativo</strong>: em 1ª pessoa, o narrador-personagem tem visão limitada e subjetiva; em 3ª pessoa, o narrador pode ser observador ou onisciente.</p>
+    </article>
+
+    <article class="topico" id="t1-4">
+      <h3><span class="tn">1.4</span>Relação entre experiência e percepção</h3>
+      <p>Crônicas, poemas e textos de memória mostram como aquilo que alguém viveu altera o modo como ele vê o mundo. A cidade parece outra depois de uma perda; a criança e o adulto percebem a mesma cena de formas diferentes.</p>
+      <p>Procure verbos de percepção (<em>ver, olhar, notar, perceber, sentir, parecer</em>), sensações visuais, sonoras e táteis, e o contraste entre o que as coisas <em>são</em> e o que <em>parecem</em>.</p>
+      <p class="pergunta-guia"><b>Pergunta-guia</b>O que mudou na percepção do enunciador, e qual experiência causou essa mudança?</p>
+    </article>
+
+    <article class="topico" id="t1-5">
+      <h3><span class="tn">1.5</span>Valor semântico das palavras</h3>
+      <ul>
+        <li><strong>Denotação e conotação:</strong> sentido literal, de dicionário, e sentido figurado, construído no contexto.</li>
+        <li><strong>Sinônimo no contexto:</strong> a questão pede uma substituição que mantenha o sentido. Teste a palavra nova dentro da frase. <em>Acarretar</em> = causar; <em>sobremaneira</em> = muito.</li>
+        <li><strong>Polissemia:</strong> a mesma palavra com sentidos diferentes. <em>Pesar</em> pode ser ter peso, lamentar ou avaliar.</li>
+        <li><strong>Sufixos com valor afetivo:</strong> o diminutivo pode indicar carinho (“filhinho”), desprezo (“empreguinho”) ou tamanho. O aumentativo pode indicar ênfase (“um livrão”).</li>
+        <li><strong>Modalizadores:</strong> mostram o grau de certeza ou a avaliação do autor: <em>talvez, provavelmente, certamente, infelizmente, é possível que</em>. Trocar “pode” por “deve” muda o sentido.</li>
+        <li><strong>Adjetivos e advérbios avaliativos</strong> revelam o ponto de vista de quem escreve.</li>
+      </ul>
+    </article>
+
+    <article class="topico" id="t1-6">
+      <h3><span class="tn">1.6</span>Função da pontuação e de outros sinais gráficos</h3>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>Sinal</th><th>Funções cobradas</th></tr></thead>
+          <tbody>
+            <tr><td>Aspas</td><td>Citação literal; ironia; distanciamento (o autor não assume o termo); destaque de gíria, estrangeirismo ou neologismo; títulos.</td></tr>
+            <tr><td>Parênteses</td><td>Informação acessória, explicação, comentário do autor, dado numérico.</td></tr>
+            <tr><td>Travessão</td><td>Fala de personagem; isolar aposto ou comentário com mais destaque que a vírgula; introduzir uma conclusão enfática.</td></tr>
+            <tr><td>Dois-pontos</td><td>Introduzem explicação, enumeração, citação, conclusão ou consequência.</td></tr>
+            <tr><td>Reticências</td><td>Interrupção, hesitação, suspense, ironia, ideia que o leitor completa.</td></tr>
+            <tr><td>Exclamação</td><td>Emoção, surpresa, ênfase, apelo.</td></tr>
+            <tr><td>Interrogação</td><td>Pergunta real ou retórica. A retórica já traz a resposta implícita e funciona como argumento.</td></tr>
+            <tr><td>Itálico, negrito, caixa alta</td><td>Destaque, estrangeirismo, título. Caixa alta pode indicar grito ou ênfase.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="topico" id="t1-7">
+      <h3><span class="tn">1.7</span>Circunstâncias expressas por determinados termos</h3>
+      <p>Advérbios, locuções e conjunções indicam a circunstância em que algo acontece. A questão costuma destacar um termo e perguntar o valor dele.</p>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Circunstância</th><th>Marcas</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Tempo</td><td>quando, enquanto, assim que, logo que, depois que</td><td>“Quando a chuva parou, saímos.”</td></tr>
+            <tr><td>Causa</td><td>porque, como (no início), já que, visto que, uma vez que</td><td>“Como chovia, ficamos.”</td></tr>
+            <tr><td>Consequência</td><td>tão… que, tanto… que, de modo que</td><td>“Choveu tanto que a rua alagou.”</td></tr>
+            <tr><td>Finalidade</td><td>para, para que, a fim de (que)</td><td>“Saiu cedo para não perder a prova.”</td></tr>
+            <tr><td>Condição</td><td>se, caso, desde que, contanto que</td><td>“Caso chova, a aula será online.”</td></tr>
+            <tr><td>Concessão</td><td>embora, ainda que, mesmo que, apesar de</td><td>“Embora cansado, terminou a prova.”</td></tr>
+            <tr><td>Conformidade</td><td>conforme, segundo, consoante, como (= conforme)</td><td>“Conforme o edital, a prova dura 4 horas.”</td></tr>
+            <tr><td>Proporção</td><td>à medida que, à proporção que, quanto mais… mais</td><td>“À medida que lia, entendia melhor.”</td></tr>
+            <tr><td>Comparação</td><td>como, (mais) do que, tal qual</td><td>“Leu mais do que precisava.”</td></tr>
+            <tr><td>Modo</td><td>assim, depressa, às pressas, advérbios em -mente</td><td>“Respondeu calmamente.”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Atenção ao “como”:</strong> pode ser causal, conformativo ou comparativo. Só o contexto decide.</p>
+    </article>
+
+    <article class="topico" id="t1-8">
+      <h3><span class="tn">1.8</span>Textos não verbais e verbo-visuais</h3>
+      <p>Charges, tirinhas, cartuns, anúncios e infográficos pedem a mesma leitura atenta. Siga quatro perguntas:</p>
+      <ol>
+        <li>O que a imagem mostra (expressões, gestos, cenário, cores, tamanho das letras, tipo de balão)?</li>
+        <li>O que o texto verbal diz?</li>
+        <li>Como os dois se relacionam: completam, exemplificam ou se contradizem (ironia)?</li>
+        <li>Que crítica, humor ou informação resulta dessa relação?</li>
+      </ol>
+      <p>Na tirinha, o humor costuma vir da quebra de expectativa no último quadro. Na charge, procure o fato da atualidade a que ela se refere. No infográfico, leia título, legenda, escala e fonte, e desconfie de alternativas que generalizam além dos dados.</p>
+    </article>
+
+    <div>
+      <h3>Como aplicar o comando</h3>
+      <ol class="passos">
+        <li><div>Leia o enunciado primeiro e marque o que ele pede: sentido, função, inferência, efeito ou reescrita.</div></li>
+        <li><div>Volte ao trecho indicado e leia também a frase anterior e a seguinte. O sentido quase nunca está só na linha citada.</div></li>
+        <li><div>Pergunte o que o trecho faz ali: explica, exemplifica, contrapõe, conclui, ironiza, enfatiza, retoma ou introduz a voz de outro?</div></li>
+        <li><div>Só então leia as alternativas e confira cada uma contra o texto, nunca contra a sua memória ou a sua opinião.</div></li>
+      </ol>
+    </div>
+
+    <div class="treino">
+      <h3>Treino</h3>
+      <div class="texto-base">
+        <span class="rot">Texto</span>
+        <p>Durante anos, achei que a minha rua era silenciosa. Só percebi o contrário quando fiquei de cama por uma semana: havia o assobio do vendedor de pamonha às dez, o portão rangendo às onze, a vizinha que cantava — desafinada, mas feliz — enquanto estendia a roupa. A rua não tinha mudado. Eu é que, enfim, tinha parado para ouvir.</p>
+      </div>
+      <ol class="questoes">
+        <li><p>Qual a função dos travessões em “— desafinada, mas feliz —”?</p>
+          <details><summary>Ver resposta</summary><div><p>Isolam um comentário do narrador sobre a vizinha, com mais destaque do que vírgulas dariam. É a avaliação dele, intercalada na enumeração dos sons.</p></div></details></li>
+        <li><p>Que mudança de perspectiva o texto apresenta, e o que a provoca?</p>
+          <details><summary>Ver resposta</summary><div><p>O narrador passa de “a rua é silenciosa” para a percepção dos seus sons. A causa é a experiência de ficar de cama (relação entre experiência e percepção, tópico 1.4). A virada é marcada por “Só percebi o contrário quando”.</p></div></details></li>
+        <li><p>Por que a afirmação “O narrador conclui que a rua ficou mais barulhenta com o tempo” está errada?</p>
+          <details><summary>Ver resposta</summary><div><p>Ela contradiz o texto: “A rua não tinha mudado”. O que mudou foi a percepção do narrador. É a alteração sutil mais comum: atribuir ao objeto uma mudança que aconteceu no sujeito.</p></div></details></li>
+        <li><p>Que relação o “mas” estabelece em “desafinada, mas feliz”?</p>
+          <details><summary>Ver resposta</summary><div><p>Oposição. A ideia depois do “mas” prevalece: o que importa para o narrador é que a vizinha estava feliz, não que cantava mal.</p></div></details></li>
+      </ol>
+    </div>
+
+    <div class="check" data-mod="m1">
+      <div class="check-top"><h3>Checklist de domínio</h3><span class="check-cnt" data-cnt-mod="m1">0 de 8</span></div>
+      <p class="check-nota">Marque só quando conseguir explicar sem consultar.</p>
+      <ul class="itens">
+        <li><label><input type="checkbox" id="m1-1" data-mod="m1"><span>Diferencio afirmado, pressuposto, subentendido e extrapolado. <a href="#t1-1">1.1</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-2" data-mod="m1"><span>Reconheço metáfora, comparação, paradoxo e antítese e explico o efeito de cada uma. <a href="#t1-2">1.2</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-3" data-mod="m1"><span>Identifico uma mudança de perspectiva e a marca que a introduz. <a href="#t1-3">1.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-4" data-mod="m1"><span>Explico como uma experiência altera a percepção do enunciador. <a href="#t1-4">1.4</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-5" data-mod="m1"><span>Troco uma palavra por sinônimo sem alterar o sentido no contexto. <a href="#t1-5">1.5</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-6" data-mod="m1"><span>Explico a função de aspas, parênteses, travessão, dois-pontos e reticências num trecho. <a href="#t1-6">1.6</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-7" data-mod="m1"><span>Identifico a circunstância expressa por um termo ou conectivo. <a href="#t1-7">1.7</a></span></label></li>
+        <li><label><input type="checkbox" id="m1-8" data-mod="m1"><span>Leio charge, tirinha e infográfico relacionando imagem e texto. <a href="#t1-8">1.8</a></span></label></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MÓDULO 2 ================= -->
+<section class="modulo" id="m2">
+  <p class="mod-eyebrow">Módulo 2 <span>· slide 3/8</span></p>
+  <h2><span class="marca-texto">Gêneros textuais</span></h2>
+  <p class="abre">Artigo de opinião, resenha, artigo de divulgação científica e crônica são alguns dos gêneros que podem aparecer na prova.</p>
+  <div class="comando">
+    <span class="comando-rot">Comando do slide 3</span>
+    <p>Não basta reconhecer o nome do gênero. É preciso compreender sua finalidade social, estrutura e forma de organização.</p>
+  </div>
+
+  <div class="mod-corpo">
+
+    <article class="topico" id="t2-1">
+      <h3><span class="tn">2.1</span>Os quatro gêneros do slide</h3>
+      <div class="tabela larga">
+        <table>
+          <thead><tr><th>Gênero</th><th>Finalidade social</th><th>Estrutura típica</th><th>Marcas de linguagem</th></tr></thead>
+          <tbody>
+            <tr><td>Artigo de opinião</td><td>Defender um ponto de vista sobre tema polêmico e convencer o leitor.</td><td>Contextualização e tese → argumentos (às vezes um contra-argumento refutado) → conclusão.</td><td>Assinado; modalizadores; conectivos argumentativos; 1ª pessoa ou tom impessoal.</td></tr>
+            <tr><td>Resenha</td><td>Apresentar e avaliar uma obra (livro, filme, série, exposição).</td><td>Identificação da obra → resumo ou descrição → análise e avaliação → recomendação.</td><td>Trechos descritivos alternados com avaliativos; adjetivos de valor; verbos no presente.</td></tr>
+            <tr><td>Artigo de divulgação científica</td><td>Tornar o conhecimento científico acessível ao público leigo.</td><td>Pergunta ou fenômeno → explicação → dados de pesquisa e fala de especialistas → implicações.</td><td>Termos técnicos explicados; analogias; citação de pesquisadores e instituições; tom expositivo.</td></tr>
+            <tr><td>Crônica</td><td>Refletir sobre um fato do cotidiano com leveza, lirismo, humor ou crítica.</td><td>Parte de um episódio banal e chega a uma reflexão mais ampla.</td><td>1ª pessoa frequente; tom de conversa; linguagem mais próxima da fala.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Não confunda <strong>tipo</strong> e <strong>gênero</strong>. Tipo é a sequência (narrar, descrever, expor, argumentar, instruir). Gênero é o texto concreto que circula na sociedade. Uma crônica pode narrar e argumentar ao mesmo tempo.</p>
+    </article>
+
+    <article class="topico" id="t2-2">
+      <h3><span class="tn">2.2</span>Reconhecimento dos argumentos</h3>
+      <p><strong>Tese</strong> é a ideia central que o autor defende. <strong>Ponto de vista</strong> é a posição dele sobre o tema. <strong>Argumento</strong> é a razão que sustenta a tese. Os tipos de argumento mais comuns:</p>
+      <ul>
+        <li><strong>Autoridade:</strong> cita especialista ou instituição.</li>
+        <li><strong>Dados e estatísticas:</strong> números de pesquisas.</li>
+        <li><strong>Exemplificação:</strong> casos concretos que ilustram a tese.</li>
+        <li><strong>Causa e consequência:</strong> mostra o que provoca o problema ou o que ele provoca.</li>
+        <li><strong>Comparação ou analogia:</strong> aproxima situações parecidas.</li>
+        <li><strong>Contra-argumentação:</strong> admite a ideia contrária e a refuta. “É verdade que…; no entanto…”.</li>
+      </ul>
+      <p>Uma alternativa que apresenta um exemplo ou um argumento secundário como se fosse a tese costuma estar errada.</p>
+    </article>
+
+    <article class="topico" id="t2-3">
+      <h3><span class="tn">2.3</span>Compreensão da estrutura textual</h3>
+      <p>Dê uma função a cada parágrafo: introduz o tema, apresenta a tese, argumenta, exemplifica, contra-argumenta ou conclui. Se você consegue fazer esse mapa em uma linha por parágrafo, entendeu a organização do texto. Repare também nos conectivos que ligam um parágrafo ao outro: eles anunciam a função do parágrafo seguinte.</p>
+    </article>
+
+    <article class="topico" id="t2-4">
+      <h3><span class="tn">2.4</span>Intenção comunicativa</h3>
+      <p>Pergunte o que o autor quer que o leitor pense ou faça. Convencer (artigo de opinião), avaliar e recomendar (resenha), explicar (divulgação científica), refletir ou divertir (crônica). A intenção explica as escolhas de linguagem.</p>
+    </article>
+
+    <article class="topico" id="t2-5">
+      <h3><span class="tn">2.5</span>Função da citação de especialistas</h3>
+      <ul>
+        <li>Dar credibilidade à afirmação (argumento de autoridade).</li>
+        <li>Trazer uma voz diferente da do autor, para concordar com ela ou contestá-la.</li>
+        <li>Na divulgação científica, garantir que a informação é confiável sem que o jornalista a assuma sozinho.</li>
+      </ul>
+      <p>Observe o <strong>verbo que introduz a citação</strong>. “Afirma” é neutro; “admite” sugere concessão; “alerta” indica risco; “alega” mostra distanciamento e pode sugerir dúvida. O verbo revela a posição do autor diante do que cita.</p>
+    </article>
+
+    <article class="topico" id="t2-6">
+      <h3><span class="tn">2.6</span>Sentido de expressões figuradas</h3>
+      <p>Expressões idiomáticas (“pesar na balança”, “dar o braço a torcer”, “tapar o sol com a peneira”) se interpretam pelo contexto, nunca palavra por palavra. Em textos de divulgação, as analogias explicam conceitos: o DNA como “manual de instruções”, o sistema imunológico como “exército”. A questão pode pedir o que a analogia esclarece e o que ela simplifica.</p>
+    </article>
+
+    <article class="topico" id="t2-7">
+      <h3><span class="tn">2.7</span>Emprego adequado de pronomes</h3>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Pronome</th><th>Regra da norma-padrão</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Demonstrativos</td><td><em>Este</em> anuncia o que vem ou indica o mais próximo; <em>esse</em> retoma o que já foi dito; <em>aquele</em> indica o mais distante.</td><td>“Machado e Alencar: este foi romântico; aquele, realista.” (este = Alencar)</td></tr>
+            <tr><td>Onde</td><td>Só para lugar.</td><td>“A cidade onde moro.” Mas: “a época <strong>em que</strong>”, nunca “a época onde”.</td></tr>
+            <tr><td>Cujo</td><td>Indica posse, concorda com o possuído e não aceita artigo depois.</td><td>“O autor cujo livro li.” Nunca “cujo o livro”.</td></tr>
+            <tr><td>Relativo com preposição</td><td>A preposição exigida pelo verbo vem antes do relativo.</td><td>“O filme a que assisti.” “A pessoa de quem gosto.”</td></tr>
+            <tr><td>O, a × lhe</td><td><em>O/a</em> para objeto direto; <em>lhe</em> para objeto indireto.</td><td>“Eu o vi.” “Entreguei-lhe o livro.”</td></tr>
+            <tr><td>Colocação</td><td>Não se inicia frase com pronome oblíquo. Palavras atrativas (<em>não, nunca, que, quem</em>, advérbios) puxam o pronome para antes do verbo.</td><td>“Empresta-me o livro.” “Não me empresta.” “Quem te contou?”</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <div>
+      <h3>Como aplicar o comando</h3>
+      <p>Diante de qualquer texto, responda cinco perguntas. Com elas respondidas, o nome do gênero vem sozinho, e as alternativas que só citam o nome deixam de enganar.</p>
+      <ol class="passos">
+        <li><div><strong>Quem escreve?</strong> Articulista, crítico, jornalista de ciência, cronista.</div></li>
+        <li><div><strong>Para quem?</strong> Leitor geral, especialista, público jovem.</div></li>
+        <li><div><strong>Para quê?</strong> Convencer, avaliar, explicar, refletir.</div></li>
+        <li><div><strong>Onde circula?</strong> Jornal, revista de ciência, site, livro.</div></li>
+        <li><div><strong>Como se organiza?</strong> Tese e argumentos; ficha, resumo e avaliação; fenômeno, explicação e especialistas; episódio e reflexão.</div></li>
+      </ol>
+    </div>
+
+    <div class="treino">
+      <h3>Treino</h3>
+      <ol class="questoes">
+        <li><p>Um texto apresenta um filme recém-lançado, resume o enredo sem contar o final e conclui que “a direção acerta no ritmo, mas o roteiro tropeça no último ato”. Que gênero é, e qual trecho comprova?</p>
+          <details><summary>Ver resposta</summary><div><p>Resenha crítica. A apresentação e o resumo da obra são seguidos de avaliação (“acerta no ritmo”, “tropeça no último ato”). Sem essa avaliação, seria só uma sinopse.</p></div></details></li>
+        <li><p>Num artigo de divulgação: “Segundo a bióloga responsável pelo estudo, o fenômeno ainda não é totalmente compreendido.” Qual a função da citação?</p>
+          <details><summary>Ver resposta</summary><div><p>Dar credibilidade (autoridade de quem fez a pesquisa) e marcar o limite do conhecimento atual sem que o autor assuma sozinho essa afirmação.</p></div></details></li>
+        <li><p>Reescreva na norma-padrão: (a) “Foi uma época onde tudo mudou.” (b) “É o livro cujo o autor eu admiro.”</p>
+          <details><summary>Ver resposta</summary><div><p>(a) “Foi uma época em que tudo mudou.” (b) “É o livro cujo autor eu admiro.”</p></div></details></li>
+        <li><p>“É verdade que as redes aproximam pessoas; no entanto, também isolam quem já está sozinho.” Que tipo de argumento é esse, e onde está a posição do autor?</p>
+          <details><summary>Ver resposta</summary><div><p>Contra-argumentação: o autor admite a ideia contrária (“aproximam pessoas”) e a refuta. A posição dele está depois de “no entanto”.</p></div></details></li>
+      </ol>
+    </div>
+
+    <div class="check" data-mod="m2">
+      <div class="check-top"><h3>Checklist de domínio</h3><span class="check-cnt" data-cnt-mod="m2">0 de 6</span></div>
+      <p class="check-nota">Marque só quando conseguir explicar sem consultar.</p>
+      <ul class="itens">
+        <li><label><input type="checkbox" id="m2-1" data-mod="m2"><span>Explico finalidade social, estrutura e marcas dos quatro gêneros. <a href="#t2-1">2.1</a></span></label></li>
+        <li><label><input type="checkbox" id="m2-2" data-mod="m2"><span>Separo tese, argumento e ponto de vista e nomeio o tipo de argumento. <a href="#t2-2">2.2</a></span></label></li>
+        <li><label><input type="checkbox" id="m2-3" data-mod="m2"><span>Dou uma função a cada parágrafo e reconheço a intenção comunicativa. <a href="#t2-3">2.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m2-4" data-mod="m2"><span>Explico por que um especialista foi citado e o que o verbo introdutor revela. <a href="#t2-5">2.5</a></span></label></li>
+        <li><label><input type="checkbox" id="m2-5" data-mod="m2"><span>Interpreto expressões figuradas e analogias pelo contexto. <a href="#t2-6">2.6</a></span></label></li>
+        <li><label><input type="checkbox" id="m2-6" data-mod="m2"><span>Uso demonstrativos, relativos (onde, cujo) e oblíquos conforme a norma-padrão. <a href="#t2-7">2.7</a></span></label></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MÓDULO 3 ================= -->
+<section class="modulo" id="m3">
+  <p class="mod-eyebrow">Módulo 3 <span>· slide 4/8</span></p>
+  <h2><span class="marca-texto">Gramática no contexto</span></h2>
+  <p class="abre">Na prova da FGV, gramática e interpretação aparecem relacionadas. Por isso, analise a palavra ou a expressão dentro da frase e do texto.</p>
+  <div class="comando">
+    <span class="comando-rot">Comando do slide 4</span>
+    <p>Antes de escolher uma alternativa, pergunte: que sentido essa palavra ou expressão produz no texto?</p>
+  </div>
+
+  <div class="mod-corpo">
+
+    <article class="topico" id="t3-1">
+      <h3><span class="tn">3.1</span>Pronomes como elementos coesivos</h3>
+      <ul>
+        <li><strong>Anáfora:</strong> o pronome retoma algo já dito. “Li o artigo e <em>o</em> recomendei.”</li>
+        <li><strong>Catáfora:</strong> o pronome anuncia algo que vem. “Só peço <em>isto</em>: chegue cedo.”</li>
+      </ul>
+      <p>Para achar o referente, troque o pronome pelo candidato e veja se a frase mantém sentido e concordância (gênero e número).</p>
+      <p><strong>Ambiguidade:</strong> em “O professor conversou com o aluno sobre sua nota”, a nota é de quem? A questão pode pedir a reescrita que desfaz a dúvida: “sobre a nota do aluno”.</p>
+      <p>Outros recursos de coesão: sinônimos e hiperônimos (“o cão… o animal”), elipse (omissão de termo que o leitor recupera) e advérbios que retomam lugar ou tempo (<em>lá, então</em>).</p>
+    </article>
+
+    <article class="topico" id="t3-2">
+      <h3><span class="tn">3.2</span>Oposição e contraste por conjunções</h3>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Tipo</th><th>Conjunções</th><th>Como funciona</th></tr></thead>
+          <tbody>
+            <tr><td>Adversativa</td><td>mas, porém, contudo, todavia, entretanto, no entanto</td><td>Liga duas orações independentes. A ideia que vem depois da conjunção é a que prevalece.</td></tr>
+            <tr><td>Concessiva</td><td>embora, ainda que, mesmo que, conquanto, se bem que, apesar de</td><td>Admite um fato contrário que não impede o principal. Pede verbo no subjuntivo: “embora chova”.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Reescrita equivalente:</strong> “Estudou muito, mas não passou.” = “Embora tenha estudado muito, não passou.” O foco se mantém em “não passou”; o verbo da concessiva vai para o subjuntivo.</p>
+      <p><strong>Pegadinha:</strong> trocar a adversativa por uma conclusiva (<em>portanto, logo</em>) ou explicativa (<em>pois</em>) muda a relação e o sentido. Revise também as outras relações:</p>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>Relação</th><th>Conectivos</th></tr></thead>
+          <tbody>
+            <tr><td>Adição</td><td>e, nem, não só… mas também, além disso</td></tr>
+            <tr><td>Alternância</td><td>ou, ora… ora, quer… quer</td></tr>
+            <tr><td>Conclusão</td><td>logo, portanto, por isso, assim, pois (depois do verbo)</td></tr>
+            <tr><td>Explicação</td><td>pois (antes do verbo), porque, que</td></tr>
+            <tr><td>Causa, condição, concessão e demais circunstâncias</td><td>Veja a tabela do <a href="#t1-7">tópico 1.7</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="topico" id="t3-3">
+      <h3><span class="tn">3.3</span>Vozes verbais</h3>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Voz</th><th>Estrutura</th><th>Exemplo</th></tr></thead>
+          <tbody>
+            <tr><td>Ativa</td><td>O sujeito pratica a ação.</td><td>“A banca elaborou a prova.”</td></tr>
+            <tr><td>Passiva analítica</td><td><em>ser</em> + particípio; o sujeito sofre a ação.</td><td>“A prova foi elaborada pela banca.”</td></tr>
+            <tr><td>Passiva sintética</td><td>Verbo transitivo direto + <em>se</em>; o verbo concorda com o sujeito.</td><td>“Elaboraram-se as provas.” “Vendem-se casas.”</td></tr>
+            <tr><td>Reflexiva</td><td>O sujeito pratica e sofre a ação.</td><td>“Ela se olhou no espelho.”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Transposição ativa → passiva:</strong> o objeto direto vira sujeito, e o verbo <em>ser</em> fica no mesmo tempo do verbo original: <em>elaborou → foi elaborada; elaborava → era elaborada; elaborará → será elaborada; tem elaborado → tem sido elaborada</em>.</p>
+      <p><strong>Efeito de sentido:</strong> a passiva destaca quem sofre a ação e permite omitir o agente. “Erros foram cometidos” não diz quem errou.</p>
+      <p><strong>Partícula apassivadora × índice de indeterminação:</strong> “Contratam-se professores” (verbo transitivo direto + se: passiva, o verbo concorda) × “Precisa-se de professores” (verbo transitivo indireto + se: sujeito indeterminado, verbo sempre no singular).</p>
+    </article>
+
+    <article class="topico" id="t3-4">
+      <h3><span class="tn">3.4</span>Tipos de discurso</h3>
+      <ul>
+        <li><strong>Direto:</strong> reproduz a fala exata, com verbo de dizer, travessão ou aspas. — Eu volto amanhã — disse ela.</li>
+        <li><strong>Indireto:</strong> o narrador relata o que foi dito, com <em>que</em> ou <em>se</em>. Ela disse que voltaria no dia seguinte.</li>
+        <li><strong>Indireto livre:</strong> a fala ou o pensamento da personagem se mistura à voz do narrador, sem verbo de dizer. “Ela olhou o relógio. Ainda dava tempo? Claro que dava.”</li>
+      </ul>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>No discurso direto</th><th>No discurso indireto</th></tr></thead>
+          <tbody>
+            <tr><td>eu, nós · meu</td><td>ele, eles · seu, dele</td></tr>
+            <tr><td>presente (volto)</td><td>pretérito imperfeito (voltava)</td></tr>
+            <tr><td>pretérito perfeito (voltei)</td><td>mais-que-perfeito (tinha voltado, voltara)</td></tr>
+            <tr><td>futuro do presente (voltarei)</td><td>futuro do pretérito (voltaria)</td></tr>
+            <tr><td>imperativo (volte)</td><td>imperfeito do subjuntivo (que voltasse)</td></tr>
+            <tr><td>hoje · amanhã · ontem</td><td>naquele dia · no dia seguinte · no dia anterior</td></tr>
+            <tr><td>aqui · este</td><td>ali, lá · aquele</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Efeito:</strong> o direto dá vivacidade e autenticidade; o indireto dá ao narrador o controle da fala; o indireto livre aproxima o leitor da interioridade da personagem.</p>
+    </article>
+
+    <article class="topico" id="t3-5">
+      <h3><span class="tn">3.5</span>Pontuação</h3>
+      <p><strong>Regra de ouro:</strong> não se separa com vírgula o sujeito do verbo, nem o verbo do complemento. “Os candidatos que chegaram atrasados, não entraram” está errado.</p>
+      <h4>Use vírgula para</h4>
+      <ul>
+        <li>isolar aposto e vocativo;</li>
+        <li>separar itens de uma enumeração;</li>
+        <li>isolar adjunto adverbial deslocado (obrigatória se longo, facultativa se curto);</li>
+        <li>isolar expressões explicativas (<em>isto é, ou seja, por exemplo</em>);</li>
+        <li>marcar a omissão de um verbo: “Eu prefiro Machado; ela, Clarice”;</li>
+        <li>isolar conjunção deslocada: “A prova, porém, foi difícil”;</li>
+        <li>isolar orações intercaladas e orações adjetivas explicativas.</li>
+      </ul>
+      <h4>Restritiva × explicativa: a vírgula muda o sentido</h4>
+      <p>“Os alunos que estudaram passaram” → só uma parte estudou, e foi ela que passou (restritiva).<br>“Os alunos, que estudaram, passaram” → todos estudaram e todos passaram (explicativa).</p>
+      <p>Para a função de aspas, travessão, dois-pontos e reticências, volte ao <a href="#t1-6">tópico 1.6</a>.</p>
+    </article>
+
+    <article class="topico" id="t3-6">
+      <h3><span class="tn">3.6</span>Oralidade, informalidade e norma-padrão</h3>
+      <ul>
+        <li><strong>Oralidade:</strong> marcas da fala, como “né”, “tipo”, “aí”, repetições, frases interrompidas, hesitações, “a gente”, “tá”, “pra”.</li>
+        <li><strong>Informalidade:</strong> registro descontraído, que também aparece na escrita (mensagens, crônicas, publicidade): gírias, abreviações, “ter” no lugar de “haver”, pronome no início da frase.</li>
+        <li><strong>Norma-padrão:</strong> a variedade de prestígio, usada em textos formais.</li>
+      </ul>
+      <p>A prova costuma perguntar se a linguagem é <strong>adequada</strong> à situação, ao gênero e ao interlocutor, em vez de tratar a informalidade como erro. Também pede reescritas na norma-padrão. Lembre os tipos de variação: regional, social, situacional e histórica.</p>
+      <div class="tabela">
+        <table>
+          <thead><tr><th>Informal</th><th>Norma-padrão</th></tr></thead>
+          <tbody>
+            <tr><td>Tem muitos candidatos inscritos.</td><td>Há muitos candidatos inscritos.</td></tr>
+            <tr><td>Me avisa quando chegar.</td><td>Avise-me quando chegar.</td></tr>
+            <tr><td>Eu vi ele na fila.</td><td>Eu o vi na fila.</td></tr>
+            <tr><td>Assisti o filme.</td><td>Assisti ao filme.</td></tr>
+            <tr><td>Fazem dois anos que estudo.</td><td>Faz dois anos que estudo.</td></tr>
+            <tr><td>Vou no cinema.</td><td>Vou ao cinema.</td></tr>
+            <tr><td>Aluga-se salas.</td><td>Alugam-se salas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <div>
+      <h3>Como aplicar o comando</h3>
+      <ol class="passos">
+        <li><div>Identifique a classe e a função do termo destacado. É pronome? Conjunção? Que relação estabelece?</div></li>
+        <li><div>Traduza o sentido em poucas palavras: “oposição”, “causa”, “retoma <em>falhas</em>”, “destaca o paciente”, “marca de oralidade”.</div></li>
+        <li><div>Teste a alternativa dentro da frase. O sentido continua o mesmo? A frase continua correta?</div></li>
+        <li><div>Desconfie de reescritas que acertam a gramática e mudam o sentido, e das que mantêm o sentido mas quebram a norma.</div></li>
+      </ol>
+    </div>
+
+    <div class="treino">
+      <h3>Treino</h3>
+      <ol class="questoes">
+        <li><p>“O relatório apontou falhas, mas a empresa não as corrigiu.” (a) A que se refere “as”? (b) Reescreva com uma conjunção concessiva, sem mudar o sentido.</p>
+          <details><summary>Ver resposta</summary><div><p>(a) A “falhas”. (b) “Embora o relatório tenha apontado falhas, a empresa não as corrigiu.”</p></div></details></li>
+        <li><p>Passe para a voz passiva: “A comissão divulgará o resultado na sexta.”</p>
+          <details><summary>Ver resposta</summary><div><p>“O resultado será divulgado pela comissão na sexta.” O futuro <em>divulgará</em> vira <em>será divulgado</em>.</p></div></details></li>
+        <li><p>Passe para o discurso indireto: — Eu entrego o trabalho amanhã — prometeu o aluno.</p>
+          <details><summary>Ver resposta</summary><div><p>O aluno prometeu que entregaria o trabalho no dia seguinte. (eu → ele; presente com valor de futuro → futuro do pretérito; amanhã → no dia seguinte.)</p></div></details></li>
+        <li><p>Explique a diferença: “Os candidatos que se inscreveram cedo pagaram menos.” × “Os candidatos, que se inscreveram cedo, pagaram menos.”</p>
+          <details><summary>Ver resposta</summary><div><p>Na primeira (restritiva), só parte dos candidatos se inscreveu cedo, e só ela pagou menos. Na segunda (explicativa), todos se inscreveram cedo e todos pagaram menos.</p></div></details></li>
+        <li><p>Reescreva na norma-padrão: “Tem muita gente que não assistiu o debate.”</p>
+          <details><summary>Ver resposta</summary><div><p>“Há muita gente que não assistiu ao debate.”</p></div></details></li>
+      </ol>
+    </div>
+
+    <div class="check" data-mod="m3">
+      <div class="check-top"><h3>Checklist de domínio</h3><span class="check-cnt" data-cnt-mod="m3">0 de 7</span></div>
+      <p class="check-nota">Marque só quando conseguir explicar sem consultar.</p>
+      <ul class="itens">
+        <li><label><input type="checkbox" id="m3-1" data-mod="m3"><span>Identifico o referente de um pronome e desfaço ambiguidades. <a href="#t3-1">3.1</a></span></label></li>
+        <li><label><input type="checkbox" id="m3-2" data-mod="m3"><span>Diferencio adversativas de concessivas e reescrevo uma pela outra mantendo o sentido. <a href="#t3-2">3.2</a></span></label></li>
+        <li><label><input type="checkbox" id="m3-3" data-mod="m3"><span>Passo da ativa para a passiva mantendo o tempo verbal e explico o efeito. <a href="#t3-3">3.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m3-4" data-mod="m3"><span>Diferencio partícula apassivadora de índice de indeterminação do sujeito. <a href="#t3-3">3.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m3-5" data-mod="m3"><span>Transponho discurso direto e indireto e reconheço o indireto livre. <a href="#t3-4">3.4</a></span></label></li>
+        <li><label><input type="checkbox" id="m3-6" data-mod="m3"><span>Aplico as regras da vírgula, sobretudo restritiva × explicativa. <a href="#t3-5">3.5</a></span></label></li>
+        <li><label><input type="checkbox" id="m3-7" data-mod="m3"><span>Reconheço marcas de oralidade e informalidade e reescrevo na norma-padrão. <a href="#t3-6">3.6</a></span></label></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MÓDULO 4 ================= -->
+<section class="modulo" id="m4">
+  <p class="mod-eyebrow">Módulo 4 <span>· slide 5/8</span></p>
+  <h2><span class="marca-texto">Poemas e escolas literárias</span></h2>
+  <p class="abre">Na análise de poemas, fique atento aos seis pontos abaixo. Também revise autores clássicos e contemporâneos, sempre relacionando o texto ao seu contexto literário.</p>
+  <div class="comando">
+    <span class="comando-rot">Comando do slide 5</span>
+    <p>Literatura não é apenas decorar características: é interpretar como elas aparecem na obra.</p>
+  </div>
+
+  <div class="mod-corpo">
+
+    <article class="topico" id="t4-0">
+      <h3><span class="tn">4.0</span>Vocabulário mínimo do poema</h3>
+      <ul>
+        <li><strong>Eu lírico:</strong> a voz que fala no poema. Não é o autor.</li>
+        <li><strong>Verso e estrofe:</strong> cada linha é um verso; o grupo de versos é a estrofe. O soneto tem dois quartetos e dois tercetos.</li>
+        <li><strong>Métrica:</strong> conta-se até a última sílaba tônica. Redondilha menor = 5 sílabas; redondilha maior = 7; decassílabo = 10; alexandrino = 12.</li>
+        <li><strong>Verso livre × verso branco:</strong> o livre não tem métrica regular; o branco não tem rima.</li>
+        <li><strong>Enjambement:</strong> a frase continua no verso seguinte.</li>
+      </ul>
+    </article>
+
+    <article class="topico" id="t4-1">
+      <h3><span class="tn">4.1</span>Concepção de fazer poético</h3>
+      <p>Quando o poema fala da própria poesia, há metalinguagem. Cada escola tem uma ideia diferente do que é escrever poesia:</p>
+      <div class="tabela larga">
+        <table>
+          <thead><tr><th>Concepção</th><th>Escola</th><th>Onde ver</th></tr></thead>
+          <tbody>
+            <tr><td>Expressão do sentimento e da subjetividade</td><td>Romantismo</td><td>Gonçalves Dias, Álvares de Azevedo</td></tr>
+            <tr><td>Trabalho artesanal, rigor formal, “arte pela arte”</td><td>Parnasianismo</td><td>Olavo Bilac, “Profissão de fé”</td></tr>
+            <tr><td>Sugestão, musicalidade e mistério</td><td>Simbolismo</td><td>Cruz e Sousa, Alphonsus de Guimaraens</td></tr>
+            <tr><td>Liberdade: verso livre, cotidiano, humor, recusa do “lirismo bem comportado”</td><td>Modernismo, 1ª fase</td><td>Manuel Bandeira, “Poética”</td></tr>
+            <tr><td>Busca difícil da palavra; reflexão sobre o próprio fazer</td><td>Modernismo, 2ª fase</td><td>Carlos Drummond de Andrade, “Procura da poesia”</td></tr>
+            <tr><td>Construção racional e objetiva, contra o sentimentalismo</td><td>Geração de 45</td><td>João Cabral de Melo Neto, “Catar feijão”</td></tr>
+            <tr><td>Palavra como objeto visual</td><td>Concretismo</td><td>Augusto e Haroldo de Campos, Décio Pignatari</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <figure class="verso">
+        Invejo o ourives quando escrevo:<br>Imito o amor<br>Com que ele, em ouro, o alto relevo<br>Faz de uma flor.
+        <cite>Olavo Bilac, “Profissão de fé”</cite>
+      </figure>
+      <p class="pergunta-guia"><b>Aplique o comando</b>O que o poema diz que a poesia é, e como a forma confirma isso? Bilac compara o poeta ao ourives e escreve com rima e métrica cuidadosas: a forma pratica o que o poema defende.</p>
+    </article>
+
+    <article class="topico" id="t4-2">
+      <h3><span class="tn">4.2</span>Função das repetições e enumerações</h3>
+      <ul>
+        <li><strong>Anáfora:</strong> repetição no início de versos. Dá ênfase, ritmo e insistência.</li>
+        <li><strong>Refrão:</strong> verso que volta ao fim das estrofes. Musicalidade e ideia central.</li>
+        <li><strong>Paralelismo:</strong> estruturas sintáticas repetidas.</li>
+        <li><strong>Gradação:</strong> intensidade crescente ou decrescente.</li>
+        <li><strong>Polissíndeto e assíndeto:</strong> conjunções repetidas (“e… e… e”) sugerem acúmulo e movimento contínuo; a ausência delas sugere rapidez.</li>
+        <li><strong>Enumeração:</strong> acúmulo de elementos. No Modernismo, a enumeração caótica sugere a fragmentação do mundo moderno.</li>
+      </ul>
+      <figure class="verso">
+        Nosso céu tem mais estrelas,<br>Nossas várzeas têm mais flores,<br>Nossos bosques têm mais vida,<br>Nossa vida mais amores.
+        <cite>Gonçalves Dias, “Canção do exílio” (1843)</cite>
+      </figure>
+      <p>A anáfora “Nosso/Nossa” e o paralelismo “tem mais” constroem uma exaltação que cresce verso a verso. É o nacionalismo romântico na forma, não só no tema.</p>
+    </article>
+
+    <article class="topico" id="t4-3">
+      <h3><span class="tn">4.3</span>Relação entre oração e termo antecedente</h3>
+      <p>Orações adjetivas, introduzidas por pronome relativo (<em>que, quem, o qual, cujo, onde</em>), caracterizam um termo anterior. No poema, a ordem inversa afasta o relativo do antecedente, e a questão pergunta qual é ele.</p>
+      <figure class="verso">
+        Minha terra tem palmeiras,<br>Onde canta o Sabiá;<br>As aves, que aqui gorjeiam,<br>Não gorjeiam como lá.
+        <cite>Gonçalves Dias, “Canção do exílio”</cite>
+      </figure>
+      <ul>
+        <li>“Onde” retoma <strong>palmeiras</strong>: é nas palmeiras que o sabiá canta.</li>
+        <li>“que” retoma <strong>as aves</strong>; a oração está entre vírgulas, portanto é explicativa.</li>
+        <li>No Bilac do tópico 4.1, “Com que” retoma <strong>o amor</strong>: “Imito o amor com que ele faz, em ouro, o alto relevo de uma flor.”</li>
+      </ul>
+      <p class="pergunta-guia"><b>Técnica</b>Reescreva o verso na ordem direta (sujeito, verbo, complemento) antes de responder.</p>
+    </article>
+
+    <article class="topico" id="t4-4">
+      <h3><span class="tn">4.4</span>Pontuação e construção dos versos</h3>
+      <ul>
+        <li><strong>Ordem inversa (hipérbato):</strong> “Ouviram do Ipiranga as margens plácidas / De um povo heroico o brado retumbante” → na ordem direta: “As margens plácidas do Ipiranga ouviram o brado retumbante de um povo heroico.” O sujeito é “as margens plácidas”.</li>
+        <li><strong>Enjambement:</strong> a frase que atravessa o verso cria suspense e destaca a palavra que abre o verso seguinte. Em Bilac, “Imito o amor / Com que ele…” só se completa adiante.</li>
+        <li><strong>Pontuação expressiva:</strong> exclamações (emoção), reticências (suspensão), travessões. A ausência de pontuação, comum no Modernismo e na poesia contemporânea, cria fluxo e deixa ao leitor a organização do sentido.</li>
+        <li><strong>Omissão de termos:</strong> em “Nossa vida mais amores”, falta o verbo “tem”. A elipse mantém o ritmo e o paralelismo.</li>
+      </ul>
+      <p class="pergunta-guia"><b>Pergunta-guia</b>Onde a frase termina? O verso coincide com a frase ou a corta? O que a quebra destaca?</p>
+    </article>
+
+    <article class="topico" id="t4-5">
+      <h3><span class="tn">4.5</span>Efeitos produzidos pela escolha das palavras</h3>
+      <ul>
+        <li><strong>Campo semântico:</strong> palavras do mesmo universo criam atmosfera. Noite, sombra e silêncio sugerem melancolia.</li>
+        <li><strong>Sonoridade:</strong> aliteração (repetição de consoantes), assonância (de vogais), onomatopeia.</li>
+        <li><strong>Registro:</strong> vocabulário raro e elevado (Barroco, Parnasianismo) × coloquial e cotidiano (Modernismo).</li>
+        <li><strong>Neologismos:</strong> palavras inventadas, como em Guimarães Rosa e Manoel de Barros.</li>
+      </ul>
+      <figure class="verso">
+        Vozes veladas, veludosas vozes,<br>Volúpias dos violões, vozes veladas
+        <cite>Cruz e Sousa, “Violões que choram”</cite>
+      </figure>
+      <p>A aliteração em /v/ imita a vibração das cordas. O som sugere antes de dizer, o que é próprio do Simbolismo.</p>
+      <p class="pergunta-guia"><b>Pergunta-guia</b>Por que esta palavra e não um sinônimo? O que se perderia com a troca?</p>
+    </article>
+
+    <article class="topico" id="t4-6">
+      <h3><span class="tn">4.6</span>Características das escolas em diferentes autores e obras</h3>
+      <div class="tabela larga">
+        <table>
+          <thead><tr><th>Escola</th><th>Reconheça no texto</th><th>Autores e obras</th></tr></thead>
+          <tbody>
+            <tr><td>Quinhentismo <span class="tag">séc. XVI</span></td><td>Literatura de informação e de catequese; descrição da terra sob o olhar europeu.</td><td>Pero Vaz de Caminha (<em>Carta</em>), José de Anchieta</td></tr>
+            <tr><td>Barroco <span class="tag">séc. XVII</span></td><td>Conflito entre fé e prazer; antíteses e paradoxos; efemeridade da vida; sátira.</td><td>Gregório de Matos, Padre Antônio Vieira (<em>Sermões</em>)</td></tr>
+            <tr><td>Arcadismo <span class="tag">séc. XVIII</span></td><td>Simplicidade; natureza idealizada e vida pastoral; <em>carpe diem</em>; fuga da cidade.</td><td>Cláudio Manuel da Costa, Tomás Antônio Gonzaga (<em>Marília de Dirceu</em>), Basílio da Gama (<em>O Uraguai</em>)</td></tr>
+            <tr><td>Romantismo <span class="tag">séc. XIX</span></td><td>Subjetividade; idealização do amor e da mulher; nacionalismo; natureza como espelho do eu. 1ª geração: nacionalista e indianista. 2ª: ultrarromântica, “mal do século”, morte. 3ª: condoreira, social, abolicionista.</td><td>Gonçalves Dias, Álvares de Azevedo, Castro Alves; prosa de José de Alencar (<em>Iracema</em>, <em>Senhora</em>)</td></tr>
+            <tr><td>Realismo e Naturalismo <span class="tag">fim do séc. XIX</span></td><td>Objetividade; crítica social; análise psicológica (Realismo); determinismo do meio e comportamento animalizado (Naturalismo).</td><td>Machado de Assis (<em>Memórias Póstumas de Brás Cubas</em>, <em>Dom Casmurro</em>), Aluísio Azevedo (<em>O Cortiço</em>)</td></tr>
+            <tr><td>Parnasianismo <span class="tag">fim do séc. XIX</span></td><td>Arte pela arte; rigor formal; soneto; vocabulário raro; temas clássicos.</td><td>Olavo Bilac, Alberto de Oliveira, Raimundo Correia</td></tr>
+            <tr><td>Simbolismo <span class="tag">fim do séc. XIX</span></td><td>Musicalidade; sugestão; sinestesia; misticismo; aliterações.</td><td>Cruz e Sousa, Alphonsus de Guimaraens</td></tr>
+            <tr><td>Pré-Modernismo <span class="tag">1902–1922</span></td><td>Denúncia da realidade brasileira; regionalismo crítico; transição para a linguagem moderna.</td><td>Euclides da Cunha (<em>Os Sertões</em>), Lima Barreto (<em>Triste Fim de Policarpo Quaresma</em>), Augusto dos Anjos</td></tr>
+            <tr><td>Modernismo, 1ª fase <span class="tag">1922–1930</span></td><td>Semana de Arte Moderna; ruptura; verso livre; humor e poema-piada; linguagem coloquial; nacionalismo crítico.</td><td>Mário de Andrade (<em>Macunaíma</em>), Oswald de Andrade, Manuel Bandeira</td></tr>
+            <tr><td>Modernismo, 2ª fase <span class="tag">1930–1945</span></td><td>Poesia reflexiva, existencial e social; romance regionalista de denúncia.</td><td>Drummond, Cecília Meireles, Vinicius de Moraes; Graciliano Ramos (<em>Vidas Secas</em>), Rachel de Queiroz (<em>O Quinze</em>)</td></tr>
+            <tr><td>Geração de 45 <span class="tag">1945–1960</span></td><td>Retorno ao rigor formal; experimentação de linguagem; prosa introspectiva e universal.</td><td>João Cabral (<em>Morte e Vida Severina</em>), Guimarães Rosa (<em>Grande Sertão: Veredas</em>), Clarice Lispector (<em>A Hora da Estrela</em>)</td></tr>
+            <tr><td>Contemporânea <span class="tag">1956 em diante</span></td><td>Concretismo; poesia marginal dos anos 70; prosa urbana; vozes antes silenciadas; pluralidade de formas.</td><td>Ferreira Gullar, Paulo Leminski, Ana Cristina Cesar, Adélia Prado, Manoel de Barros, Conceição Evaristo, Itamar Vieira Junior (<em>Torto Arado</em>)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>Ficha de autor (clássicos e contemporâneos)</h4>
+      <p>Para cada autor, preencha cinco linhas: <strong>escola e época</strong> · <strong>contexto histórico</strong> · <strong>três características</strong> · <strong>uma obra</strong> · <strong>um trecho curto que mostre uma característica</strong>. A última linha é a que cumpre o comando do slide.</p>
+    </article>
+
+    <div>
+      <h3>Como aplicar o comando</h3>
+      <ol class="passos">
+        <li><div>Primeira leitura: do que o poema fala? Quem é o eu lírico e com quem fala?</div></li>
+        <li><div>Segunda leitura: como ele fala? Repetições, enumerações, pontuação, quebras de verso, palavras marcantes.</div></li>
+        <li><div>Reescreva em ordem direta os versos invertidos e localize o antecedente de cada relativo.</div></li>
+        <li><div>Relacione forma e sentido: que efeito cada recurso produz?</div></li>
+        <li><div>Só no fim, pergunte pela escola. Quais características aparecem, e em quais versos? Aponte o verso que comprova.</div></li>
+      </ol>
+    </div>
+
+    <div class="treino">
+      <h3>Treino</h3>
+      <div class="texto-base">
+        <span class="rot">Gonçalves Dias, “Canção do exílio” (estrofes 1 e 2)</span>
+        <p class="verso">Minha terra tem palmeiras,<br>Onde canta o Sabiá;<br>As aves, que aqui gorjeiam,<br>Não gorjeiam como lá.</p>
+        <p class="verso" style="margin-top:12px">Nosso céu tem mais estrelas,<br>Nossas várzeas têm mais flores,<br>Nossos bosques têm mais vida,<br>Nossa vida mais amores.</p>
+      </div>
+      <ol class="questoes">
+        <li><p>Qual o antecedente de “Onde” e de “que”?</p>
+          <details><summary>Ver resposta</summary><div><p>“Onde” retoma “palmeiras”; “que” retoma “As aves”.</p></div></details></li>
+        <li><p>Que efeito produz a repetição de “Nosso/Nossa” no início dos versos da segunda estrofe?</p>
+          <details><summary>Ver resposta</summary><div><p>Anáfora e paralelismo dão ênfase e ritmo e constroem uma exaltação crescente da pátria, sempre em comparação (“mais”) com a terra do exílio.</p></div></details></li>
+        <li><p>Que termo está omitido em “Nossa vida mais amores”?</p>
+          <details><summary>Ver resposta</summary><div><p>O verbo “tem”. A elipse mantém o paralelismo e o ritmo de sete sílabas.</p></div></details></li>
+        <li><p>Que oposição estrutura o poema?</p>
+          <details><summary>Ver resposta</summary><div><p>“Aqui” (o exílio) × “lá” (a pátria). A antítese expressa a saudade do eu lírico.</p></div></details></li>
+        <li><p>Que características românticas aparecem, e em quais versos?</p>
+          <details><summary>Ver resposta</summary><div><p>Nacionalismo e exaltação da pátria (toda a segunda estrofe); natureza como símbolo do país (palmeiras, sabiá); subjetividade e saudade (“aqui” × “lá”); redondilha maior, verso de tradição popular e musical (“Mi-nha-ter-ra-tem-pal-mei-”: 7 sílabas).</p></div></details></li>
+      </ol>
+    </div>
+
+    <div class="check" data-mod="m4">
+      <div class="check-top"><h3>Checklist de domínio</h3><span class="check-cnt" data-cnt-mod="m4">0 de 7</span></div>
+      <p class="check-nota">Marque só quando conseguir explicar sem consultar.</p>
+      <ul class="itens">
+        <li><label><input type="checkbox" id="m4-1" data-mod="m4"><span>Explico a concepção de poesia de cada escola e reconheço poemas metalinguísticos. <a href="#t4-1">4.1</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-2" data-mod="m4"><span>Explico o efeito de anáforas, refrões, paralelismos, gradações e enumerações. <a href="#t4-2">4.2</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-3" data-mod="m4"><span>Reescrevo versos em ordem direta e acho o antecedente de cada relativo. <a href="#t4-3">4.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-4" data-mod="m4"><span>Analiso enjambement, pontuação expressiva, métrica e rima. <a href="#t4-4">4.4</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-5" data-mod="m4"><span>Explico o efeito de escolhas de palavras (campo semântico, aliteração, registro). <a href="#t4-5">4.5</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-6" data-mod="m4"><span>Reconheço as características de cada escola num trecho e aponto o verso que comprova. <a href="#t4-6">4.6</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-7" data-mod="m4"><span>Tenho fichas de pelo menos dois autores por escola, clássicos e contemporâneos. <a href="#t4-6">4.6</a></span></label></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MÓDULO 5 ================= -->
+<section class="modulo" id="m5">
+  <p class="mod-eyebrow">Módulo 5 <span>· slide 6/8</span></p>
+  <h2><span class="marca-texto">O que revisar na reta final</span></h2>
+  <p class="abre">Priorize os dez itens do slide, nesta ordem. Cada um aponta para onde está no manual. Revise de forma ativa: explique em voz alta ou escreva de memória antes de reler.</p>
+  <div class="comando">
+    <span class="comando-rot">Comando do slide 6</span>
+    <p>A prova exige leitura atenta, não apenas memorização de regras.</p>
+  </div>
+
+  <div class="mod-corpo">
+
+    <div class="check" data-mod="m5">
+      <div class="check-top"><h3>Os 10 itens da reta final</h3><span class="check-cnt" data-cnt-mod="m5">0 de 10</span></div>
+      <p class="check-nota">Marque quando tiver revisado o item e acertado as questões dele numa prova anterior.</p>
+      <ul class="itens">
+        <li><label><input type="checkbox" id="m5-1" data-mod="m5"><span><strong>Interpretação de textos literários e não literários.</strong> Leia um de cada por dia e resuma a ideia central em uma frase. <a href="#m1">Módulo 1</a> · <a href="#m4">Módulo 4</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-2" data-mod="m5"><span><strong>Tese, argumento e ponto de vista.</strong> Sublinhe a tese e numere os argumentos de cada texto que ler. <a href="#t2-2">2.2</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-3" data-mod="m5"><span><strong>Figuras de linguagem.</strong> Nome, como reconhecer e efeito de cada uma. <a href="#t1-2">1.2</a> · <a href="#t4-2">4.2</a> · <a href="#t4-5">4.5</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-4" data-mod="m5"><span><strong>Pronomes e relações de sentido.</strong> Referentes, demonstrativos, relativos e conectivos. <a href="#t3-1">3.1</a> · <a href="#t2-7">2.7</a> · <a href="#t3-2">3.2</a> · <a href="#t1-7">1.7</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-5" data-mod="m5"><span><strong>Vozes ativa e passiva.</strong> Transposição com o tempo verbal correto e efeito de sentido. <a href="#t3-3">3.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-6" data-mod="m5"><span><strong>Pontuação.</strong> Regras da vírgula, restritiva × explicativa e função dos sinais. <a href="#t3-5">3.5</a> · <a href="#t1-6">1.6</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-7" data-mod="m5"><span><strong>Linguagem verbal e não verbal.</strong> Charges, tirinhas e infográficos com as quatro perguntas. <a href="#t1-8">1.8</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-8" data-mod="m5"><span><strong>Gêneros textuais.</strong> As cinco perguntas e os quatro gêneros do slide. <a href="#t2-1">2.1</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-9" data-mod="m5"><span><strong>Escolas literárias.</strong> A tabela e as fichas de autor, sempre com o verso que comprova. <a href="#t4-6">4.6</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-10" data-mod="m5"><span><strong>Provas anteriores.</strong> Pelo menos duas completas e cronometradas nas últimas duas semanas. <a href="#m6">Módulo 6</a></span></label></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Revisão nas últimas duas semanas</h3>
+      <ul>
+        <li><strong>Todo dia:</strong> um bloco de questões de prova anterior, corrigido com a ficha de análise.</li>
+        <li><strong>A cada três dias:</strong> releia o caderno de erros e refaça as questões que errou.</li>
+        <li><strong>Revisão ativa:</strong> antes de reler uma tabela, tente reproduzi-la de memória. Releitura passiva dá sensação de domínio sem domínio.</li>
+        <li><strong>Véspera:</strong> só o caderno de erros e as tabelas de figuras, conectivos e escolas. Durma cedo.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= MÓDULO 6 ================= -->
+<section class="modulo" id="m6">
+  <p class="mod-eyebrow">Módulo 6 <span>· slide 7/8</span></p>
+  <h2><span class="marca-texto">Como estudar melhor</span></h2>
+  <p class="abre">Não revise apenas listas de conteúdos. Resolva provas anteriores da FGV e observe os cinco pontos do slide. A ficha abaixo transforma cada um em pergunta.</p>
+  <div class="comando">
+    <span class="comando-rot">Comando do slide 7</span>
+    <p>Na FGV, conhecer a regra é importante. Entender o texto é indispensável.</p>
+  </div>
+
+  <div class="mod-corpo">
+
+    <article class="topico" id="t6-1">
+      <h3><span class="tn">6.1</span>Ficha de análise de prova anterior</h3>
+      <p>Preencha depois de corrigir cada prova. Os cinco pontos são os do slide, na mesma ordem.</p>
+      <div class="tabela larga">
+        <table>
+          <thead><tr><th>Observe</th><th>Perguntas para responder</th></tr></thead>
+          <tbody>
+            <tr><td>Como os textos são apresentados</td><td>Quantos textos? De que gêneros? Há texto não verbal? Os textos dialogam entre si? São literários ou não literários? Atuais ou antigos?</td></tr>
+            <tr><td>Como os comandos são formulados</td><td>Que verbos aparecem (“infere-se”, “depreende-se”, “o texto sugere”, “a reescritura mantém o sentido”)? Pede a opção correta ou a incorreta? Usa afirmativas I, II e III?</td></tr>
+            <tr><td>Quais alternativas alteram sutilmente o sentido</td><td>Que palavra tornou cada alternativa errada? Classifique pelo quadro 6.2.</td></tr>
+            <tr><td>Como gramática e interpretação aparecem juntas</td><td>A questão de gramática pedia classificação ou efeito de sentido? Era uma reescrita? Dependia de entender o texto?</td></tr>
+            <tr><td>Quais estratégias ajudaram a eliminar</td><td>Que pista eliminou cada alternativa errada? Qual estratégia do quadro 6.3 funcionou?</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="topico" id="t6-2">
+      <h3><span class="tn">6.2</span>Alterações sutis mais comuns</h3>
+      <p>A alternativa errada quase sempre se parece com o texto. A diferença está em uma palavra.</p>
+      <div class="tabela larga">
+        <table>
+          <thead><tr><th>Alteração</th><th>O que a alternativa faz</th><th>Texto → alternativa</th></tr></thead>
+          <tbody>
+            <tr><td>Extrapolação</td><td>Afirma mais do que o texto autoriza.</td><td>“O estudo indica relação entre sono e memória” → “O estudo prova que dormir pouco causa perda de memória.”</td></tr>
+            <tr><td>Generalização</td><td>Troca <em>alguns, muitos</em> por <em>todos, sempre, nunca</em>.</td><td>“Muitos jovens leem pouco” → “Os jovens não leem.”</td></tr>
+            <tr><td>Grau de certeza</td><td>Transforma possibilidade em certeza.</td><td>“Pode reduzir” → “reduz”; “talvez” → “certamente”.</td></tr>
+            <tr><td>Causa invertida</td><td>Troca causa por consequência.</td><td>“A indústria encolheu e o desemprego aumentou” → “O desemprego fez a indústria encolher.”</td></tr>
+            <tr><td>Contradição</td><td>Afirma o oposto do texto.</td><td>“A rua não tinha mudado” → “A rua ficou mais barulhenta.”</td></tr>
+            <tr><td>Redução</td><td>Apresenta uma parte como se fosse o todo.</td><td>Um argumento secundário apresentado como tese.</td></tr>
+            <tr><td>Troca de voz</td><td>Atribui ao autor a opinião de alguém que ele cita, ou o contrário.</td><td>“Segundo o pesquisador…” → “O autor defende que…”</td></tr>
+            <tr><td>Troca de conectivo</td><td>Reescrita que muda a relação lógica.</td><td>“mas” → “portanto”; “embora” → “porque”.</td></tr>
+            <tr><td>Sinônimo fora de contexto</td><td>Palavra sinônima no dicionário, mas não naquela frase.</td><td>“Pesar” (lamentar) trocado por “medir”.</td></tr>
+            <tr><td>Mudança de tempo</td><td>Altera quando ou por quanto tempo algo acontece.</td><td>“Deixou de fazer” → “nunca fez”.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="topico" id="t6-3">
+      <h3><span class="tn">6.3</span>Estratégias de eliminação</h3>
+      <ol class="passos">
+        <li><div>Leia o enunciado inteiro e circule o que ele pede, principalmente INCORRETA, EXCETO e NÃO.</div></li>
+        <li><div>Divida a alternativa em partes. Se uma parte for falsa, a alternativa toda é falsa.</div></li>
+        <li><div>Volte ao texto para cada alternativa. Não responda de memória.</div></li>
+        <li><div>Desconfie de palavras absolutas (<em>sempre, nunca, todos, apenas, exclusivamente</em>).</div></li>
+        <li><div>Compare as alternativas parecidas. A diferença entre elas costuma ser o ponto da questão.</div></li>
+        <li><div>Em reescritas, teste duas coisas: o sentido se mantém? A frase está correta na norma-padrão?</div></li>
+        <li><div>Em afirmativas I, II e III, julgue primeiro a que você domina e risque as opções incompatíveis com ela.</div></li>
+        <li><div>Se ficar entre duas, escolha a que se apoia num trecho que você consegue apontar.</div></li>
+      </ol>
+    </article>
+
+    <article class="topico" id="t6-4">
+      <h3><span class="tn">6.4</span>Ciclo de cada prova anterior</h3>
+      <p>Procure provas e gabaritos de edições anteriores na página do vestibular da FGV, de preferência as mais recentes e as do processo seletivo que você vai prestar.</p>
+      <ol class="passos">
+        <li><div>Resolva o bloco de Português cronometrado.</div></li>
+        <li><div>Corrija pelo gabarito.</div></li>
+        <li><div>Preencha a ficha 6.1 para cada erro e para cada acerto chutado.</div></li>
+        <li><div>Volte ao tópico do manual que explica o erro.</div></li>
+        <li><div>Registre no caderno de erros, em uma linha, a regra ou a estratégia que faltou.</div></li>
+      </ol>
+      <h4>Caderno de erros</h4>
+      <div class="tabela media">
+        <table>
+          <thead><tr><th>Questão</th><th>O que errei</th><th>Por quê</th><th>Na próxima</th></tr></thead>
+          <tbody>
+            <tr><td>Prova 2025, Q4</td><td>Marquei extrapolação como inferência.</td><td>Caí em alteração sutil (“prova que” no lugar de “indica”).</td><td>Comparar o verbo da alternativa com o do texto.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:14.5px;color:var(--grafite)">A linha acima é um exemplo de preenchimento. Na coluna “Por quê”, use uma de quatro causas: não sabia o conteúdo, li errado, caí em alteração sutil, faltou tempo.</p>
+    </article>
+
+    <div class="check" data-mod="m6">
+      <div class="check-top"><h3>Checklist de domínio</h3><span class="check-cnt" data-cnt-mod="m6">0 de 5</span></div>
+      <p class="check-nota">Marque quando o hábito estiver instalado.</p>
+      <ul class="itens">
+        <li><label><input type="checkbox" id="m6-1" data-mod="m6"><span>Apliquei a ficha de análise numa prova anterior completa. <a href="#t6-1">6.1</a></span></label></li>
+        <li><label><input type="checkbox" id="m6-2" data-mod="m6"><span>Reconheço os dez tipos de alteração sutil sem consultar o quadro. <a href="#t6-2">6.2</a></span></label></li>
+        <li><label><input type="checkbox" id="m6-3" data-mod="m6"><span>Uso as estratégias de eliminação sem consultar a lista. <a href="#t6-3">6.3</a></span></label></li>
+        <li><label><input type="checkbox" id="m6-4" data-mod="m6"><span>Mantenho o caderno de erros atualizado e o revejo a cada três dias. <a href="#t6-4">6.4</a></span></label></li>
+        <li><label><input type="checkbox" id="m6-5" data-mod="m6"><span>Resolvi pelo menos quatro provas anteriores cronometradas. <a href="#t6-4">6.4</a></span></label></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>Ordem e comandos: carrossel “Vai fazer a FGV 2027.1?”, de @crisoliveira.tudodetexto (slides 2 a 7). Explicações, exemplos e treinos foram escritos para este manual. Os poemas citados são de domínio público.</p>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  var CHAVE = 'manual-fgv-progresso-v1';
+  var caixas = Array.prototype.slice.call(document.querySelectorAll('.itens input[type=checkbox]'));
+  var estado = {};
+  var remoto = null;
+  var salvando = false, pendente = false, timer = null;
+
+  function lerLocal(){
+    try { var t = localStorage.getItem(CHAVE); return t ? JSON.parse(t) : {}; } catch (e) { return {}; }
+  }
+  function gravarLocal(){
+    try { localStorage.setItem(CHAVE, JSON.stringify(estado)); } catch (e) {}
+  }
+  function status(txt){
+    var el = document.getElementById('salvoStatus');
+    if (el) el.textContent = txt;
+  }
+
+  function render(){
+    var porMod = {}, feitos = 0;
+    caixas.forEach(function(c){
+      var ok = !!estado[c.id];
+      c.checked = ok;
+      c.closest('li').classList.toggle('ok', ok);
+      var m = c.getAttribute('data-mod');
+      porMod[m] = porMod[m] || {f:0, t:0};
+      porMod[m].t++;
+      if (ok) { porMod[m].f++; feitos++; }
+    });
+    Object.keys(porMod).forEach(function(m){
+      var p = porMod[m], completo = p.f === p.t;
+      var chipCnt = document.querySelector('[data-cnt="' + m + '"]');
+      if (chipCnt) chipCnt.textContent = p.f + '/' + p.t;
+      var chip = document.querySelector('[data-chip="' + m + '"]');
+      if (chip) chip.classList.toggle('feito', completo);
+      var cnt = document.querySelector('[data-cnt-mod="' + m + '"]');
+      if (cnt) { cnt.textContent = p.f + ' de ' + p.t; cnt.classList.toggle('feito', completo); }
+    });
+    var total = caixas.length;
+    document.getElementById('totalFeito').textContent = feitos;
+    document.getElementById('totalItens').textContent = total;
+    var pct = total ? (feitos / total * 100) + '%' : '0%';
+    document.getElementById('trilhoFill').style.width = pct;
+    document.getElementById('barraFill').style.width = pct;
+  }
+
+  function agendar(){
+    clearTimeout(timer);
+    timer = setTimeout(enviar, 700);
+  }
+  function enviar(){
+    gravarLocal();
+    if (!remoto) return;
+    if (salvando) { pendente = true; return; }
+    salvando = true;
+    remoto.set({ itens: Object.assign({}, estado) }).then(function(){
+      status('Progresso salvo na sua conta');
+    }, function(){
+      remoto = null;
+      status('Progresso guardado neste navegador');
+    }).then(function(){
+      salvando = false;
+      if (pendente) { pendente = false; enviar(); }
+    });
+  }
+
+  caixas.forEach(function(c){
+    c.addEventListener('change', function(){
+      if (c.checked) estado[c.id] = true; else delete estado[c.id];
+      render();
+      agendar();
+    });
+  });
+
+  estado = lerLocal();
+  render();
+
+  // Sincroniza com a conta quando a página roda no visualizador do Claude.
+  var claude = window.claude;
+  if (claude && typeof claude.use === 'function') {
+    Promise.all([claude.use('db'), claude.use('user')]).then(function(r){
+      var db = r[0], user = r[1];
+      if (!db || !user) return null;
+      return user.id().then(function(id){
+        if (!id) return null;
+        var ref = db.doc('data/users/' + id + '/progresso');
+        return ref.get().then(function(snap){
+          remoto = ref;
+          var d = snap.exists ? snap.data() : null;
+          if (d && d.itens && typeof d.itens === 'object') {
+            estado = Object.assign({}, d.itens);
+            gravarLocal();
+            render();
+            status('Progresso salvo na sua conta');
+          } else if (Object.keys(estado).length) {
+            enviar();
+          } else {
+            status('Progresso salvo na sua conta');
+          }
+        });
+      });
+    }).catch(function(){ remoto = null; });
+  }
+})();
+</script>

@@ -1,6 +1,16 @@
 # Study-mkre
 
-Material de preparação para o vestibular do Mackenzie, a partir da análise de provas anteriores.
+Material de preparação para o vestibular do Mackenzie, a partir da análise de provas anteriores,
+e para a prova de Língua Portuguesa da FGV.
+
+## Manual de Português — FGV 2027.1
+
+`manual/manual-portugues-fgv.html` — manual de estudo em seis módulos, na ordem e com os
+comandos do roteiro de @crisoliveira.tudodetexto (slides 2 a 7): interpretação de texto,
+gêneros textuais, gramática no contexto, poemas e escolas literárias, revisão da reta final
+e método com provas anteriores. Cada módulo traz o comando do slide, os tópicos explicados,
+um treino com respostas e um checklist de domínio que guarda o progresso.
+Publicado também como página: https://claude.ai/artifact/WDXbAaVTZZLggkZzVVv4rR
 
 ## Análise de conteúdo
 

@@ -276,6 +276,50 @@ footer p{max-width:none}
   .texto-base{padding:16px}
   th,td{padding:8px 10px}
 }
+
+/* ---------- Impressão / PDF ---------- */
+@media print{
+  :root,:root:not([data-theme="light"]),:root[data-theme="dark"]{
+    --paper:#FFFFFF;--surface:#FFFFFF;--surface-2:#EDF0F5;--ink:#131E36;--grafite:#4A5468;--grafite-soft:#6E778A;
+    --linha:#D9DEE8;--linha-forte:#BAC2D2;--azul:#1B4AA0;--azul-soft:#E7EDF9;--vermelho:#AC2A1F;--ocre:#84600F;
+    --ocre-soft:#F8F0DC;--marca:#FADDA8;--verde:#24704A;--verde-soft:#E2F2E8;--shadow:none;color-scheme:light;
+  }
+  @page{size:A4;margin:15mm 14mm 16mm}
+  html{scroll-behavior:auto}
+  body{font-size:12.5px;line-height:1.5;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .barra,.progresso{display:none}
+  .wrap{max-width:none;padding:0}
+  .topo{padding-block:0 18px}
+  h1{font-size:34px}
+  .dek{font-size:15px}
+  section{padding-top:22px}
+  .modulo{break-before:page;border-top:0;margin-top:0;padding-top:0}
+  h2{font-size:24px}
+  h3{font-size:16px}
+  .abre{font-size:14px}
+  .comando p{font-size:15px}
+  .mod-corpo{gap:20px;margin-top:16px}
+  p{max-width:none}
+  a{color:inherit;text-decoration:none}
+  .itens a,h3 .tn{color:var(--azul)}
+  h2,h3,h4,.check-top{break-after:avoid}
+  tr,.comando,.verso,.texto-base,.questoes > li,.itens li,.passos li,.nota,.pergunta-guia{break-inside:avoid}
+  .tabela{overflow:visible;border-radius:0}
+  .tabela.larga table,.tabela.media table{min-width:0}
+  table{font-size:11.5px}
+  th,td{padding:6px 8px}
+  th{white-space:normal}
+  details{border:0;background:none}
+  summary{display:none}
+  details > div{padding:2px 0 0;font-size:12px;color:var(--grafite)}
+  details > div::before{content:"Resposta: ";font-weight:700;color:var(--ink)}
+  details > div p{display:inline}
+  .itens label{padding:6px 2px}
+  .itens input{width:14px;height:14px}
+  .texto-base{box-shadow:none;padding:12px 14px}
+  .nota{font-size:12.5px;padding:10px 14px}
+  footer{margin-top:28px}
+}
 </style>
 
 <nav class="barra" aria-label="Módulos do manual">
@@ -296,7 +340,7 @@ footer p{max-width:none}
 <main class="wrap">
 
 <header class="topo" id="inicio">
-  <p class="eyebrow">Língua Portuguesa · FGV 2027.1</p>
+  <p class="eyebrow">Língua Portuguesa · FGV 2027.1 · prova em 18/10</p>
   <h1>Manual de Português para a FGV</h1>
   <p class="dek">Seis módulos na mesma ordem do roteiro de @crisoliveira.tudodetexto, do slide 2 ao 7. A dica de cada slide virou o comando do módulo: é ele que você aplica nos exemplos, nos treinos e nas provas anteriores.</p>
   <div class="progresso">
@@ -311,25 +355,26 @@ footer p{max-width:none}
   <ol class="passos">
     <li><div><strong>Siga a ordem dos módulos.</strong> Cada um corresponde a um slide: 1 Interpretação, 2 Gêneros, 3 Gramática no contexto, 4 Poemas e escolas, 5 Reta final, 6 Como estudar melhor.</div></li>
     <li><div><strong>Em cada módulo, faça três coisas:</strong> estude os tópicos na ordem em que o slide os lista, aplique o comando no treino e só então marque o checklist. Marque um item quando conseguir explicá-lo sem consultar.</div></li>
-    <li><div><strong>Provas anteriores entram desde a primeira semana.</strong> É o comando do Módulo 6. Leia a <a href="#t6-1">ficha de análise</a> antes de começar e use-a em toda questão que resolver.</div></li>
+    <li><div><strong>Provas anteriores entram desde o primeiro dia.</strong> É o comando do Módulo 6. Leia a <a href="#t6-1">ficha de análise</a> antes de começar e use-a em toda questão que resolver.</div></li>
   </ol>
 
-  <h3 style="margin-top:30px">Plano de 6 semanas</h3>
-  <p>Ajuste à data da sua prova. Com menos de seis semanas, junte as semanas 2 e 3 e reduza a semana 6.</p>
+  <h3 style="margin-top:30px">Plano dos 6 dias até a prova</h3>
+  <p>Um módulo por dia, na ordem do roteiro. Com pouco tempo, estude pelas tabelas e pelos treinos e leia o texto corrido só onde errar.</p>
   <div class="tabela media">
     <table>
-      <thead><tr><th>Semana</th><th>Módulo</th><th>Prática</th></tr></thead>
+      <thead><tr><th>Dia</th><th>Módulo</th><th>O que fazer</th></tr></thead>
       <tbody>
-        <tr><td>1</td><td><a href="#m1">1 · Interpretação de texto</a></td><td>Treino do módulo + questões de interpretação de uma prova anterior. Comece o caderno de erros.</td></tr>
-        <tr><td>2</td><td><a href="#m2">2 · Gêneros textuais</a></td><td>Treino + um texto real por dia (artigo de opinião, resenha, divulgação científica, crônica), aplicando as 5 perguntas.</td></tr>
-        <tr><td>3</td><td><a href="#m3">3 · Gramática no contexto</a></td><td>Treino + questões de gramática de provas anteriores, sempre perguntando que sentido o termo produz.</td></tr>
-        <tr><td>4</td><td><a href="#m4">4 · Poemas e escolas literárias</a></td><td>Treino + fichas de autores (dois por escola, clássicos e contemporâneos).</td></tr>
-        <tr><td>5</td><td><a href="#m5">5 · Reta final</a></td><td>Revisão dos 10 itens + duas provas anteriores completas, cronometradas, com a ficha.</td></tr>
-        <tr><td>6</td><td><a href="#m6">6 · Como estudar melhor</a></td><td>Duas ou três provas anteriores cronometradas e o caderno de erros. Na véspera, só revisão leve.</td></tr>
+        <tr><td>Seg 12/10</td><td><a href="#m1">1 · Interpretação de texto</a></td><td>Tópicos 1.1 a 1.8 + treino. Leia também as pegadinhas (<a href="#t6-2">6.2</a>). Questões de interpretação de uma prova anterior; comece o caderno de erros.</td></tr>
+        <tr><td>Ter 13/10</td><td><a href="#m2">2 · Gêneros textuais</a></td><td>Tópicos 2.1 a 2.7 + treino. Aplique as 5 perguntas aos textos da prova anterior que você está usando.</td></tr>
+        <tr><td>Qua 14/10</td><td><a href="#m3">3 · Gramática no contexto</a></td><td>Tópicos 3.1 a 3.6 + treino. Questões de gramática de provas anteriores, perguntando que sentido o termo produz.</td></tr>
+        <tr><td>Qui 15/10</td><td><a href="#m4">4 · Poemas e escolas literárias</a></td><td>Tópicos 4.0 a 4.6 + treino. Questões de literatura de provas anteriores; fichas dos autores que mais aparecerem nelas.</td></tr>
+        <tr><td>Sex 16/10</td><td><a href="#m5">5 · Reta final</a> + <a href="#m6">6 · Método</a></td><td>Uma prova anterior completa e cronometrada, corrigida com a ficha 6.1. Depois, revise os itens do Módulo 5 em que errou.</td></tr>
+        <tr><td>Sáb 17/10</td><td>Véspera</td><td>Só caderno de erros e as tabelas de figuras, conectivos e escolas. Nada de conteúdo novo. Separe documento e caneta e durma cedo.</td></tr>
+        <tr><td>Dom 18/10</td><td>Prova</td><td>Aplique os comandos: enunciado primeiro, volte ao trecho, elimine pelas alterações sutis.</td></tr>
       </tbody>
     </table>
   </div>
-  <p><strong>Rotina diária sugerida (1h30):</strong> 20 min de teoria do módulo, 40 min de questões, 20 min corrigindo com a ficha de análise e 10 min no caderno de erros.</p>
+  <p><strong>Rotina diária sugerida (cerca de 2h30 de Português):</strong> 1h de teoria do módulo, 1h de questões de provas anteriores sobre o tema, 20 min corrigindo com a ficha de análise e 10 min no caderno de erros.</p>
 
   <div class="nota">
     <b class="rot">Estudando também para o Mackenzie?</b>
@@ -1000,7 +1045,7 @@ footer p{max-width:none}
         <li><label><input type="checkbox" id="m4-4" data-mod="m4"><span>Analiso enjambement, pontuação expressiva, métrica e rima. <a href="#t4-4">4.4</a></span></label></li>
         <li><label><input type="checkbox" id="m4-5" data-mod="m4"><span>Explico o efeito de escolhas de palavras (campo semântico, aliteração, registro). <a href="#t4-5">4.5</a></span></label></li>
         <li><label><input type="checkbox" id="m4-6" data-mod="m4"><span>Reconheço as características de cada escola num trecho e aponto o verso que comprova. <a href="#t4-6">4.6</a></span></label></li>
-        <li><label><input type="checkbox" id="m4-7" data-mod="m4"><span>Tenho fichas de pelo menos dois autores por escola, clássicos e contemporâneos. <a href="#t4-6">4.6</a></span></label></li>
+        <li><label><input type="checkbox" id="m4-7" data-mod="m4"><span>Tenho ficha de pelo menos um autor por escola, com um trecho que mostre a característica. <a href="#t4-6">4.6</a></span></label></li>
       </ul>
     </div>
 
@@ -1032,15 +1077,15 @@ footer p{max-width:none}
         <li><label><input type="checkbox" id="m5-7" data-mod="m5"><span><strong>Linguagem verbal e não verbal.</strong> Charges, tirinhas e infográficos com as quatro perguntas. <a href="#t1-8">1.8</a></span></label></li>
         <li><label><input type="checkbox" id="m5-8" data-mod="m5"><span><strong>Gêneros textuais.</strong> As cinco perguntas e os quatro gêneros do slide. <a href="#t2-1">2.1</a></span></label></li>
         <li><label><input type="checkbox" id="m5-9" data-mod="m5"><span><strong>Escolas literárias.</strong> A tabela e as fichas de autor, sempre com o verso que comprova. <a href="#t4-6">4.6</a></span></label></li>
-        <li><label><input type="checkbox" id="m5-10" data-mod="m5"><span><strong>Provas anteriores.</strong> Pelo menos duas completas e cronometradas nas últimas duas semanas. <a href="#m6">Módulo 6</a></span></label></li>
+        <li><label><input type="checkbox" id="m5-10" data-mod="m5"><span><strong>Provas anteriores.</strong> Pelo menos uma completa e cronometrada até sexta (16/10). <a href="#m6">Módulo 6</a></span></label></li>
       </ul>
     </div>
 
     <div>
-      <h3>Revisão nas últimas duas semanas</h3>
+      <h3>Revisão até a prova</h3>
       <ul>
         <li><strong>Todo dia:</strong> um bloco de questões de prova anterior, corrigido com a ficha de análise.</li>
-        <li><strong>A cada três dias:</strong> releia o caderno de erros e refaça as questões que errou.</li>
+        <li><strong>Todo dia, 10 min:</strong> releia o caderno de erros e refaça as questões que errou.</li>
         <li><strong>Revisão ativa:</strong> antes de reler uma tabela, tente reproduzi-la de memória. Releitura passiva dá sensação de domínio sem domínio.</li>
         <li><strong>Véspera:</strong> só o caderno de erros e as tabelas de figuras, conectivos e escolas. Durma cedo.</li>
       </ul>
@@ -1143,8 +1188,8 @@ footer p{max-width:none}
         <li><label><input type="checkbox" id="m6-1" data-mod="m6"><span>Apliquei a ficha de análise numa prova anterior completa. <a href="#t6-1">6.1</a></span></label></li>
         <li><label><input type="checkbox" id="m6-2" data-mod="m6"><span>Reconheço os dez tipos de alteração sutil sem consultar o quadro. <a href="#t6-2">6.2</a></span></label></li>
         <li><label><input type="checkbox" id="m6-3" data-mod="m6"><span>Uso as estratégias de eliminação sem consultar a lista. <a href="#t6-3">6.3</a></span></label></li>
-        <li><label><input type="checkbox" id="m6-4" data-mod="m6"><span>Mantenho o caderno de erros atualizado e o revejo a cada três dias. <a href="#t6-4">6.4</a></span></label></li>
-        <li><label><input type="checkbox" id="m6-5" data-mod="m6"><span>Resolvi pelo menos quatro provas anteriores cronometradas. <a href="#t6-4">6.4</a></span></label></li>
+        <li><label><input type="checkbox" id="m6-4" data-mod="m6"><span>Mantenho o caderno de erros atualizado e o revejo todo dia. <a href="#t6-4">6.4</a></span></label></li>
+        <li><label><input type="checkbox" id="m6-5" data-mod="m6"><span>Resolvi pelo menos uma prova anterior completa e cronometrada. <a href="#t6-4">6.4</a></span></label></li>
       </ul>
     </div>
 
@@ -1234,6 +1279,11 @@ footer p{max-width:none}
 
   estado = lerLocal();
   render();
+
+  // Ao imprimir o arquivo local, as respostas dos treinos aparecem abertas.
+  window.addEventListener('beforeprint', function(){
+    Array.prototype.forEach.call(document.querySelectorAll('details'), function(d){ d.open = true; });
+  });
 
   // Sincroniza com a conta quando a página roda no visualizador do Claude.
   var claude = window.claude;

@@ -11,6 +11,8 @@ gêneros textuais, gramática no contexto, poemas e escolas literárias, revisã
 e método com provas anteriores. Cada módulo traz o comando do slide, os tópicos explicados,
 um treino com respostas e um checklist de domínio que guarda o progresso.
 Publicado também como página: https://claude.ai/artifact/WDXbAaVTZZLggkZzVVv4rR
+Versão para imprimir ou ler no celular: `manual/manual-portugues-fgv.pdf` (A4, 21 páginas,
+com as respostas dos treinos visíveis). O plano de estudo cobre os 6 dias até a prova (18/10).
 
 ## Análise de conteúdo
 

@@ -19,6 +19,11 @@ de 6 dias, uma folha por slide com o essencial, a pegadinha do tema e um teste-r
 gabarito no final. Cada item aponta o tópico do manual completo para consulta. Fonte em
 `manual/revisao-portugues-fgv.html`.
 
+`manual/revisao-aprofundada-fgv.pdf` — revisão aprofundada (23 páginas), na mesma ordem e com os
+mesmos comandos: conteúdo com as nuances que a FGV explora, uma questão comentada por folha,
+22 exercícios de A a E, simulado de 10 questões e gabarito comentado. Plano de 6 dias com uma
+folha por dia; a revisão expressa fica para a véspera. Fonte em `manual/revisao-aprofundada-fgv.html`.
+
 ## Análise de conteúdo
 
 `analise/mapa-mackenzie.html` — análise comparativa das duas últimas provas, com os

@@ -77,17 +77,37 @@ História), com gabarito oficial e resolução comentada que aponta as pegadinha
   descrição entre colchetes. Os gabaritos são os oficiais do Mackenzie. Provas e gabaritos
   consultados no arquivo de resoluções comentadas do Curso Objetivo.
 
+## Lista FGV: Geometria plana e Português
+
+`fgv/lista-geometria-e-portugues.pdf` — lista de exercícios de 27 páginas com **55 questões reais
+da FGV**, organizadas por assunto, com o gabarito oficial e uma resolução comentada no fim de cada
+parte.
+
+- **Geometria plana (19 questões)**: todas as questões do tema nas 9 provas de Matemática
+  analisadas (FGV‑SP 2020 a 2024.2, Vestibular Unificado 2024 e 2026.1, Vestibular FGV 2026.2),
+  em 4 blocos: perímetros e polígonos, áreas, triângulos (Pitágoras, semelhança e trigonometria) e
+  circunferência. Antes das questões há um formulário de uma página. As figuras foram reproduzidas
+  das provas.
+- **Português (36 questões)**: escolhidas entre as 90 questões das 6 provas de Administração de
+  2022 a 2026, na mesma proporção da prova. São 4 textos literários com 15 questões e 7 blocos de
+  gramática: recursos expressivos, conectivos, humor e tirinhas, formação de palavras, sujeito e
+  vozes, vocabulário e pronomes, pontuação e regência. Uma tabela mostra quanto cada tema caiu.
+- **Questões**: transcritas das provas e conferidas palavra por palavra, incluindo os trechos
+  sublinhados; os gabaritos são os oficiais da FGV.
+
 ## Como gerar os PDFs
 
-Os dois guias são montados por `gerador-pdf/` a partir das partes HTML de cada um
-(`fgv/partes/*.html` e `mackenzie/partes/*.html`, concatenadas em ordem alfabética), com o estilo
-comum de `gerador-pdf/estilo.css`. As fórmulas em LaTeX são renderizadas com KaTeX, o Chromium
-imprime o PDF e o sumário é paginado automaticamente:
+Os PDFs são montados por `gerador-pdf/` a partir das partes HTML de cada um
+(`fgv/partes/*.html`, `fgv/lista-partes/*.html` e `mackenzie/partes/*.html`, concatenadas em ordem
+alfabética), com o estilo comum de `gerador-pdf/estilo.css`. As imagens ficam em `img/`, dentro da
+pasta das partes. As fórmulas em LaTeX são renderizadas com KaTeX, o Chromium imprime o PDF e o
+sumário é paginado automaticamente:
 
 ```sh
 cd gerador-pdf
 npm install
 npm run fgv         # gera fgv/guia-fgv-administracao.pdf
+npm run fgv-lista   # gera fgv/lista-geometria-e-portugues.pdf
 npm run mackenzie   # gera mackenzie/guia-mackenzie-administracao.pdf
 # requer Python 3 com pypdf
 ```

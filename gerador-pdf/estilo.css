@@ -170,3 +170,27 @@ table.dados{border-collapse:collapse;margin:1mm 0 1.4mm;font-size:9.4pt}
 .qlist.tl span + span{text-align:left}
 .qlist.tips span:first-child{color:var(--ink)}
 .qlist.tips b{color:var(--azul)}
+
+/* ---------- Listas de exercícios ---------- */
+.qn{display:inline-block;min-width:5.6mm;text-align:center;background:var(--azul);color:#fff;border-radius:1mm;padding:.35mm 1.2mm;margin-right:2mm;font:600 7.6pt var(--mono);letter-spacing:0}
+.fig{text-align:center;margin:1.6mm 0 1.8mm;break-inside:avoid}
+.fig img{max-width:100%;height:auto}
+.gabgrid{display:grid;grid-template-columns:repeat(10,1fr);gap:1.2mm;margin:1mm 0 3mm}
+.gabgrid div{border:.75pt solid var(--linha);border-radius:1mm;text-align:center;padding:1mm 0;font:500 8.6pt var(--mono);color:var(--grafite)}
+.gabgrid div b{color:var(--verde);font-weight:600;margin-left:.8mm}
+.gabh{font:600 8pt var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--azul);margin:4mm 0 0;break-after:avoid}
+.res{break-inside:avoid;border-top:.75pt solid var(--linha);padding:2.2mm 0 1.4mm}
+.res .resl{display:flex;justify-content:space-between;align-items:center;font:600 7pt var(--mono);color:var(--grafite);text-transform:uppercase;letter-spacing:.07em;margin:0 0 1.2mm}
+.res .resl .chip{margin:0}
+.res p{margin-bottom:1.2mm;font-size:9.6pt}
+.res .eq{font-size:10pt}
+.texto{border:.75pt solid var(--linha-forte);border-left:2.5pt solid var(--azul);border-radius:1.5mm;padding:2.6mm 3.8mm 2mm;margin:4mm 0 0;font-size:9.4pt;line-height:1.5;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.texto p{margin:0 0 1.5mm;break-inside:avoid}
+.texto .tsub{font:600 7pt var(--mono);color:var(--azul);text-transform:uppercase;letter-spacing:.07em;margin:0 0 1.4mm;break-after:avoid}
+.texto .tt{font:700 11pt var(--display);margin:0 0 1.4mm;break-after:avoid}
+.texto .pn{font:600 7.5pt var(--mono);color:var(--grafite);margin-right:1.5mm}
+.texto .autor{text-align:right;font-size:8.4pt;color:var(--grafite);font-style:italic;margin-top:1mm}
+.poema p{margin-bottom:2.6mm}
+.poema .recuo{padding-left:14mm}
+table.rank .t{width:auto}
+table.rank .barcell{width:62mm}

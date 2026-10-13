@@ -5,6 +5,7 @@
   "description": "Gera os guias em PDF a partir das partes HTML de cada vestibular",
   "scripts": {
     "fgv": "node build.mjs ../fgv/partes ../fgv/guia-fgv-administracao.pdf",
+    "fgv-lista": "node build.mjs ../fgv/lista-partes ../fgv/lista-geometria-e-portugues.pdf",
     "mackenzie": "node build.mjs ../mackenzie/partes ../mackenzie/guia-mackenzie-administracao.pdf"
   },
   "dependencies": {

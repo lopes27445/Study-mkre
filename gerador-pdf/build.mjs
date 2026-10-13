@@ -11,7 +11,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import katex from 'katex';
 import { chromium } from 'playwright-core';
 
@@ -119,7 +119,10 @@ async function print(html, pdfPath) {
 
 // estilo.css (que importa fontes e KaTeX de node_modules) fica nesta pasta e o HTML final em
 // .build/, então ajustamos o caminho.
-let source = readSource().replaceAll('href="estilo.css"', 'href="../estilo.css"');
+// Imagens (<img src="img/...">) são relativas à pasta das partes.
+let source = readSource()
+  .replaceAll('href="estilo.css"', 'href="../estilo.css"')
+  .replace(/(<img\b[^>]*\ssrc=")(?![a-z]+:)([^"]+)"/g, (_, a, p) => `${a}${pathToFileURL(path.join(partsDir, p)).href}"`);
 const meta = (re) => (source.match(re)?.[1] ?? '').trim();
 const titulo = meta(/<title>([^<]*)<\/title>/);
 const assunto = meta(/<meta name="description" content="([^"]*)">/);
